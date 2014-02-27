@@ -7,3 +7,5 @@ Possible Ideas
 (movement patterns, locations of kills, etc)
 
 1. Comparisons of heroes and hero stats, like the [Chinese Dota 2 Website](http://db.dota2.com.cn/compares)
+
+1. MMR Data; Is there a way to get this? Maybe not?
