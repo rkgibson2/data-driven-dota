@@ -31,14 +31,18 @@ Dotabuff also displays all information in a tabular format, and lacks visual and
 	List the benefits.
 
 	We really want to let a user examine their game history.
-	They can visualize summary statistics for a set of games, so they can see patterns in their play and possibly ways to improve.
-	Also, we want to allow users to filter their games to only examine a subset of games (e.g. only games where they lost).
+They can visualize summary statistics for a set of games, so they can see patterns in their play and possibly ways to improve.
+Also, we want to allow users to filter their games to only examine a subset of games (e.g. only games where they lost).
+
+	One big thing we want to learn is how to filter and transition well in a visualization.
+We'll have a lot of smaller visualizations and then a couple filters.
+Then, when you change the filters, all the visualizations have to change as well, hopefully with nice transitions.
 
 * **Data:** 
 	From where and how are you collecting your data? If appropriate, provide a link to your data sources.
 
 	The company that develops Dota2, Valve, has an [API](http://dev.dota2.com/showthread.php?t=47115).
-	Through the API, we can individually query each game that we want data for.
+Through the API, we can individually query each game that we want data for.
 
 * **Data Processing:**
 	Do you expect to do substantial data cleanup?
