@@ -26,13 +26,13 @@ Dotabuff also displays all information in a tabular format, and lacks visual and
 
 
 * **Project Objectives:**
-	Provide the primary questions you are trying to answer with your visualization. What would you like to learn and accomplish? List the benefits.
+	Provide the primary questions you are trying to answer with your visualization.
+	What would you like to learn and accomplish?
+	List the benefits.
 
-	1. We really want to let a user examine their game history. They can visualize summary statistics for a set of games, so they can see patterns in their play and possibly ways to improve.
-	
-	2. A
-	
-	3. A
+	We really want to let a user examine their game history.
+	They can visualize summary statistics for a set of games, so they can see patterns in their play and possibly ways to improve.
+	Also, we want to allow users to filter their games to only examine a subset of games (e.g. only games where they lost).
 
 * **Data:** 
 	From where and how are you collecting your data? If appropriate, provide a link to your data sources.
