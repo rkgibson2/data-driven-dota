@@ -17,8 +17,9 @@ Write this in terms of weekly deadlines.
 
 	* Get picture icon data: *Angela* 
 
-	* Build function to convert API integers into item names, hero names, etc.; 
-set up library to hold these functions and other future useful ones: *Benjy*
+	* Build function to convert API integers into item names, hero names, etc.: *Benjy*
+
+	* Set up library to hold functions we write (like the conversion ones): *Benjy*
 
 * **2 weeks:**
 
