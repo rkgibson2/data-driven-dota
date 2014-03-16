@@ -14,6 +14,7 @@ Write this in terms of weekly deadlines.
 * **1 week:**
 
 	* Get data for our set of users: *Robbie* 
+		Angela: let's do you, Benjy, Merlini (? pick!) for now. Maybe add David. We can expand later but I think between a few users we have enough data to work with.
 
 	* Get picture icon data: *Angela* 
 
