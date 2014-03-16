@@ -1,9 +1,7 @@
-Dota-2-visualizations
+Data-Driven-Dota: A Dota 2 Statistical Exploration
 =====================
 
 ### Angela Fan, Robbie Gibson, Benjy Levin
-
-### Dota 2 visualizations, hopefully for CS 171 final project
 
 **Project Schedule:**
 Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members.
