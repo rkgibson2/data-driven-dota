@@ -7,6 +7,7 @@ class APIProblem(Exception):
 api_key = '7F56AE3AB4357C3E54E73235A0ADE818'
 robbie_id = 76561198072761520
 david_id = 76561198046156567
+benjy_id = 76561198044701967
 
 
 # fetch_match_history for a Steam 64-bit account ID. The input must be a integer.
