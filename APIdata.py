@@ -9,11 +9,15 @@ class APIProblem(Exception):
 
 api_key = '7F56AE3AB4357C3E54E73235A0ADE818'
 
+# magic number for conversion between Steam ID-64 and Steam ID-32
+id_conversion_number = 76561197960265728
+
 accounts = [{'user': 'robbie', 'id': 76561198072761520},
             {'user': 'benjy', 'id': 76561198044701967},
             {'user': 'david', 'id': 76561198046156567},
-            {'user': 'singsing', 'id': 76561197980022982},
-            {'user': 'merlini', 'id': 76561198028025765}]
+            {'user': 'aui_2000', 'id': 76561198000813202},
+            {'user': 'merlini', 'id': 76561198028025765},
+            {'user': 'dendi', 'id': 76561198030654385}]
 
 print accounts
 
@@ -29,8 +33,8 @@ def fetch_match_history(account_id):
     url = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/'
     data = requests.get(url, params=parameters).json()['result']
 
-    if data['status'] == 15:
-        raise APIProblem ("Private or non-existent account")
+    if data['status'] != 1:
+        raise APIProblem (data['statusDetail'])
 
     matches = data['matches']
 
@@ -48,10 +52,6 @@ def fetch_match_history(account_id):
     
     return matches
 
-try:
-    id_list = fetch_match_history(robbie_id)
-except APIProblem, e:
-    print e
 
 # fetch match details for a list of match_ids
 def fetch_match_details(match_ids):
@@ -68,13 +68,34 @@ def fetch_match_details(match_ids):
         if 'error' in data:
             raise APIProblem ("Non-existent match")
 
-        match_list = match_list + [data]
+        match_list += [data]
 
     return match_list
 
-match_id_list = [i['match_id'] for i in id_list]
+result_list = []
 
-match_details = fetch_match_details(match_id_list)
+for account in accounts:
+    # get match history for each account
+    matches_list = fetch_match_history(account['id'])
 
-with open('robbie_details.json', 'w') as outfile:
-  json.dump(match_details, outfile)
+    # get ids for each match from matches_list
+    match_id_list = [i['match_id'] for i in matches_list]
+
+    # get match details from id_list
+    match_details = fetch_match_details(match_id_list)
+
+    player_result = {}
+
+    player_result['user'] = account['user']
+    player_result['id64'] = account['id']
+    player_result['id32'] = account['id'] - id_conversion_number
+
+    print player_result
+    print len(match_details)
+
+    player_result['matches'] = match_details
+
+    result_list += [player_result]
+
+with open('match_details.json', 'w') as outfile:
+  json.dump(result_list, outfile)
