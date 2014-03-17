@@ -57,7 +57,6 @@ def fetch_match_details(match_ids):
     match_list = []
 
     for match in match_ids:
-        print match
         parameters['match_id'] = match
         data = requests.get(url, params=parameters).json()['result']
 
@@ -71,3 +70,6 @@ def fetch_match_details(match_ids):
 match_id_list = [i['match_id'] for i in id_list]
 
 match_details = fetch_match_details(match_id_list)
+
+with open('robbie_details.txt', 'w') as outfile:
+  json.dump(match_details, outfile)
