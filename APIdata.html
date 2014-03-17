@@ -20,36 +20,9 @@ var data
 /* The Valve API doesn't allow Cross-Origin Resource Requests, so
  * I make a normal ajax request, using cross-domain ajax, which returns
  * an HTML object, which I can then parse */
-$.ajax({
-        url: "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key=" + APIkey + "&matches_requested=1",
-        type: 'GET',
-        cache: false,
-        crossDomain: true,
-        processData: true,
-        success: function(data) {
-
-        	/* method 1:
-        	 * The actual JSON is surrounded by useless body, head, etc. html tags.
-        	 * The stuff we want is surrounded by paragraph tags, so split on <p> and </p>
-        	 * to get actual json */
-        	var json1 = data.responseText.split("<p>")[1].split("</p>")[0]
-
-        	console.log($.parseJSON(json1))
-
-        	/* method 2:
-        	 * use jQuery methods to read the whole page in as HTML, then
-        	 * find the content inside the paragraph tags */
-        	var html_holder = $("<div></div>")
-        	html_holder.html(data.responseText)
-
-        	var json2 = html_holder.find("p").text()
-
-        	console.log($.parseJSON(json2))
-        },
-        error: function() {
-        	console.log("error")
-        }
-    })
+d3.json("robbie_details.txt", function(data) {
+	debugger;
+})
 
 
 var saveToFile = function(arrayOfLines, fileName) {
