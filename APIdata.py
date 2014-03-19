@@ -1,5 +1,6 @@
 import json
 import requests
+import time
 
 # Gather data for 10 users from the Web API.
 # Robbie Gibson
@@ -34,7 +35,7 @@ def fetch_match_history(account_id):
     data = requests.get(url, params=parameters).json()['result']
 
     if data['status'] != 1:
-        raise APIProblem (data['statusDetail'])
+        raise APIProblem (data['status'] + ': ' + data['statusDetail'])
 
     matches = data['matches']
 
@@ -62,6 +63,8 @@ def fetch_match_details(match_ids):
     match_list = []
 
     for match in match_ids:
+        # make sure we don't call too many times
+        time.sleep(1)
         parameters['match_id'] = match
         data = requests.get(url, params=parameters).json()['result']
 
@@ -72,7 +75,7 @@ def fetch_match_details(match_ids):
 
     return match_list
 
-result_list = []
+results = {}
 
 for account in accounts:
     # get match history for each account
@@ -95,7 +98,7 @@ for account in accounts:
 
     player_result['matches'] = match_details
 
-    result_list += [player_result]
+    results[account['user']] = player_result
 
 with open('match_details.json', 'w') as outfile:
-  json.dump(result_list, outfile)
+  json.dump(results, outfile)
