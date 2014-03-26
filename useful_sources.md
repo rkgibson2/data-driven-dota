@@ -6,7 +6,7 @@ Useful Sources
 1. [Hero Images](http://dota2.gamepedia.com/Category:Hero_avatars)
 1. [Ability Icons](http://dota2.gamepedia.com/Category:Ability_icons)
 1. [API for hero data](http://www.reddit.com/r/DotA2/comments/17chbt/herostats_a_comprehensive_comparison_table_of/)
-1. [ID Data (the data folder](https://github.com/kronusme/dota2-api)
+1. [ID Data (the data folder)](https://github.com/kronusme/dota2-api)
 
 API Keys
 --------
