@@ -13,7 +13,6 @@ var d2 = (function() {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   heroData = data["result"]["heroes"];
         });
-        console.log("loaded")
     };
 
     function loadItemJson()
