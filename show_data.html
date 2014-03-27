@@ -9,7 +9,7 @@
     <script src="../libs/FileSaver.js"></script>
 </head>
 <body>
-
+  <h1> Data Loading...</h1>
 <script>
 
 var APIkey = "7F56AE3AB4357C3E54E73235A0ADE818"
@@ -20,8 +20,9 @@ var data
 /* The Valve API doesn't allow Cross-Origin Resource Requests, so
  * I make a normal ajax request, using cross-domain ajax, which returns
  * an HTML object, which I can then parse */
-d3.json("match_details.json", function(data) {
-	debugger;
+d3.json("./match_data/match_details.json", function(match_data) {
+	data = match_data;
+  d3.select("h1").text("Data finished loading. Go to the console and type in \"data\".")
 })
 
 
