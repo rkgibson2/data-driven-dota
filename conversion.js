@@ -1,4 +1,4 @@
-!function() {
+var d2 = (function() {
 
     // varable to return that holds the accessible functions
     d2 = {};
@@ -36,18 +36,12 @@
         return hero["localized_name"];
     }
 
-    d2.idToHeroLocalizedName = idToHeroLocalizedName;
-
 
     function idToItemName(id, itemData)
     {
-        loadItemJson();
         var item = itemData[id];
         return item["name"];
     }
-
-    d2.idToItemName = idToItemName;
-
 
     function functionlist()
     {
@@ -62,8 +56,6 @@
         );
     }
 
-    d2.functionlist = functionlist
-
     function displayHeroImg(heroname){
         d3.select("body").select(".heropicture").remove();
 
@@ -72,8 +64,6 @@
         .attr('class', 'heropicture')
         .attr('src', function(d) { return "../img/heroes/" +d+".jpg"; });
     };
-
-    d2.displayHeroImg = displayHeroImg;
 
 
     function displayItemImg(itemname){
@@ -85,8 +75,28 @@
         .attr('src', function(d) { return "../img/items/" +d+".jpg"; });
     };
 
-    d2.displayItemImg = displayItemImg;
+    var pubFunctionList = "getHeroName(id): returns hero name from ID\n"
+                            + "getItemName(id): returns item name from ID\n"
+                            + "displayHeroImg(name): displays the image for hero 'name'\n"
+                            + "displayItemImg(name): displays the image for item 'name'\n"
 
-    return d2;
+    return {
+        getHeroName: function(id) {
+            return idToHeroLocalizedName(id, heroData)
+        },
 
-}();
+        getItemName: function(id) {
+            return idToItemName(id, itemData)
+        },
+
+        displayHeroImg: displayHeroImg,
+
+        displayItemImg: displayItemImg,
+
+        functionList: function() {
+            console.log(pubFunctionList)
+        }
+
+    }
+
+})();

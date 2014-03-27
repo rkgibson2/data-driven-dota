@@ -1,3 +1,8 @@
+# Fixes mistake in APIdata.py of saving all users in one file.
+# Now, each user gets their own file.
+# Also, the output is now pretty-printed
+
+
 import json
 import requests
 import time
