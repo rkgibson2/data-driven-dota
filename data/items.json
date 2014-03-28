@@ -1,972 +1,3114 @@
-{
-    "items": [
-        {
-            "id": 0,
-            "name": "empty"
-        },
-        {
-            "id": 1,
-            "name": "blink"
-        },
-        {
-            "id": 2,
-            "name": "blades_of_attack"
-        },
-        {
-            "id": 3,
-            "name": "broadsword"
-        },
-        {
-            "id": 4,
-            "name": "chainmail"
-        },
-        {
-            "id": 5,
-            "name": "claymore"
-        },
-        {
-            "id": 6,
-            "name": "helm_of_iron_will"
-        },
-        {
-            "id": 7,
-            "name": "javelin"
-        },
-        {
-            "id": 8,
-            "name": "mithril_hammer"
-        },
-        {
-            "id": 9,
-            "name": "platemail"
-        },
-        {
-            "id": 10,
-            "name": "quarterstaff"
-        },
-        {
-            "id": 11,
-            "name": "quelling_blade"
-        },
-        {
-            "id": 12,
-            "name": "ring_of_protection"
-        },
-        {
-            "id": 13,
-            "name": "gauntlets"
-        },
-        {
-            "id": 14,
-            "name": "slippers"
-        },
-        {
-            "id": 15,
-            "name": "mantle"
-        },
-        {
-            "id": 16,
-            "name": "branches"
-        },
-        {
-            "id": 17,
-            "name": "belt_of_strength"
-        },
-        {
-            "id": 18,
-            "name": "boots_of_elves"
-        },
-        {
-            "id": 19,
-            "name": "robe"
-        },
-        {
-            "id": 20,
-            "name": "circlet"
-        },
-        {
-            "id": 21,
-            "name": "ogre_axe"
-        },
-        {
-            "id": 22,
-            "name": "blade_of_alacrity"
-        },
-        {
-            "id": 23,
-            "name": "staff_of_wizardry"
-        },
-        {
-            "id": 24,
-            "name": "ultimate_orb"
-        },
-        {
-            "id": 25,
-            "name": "gloves"
-        },
-        {
-            "id": 26,
-            "name": "lifesteal"
-        },
-        {
-            "id": 27,
-            "name": "ring_of_regen"
-        },
-        {
-            "id": 28,
-            "name": "sobi_mask"
-        },
-        {
-            "id": 29,
-            "name": "boots"
-        },
-        {
-            "id": 30,
-            "name": "gem"
-        },
-        {
-            "id": 31,
-            "name": "cloak"
-        },
-        {
-            "id": 32,
-            "name": "talisman_of_evasion"
-        },
-        {
-            "id": 33,
-            "name": "cheese"
-        },
-        {
-            "id": 34,
-            "name": "magic_stick"
-        },
-        {
-            "id": 35,
-            "name": "recipe_magic_wand"
-        },
-        {
-            "id": 36,
-            "name": "magic_wand"
-        },
-        {
-            "id": 37,
-            "name": "ghost"
-        },
-        {
-            "id": 38,
-            "name": "clarity"
-        },
-        {
-            "id": 39,
-            "name": "flask"
-        },
-        {
-            "id": 40,
-            "name": "dust"
-        },
-        {
-            "id": 41,
-            "name": "bottle"
-        },
-        {
-            "id": 42,
-            "name": "ward_observer"
-        },
-        {
-            "id": 43,
-            "name": "ward_sentry"
-        },
-        {
-            "id": 44,
-            "name": "tango"
-        },
-        {
-            "id": 45,
-            "name": "courier"
-        },
-        {
-            "id": 46,
-            "name": "tpscroll"
-        },
-        {
-            "id": 47,
-            "name": "recipe_travel_boots"
-        },
-        {
-            "id": 48,
-            "name": "travel_boots"
-        },
-        {
-            "id": 49,
-            "name": "recipe_phase_boots"
-        },
-        {
-            "id": 50,
-            "name": "phase_boots"
-        },
-        {
-            "id": 51,
-            "name": "demon_edge"
-        },
-        {
-            "id": 52,
-            "name": "eagle"
-        },
-        {
-            "id": 53,
-            "name": "reaver"
-        },
-        {
-            "id": 54,
-            "name": "relic"
-        },
-        {
-            "id": 55,
-            "name": "hyperstone"
-        },
-        {
-            "id": 56,
-            "name": "ring_of_health"
-        },
-        {
-            "id": 57,
-            "name": "void_stone"
-        },
-        {
-            "id": 58,
-            "name": "mystic_staff"
-        },
-        {
-            "id": 59,
-            "name": "energy_booster"
-        },
-        {
-            "id": 60,
-            "name": "point_booster"
-        },
-        {
-            "id": 61,
-            "name": "vitality_booster"
-        },
-        {
-            "id": 62,
-            "name": "recipe_power_treads"
-        },
-        {
-            "id": 63,
-            "name": "power_treads"
-        },
-        {
-            "id": 64,
-            "name": "recipe_hand_of_midas"
-        },
-        {
-            "id": 65,
-            "name": "hand_of_midas"
-        },
-        {
-            "id": 66,
-            "name": "recipe_oblivion_staff"
-        },
-        {
-            "id": 67,
-            "name": "oblivion_staff"
-        },
-        {
-            "id": 68,
-            "name": "recipe_pers"
-        },
-        {
-            "id": 69,
-            "name": "pers"
-        },
-        {
-            "id": 70,
-            "name": "recipe_poor_mans_shield"
-        },
-        {
-            "id": 71,
-            "name": "poor_mans_shield"
-        },
-        {
-            "id": 72,
-            "name": "recipe_bracer"
-        },
-        {
-            "id": 73,
-            "name": "bracer"
-        },
-        {
-            "id": 74,
-            "name": "recipe_wraith_band"
-        },
-        {
-            "id": 75,
-            "name": "wraith_band"
-        },
-        {
-            "id": 76,
-            "name": "recipe_null_talisman"
-        },
-        {
-            "id": 77,
-            "name": "null_talisman"
-        },
-        {
-            "id": 78,
-            "name": "recipe_mekansm"
-        },
-        {
-            "id": 79,
-            "name": "mekansm"
-        },
-        {
-            "id": 80,
-            "name": "recipe_vladmir"
-        },
-        {
-            "id": 81,
-            "name": "vladmir"
-        },
-        {
-            "id": 82,
-            "name": "empty"
-        },
-        {
-            "id": 83,
-            "name": "empty"
-        },
-        {
-            "id": 84,
-            "name": "flying_courier"
-        },
-        {
-            "id": 85,
-            "name": "recipe_buckler"
-        },
-        {
-            "id": 86,
-            "name": "buckler"
-        },
-        {
-            "id": 87,
-            "name": "recipe_ring_of_basilius"
-        },
-        {
-            "id": 88,
-            "name": "ring_of_basilius"
-        },
-        {
-            "id": 89,
-            "name": "recipe_pipe"
-        },
-        {
-            "id": 90,
-            "name": "pipe"
-        },
-        {
-            "id": 91,
-            "name": "recipe_urn_of_shadows"
-        },
-        {
-            "id": 92,
-            "name": "urn_of_shadows"
-        },
-        {
-            "id": 93,
-            "name": "recipe_headdress"
-        },
-        {
-            "id": 94,
-            "name": "headdress"
-        },
-        {
-            "id": 95,
-            "name": "recipe_sheepstick"
-        },
-        {
-            "id": 96,
-            "name": "sheepstick"
-        },
-        {
-            "id": 97,
-            "name": "recipe_orchid"
-        },
-        {
-            "id": 98,
-            "name": "orchid"
-        },
-        {
-            "id": 99,
-            "name": "recipe_cyclone"
-        },
-        {
-            "id": 100,
-            "name": "cyclone"
-        },
-        {
-            "id": 101,
-            "name": "recipe_force_staff"
-        },
-        {
-            "id": 102,
-            "name": "force_staff"
-        },
-        {
-            "id": 103,
-            "name": "recipe_dagon"
-        },
-        {
-            "id": 104,
-            "name": "dagon"
-        },
-        {
-            "id": 105,
-            "name": "recipe_necronomicon"
-        },
-        {
-            "id": 106,
-            "name": "necronomicon"
-        },
-        {
-            "id": 107,
-            "name": "recipe_ultimate_scepter"
-        },
-        {
-            "id": 108,
-            "name": "ultimate_scepter"
-        },
-        {
-            "id": 109,
-            "name": "recipe_refresher"
-        },
-        {
-            "id": 110,
-            "name": "refresher"
-        },
-        {
-            "id": 111,
-            "name": "recipe_assault"
-        },
-        {
-            "id": 112,
-            "name": "assault"
-        },
-        {
-            "id": 113,
-            "name": "recipe_heart"
-        },
-        {
-            "id": 114,
-            "name": "heart"
-        },
-        {
-            "id": 115,
-            "name": "recipe_black_king_bar"
-        },
-        {
-            "id": 116,
-            "name": "black_king_bar"
-        },
-        {
-            "id": 117,
-            "name": "aegis"
-        },
-        {
-            "id": 118,
-            "name": "recipe_shivas_guard"
-        },
-        {
-            "id": 119,
-            "name": "shivas_guard"
-        },
-        {
-            "id": 120,
-            "name": "recipe_bloodstone"
-        },
-        {
-            "id": 121,
-            "name": "bloodstone"
-        },
-        {
-            "id": 122,
-            "name": "recipe_sphere"
-        },
-        {
-            "id": 123,
-            "name": "sphere"
-        },
-        {
-            "id": 124,
-            "name": "recipe_vanguard"
-        },
-        {
-            "id": 125,
-            "name": "vanguard"
-        },
-        {
-            "id": 126,
-            "name": "recipe_blade_mail"
-        },
-        {
-            "id": 127,
-            "name": "blade_mail"
-        },
-        {
-            "id": 128,
-            "name": "recipe_soul_booster"
-        },
-        {
-            "id": 129,
-            "name": "soul_booster"
-        },
-        {
-            "id": 130,
-            "name": "recipe_hood_of_defiance"
-        },
-        {
-            "id": 131,
-            "name": "hood_of_defiance"
-        },
-        {
-            "id": 132,
-            "name": "recipe_rapier"
-        },
-        {
-            "id": 133,
-            "name": "rapier"
-        },
-        {
-            "id": 134,
-            "name": "recipe_monkey_king_bar"
-        },
-        {
-            "id": 135,
-            "name": "monkey_king_bar"
-        },
-        {
-            "id": 136,
-            "name": "recipe_radiance"
-        },
-        {
-            "id": 137,
-            "name": "radiance"
-        },
-        {
-            "id": 138,
-            "name": "recipe_butterfly"
-        },
-        {
-            "id": 139,
-            "name": "butterfly"
-        },
-        {
-            "id": 140,
-            "name": "recipe_greater_crit"
-        },
-        {
-            "id": 141,
-            "name": "greater_crit"
-        },
-        {
-            "id": 142,
-            "name": "recipe_basher"
-        },
-        {
-            "id": 143,
-            "name": "basher"
-        },
-        {
-            "id": 144,
-            "name": "recipe_bfury"
-        },
-        {
-            "id": 145,
-            "name": "bfury"
-        },
-        {
-            "id": 146,
-            "name": "recipe_manta"
-        },
-        {
-            "id": 147,
-            "name": "manta"
-        },
-        {
-            "id": 148,
-            "name": "recipe_lesser_crit"
-        },
-        {
-            "id": 149,
-            "name": "lesser_crit"
-        },
-        {
-            "id": 150,
-            "name": "recipe_armlet"
-        },
-        {
-            "id": 151,
-            "name": "armlet"
-        },
-        {
-            "id": 152,
-            "name": "invis_sword"
-        },
-        {
-            "id": 153,
-            "name": "recipe_sange_and_yasha"
-        },
-        {
-            "id": 154,
-            "name": "sange_and_yasha"
-        },
-        {
-            "id": 155,
-            "name": "recipe_satanic"
-        },
-        {
-            "id": 156,
-            "name": "satanic"
-        },
-        {
-            "id": 157,
-            "name": "recipe_mjollnir"
-        },
-        {
-            "id": 158,
-            "name": "mjollnir"
-        },
-        {
-            "id": 159,
-            "name": "recipe_skadi"
-        },
-        {
-            "id": 160,
-            "name": "skadi"
-        },
-        {
-            "id": 161,
-            "name": "recipe_sange"
-        },
-        {
-            "id": 162,
-            "name": "sange"
-        },
-        {
-            "id": 163,
-            "name": "recipe_helm_of_the_dominator"
-        },
-        {
-            "id": 164,
-            "name": "helm_of_the_dominator"
-        },
-        {
-            "id": 165,
-            "name": "recipe_maelstrom"
-        },
-        {
-            "id": 166,
-            "name": "maelstrom"
-        },
-        {
-            "id": 167,
-            "name": "recipe_desolator"
-        },
-        {
-            "id": 168,
-            "name": "desolator"
-        },
-        {
-            "id": 169,
-            "name": "recipe_yasha"
-        },
-        {
-            "id": 170,
-            "name": "yasha"
-        },
-        {
-            "id": 171,
-            "name": "recipe_mask_of_madness"
-        },
-        {
-            "id": 172,
-            "name": "mask_of_madness"
-        },
-        {
-            "id": 173,
-            "name": "recipe_diffusal_blade"
-        },
-        {
-            "id": 174,
-            "name": "diffusal_blade"
-        },
-        {
-            "id": 175,
-            "name": "recipe_ethereal_blade"
-        },
-        {
-            "id": 176,
-            "name": "ethereal_blade"
-        },
-        {
-            "id": 177,
-            "name": "recipe_soul_ring"
-        },
-        {
-            "id": 178,
-            "name": "soul_ring"
-        },
-        {
-            "id": 179,
-            "name": "recipe_arcane_boots"
-        },
-        {
-            "id": 180,
-            "name": "arcane_boots"
-        },
-        {
-            "id": 181,
-            "name": "orb_of_venom"
-        },
-        {
-            "id": 182,
-            "name": "stout_shield"
-        },
-        {
-            "id": 183,
-            "name": "recipe_invis_sword"
-        },
-        {
-            "id": 184,
-            "name": "recipe_ancient_janggo"
-        },
-        {
-            "id": 185,
-            "name": "ancient_janggo"
-        },
-        {
-            "id": 186,
-            "name": "recipe_medallion_of_courage"
-        },
-        {
-            "id": 187,
-            "name": "medallion_of_courage"
-        },
-        {
-            "id": 188,
-            "name": "smoke_of_deceit"
-        },
-        {
-            "id": 189,
-            "name": "recipe_veil_of_discord"
-        },
-        {
-            "id": 190,
-            "name": "veil_of_discord"
-        },
-        {
-            "id": 191,
-            "name": "recipe_necronomicon_2"
-        },
-        {
-            "id": 192,
-            "name": "recipe_necronomicon_3"
-        },
-        {
-            "id": 193,
-            "name": "necronomicon_2"
-        },
-        {
-            "id": 194,
-            "name": "necronomicon_3"
-        },
-        {
-            "id": 195,
-            "name": "recipe_diffusal_blade_2"
-        },
-        {
-            "id": 196,
-            "name": "recipe_diffusal_blade_2"
-        },
-        {
-            "id": 197,
-            "name": "recipe_dagon_2"
-        },
-        {
-            "id": 198,
-            "name": "recipe_dagon_3"
-        },
-        {
-            "id": 199,
-            "name": "recipe_dagon_4"
-        },
-        {
-            "id": 200,
-            "name": "recipe_dagon_5"
-        },
-        {
-            "id": 201,
-            "name": "dagon_2"
-        },
-        {
-            "id": 202,
-            "name": "dagon_3"
-        },
-        {
-            "id": 203,
-            "name": "dagon_4"
-        },
-        {
-            "id": 204,
-            "name": "dagon_5"
-        },
-        {
-            "id": 205,
-            "name": "recipe_rod_of_atos"
-        },
-        {
-            "id": 206,
-            "name": "rod_of_atos"
-        },
-        {
-            "id": 207,
-            "name": "recipe_abyssal_blade"
-        },
-        {
-            "id": 208,
-            "name": "abyssal_blade"
-        },
-        {
-            "id": 209,
-            "name": "recipe_heavens_halberd"
-        },
-        {
-            "id": 210,
-            "name": "heavens_halberd"
-        },
-        {
-            "id": 211,
-            "name": "recipe_ring_of_aquila"
-        },
-        {
-            "id": 212,
-            "name": "ring_of_aquila"
-        },
-        {
-            "id": 213,
-            "name": "recipe_tranquil_boots"
-        },
-        {
-            "id": 214,
-            "name": "tranquil_boots"
-        },
-        {
-            "id": 215,
-            "name": "shadow_amulet"
-        },
-        {
-            "id": 216,
-            "name": "halloween_candy_corn"
-        },
-        {
-            "id": 217,
-            "name": "mystery_hook"
-        },
-        {
-            "id": 218,
-            "name": "mystery_arrow"
-        },
-        {
-            "id": 219,
-            "name": "mystery_missile"
-        },
-        {
-            "id": 220,
-            "name": "mystery_toss"
-        },
-        {
-            "id": 221,
-            "name": "mystery_vacuum"
-        },
-        {
-            "id": 222,
-            "name": "empty"
-        },
-        {
-            "id": 223,
-            "name": "empty"
-        },
-        {
-            "id": 224,
-            "name": "empty"
-        },
-        {
-            "id": 225,
-            "name": "empty"
-        },
-        {
-            "id": 226,
-            "name": "halloween_rapier"
-        },
-        {
-            "id": 227,
-            "name": "present"
-        },
-        {
-            "id": 228,
-            "name": "greevil_whistle"
-        },
-        {
-            "id": 229,
-            "name": "winter_stocking"
-        },
-        {
-            "id": 230,
-            "name": "winter_skates"
-        },
-        {
-            "id": 231,
-            "name": "winter_cake"
-        },
-        {
-            "id": 232,
-            "name": "winter_cookie"
-        },
-        {
-            "id": 233,
-            "name": "winter_coco"
-        },
-        {
-            "id": 234,
-            "name": "winter_ham"
-        },
-        {
-            "id": 235,
-            "name": "greevil_whistle_toggle"
-        },
-        {
-            "id": 236,
-            "name": "winter_kringle"
-        },
-        {
-            "id": 237,
-            "name": "winter_mushroom"
-        },
-        {
-            "id": 238,
-            "name": "winter_greevil_treat"
-        },
-        {
-            "id": 239,
-            "name": "winter_greevil_garbage"
-        },
-        {
-            "id": 240,
-            "name": "winter_greevil_chewy"
-        },
-        {
-            "id": 241,
-            "name": "tango_single"
-        }
-    ]
-}
+[
+    {
+        "id": 0, 
+        "name": "empty"
+    }, 
+    {
+        "mc": false, 
+        "img": "blink_lg.png", 
+        "created": false, 
+        "dname": "Blink Dagger", 
+        "notes": "Quick-casting will cause you to teleport towards your fountain.", 
+        "cd": 12, 
+        "qual": "component", 
+        "cost": 2150, 
+        "components": null, 
+        "lore": "The fabled dagger used by the fastest assassin ever to walk the lands.", 
+        "attrib": "", 
+        "desc": "Active: Blink - Teleport to a target point up to 1200 units away.  If damage is taken from an enemy hero, Blink Dagger cannot be used for 3 seconds.", 
+        "id": 1, 
+        "name": "blink"
+    }, 
+    {
+        "mc": false, 
+        "img": "blades_of_attack_lg.png", 
+        "created": false, 
+        "dname": "Blades of Attack", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 450, 
+        "components": null, 
+        "lore": "The damage of these small, concealable blades should not be underestimated.", 
+        "attrib": "+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 2, 
+        "name": "blades_of_attack"
+    }, 
+    {
+        "mc": false, 
+        "img": "broadsword_lg.png", 
+        "created": false, 
+        "dname": "Broadsword", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1200, 
+        "components": null, 
+        "lore": "The classic weapon of choice for knights, this blade is sturdy and reliable for slaying enemies.", 
+        "attrib": "+ <span class=\"attribVal\">18</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 3, 
+        "name": "broadsword"
+    }, 
+    {
+        "mc": false, 
+        "img": "chainmail_lg.png", 
+        "created": false, 
+        "dname": "Chainmail", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 550, 
+        "components": null, 
+        "lore": "A medium weave of metal chains.", 
+        "attrib": "+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span>", 
+        "desc": "", 
+        "id": 4, 
+        "name": "chainmail"
+    }, 
+    {
+        "mc": false, 
+        "img": "claymore_lg.png", 
+        "created": false, 
+        "dname": "Claymore", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1400, 
+        "components": null, 
+        "lore": "A sword that can cut through armor, it's a commonly chosen first weapon for budding swordsmen.", 
+        "attrib": "+ <span class=\"attribVal\">21</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 5, 
+        "name": "claymore"
+    }, 
+    {
+        "mc": false, 
+        "img": "helm_of_iron_will_lg.png", 
+        "created": false, 
+        "dname": "Helm of Iron Will", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 950, 
+        "components": null, 
+        "lore": "The helmet of a legendary warrior who fell in battle.", 
+        "attrib": "+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "", 
+        "id": 6, 
+        "name": "helm_of_iron_will"
+    }, 
+    {
+        "mc": false, 
+        "img": "javelin_lg.png", 
+        "created": false, 
+        "dname": "Javelin", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1500, 
+        "components": null, 
+        "lore": "A rather typical spear that can sometimes pierce through an enemy's armor when used to attack.", 
+        "attrib": "+ <span class=\"attribVal\">21</span> <span class=\"attribValText\">Damage</span><br />\nCHANCE TO PIERCE: <span class=\"attribVal\">20%</span><br />\nPIERCE DAMAGE: <span class=\"attribVal\">40</span>", 
+        "desc": "Passive: Pierce - Grants a chance to deal bonus damage.", 
+        "id": 7, 
+        "name": "javelin"
+    }, 
+    {
+        "mc": false, 
+        "img": "mithril_hammer_lg.png", 
+        "created": false, 
+        "dname": "Mithril Hammer", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1600, 
+        "components": null, 
+        "lore": "A hammer forged of pure mithril.", 
+        "attrib": "+ <span class=\"attribVal\">24</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 8, 
+        "name": "mithril_hammer"
+    }, 
+    {
+        "mc": false, 
+        "img": "platemail_lg.png", 
+        "created": false, 
+        "dname": "Platemail", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1400, 
+        "components": null, 
+        "lore": "Thick metal plates that protect the entire upper body. Avoid dropping on feet.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Armor</span>", 
+        "desc": "", 
+        "id": 9, 
+        "name": "platemail"
+    }, 
+    {
+        "mc": false, 
+        "img": "quarterstaff_lg.png", 
+        "created": false, 
+        "dname": "Quarterstaff", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 900, 
+        "components": null, 
+        "lore": "A basic staff that allows you to strike quickly.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "", 
+        "id": 10, 
+        "name": "quarterstaff"
+    }, 
+    {
+        "mc": false, 
+        "img": "quelling_blade_lg.png", 
+        "created": false, 
+        "dname": "Quelling Blade", 
+        "notes": "Cannot carry more than one.", 
+        "cd": 5, 
+        "qual": "component", 
+        "cost": 225, 
+        "components": null, 
+        "lore": "The axe of a fallen gnome, it allows you to effectively maneuver the forest.", 
+        "attrib": "MELEE BONUS: <span class=\"attribVal\">32%</span><br />\nRANGED BONUS: <span class=\"attribVal\">12%</span>", 
+        "desc": "Active:  Destroy Tree/Ward - Destroy a target tree, or deals 100 damage to a ward.<br />\nPassive: Quell - Gives bonus attack damage against non-hero units, depending on the type of hero you are.", 
+        "id": 11, 
+        "name": "quelling_blade"
+    }, 
+    {
+        "mc": false, 
+        "img": "ring_of_protection_lg.png", 
+        "created": false, 
+        "dname": "Ring of Protection", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 175, 
+        "components": null, 
+        "lore": "A glimmering ring that defends its bearer.", 
+        "attrib": "+ <span class=\"attribVal\">2</span> <span class=\"attribValText\">Armor</span>", 
+        "desc": "", 
+        "id": 12, 
+        "name": "ring_of_protection"
+    }, 
+    {
+        "mc": false, 
+        "img": "gauntlets_lg.png", 
+        "created": false, 
+        "dname": "Gauntlets of Strength", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 150, 
+        "components": null, 
+        "lore": "Studded leather gloves that add brute strength.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "", 
+        "id": 13, 
+        "name": "gauntlets"
+    }, 
+    {
+        "mc": false, 
+        "img": "slippers_lg.png", 
+        "created": false, 
+        "dname": "Slippers of Agility", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 150, 
+        "components": null, 
+        "lore": "Light boots made from spider skin that tingles your senses.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Agility</span>", 
+        "desc": "", 
+        "id": 14, 
+        "name": "slippers"
+    }, 
+    {
+        "mc": false, 
+        "img": "mantle_lg.png", 
+        "created": false, 
+        "dname": "Mantle of Intelligence", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 150, 
+        "components": null, 
+        "lore": "A beautiful sapphire mantle worn by generations of queens.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "", 
+        "id": 15, 
+        "name": "mantle"
+    }, 
+    {
+        "mc": false, 
+        "img": "branches_lg.png", 
+        "created": false, 
+        "dname": "Iron Branch", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 50, 
+        "components": null, 
+        "lore": "A seemingly ordinary branch, its ironlike qualities are bestowed upon the bearer.", 
+        "attrib": "+ <span class=\"attribVal\">1</span> <span class=\"attribValText\">All Attributes</span>", 
+        "desc": "", 
+        "id": 16, 
+        "name": "branches"
+    }, 
+    {
+        "mc": false, 
+        "img": "belt_of_strength_lg.png", 
+        "created": false, 
+        "dname": "Belt of Strength", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 450, 
+        "components": null, 
+        "lore": "A valued accessory for improving vitality.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "", 
+        "id": 17, 
+        "name": "belt_of_strength"
+    }, 
+    {
+        "mc": false, 
+        "img": "boots_of_elves_lg.png", 
+        "created": false, 
+        "dname": "Band of Elvenskin", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 450, 
+        "components": null, 
+        "lore": "A tensile fabric often used for its light weight and ease of movement.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Agility</span>", 
+        "desc": "", 
+        "id": 18, 
+        "name": "boots_of_elves"
+    }, 
+    {
+        "mc": false, 
+        "img": "robe_lg.png", 
+        "created": false, 
+        "dname": "Robe of the Magi", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 450, 
+        "components": null, 
+        "lore": "This robe corrupts the soul of the user, but provides wisdom in return.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "", 
+        "id": 19, 
+        "name": "robe"
+    }, 
+    {
+        "mc": false, 
+        "img": "circlet_lg.png", 
+        "created": false, 
+        "dname": "Circlet", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 185, 
+        "components": null, 
+        "lore": "An elegant circlet designed for human princesses.", 
+        "attrib": "+ <span class=\"attribVal\">2</span> <span class=\"attribValText\">All Attributes</span>", 
+        "desc": "", 
+        "id": 20, 
+        "name": "circlet"
+    }, 
+    {
+        "mc": false, 
+        "img": "ogre_axe_lg.png", 
+        "created": false, 
+        "dname": "Ogre Club", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1000, 
+        "components": null, 
+        "lore": "You grow stronger just by holding it.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "", 
+        "id": 21, 
+        "name": "ogre_axe"
+    }, 
+    {
+        "mc": false, 
+        "img": "blade_of_alacrity_lg.png", 
+        "created": false, 
+        "dname": "Blade of Alacrity", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1000, 
+        "components": null, 
+        "lore": "A long blade imbued with time magic.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Agility</span>", 
+        "desc": "", 
+        "id": 22, 
+        "name": "blade_of_alacrity"
+    }, 
+    {
+        "mc": false, 
+        "img": "staff_of_wizardry_lg.png", 
+        "created": false, 
+        "dname": "Staff of Wizardry", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1000, 
+        "components": null, 
+        "lore": "A staff of magical powers passed down from the eldest mages.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "", 
+        "id": 23, 
+        "name": "staff_of_wizardry"
+    }, 
+    {
+        "mc": false, 
+        "img": "ultimate_orb_lg.png", 
+        "created": false, 
+        "dname": "Ultimate Orb", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 2100, 
+        "components": null, 
+        "lore": "A mystical orb containing the essence of life.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">All Attributes</span>", 
+        "desc": "", 
+        "id": 24, 
+        "name": "ultimate_orb"
+    }, 
+    {
+        "mc": false, 
+        "img": "gloves_lg.png", 
+        "created": false, 
+        "dname": "Gloves of Haste", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 500, 
+        "components": null, 
+        "lore": "A pair of magical gloves that seems to render weapons weightless.", 
+        "attrib": "+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "", 
+        "id": 25, 
+        "name": "gloves"
+    }, 
+    {
+        "mc": false, 
+        "img": "lifesteal_lg.png", 
+        "created": false, 
+        "dname": "Morbid Mask", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 900, 
+        "components": null, 
+        "lore": "A mask that drains the energy of those caught in its gaze.", 
+        "attrib": "LIFESTEAL: <span class=\"attribVal\">15%</span>", 
+        "desc": "Passive: Lifesteal - Gives lifesteal on attacks.<br />\n<br />\nMorbid Mask is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.", 
+        "id": 26, 
+        "name": "lifesteal"
+    }, 
+    {
+        "mc": false, 
+        "img": "ring_of_regen_lg.png", 
+        "created": false, 
+        "dname": "Ring of Regen", 
+        "notes": "Ring of Regen is shareable.", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 350, 
+        "components": null, 
+        "lore": "This ring is considered a good luck charm among the Gnomes.", 
+        "attrib": "+ <span class=\"attribVal\">2</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "", 
+        "id": 27, 
+        "name": "ring_of_regen"
+    }, 
+    {
+        "mc": false, 
+        "img": "sobi_mask_lg.png", 
+        "created": false, 
+        "dname": "Sage's Mask", 
+        "notes": "Sage's Mask is shareable.", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 325, 
+        "components": null, 
+        "lore": "A mask commonly used by mages and warlocks for various rituals.", 
+        "attrib": "+ <span class=\"attribVal\">50%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "", 
+        "id": 28, 
+        "name": "sobi_mask"
+    }, 
+    {
+        "mc": false, 
+        "img": "boots_lg.png", 
+        "created": false, 
+        "dname": "Boots of Speed", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 450, 
+        "components": null, 
+        "lore": "Fleet footwear, increasing movement.", 
+        "attrib": "+ <span class=\"attribVal\">50</span> <span class=\"attribValText\">Movement Speed</span>", 
+        "desc": "Flat movement speed bonuses from multiple pairs of boots do not stack.", 
+        "id": 29, 
+        "name": "boots"
+    }, 
+    {
+        "mc": false, 
+        "img": "gem_lg.png", 
+        "created": false, 
+        "dname": "Gem of True Sight", 
+        "notes": "Disabled while on a courier.<br />Gives vision in a 1100 radius.", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 900, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Passive: True Sight - Gives the ability to see invisible units and wards. Drops on death, but cannot be destroyed.", 
+        "id": 30, 
+        "name": "gem"
+    }, 
+    {
+        "mc": false, 
+        "img": "cloak_lg.png", 
+        "created": false, 
+        "dname": "Cloak", 
+        "notes": "Stacks multiplicatively with non-item sources of spell resistance.", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 550, 
+        "components": null, 
+        "lore": "A cloak made of a magical material that works to dispel any magic cast on it.", 
+        "attrib": "+ <span class=\"attribVal\">15%</span> <span class=\"attribValText\">Spell Resistance</span>", 
+        "desc": "Multiple instances of spell resistance from items do not stack.", 
+        "id": 31, 
+        "name": "cloak"
+    }, 
+    {
+        "mc": false, 
+        "img": "talisman_of_evasion_lg.png", 
+        "created": false, 
+        "dname": "Talisman of Evasion", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 1800, 
+        "components": null, 
+        "lore": "A necklace that allows you to anticipate enemy attacks.", 
+        "attrib": "+ <span class=\"attribVal\">25%</span> <span class=\"attribValText\">Evasion</span>", 
+        "desc": "", 
+        "id": 32, 
+        "name": "talisman_of_evasion"
+    }, 
+    {
+        "mc": false, 
+        "img": "cheese_lg.png", 
+        "created": false, 
+        "dname": "Cheese", 
+        "notes": "Cheese is shareable.", 
+        "cd": 40, 
+        "qual": "epic", 
+        "cost": 1000, 
+        "components": null, 
+        "lore": "Made from the milk of a long lost Furbolg vendor, it restores the vitality of those who taste it.", 
+        "attrib": "HEALTH RESTORED: <span class=\"attribVal\">2500</span><br />\nMANA RESTORED: <span class=\"attribVal\">1000</span>", 
+        "desc": "Use: Instantly restores health and mana.", 
+        "id": 33, 
+        "name": "cheese"
+    }, 
+    {
+        "mc": false, 
+        "img": "magic_stick_lg.png", 
+        "created": false, 
+        "dname": "Magic Stick", 
+        "notes": "Gains charges for spells cast by visible enemies in 1200 range.<br />Certain abilities and item abilities will not add charges.", 
+        "cd": 13, 
+        "qual": "component", 
+        "cost": 200, 
+        "components": null, 
+        "lore": "A simple wand used to channel magic energies, it is favored by apprentice wizards and great warlocks alike.", 
+        "attrib": "RESTORE PER CHARGE: <span class=\"attribVal\">15</span>", 
+        "desc": "Active: Energy Charge - Gains charges (max 10) based on enemies using abilities in a nearby area.  When activated, it restores health and mana based on the number of charges stored.", 
+        "id": 34, 
+        "name": "magic_stick"
+    }, 
+    {
+        "id": 35, 
+        "name": "recipe_magic_wand"
+    }, 
+    {
+        "mc": false, 
+        "img": "magic_wand_lg.png", 
+        "created": true, 
+        "dname": "Magic Wand", 
+        "notes": "Gains charges for spells cast by visible enemies in 1200 range.<br />Certain abilities and item abilities will not add charges.", 
+        "cd": 13, 
+        "qual": "common", 
+        "cost": 500, 
+        "components": [
+            "branches", 
+            "branches", 
+            "branches", 
+            "magic_stick"
+        ], 
+        "lore": "A simple wand used to channel magic energies, it is favored by apprentice wizards and great warlocks alike.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">All Attributes</span><br />\nRESTORE PER CHARGE: <span class=\"attribVal\">15</span>", 
+        "desc": "Active: Energy Charge - Gains charges (max 15) based on enemies using abilities in a nearby area.  When activated, it restores health and mana based on the number of charges stored.", 
+        "id": 36, 
+        "name": "magic_wand"
+    }, 
+    {
+        "mc": false, 
+        "img": "ghost_lg.png", 
+        "created": false, 
+        "dname": "Ghost Scepter", 
+        "notes": "Ends if you become magic immune, and will have no effect if you are already magic immune.<br />Shares cooldown with Ethereal Blade.", 
+        "cd": 30, 
+        "qual": "component", 
+        "cost": 1600, 
+        "components": null, 
+        "lore": "Imbues the wielder with a ghostly presence, allowing them to evade physical damage.", 
+        "attrib": "+ <span class=\"attribVal\">7</span> <span class=\"attribValText\">All Attributes</span><br />\nGHOST DURATION: <span class=\"attribVal\">4</span>", 
+        "desc": "Active: Ghost Form - Enter ghost form and become unable to attack or be attacked, but take -40% extra magic damage. Using a Teleport Scroll dispels Ghost Form.", 
+        "id": 37, 
+        "name": "ghost"
+    }, 
+    {
+        "mc": false, 
+        "img": "clarity_lg.png", 
+        "created": false, 
+        "dname": "Clarity", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 50, 
+        "components": null, 
+        "lore": "Clear water that enhances the ability to meditate.", 
+        "attrib": "DURATION: <span class=\"attribVal\">30</span><br />\nMANA RESTORED: <span class=\"attribVal\">100</span>", 
+        "desc": "Use: Restores mana on the target unit over time.  If the unit is attacked, the effect is lost.", 
+        "id": 38, 
+        "name": "clarity"
+    }, 
+    {
+        "mc": false, 
+        "img": "flask_lg.png", 
+        "created": false, 
+        "dname": "Healing Salve", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 115, 
+        "components": null, 
+        "lore": "A magical salve that can quickly mend even the deepest of wounds.", 
+        "attrib": "DURATION: <span class=\"attribVal\">10</span><br />\nHEALTH RESTORED: <span class=\"attribVal\">400</span>", 
+        "desc": "Use: Regenerate - Restores HP on the target unit over time.  If the unit is attacked, the effect is lost.", 
+        "id": 39, 
+        "name": "flask"
+    }, 
+    {
+        "mc": 5, 
+        "img": "dust_lg.png", 
+        "created": false, 
+        "dname": "Dust of Appearance", 
+        "notes": "Places a buff on enemy units in the area that prevents them from becoming invisible.", 
+        "cd": 60, 
+        "qual": "consumable", 
+        "cost": 180, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "DURATION: <span class=\"attribVal\">12</span><br />\nRADIUS: <span class=\"attribVal\">1050</span><br />\nSLOW: <span class=\"attribVal\">15%</span>", 
+        "desc": "Use: Reveal - Reveals and slows invisible Heroes in a nearby area.", 
+        "id": 40, 
+        "name": "dust"
+    }, 
+    {
+        "mc": false, 
+        "img": "bottle_lg.png", 
+        "created": false, 
+        "dname": "Bottle", 
+        "notes": "Bottle is shareable.", 
+        "cd": 0, 
+        "qual": "consumable", 
+        "cost": 650, 
+        "components": null, 
+        "lore": "An old bottle that survived the ages, the contents placed inside become enchanted.", 
+        "attrib": "HEALTH RESTORED: <span class=\"attribVal\">135</span><br />\nMANA RESTORED: <span class=\"attribVal\">70</span><br />\nDURATION: <span class=\"attribVal\">3</span>", 
+        "desc": "Use:  Regenerate - Restores HP and Mana over time. Effect is lost if unit is attacked. Empty Bottle refills near town fountain.  You can also store runes in the bottle, to save for later use.  After 2 minutes, stored Runes will be activated.  If Bottle is empty, it causes a courier to move 30% slower.<br />\n<br />\nHold Control to use your Bottle on an allied hero.", 
+        "id": 41, 
+        "name": "bottle"
+    }, 
+    {
+        "mc": false, 
+        "img": "ward_observer_lg.png", 
+        "created": false, 
+        "dname": "Observer Ward", 
+        "notes": "", 
+        "cd": 1, 
+        "qual": "consumable", 
+        "cost": 150, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Places an Observer Ward to give sight of the surrounding area. Lasts 7 minutes.<br />\n<br />\nHold Control to give one Observer Ward to an allied hero.", 
+        "id": 42, 
+        "name": "ward_observer"
+    }, 
+    {
+        "mc": false, 
+        "img": "ward_sentry_lg.png", 
+        "created": false, 
+        "dname": "Sentry Ward", 
+        "notes": "", 
+        "cd": 1, 
+        "qual": "consumable", 
+        "cost": 200, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Places a Sentry Ward to give True Sight of the surrounding area. Lasts 4 minutes.<br />\n<br />\nHold Control to give one Sentry Ward to an allied hero.", 
+        "id": 43, 
+        "name": "ward_sentry"
+    }, 
+    {
+        "mc": false, 
+        "img": "tango_lg.png", 
+        "created": false, 
+        "dname": "Tango", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 125, 
+        "components": null, 
+        "lore": "Forage to survive on the battlefield.", 
+        "attrib": "DURATION: <span class=\"attribVal\">16</span><br />\nHEALTH RESTORED: <span class=\"attribVal\">115</span>", 
+        "desc": "Use: Eat Tree - Consume a tree to restore HP over time. Comes with 3 charges.", 
+        "id": 44, 
+        "name": "tango"
+    }, 
+    {
+        "mc": false, 
+        "img": "courier_lg.png", 
+        "created": false, 
+        "dname": "Animal Courier", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 150, 
+        "components": null, 
+        "lore": "Losing the donkey is punishable by death.", 
+        "attrib": "", 
+        "desc": "Creature that carries items to and from your base.", 
+        "id": 45, 
+        "name": "courier"
+    }, 
+    {
+        "mc": 75, 
+        "img": "tpscroll_lg.png", 
+        "created": false, 
+        "dname": "Town Portal Scroll", 
+        "notes": "", 
+        "cd": 65, 
+        "qual": "consumable", 
+        "cost": 135, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Teleport - Teleports you to a target friendly building.", 
+        "id": 46, 
+        "name": "tpscroll"
+    }, 
+    {
+        "id": 47, 
+        "name": "recipe_travel_boots"
+    }, 
+    {
+        "mc": 75, 
+        "img": "travel_boots_lg.png", 
+        "created": true, 
+        "dname": "Boots of Travel", 
+        "notes": "Shares cooldown with Town Portal Scrolls.", 
+        "cd": 60, 
+        "qual": "common", 
+        "cost": 2450, 
+        "components": [
+            "boots"
+        ], 
+        "lore": "Winged boots that grant omnipresence.", 
+        "attrib": "+ <span class=\"attribVal\">100</span> <span class=\"attribValText\">Movement Speed</span>", 
+        "desc": "Active: Teleport - Teleports you to an allied non-hero unit or structure.<br />\n<br />\nFlat movement speed bonuses from multiple pairs of boots do not stack.", 
+        "id": 48, 
+        "name": "travel_boots"
+    }, 
+    {
+        "id": 49, 
+        "name": "recipe_phase_boots"
+    }, 
+    {
+        "mc": false, 
+        "img": "phase_boots_lg.png", 
+        "created": true, 
+        "dname": "Phase Boots", 
+        "notes": "", 
+        "cd": 8, 
+        "qual": "common", 
+        "cost": 1350, 
+        "components": [
+            "boots", 
+            "blades_of_attack", 
+            "blades_of_attack"
+        ], 
+        "lore": "Boots that allow the wearer to travel between the ether.", 
+        "attrib": "PHASE DURATION: <span class=\"attribVal\">4</span><br />\nPHASE MOVE BOOST: <span class=\"attribVal\">16%</span><br />\n+ <span class=\"attribVal\">50</span> <span class=\"attribValText\">Movement Speed</span><br />\n+ <span class=\"attribVal\">24</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "Active: Phase - Gives increased movement speed and lets you move through units.  Phase is cancelled upon using another item or ability.<br />\n<br />\nFlat movement speed bonuses from multiple pairs of boots do not stack.", 
+        "id": 50, 
+        "name": "phase_boots"
+    }, 
+    {
+        "mc": false, 
+        "img": "demon_edge_lg.png", 
+        "created": false, 
+        "dname": "Demon Edge", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 2400, 
+        "components": null, 
+        "lore": "One of the oldest weapons forged by the Demon-Smith Abzidian, it killed its maker when he tested its edge.", 
+        "attrib": "+ <span class=\"attribVal\">46</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 51, 
+        "name": "demon_edge"
+    }, 
+    {
+        "mc": false, 
+        "img": "eagle_lg.png", 
+        "created": false, 
+        "dname": "Eaglesong", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 3300, 
+        "components": null, 
+        "lore": "Capturing the majestic call of an eagle, this mystical horn brings limitless dexterity to those who hear it.", 
+        "attrib": "+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Agility</span>", 
+        "desc": "", 
+        "id": 52, 
+        "name": "eagle"
+    }, 
+    {
+        "mc": false, 
+        "img": "reaver_lg.png", 
+        "created": false, 
+        "dname": "Reaver", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 3200, 
+        "components": null, 
+        "lore": "A massive axe capable of tearing whole mountains down.", 
+        "attrib": "+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "", 
+        "id": 53, 
+        "name": "reaver"
+    }, 
+    {
+        "mc": false, 
+        "img": "relic_lg.png", 
+        "created": false, 
+        "dname": "Sacred Relic", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 3800, 
+        "components": null, 
+        "lore": "An ancient weapon that often turns the tides of war.", 
+        "attrib": "+ <span class=\"attribVal\">60</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 54, 
+        "name": "relic"
+    }, 
+    {
+        "mc": false, 
+        "img": "hyperstone_lg.png", 
+        "created": false, 
+        "dname": "Hyperstone", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 2000, 
+        "components": null, 
+        "lore": "A mystical, carved stone that boosts the fervor of the holder.", 
+        "attrib": "+ <span class=\"attribVal\">55</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "", 
+        "id": 55, 
+        "name": "hyperstone"
+    }, 
+    {
+        "mc": false, 
+        "img": "ring_of_health_lg.png", 
+        "created": false, 
+        "dname": "Ring of Health", 
+        "notes": "Ring of Health is shareable.", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 875, 
+        "components": null, 
+        "lore": "A shiny ring found beneath a fat halfling's corpse.", 
+        "attrib": "+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "", 
+        "id": 56, 
+        "name": "ring_of_health"
+    }, 
+    {
+        "mc": false, 
+        "img": "void_stone_lg.png", 
+        "created": false, 
+        "dname": "Void Stone", 
+        "notes": "Void Stone is shareable.", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 875, 
+        "components": null, 
+        "lore": "Jewelry that was once used to channel nether realm magic, this ring pulses with energy.", 
+        "attrib": "+ <span class=\"attribVal\">100%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "", 
+        "id": 57, 
+        "name": "void_stone"
+    }, 
+    {
+        "mc": false, 
+        "img": "mystic_staff_lg.png", 
+        "created": false, 
+        "dname": "Mystic Staff", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 2700, 
+        "components": null, 
+        "lore": "Enigmatic staff made of only the most expensive crystals.", 
+        "attrib": "+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "", 
+        "id": 58, 
+        "name": "mystic_staff"
+    }, 
+    {
+        "mc": false, 
+        "img": "energy_booster_lg.png", 
+        "created": false, 
+        "dname": "Energy Booster", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 1000, 
+        "components": null, 
+        "lore": "This lapis gemstone is commonly added to the collection of wizards seeking to improve their presence in combat.", 
+        "attrib": "+ <span class=\"attribVal\">250</span> <span class=\"attribValText\">Mana</span>", 
+        "desc": "", 
+        "id": 59, 
+        "name": "energy_booster"
+    }, 
+    {
+        "mc": false, 
+        "img": "point_booster_lg.png", 
+        "created": false, 
+        "dname": "Point Booster", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 1200, 
+        "components": null, 
+        "lore": "A perfectly formed amethyst that nourishes body and mind when held.", 
+        "attrib": "+ <span class=\"attribVal\">150</span> <span class=\"attribValText\">Mana</span><br />\n+ <span class=\"attribVal\">200</span> <span class=\"attribValText\">Health</span>", 
+        "desc": "", 
+        "id": 60, 
+        "name": "point_booster"
+    }, 
+    {
+        "mc": false, 
+        "img": "vitality_booster_lg.png", 
+        "created": false, 
+        "dname": "Vitality Booster", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 1100, 
+        "components": null, 
+        "lore": "A ruby gemstone that has been passed down through generations of warrior kin.", 
+        "attrib": "+ <span class=\"attribVal\">250</span> <span class=\"attribValText\">Health</span>", 
+        "desc": "", 
+        "id": 61, 
+        "name": "vitality_booster"
+    }, 
+    {
+        "id": 62, 
+        "name": "recipe_power_treads"
+    }, 
+    {
+        "mc": false, 
+        "img": "power_treads_lg.png", 
+        "created": true, 
+        "dname": "Power Treads", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 1400, 
+        "components": [
+            "gloves", 
+            "boots", 
+            "belt_of_strength"
+        ], 
+        "lore": "A pair of tough-skinned boots that change to meet the demands of the wearer.", 
+        "attrib": "+ <span class=\"attribVal\">50</span> <span class=\"attribValText\">Movement Speed</span><br />\n+ <span class=\"attribVal\">8</span> <span class=\"attribValText\">Selected Attribute</span><br />\n+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "Active: Switch Attribute - Changes selected attribute between Strength, Agility and Intelligence.<br />\n<br />\nFlat movement speed bonuses from multiple pairs of boots do not stack.", 
+        "id": 63, 
+        "name": "power_treads"
+    }, 
+    {
+        "id": 64, 
+        "name": "recipe_hand_of_midas"
+    }, 
+    {
+        "mc": false, 
+        "img": "hand_of_midas_lg.png", 
+        "created": true, 
+        "dname": "Hand of Midas", 
+        "notes": "The gold given is reliable gold (you do not get the normal creep bounty).", 
+        "cd": 100, 
+        "qual": "common", 
+        "cost": 2050, 
+        "components": [
+            "gloves"
+        ], 
+        "lore": "Preserved through unknown magical means, the Hand of Midas is a weapon of greed, sacrificing animals to line the owner's pockets.", 
+        "attrib": "+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "Active: Transmute - Kills a non-hero target for 190 gold and 2.5x experience.  Cannot be used on Ancients.", 
+        "id": 65, 
+        "name": "hand_of_midas"
+    }, 
+    {
+        "id": 66, 
+        "name": "recipe_oblivion_staff"
+    }, 
+    {
+        "mc": false, 
+        "img": "oblivion_staff_lg.png", 
+        "created": true, 
+        "dname": "Oblivion Staff", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 1675, 
+        "components": [
+            "quarterstaff", 
+            "sobi_mask", 
+            "robe"
+        ], 
+        "lore": "Deceptively hidden as an ordinary quarterstaff, it is actually very powerful, much like the Eldritch who originally possessed it.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">75%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "", 
+        "id": 67, 
+        "name": "oblivion_staff"
+    }, 
+    {
+        "id": 68, 
+        "name": "recipe_pers"
+    }, 
+    {
+        "mc": false, 
+        "img": "pers_lg.png", 
+        "created": true, 
+        "dname": "Perseverance", 
+        "notes": "Perseverance is shareable.", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 1750, 
+        "components": [
+            "ring_of_health", 
+            "void_stone"
+        ], 
+        "lore": "A gem that grants heart to the bearer.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">125%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "", 
+        "id": 69, 
+        "name": "pers"
+    }, 
+    {
+        "id": 70, 
+        "name": "recipe_poor_mans_shield"
+    }, 
+    {
+        "mc": false, 
+        "img": "poor_mans_shield_lg.png", 
+        "created": true, 
+        "dname": "Poor Man's Shield", 
+        "notes": "Multiple sources of damage block don't stack.", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 550, 
+        "components": [
+            "slippers", 
+            "slippers", 
+            "stout_shield"
+        ], 
+        "lore": "A busted old shield that seems to block more than it should.", 
+        "attrib": "MELEE BLOCK: <span class=\"attribVal\">20</span><br />\nRANGED BLOCK: <span class=\"attribVal\">10</span><br />\nBLOCK CHANCE: <span class=\"attribVal\">60%</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Agility</span>", 
+        "desc": "Passive: Damage Block - Blocks physical attack damage, depending on the type of hero you are.  Poor Man's Shield will always block attacks from enemy Heroes, but has a chance to block damage from creeps.", 
+        "id": 71, 
+        "name": "poor_mans_shield"
+    }, 
+    {
+        "id": 72, 
+        "name": "recipe_bracer"
+    }, 
+    {
+        "mc": false, 
+        "img": "bracer_lg.png", 
+        "created": true, 
+        "dname": "Bracer", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 525, 
+        "components": [
+            "circlet", 
+            "gauntlets"
+        ], 
+        "lore": "The bracer is a common choice to toughen up defenses and increase longevity.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 73, 
+        "name": "bracer"
+    }, 
+    {
+        "id": 74, 
+        "name": "recipe_wraith_band"
+    }, 
+    {
+        "mc": false, 
+        "img": "wraith_band_lg.png", 
+        "created": true, 
+        "dname": "Wraith Band", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 485, 
+        "components": [
+            "circlet", 
+            "slippers"
+        ], 
+        "lore": "A circlet with faint whispers echoing about it.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 75, 
+        "name": "wraith_band"
+    }, 
+    {
+        "id": 76, 
+        "name": "recipe_null_talisman"
+    }, 
+    {
+        "mc": false, 
+        "img": "null_talisman_lg.png", 
+        "created": true, 
+        "dname": "Null Talisman", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "common", 
+        "cost": 470, 
+        "components": [
+            "circlet", 
+            "mantle"
+        ], 
+        "lore": "A small gemstone attached to several chains.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "", 
+        "id": 77, 
+        "name": "null_talisman"
+    }, 
+    {
+        "id": 78, 
+        "name": "recipe_mekansm"
+    }, 
+    {
+        "mc": 150, 
+        "img": "mekansm_lg.png", 
+        "created": true, 
+        "dname": "Mekansm", 
+        "notes": "Restore does not affect units that have been affected by Restore in the last 25 seconds.", 
+        "cd": 45, 
+        "qual": "rare", 
+        "cost": 2300, 
+        "components": [
+            "headdress", 
+            "buckler"
+        ], 
+        "lore": "A glowing jewel formed out of assorted parts that somehow fit together perfectly.", 
+        "attrib": "+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span><br />\nBONUS HP REGEN: <span class=\"attribVal\">4</span>", 
+        "desc": "Active: Restore - Heals 250 HP and gives +2 armor in an area.<br />\nPassive: Mekansm Aura - Bonus HP Regen in an area.<br />\n<br />\nMultiple instances of Mekansm Aura do not stack.", 
+        "id": 79, 
+        "name": "mekansm"
+    }, 
+    {
+        "id": 80, 
+        "name": "recipe_vladmir"
+    }, 
+    {
+        "mc": false, 
+        "img": "vladmir_lg.png", 
+        "created": true, 
+        "dname": "Vladmir's Offering", 
+        "notes": "Does not stack with armor auras from Ring of Basilius, Ring of Aquila, or Vladmir's Offering.", 
+        "cd": false, 
+        "qual": "rare", 
+        "cost": 2050, 
+        "components": [
+            "ring_of_regen", 
+            "ring_of_basilius", 
+            "lifesteal"
+        ], 
+        "lore": "An eerie mask that is haunted with the malice of a fallen vampire.", 
+        "attrib": "AURA LIFESTEAL: <span class=\"attribVal\">16%</span><br />\nAURA BONUS DAMAGE: <span class=\"attribVal\">15%</span><br />\nAURA BONUS ARMOR: <span class=\"attribVal\">5</span><br />\nAURA MANA REGEN: <span class=\"attribVal\">0.8</span><br />\n+ <span class=\"attribVal\">2</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "Passive: Vladmir's Aura - Grants a variety of bonuses to nearby allies.  Lifesteal bonuses from Vladmir's Aura only affect melee units.  <br />\n<br />\nMultiple instances of Vladmir's Aura do not stack.", 
+        "id": 81, 
+        "name": "vladmir"
+    }, 
+    {
+        "id": 82, 
+        "name": "empty"
+    }, 
+    {
+        "id": 83, 
+        "name": "empty"
+    }, 
+    {
+        "mc": false, 
+        "img": "flying_courier_lg.png", 
+        "created": false, 
+        "dname": "Flying Courier", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 220, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Fast flying creature that carries items to and from your base.  Requires Animal Courier.", 
+        "id": 84, 
+        "name": "flying_courier"
+    }, 
+    {
+        "id": 85, 
+        "name": "recipe_buckler"
+    }, 
+    {
+        "mc": 10, 
+        "img": "buckler_lg.png", 
+        "created": true, 
+        "dname": "Buckler", 
+        "notes": "", 
+        "cd": 25, 
+        "qual": "rare", 
+        "cost": 800, 
+        "components": [
+            "chainmail", 
+            "branches"
+        ], 
+        "lore": "A powerful shield that imbues the bearer with the strength of heroes past, it is capable of protecting entire armies in battle.", 
+        "attrib": "+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span><br />\n+ <span class=\"attribVal\">2</span> <span class=\"attribValText\">All Attributes</span>", 
+        "desc": "Active: Armor Bonus - Gives +2 to all nearby allied units.  Lasts 25 seconds on heroes, 30 seconds on units.", 
+        "id": 86, 
+        "name": "buckler"
+    }, 
+    {
+        "id": 87, 
+        "name": "recipe_ring_of_basilius"
+    }, 
+    {
+        "mc": false, 
+        "img": "ring_of_basilius_lg.png", 
+        "created": true, 
+        "dname": "Ring of Basilius", 
+        "notes": "Does not stack with armor auras from Ring of Basilius, Ring of Aquila, or Vladmir's Offering.", 
+        "cd": false, 
+        "qual": "rare", 
+        "cost": 500, 
+        "components": [
+            "sobi_mask", 
+            "ring_of_protection"
+        ], 
+        "lore": "Ring given as a reward to the greatest mages.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Damage</span><br />\nAURA MANA REGEN: <span class=\"attribVal\">0.65</span><br />\nAURA BONUS ARMOR: <span class=\"attribVal\">2</span><br />\n+ <span class=\"attribVal\">1</span> <span class=\"attribValText\">Armor</span>", 
+        "desc": "Passive: Basilius Aura - Grants mana regeneration and armor in a 900 AoE.<br />\n Active: Toggle whether the aura affects other non-hero units.<br />\n<br />\nMultiple instances of Basilius Aura do not stack.", 
+        "id": 88, 
+        "name": "ring_of_basilius"
+    }, 
+    {
+        "id": 89, 
+        "name": "recipe_pipe"
+    }, 
+    {
+        "mc": 100, 
+        "img": "pipe_lg.png", 
+        "created": true, 
+        "dname": "Pipe of Insight", 
+        "notes": "Does not affect units that have been affected by Barrier in the last 50 seconds.<br />Stacks multiplicatively with non-item sources of spell resistance.", 
+        "cd": 60, 
+        "qual": "rare", 
+        "cost": 3625, 
+        "components": [
+            "hood_of_defiance", 
+            "headdress"
+        ], 
+        "lore": "A powerful artifact of mysterious origin, it creates barriers against magical forces.", 
+        "attrib": "+ <span class=\"attribVal\">11</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">30%</span> <span class=\"attribValText\">Spell Resistance</span>", 
+        "desc": "Active: Barrier - Gives nearby friendly units a shield that blocks 400 spell damage.<br />\n<br />\nMultiple instances of spell resistance from items do not stack.", 
+        "id": 90, 
+        "name": "pipe"
+    }, 
+    {
+        "id": 91, 
+        "name": "recipe_urn_of_shadows"
+    }, 
+    {
+        "mc": false, 
+        "img": "urn_of_shadows_lg.png", 
+        "created": true, 
+        "dname": "Urn of Shadows", 
+        "notes": "", 
+        "cd": 7, 
+        "qual": "rare", 
+        "cost": 875, 
+        "components": [
+            "sobi_mask", 
+            "gauntlets", 
+            "gauntlets"
+        ], 
+        "lore": "Contains the ashes of powerful demons.", 
+        "attrib": "+ <span class=\"attribVal\">50%</span> <span class=\"attribValText\">Mana Regeneration</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Strength</span><br />\nURN HEAL: <span class=\"attribVal\">400</span><br />\nDURATION: <span class=\"attribVal\">8</span><br />\nURN DAMAGE: <span class=\"attribVal\">150</span>", 
+        "desc": "Gains charges every time an enemy hero dies within 1400 units.  Only the closest Urn to the dying hero will gain a charge.<br />\nActive: Soul Release - Heals HP over time for friendly units, but deals damage over time for enemy units.  The healing effect is lost if the affected unit takes damage from an enemy hero or tower.", 
+        "id": 92, 
+        "name": "urn_of_shadows"
+    }, 
+    {
+        "id": 93, 
+        "name": "recipe_headdress"
+    }, 
+    {
+        "mc": false, 
+        "img": "headdress_lg.png", 
+        "created": true, 
+        "dname": "Headdress", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "rare", 
+        "cost": 600, 
+        "components": [
+            "ring_of_regen", 
+            "branches"
+        ], 
+        "lore": "Creates a soothing aura that restores allies in battle.", 
+        "attrib": "+ <span class=\"attribVal\">2</span> <span class=\"attribValText\">All Attributes</span><br />\nBONUS REGEN: <span class=\"attribVal\">3</span>", 
+        "desc": "Passive: Regeneration Aura - Restores HP to allies in a 750 unit radius.<br />\n<br />\nMultiple instances of Regeneration Aura do not stack.", 
+        "id": 94, 
+        "name": "headdress"
+    }, 
+    {
+        "id": 95, 
+        "name": "recipe_sheepstick"
+    }, 
+    {
+        "mc": 100, 
+        "img": "sheepstick_lg.png", 
+        "created": true, 
+        "dname": "Scythe of Vyse", 
+        "notes": "Instantly destroys illusions.<br />The target will have a base movement speed of 100, but buffs granting maximum movement speed won't be disabled.<br />Hex disables damage block and evasion.", 
+        "cd": 35, 
+        "qual": "rare", 
+        "cost": 5675, 
+        "components": [
+            "mystic_staff", 
+            "ultimate_orb", 
+            "void_stone"
+        ], 
+        "lore": "The most guarded relic among the cult of Vyse, it is the most coveted weapon among magi.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">35</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">150%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "Active: Hex - Turns a target unit into a harmless critter for 3.5 seconds. Destroys illusions.", 
+        "id": 96, 
+        "name": "sheepstick"
+    }, 
+    {
+        "id": 97, 
+        "name": "recipe_orchid"
+    }, 
+    {
+        "mc": 100, 
+        "img": "orchid_lg.png", 
+        "created": true, 
+        "dname": "Orchid Malevolence", 
+        "notes": "Amplified damage is dealt at the end of the duration as magical damage.", 
+        "cd": 18, 
+        "qual": "rare", 
+        "cost": 5025, 
+        "components": [
+            "oblivion_staff", 
+            "oblivion_staff"
+        ], 
+        "lore": "A garnet rod constructed from the essence of a fire demon.", 
+        "attrib": "+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">150%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "Active: Soul Burn - Silences target unit for 5.0 seconds and amplifies the damage it takes by 30.0%.", 
+        "id": 98, 
+        "name": "orchid"
+    }, 
+    {
+        "id": 99, 
+        "name": "recipe_cyclone"
+    }, 
+    {
+        "mc": 75, 
+        "img": "cyclone_lg.png", 
+        "created": true, 
+        "dname": "Eul's Scepter of Divinity", 
+        "notes": "You cannot cyclone allies.", 
+        "cd": 23, 
+        "qual": "rare", 
+        "cost": 2700, 
+        "components": [
+            "staff_of_wizardry", 
+            "sobi_mask", 
+            "void_stone"
+        ], 
+        "lore": "A mysterious scepter passed down through the ages, its disruptive winds can be used for good or evil.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">150%</span> <span class=\"attribValText\">Mana Regeneration</span><br />\n+ <span class=\"attribVal\">40</span> <span class=\"attribValText\">Movement Speed</span>", 
+        "desc": "Active: Cyclone - Target unit is swept up in a cyclone for 2.5 seconds, and is invulnerable.<br />\n<br />\nFlat movement speed bonuses from multiple Eul's Scepters do not stack.", 
+        "id": 100, 
+        "name": "cyclone"
+    }, 
+    {
+        "id": 101, 
+        "name": "recipe_force_staff"
+    }, 
+    {
+        "mc": 25, 
+        "img": "force_staff_lg.png", 
+        "created": true, 
+        "dname": "Force Staff", 
+        "notes": "Quick-cast will cause you to use Force on yourself.<br />Force Staff doesn't interrupt the target's actions.<br />Will not work on a unit inside Chronosphere or Black Hole.", 
+        "cd": 20, 
+        "qual": "rare", 
+        "cost": 2250, 
+        "components": [
+            "staff_of_wizardry", 
+            "ring_of_regen"
+        ], 
+        "lore": "Allows you to manipulate others, for good or evil.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "Active: Force - Pushes any target unit 600 units in the direction it is facing.  Double click to self-cast.", 
+        "id": 102, 
+        "name": "force_staff"
+    }, 
+    {
+        "id": 103, 
+        "name": "recipe_dagon"
+    }, 
+    {
+        "mc": "180 160 140 120 100", 
+        "img": "dagon_lg.png", 
+        "created": true, 
+        "dname": "Dagon", 
+        "notes": "", 
+        "cd": 35, 
+        "qual": "rare", 
+        "cost": 2800, 
+        "components": [
+            "staff_of_wizardry", 
+            "null_talisman"
+        ], 
+        "lore": "A lesser wand that grows in power the longer it is used, it brings magic to the fingertips of the user.", 
+        "attrib": "+ <span class=\"attribVal\">13</span>/15/17/19/21 <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\"><span class=\"attribVal\">3</span></span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\"><span class=\"attribVal\">9</span></span> <span class=\"attribValText\">Damage</span><br />\nBURST DAMAGE: <span class=\"attribVal\">400</span>/500/600/700/800", 
+        "desc": "Active: Energy Burst - Burst of damage to target enemy unit. Upgradable.", 
+        "id": 104, 
+        "name": "dagon"
+    }, 
+    {
+        "id": 105, 
+        "name": "recipe_necronomicon"
+    }, 
+    {
+        "mc": 50, 
+        "img": "necronomicon_lg.png", 
+        "created": true, 
+        "dname": "Necronomicon", 
+        "notes": "", 
+        "cd": 95, 
+        "qual": "rare", 
+        "cost": 2700, 
+        "components": [
+            "staff_of_wizardry", 
+            "belt_of_strength"
+        ], 
+        "lore": "Considered the holy grail of necromancy and demonology, a powerful malefic force is locked within its pages.", 
+        "attrib": "+ <span class=\"attribVal\">15</span>/21/24 <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">8</span>/12/16 <span class=\"attribValText\">Strength</span>", 
+        "desc": "Active: Demonic Summoning - Summons a Necronomicon Warrior and a Necronomicon Archer to fight for you.  Their strength and abilities increase as Necronomicon increases in level.  Lasts 40 seconds.", 
+        "id": 106, 
+        "name": "necronomicon"
+    }, 
+    {
+        "id": 107, 
+        "name": "recipe_ultimate_scepter"
+    }, 
+    {
+        "mc": false, 
+        "img": "ultimate_scepter_lg.png", 
+        "created": true, 
+        "dname": "Aghanim's Scepter", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "rare", 
+        "cost": 4200, 
+        "components": [
+            "point_booster", 
+            "staff_of_wizardry", 
+            "ogre_axe", 
+            "blade_of_alacrity"
+        ], 
+        "lore": "The scepter of a wizard with demigod-like powers.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">200</span> <span class=\"attribValText\">Health</span><br />\n+ <span class=\"attribVal\">150</span> <span class=\"attribValText\">Mana</span>", 
+        "desc": "Passive: Ultimate Upgrade - Upgrades the ultimates of certain heroes.", 
+        "id": 108, 
+        "name": "ultimate_scepter"
+    }, 
+    {
+        "id": 109, 
+        "name": "recipe_refresher"
+    }, 
+    {
+        "mc": 375, 
+        "img": "refresher_lg.png", 
+        "created": true, 
+        "dname": "Refresher Orb", 
+        "notes": "", 
+        "cd": 160, 
+        "qual": "rare", 
+        "cost": 5225, 
+        "components": [
+            "oblivion_staff", 
+            "pers"
+        ], 
+        "lore": "A powerful artifact created for wizards.", 
+        "attrib": "+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">200%</span> <span class=\"attribValText\">Mana Regeneration</span><br />\n+ <span class=\"attribVal\">40</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "Active: Reset Cooldowns - Resets the cooldowns of all your items and abilities.", 
+        "id": 110, 
+        "name": "refresher"
+    }, 
+    {
+        "id": 111, 
+        "name": "recipe_assault"
+    }, 
+    {
+        "mc": false, 
+        "img": "assault_lg.png", 
+        "created": true, 
+        "dname": "Assault Cuirass", 
+        "notes": "Does not stack with armor auras from Assault Cuirass, Ring of Basilius, Ring of Aquila, or Vladmir's Offering.", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 5250, 
+        "components": [
+            "platemail", 
+            "hyperstone", 
+            "chainmail"
+        ], 
+        "lore": "Forged in the depths of the nether reaches, this hellish mail provides an army with increased armor and attack speed.", 
+        "attrib": "+ <span class=\"attribVal\">35</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Armor</span><br />\nAURA ATTACK SPEED: <span class=\"attribVal\">20</span><br />\nAURA BONUS ARMOR: <span class=\"attribVal\">5</span><br />\nARMOR REDUCTION: <span class=\"attribVal\">5</span>", 
+        "desc": "Passive:  Assault Aura - Grants attack speed and armor to nearby allied units, and decreases armor for nearby enemies.<br />\n<br />\nMultiple instances of Assault Aura do not stack.", 
+        "id": 112, 
+        "name": "assault"
+    }, 
+    {
+        "id": 113, 
+        "name": "recipe_heart"
+    }, 
+    {
+        "mc": false, 
+        "img": "heart_lg.png", 
+        "created": true, 
+        "dname": "Heart of Tarrasque", 
+        "notes": "", 
+        "cd": 6, 
+        "qual": "epic", 
+        "cost": 5500, 
+        "components": [
+            "reaver", 
+            "vitality_booster"
+        ], 
+        "lore": "Preserved heart of an extinct monster, it bolsters the bearer's fortitude.", 
+        "attrib": "+ <span class=\"attribVal\">40</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">300</span> <span class=\"attribValText\">Health</span><br />\nHEALTH RESTORED: <span class=\"attribVal\">2%</span>", 
+        "desc": "Passive: Health Regeneration - Restores a percentage of max health per second. <br />\n<br />\nThis ability is disabled if damage is taken from an enemy Hero or Roshan within the last 4 seconds if your hero is melee or 6 seconds if your hero is ranged.", 
+        "id": 114, 
+        "name": "heart"
+    }, 
+    {
+        "id": 115, 
+        "name": "recipe_black_king_bar"
+    }, 
+    {
+        "mc": false, 
+        "img": "black_king_bar_lg.png", 
+        "created": true, 
+        "dname": "Black King Bar", 
+        "notes": "Cannot be sold.<br />Using Black King Bar may remove some positive buffs.", 
+        "cd": 80, 
+        "qual": "epic", 
+        "cost": 3975, 
+        "components": [
+            "ogre_axe", 
+            "mithril_hammer"
+        ], 
+        "lore": "A powerful staff imbued with the strength of giants.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">24</span> <span class=\"attribValText\">Damage</span><br />\nDURATION: 10/9/8/7/6/5/4", 
+        "desc": "Active: Avatar - Grants magic immunity.  Duration and cooldown decrease with each use.  Some Ultimate abilities are able to disable through Black King Bar.", 
+        "id": 116, 
+        "name": "black_king_bar"
+    }, 
+    {
+        "mc": false, 
+        "img": "aegis_lg.png", 
+        "created": false, 
+        "dname": "Aegis of the Immortal", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "The Immortal was said to own a shield that protected him from death itself.", 
+        "attrib": "", 
+        "desc": "Passive: Reincarnation - Brings you to life with full health and mana 5.0 seconds after you die, at the location where you died. Reincarnation must be used within 6 minutes or Aegis of the Immortal disappears.", 
+        "id": 117, 
+        "name": "aegis"
+    }, 
+    {
+        "id": 118, 
+        "name": "recipe_shivas_guard"
+    }, 
+    {
+        "mc": 100, 
+        "img": "shivas_guard_lg.png", 
+        "created": true, 
+        "dname": "Shiva's Guard", 
+        "notes": "The wave extends at a speed of 350 to a max size of 900.<br />The Arctic Blast follows its caster.", 
+        "cd": 30, 
+        "qual": "epic", 
+        "cost": 4700, 
+        "components": [
+            "platemail", 
+            "mystic_staff"
+        ], 
+        "lore": "Said to have belonged to a goddess, today it retains much of its former power.", 
+        "attrib": "+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Armor</span><br />\nAURA ATTACK SLOW: <span class=\"attribVal\">40</span><br />\nBLAST DAMAGE: <span class=\"attribVal\">200</span><br />\nBLAST MOVEMENT SLOW: <span class=\"attribVal\">40%</span><br />\nBLAST SLOW DURATION: <span class=\"attribVal\">4</span>", 
+        "desc": "Active: Arctic Blast - Emits a freezing wave that does 200 damage to enemies and slows their movement by -40% for 4.0 seconds.<br />\nPassive: Freezing Aura - Reduces attack speed on enemies.<br />\n<br />\nMultiple instances of Freezing Aura do not stack.", 
+        "id": 119, 
+        "name": "shivas_guard"
+    }, 
+    {
+        "id": 120, 
+        "name": "recipe_bloodstone"
+    }, 
+    {
+        "mc": false, 
+        "img": "bloodstone_lg.png", 
+        "created": true, 
+        "dname": "Bloodstone", 
+        "notes": "Only the first Bloodstone will gain charges.", 
+        "cd": 300, 
+        "qual": "epic", 
+        "cost": 5050, 
+        "components": [
+            "pers", 
+            "soul_booster"
+        ], 
+        "lore": "The Bloodstone's bright ruby color is unmistakable on the battlefield, as the owner seems to have infinite vitality and spirit.", 
+        "attrib": "+ <span class=\"attribVal\">500</span> <span class=\"attribValText\">Health</span><br />\n+ <span class=\"attribVal\">400</span> <span class=\"attribValText\">Mana</span><br />\n+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">200%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "Active: Pocket Suicide - Instantly commits suicide.<br />\n<br />\nPassive: Bloodpact - Starts with 8 charges. Gains 1 charge each time an enemy hero dies within 1675 range. Each charge bestows 1 mana regeneration per second, reduces gold lost from death by 25, and reduces respawn time by 4 seconds. When the bearer dies, restores 400 HP + 30 HP per charge to allied units within 1675 units, then loses a third of its charges. While dead, the bearer continues to receive experience at the death location and gives 1800 unit vision there.", 
+        "id": 121, 
+        "name": "bloodstone"
+    }, 
+    {
+        "id": 122, 
+        "name": "recipe_sphere"
+    }, 
+    {
+        "mc": false, 
+        "img": "sphere_lg.png", 
+        "created": true, 
+        "dname": "Linken's Sphere", 
+        "notes": "", 
+        "cd": 17, 
+        "qual": "epic", 
+        "cost": 5175, 
+        "components": [
+            "ultimate_orb", 
+            "pers"
+        ], 
+        "lore": "This magical sphere once protected one of the most famous heroes in history.", 
+        "attrib": "+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">150%</span> <span class=\"attribValText\">Mana Regeneration</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "Passive: Spellblock - Blocks most targeted spells once every 17 seconds.", 
+        "id": 123, 
+        "name": "sphere"
+    }, 
+    {
+        "id": 124, 
+        "name": "recipe_vanguard"
+    }, 
+    {
+        "mc": false, 
+        "img": "vanguard_lg.png", 
+        "created": true, 
+        "dname": "Vanguard", 
+        "notes": "Multiple sources of damage block don't stack.", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 2225, 
+        "components": [
+            "ring_of_health", 
+            "vitality_booster", 
+            "stout_shield"
+        ], 
+        "lore": "A powerful shield that defends its wielder from even the most vicious of attacks.", 
+        "attrib": "+ <span class=\"attribVal\">250</span> <span class=\"attribValText\">Health</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">HP Regeneration</span><br />\nBLOCK CHANCE: <span class=\"attribVal\">80%</span><br />\nRANGED BLOCK: <span class=\"attribVal\">20</span><br />\nMELEE BLOCK: <span class=\"attribVal\">40</span>", 
+        "desc": "Passive: Damage Block - Gives a chance to block damage, depending on the type of hero you are.", 
+        "id": 125, 
+        "name": "vanguard"
+    }, 
+    {
+        "id": 126, 
+        "name": "recipe_blade_mail"
+    }, 
+    {
+        "mc": 25, 
+        "img": "blade_mail_lg.png", 
+        "created": true, 
+        "dname": "Blade Mail", 
+        "notes": "Damage Return is calculated after reductions.<br />Damage Return doesn't reflect damage from other Blademails.<br />Won't damage magic immune units.", 
+        "cd": 17, 
+        "qual": "epic", 
+        "cost": 2200, 
+        "components": [
+            "broadsword", 
+            "chainmail", 
+            "robe"
+        ], 
+        "lore": "A razor-sharp coat of mail, it is the choice of selfless martyrs in combat.", 
+        "attrib": "+ <span class=\"attribVal\">22</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Armor</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "Active: Damage Return - Returns any damage you take to the unit that dealt the damage.  Lasts 4.5 seconds.", 
+        "id": 127, 
+        "name": "blade_mail"
+    }, 
+    {
+        "id": 128, 
+        "name": "recipe_soul_booster"
+    }, 
+    {
+        "mc": false, 
+        "img": "soul_booster_lg.png", 
+        "created": true, 
+        "dname": "Soul Booster", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 3300, 
+        "components": [
+            "vitality_booster", 
+            "energy_booster", 
+            "point_booster"
+        ], 
+        "lore": "Regain lost courage.", 
+        "attrib": "+ <span class=\"attribVal\">450</span> <span class=\"attribValText\">Health</span><br />\n+ <span class=\"attribVal\">400</span> <span class=\"attribValText\">Mana</span><br />\n+ <span class=\"attribVal\">4</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">100%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "", 
+        "id": 129, 
+        "name": "soul_booster"
+    }, 
+    {
+        "id": 130, 
+        "name": "recipe_hood_of_defiance"
+    }, 
+    {
+        "mc": false, 
+        "img": "hood_of_defiance_lg.png", 
+        "created": true, 
+        "dname": "Hood of Defiance", 
+        "notes": "Stacks multiplicatively with non-item sources of spell resistance.", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 2125, 
+        "components": [
+            "ring_of_health", 
+            "cloak", 
+            "ring_of_regen", 
+            "ring_of_regen"
+        ], 
+        "lore": "A furred, magic resistant headpiece that is feared by wizards.", 
+        "attrib": "+ <span class=\"attribVal\">8</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">30%</span> <span class=\"attribValText\">Spell Resistance</span>", 
+        "desc": "Multiple instances of spell resistance from items do not stack.", 
+        "id": 131, 
+        "name": "hood_of_defiance"
+    }, 
+    {
+        "id": 132, 
+        "name": "recipe_rapier"
+    }, 
+    {
+        "mc": false, 
+        "img": "rapier_lg.png", 
+        "created": true, 
+        "dname": "Divine Rapier", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 6200, 
+        "components": [
+            "relic", 
+            "demon_edge"
+        ], 
+        "lore": "So powerful, it cannot have a single owner.", 
+        "attrib": "+ <span class=\"attribVal\">300</span> <span class=\"attribValText\">Damage</span>", 
+        "desc": "Drops on death.  Divine Rapier is muted to anyone but the owner, as long as he or his teammates pick it up. As soon as an enemy picks it up, Divine Rapier is unmuted, but cannot be dropped except on death.", 
+        "id": 133, 
+        "name": "rapier"
+    }, 
+    {
+        "id": 134, 
+        "name": "recipe_monkey_king_bar"
+    }, 
+    {
+        "mc": false, 
+        "img": "monkey_king_bar_lg.png", 
+        "created": true, 
+        "dname": "Monkey King Bar", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 5400, 
+        "components": [
+            "demon_edge", 
+            "javelin", 
+            "javelin"
+        ], 
+        "lore": "A powerful staff used by a master warrior.", 
+        "attrib": "+ <span class=\"attribVal\">88</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Attack Speed</span><br />\nCHANCE TO MINI-BASH: <span class=\"attribVal\">35%</span><br />\nMINI-BASH DAMAGE: <span class=\"attribVal\">100</span>", 
+        "desc": "Passive: Mini-Bash - Gives a chance to minibash and deal bonus damage.<br />\nPassive: True Strike - Prevents your attacks from missing.", 
+        "id": 135, 
+        "name": "monkey_king_bar"
+    }, 
+    {
+        "id": 136, 
+        "name": "recipe_radiance"
+    }, 
+    {
+        "mc": false, 
+        "img": "radiance_lg.png", 
+        "created": true, 
+        "dname": "Radiance", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 5150, 
+        "components": [
+            "relic"
+        ], 
+        "lore": "A divine weapon that causes damage and a bright burning effect that lays waste to nearby enemies.", 
+        "attrib": "+ <span class=\"attribVal\">65</span> <span class=\"attribValText\">Damage</span><br />\nBURN DAMAGE: <span class=\"attribVal\">50</span>", 
+        "desc": "Active:  Toggles Burn Damage on or off.<br />\nPassive: Burn Damage - Deals damage per second in a 700 radius.", 
+        "id": 137, 
+        "name": "radiance"
+    }, 
+    {
+        "id": 138, 
+        "name": "recipe_butterfly"
+    }, 
+    {
+        "mc": false, 
+        "img": "butterfly_lg.png", 
+        "created": true, 
+        "dname": "Butterfly", 
+        "notes": "Doesn't stack with other sources of Evasion.", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 6000, 
+        "components": [
+            "talisman_of_evasion", 
+            "quarterstaff", 
+            "eagle"
+        ], 
+        "lore": "Only the mightiest and most experienced of warriors can wield the Butterfly, but it provides incredible dexterity in combat.", 
+        "attrib": "+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">35%</span> <span class=\"attribValText\">Evasion</span><br />\n+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "", 
+        "id": 139, 
+        "name": "butterfly"
+    }, 
+    {
+        "id": 140, 
+        "name": "recipe_greater_crit"
+    }, 
+    {
+        "mc": false, 
+        "img": "greater_crit_lg.png", 
+        "created": true, 
+        "dname": "Daedalus", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 5550, 
+        "components": [
+            "lesser_crit", 
+            "demon_edge"
+        ], 
+        "lore": "A weapon of incredible power that is difficult for even the strongest of warriors to control.", 
+        "attrib": "+ <span class=\"attribVal\">81</span> <span class=\"attribValText\">Damage</span><br />\nCRITICAL CHANCE: <span class=\"attribVal\">25%</span><br />\nCRITICAL DAMAGE: <span class=\"attribVal\">240%</span>", 
+        "desc": "Passive: Critical Strike - Grants a chance to deal critical damage on an attack.", 
+        "id": 141, 
+        "name": "greater_crit"
+    }, 
+    {
+        "id": 142, 
+        "name": "recipe_basher"
+    }, 
+    {
+        "mc": false, 
+        "img": "basher_lg.png", 
+        "created": true, 
+        "dname": "Skull Basher", 
+        "notes": "Doesn't stack with other sources of bash.", 
+        "cd": 2, 
+        "qual": "epic", 
+        "cost": 2950, 
+        "components": [
+            "belt_of_strength", 
+            "javelin"
+        ], 
+        "lore": "A feared weapon in the right hands, this maul's ability to shatter the defenses of its opponents should not be underestimated.", 
+        "attrib": "+ <span class=\"attribVal\">40</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Strength</span><br />\nMELEE CHANCE: <span class=\"attribVal\">25%</span><br />\nRANGED CHANCE: <span class=\"attribVal\">10%</span>", 
+        "desc": "Passive: Bash - Gives a chance to stun for 1.4 seconds.", 
+        "id": 143, 
+        "name": "basher"
+    }, 
+    {
+        "id": 144, 
+        "name": "recipe_bfury"
+    }, 
+    {
+        "mc": false, 
+        "img": "bfury_lg.png", 
+        "created": true, 
+        "dname": "Battle Fury", 
+        "notes": "Cleave damage is reduced by armor type but not by armor value.<br />Cleave damage goes through magic immunity.", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 4350, 
+        "components": [
+            "broadsword", 
+            "claymore", 
+            "pers"
+        ], 
+        "lore": "The bearer of this mighty axe gains the ability to cut down swaths of enemies at once.", 
+        "attrib": "+ <span class=\"attribVal\">65</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">150%</span> <span class=\"attribValText\">Mana Regeneration</span><br />\nCLEAVE DAMAGE: <span class=\"attribVal\">35%</span>", 
+        "desc": "Passive: Cleave - Deals a percent of attack damage in a 250 AoE around the target. Ranged units cannot Cleave.", 
+        "id": 145, 
+        "name": "bfury"
+    }, 
+    {
+        "id": 146, 
+        "name": "recipe_manta"
+    }, 
+    {
+        "mc": 165, 
+        "img": "manta_lg.png", 
+        "created": true, 
+        "dname": "Manta Style", 
+        "notes": "Has a 0.1 second cast time upon which you are invulnerable.<br />Many effects are removed upon using Manta.", 
+        "cd": 50, 
+        "qual": "epic", 
+        "cost": 5050, 
+        "components": [
+            "yasha", 
+            "ultimate_orb"
+        ], 
+        "lore": "An axe made of reflective materials that causes confusion amongst enemy ranks.", 
+        "attrib": "+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">26</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">10%</span> <span class=\"attribValText\">Movement Speed</span>", 
+        "desc": "Active: Mirror Image - Creates 2 illusions of your hero that last 20 seconds.<br />\n<br />\nMelee illusions deal 33% damage and take 250% bonus damage.  Ranged illusions deal 28% damage and take 300% bonus damage.<br />\n<br />\nPercentage based movement speed bonuses from multiple items do not stack.", 
+        "id": 147, 
+        "name": "manta"
+    }, 
+    {
+        "id": 148, 
+        "name": "recipe_lesser_crit"
+    }, 
+    {
+        "mc": false, 
+        "img": "lesser_crit_lg.png", 
+        "created": true, 
+        "dname": "Crystalys", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 2150, 
+        "components": [
+            "broadsword", 
+            "blades_of_attack"
+        ], 
+        "lore": "A blade forged from rare crystals, it seeks weak points in enemy armor.", 
+        "attrib": "+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Damage</span><br />\nCRITICAL CHANCE: <span class=\"attribVal\">20%</span><br />\nCRITICAL DAMAGE: <span class=\"attribVal\">175%</span>", 
+        "desc": "Passive: Critical Strike - Grants a chance to deal critical damage on an attack.", 
+        "id": 149, 
+        "name": "lesser_crit"
+    }, 
+    {
+        "id": 150, 
+        "name": "recipe_armlet"
+    }, 
+    {
+        "mc": false, 
+        "img": "armlet_lg.png", 
+        "created": true, 
+        "dname": "Armlet of Mordiggian", 
+        "notes": "Activation has a 2 second cooldown.<br />The strength change will affect both maximum and current HP, but you cannot die from the change.", 
+        "cd": 0, 
+        "qual": "epic", 
+        "cost": 2600, 
+        "components": [
+            "helm_of_iron_will", 
+            "gloves", 
+            "blades_of_attack"
+        ], 
+        "lore": "Weapon of choice among brutes, the bearer sacrifices his life energy to gain immense strength and power.", 
+        "attrib": "+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span><br />\n+ <span class=\"attribVal\">7</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "Active: Unholy Strength - Gives +31 damage, +10 attack speed, and +25 strength while active, but drains 40 HP per second.  You cannot die from the health loss when the bonus strength is gone, or the health drain per second.", 
+        "id": 151, 
+        "name": "armlet"
+    }, 
+    {
+        "mc": 75, 
+        "img": "invis_sword_lg.png", 
+        "created": true, 
+        "dname": "Shadow Blade", 
+        "notes": "Has a 0.3 second fade time.<br />If the invisibility ends without attacking, the bonus damage is lost.", 
+        "cd": 28, 
+        "qual": "epic", 
+        "cost": 3000, 
+        "components": [
+            "shadow_amulet", 
+            "claymore"
+        ], 
+        "lore": "The blade of a fallen king, it allows you to move unseen and strike from the shadows.", 
+        "attrib": "+ <span class=\"attribVal\">22</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "Active: Shadow Walk - Makes you invisible until the duration ends, or until you attack or cast a spell.  While Shadow Walk is active, you move 20% faster and can move through units.  If attacking to break the invisibility, you gain 150 bonus damage on that attack.  Lasts 12 seconds.", 
+        "id": 152, 
+        "name": "invis_sword"
+    }, 
+    {
+        "id": 153, 
+        "name": "recipe_sange_and_yasha"
+    }, 
+    {
+        "mc": false, 
+        "img": "sange_and_yasha_lg.png", 
+        "created": true, 
+        "dname": "Sange and Yasha", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 4100, 
+        "components": [
+            "yasha", 
+            "sange"
+        ], 
+        "lore": "Sange and Yasha, when attuned by the moonlight and used together, become a very powerful combination.", 
+        "attrib": "MAIM CHANCE: <span class=\"attribVal\">16%</span><br />\nMAIM MOVEMENT SLOW: <span class=\"attribVal\">32%</span><br />\nMAIM ATTACK SLOW: <span class=\"attribVal\">32</span><br />\n+ <span class=\"attribVal\">16</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">16</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">16</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">16</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">16%</span> <span class=\"attribValText\">Movement Speed</span>", 
+        "desc": "Passive: Greater Maim - Gives a chance on attack to slow movement speed for 5.0 seconds.<br />\n<br />\nPercentage based movement speed bonuses from multiple items do not stack.", 
+        "id": 154, 
+        "name": "sange_and_yasha"
+    }, 
+    {
+        "id": 155, 
+        "name": "recipe_satanic"
+    }, 
+    {
+        "mc": false, 
+        "img": "satanic_lg.png", 
+        "created": true, 
+        "dname": "Satanic", 
+        "notes": "", 
+        "cd": 35, 
+        "qual": "artifact", 
+        "cost": 6150, 
+        "components": [
+            "reaver", 
+            "helm_of_the_dominator"
+        ], 
+        "lore": "Immense power at the cost of your soul.", 
+        "attrib": "+ <span class=\"attribVal\">20</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span><br />\nLIFESTEAL: <span class=\"attribVal\">25%</span>", 
+        "desc": "Active: Unholy Rage - Increases Lifesteal by 175% for 3.5 seconds.<br />\nPassive: Lifesteal - Gives Lifesteal on attacks.<br />\n<br />\nSatanic is a Unique Attack Modifier, and does not stack with other Unique Attack Modifier.", 
+        "id": 156, 
+        "name": "satanic"
+    }, 
+    {
+        "id": 157, 
+        "name": "recipe_mjollnir"
+    }, 
+    {
+        "mc": 50, 
+        "img": "mjollnir_lg.png", 
+        "created": true, 
+        "dname": "Mjollnir", 
+        "notes": "Static Charge cannot trigger more than one per second.<br />Static Charge's lightning deals 200 magical damage, the damage source and secondary targets cannot be more than 900 range away, the 3 targets hit must be in a cone with 125 starting radius, 475 distance and 300 final radius.", 
+        "cd": 35, 
+        "qual": "artifact", 
+        "cost": 5300, 
+        "components": [
+            "hyperstone", 
+            "maelstrom"
+        ], 
+        "lore": "Thor's magical hammer, made for him by the dwarves Brok and Eitri.", 
+        "attrib": "+ <span class=\"attribVal\">24</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">80</span> <span class=\"attribValText\">Attack Speed</span><br />\nCHANCE TO CHAIN: <span class=\"attribVal\">25%</span><br />\nCHAIN DAMAGE: <span class=\"attribVal\">160</span>", 
+        "desc": "Active: Static Charge - Places a charged shield on a target unit<br />\nPassive: Chain Lightning - Grants a chance to release Chain Lighting on attack, dealing damage to multiple targets.<br />\n<br />\nMjollnir is a Unique Attack Modifier that stacks with other Unique Attack Modifiers, but overrides them when Chain Lightning occurs.", 
+        "id": 158, 
+        "name": "mjollnir"
+    }, 
+    {
+        "id": 159, 
+        "name": "recipe_skadi"
+    }, 
+    {
+        "mc": false, 
+        "img": "skadi_lg.png", 
+        "created": true, 
+        "dname": "Eye of Skadi", 
+        "notes": "Lasts 5 seconds with melee Eye of Skadi, 3 seconds with ranged Eye of Skadi.", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 5675, 
+        "components": [
+            "ultimate_orb", 
+            "ultimate_orb", 
+            "point_booster", 
+            "orb_of_venom"
+        ], 
+        "lore": "Extremely rare artifact, guarded by the azure dragons.", 
+        "attrib": "+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">250</span> <span class=\"attribValText\">Health</span><br />\n+ <span class=\"attribVal\">250</span> <span class=\"attribValText\">Mana</span><br />\nMOVE SLOW: <span class=\"attribVal\">35%</span><br />\nATTACK SLOW: <span class=\"attribVal\">35</span>", 
+        "desc": "Passive: Cold Attack - Attacks slow the movement and attack speed of the target.<br />\n<br />\nEye of Skadi is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.  Eye of Skadi can be combined with Lifesteal Attack Modifiers.", 
+        "id": 160, 
+        "name": "skadi"
+    }, 
+    {
+        "id": 161, 
+        "name": "recipe_sange"
+    }, 
+    {
+        "mc": false, 
+        "img": "sange_lg.png", 
+        "created": true, 
+        "dname": "Sange", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 2050, 
+        "components": [
+            "ogre_axe", 
+            "belt_of_strength"
+        ], 
+        "lore": "Sange is an unusually accurate weapon, seeking weak points automatically.", 
+        "attrib": "MAIM CHANCE: <span class=\"attribVal\">15%</span><br />\nMAIM MOVEMENT SLOW: <span class=\"attribVal\">20%</span><br />\nMAIM ATTACK SLOW: <span class=\"attribVal\">20</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">16</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "Passive: Lesser Maim - Gives a chance on attack to slow movement speed for 4.0 seconds.", 
+        "id": 162, 
+        "name": "sange"
+    }, 
+    {
+        "id": 163, 
+        "name": "recipe_helm_of_the_dominator"
+    }, 
+    {
+        "mc": 75, 
+        "img": "helm_of_the_dominator_lg.png", 
+        "created": true, 
+        "dname": "Helm of the Dominator", 
+        "notes": "Cannot dominate more than one unit at a time.  If a new unit is dominated, the old one will die.", 
+        "cd": 60, 
+        "qual": "artifact", 
+        "cost": 1850, 
+        "components": [
+            "lifesteal", 
+            "helm_of_iron_will"
+        ], 
+        "lore": "The powerful headpiece of a dead necromancer.", 
+        "attrib": "+ <span class=\"attribVal\">20</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">5</span> <span class=\"attribValText\">Armor</span><br />\nLIFESTEAL: <span class=\"attribVal\">15%</span>", 
+        "desc": "Active: Dominate - Take control of a non-hero, non-ancient target unit.<br />\nPassive: Lifesteal - Gives lifesteal on attacks.<br />\n<br />\nHelm of the Dominator is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.", 
+        "id": 164, 
+        "name": "helm_of_the_dominator"
+    }, 
+    {
+        "id": 165, 
+        "name": "recipe_maelstrom"
+    }, 
+    {
+        "mc": false, 
+        "img": "maelstrom_lg.png", 
+        "created": true, 
+        "dname": "Maelstrom", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 2700, 
+        "components": [
+            "gloves", 
+            "mithril_hammer"
+        ], 
+        "lore": "A hammer forged for the gods themselves, Maelstrom allows its user to harness the power of lightning.", 
+        "attrib": "+ <span class=\"attribVal\">24</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Attack Speed</span><br />\nCHANCE TO CHAIN: <span class=\"attribVal\">25%</span><br />\nCHAIN DAMAGE: <span class=\"attribVal\">120</span>", 
+        "desc": "Passive: Chain Lightning - Grants a chance on attack to release a Chain Lightning that hits 4 targets, dealing damage.<br />\n<br />\nMaelstrom is a Unique Attack Modifier that stacks with other Unique Attack Modifiers, but overrides them when Chain Lightning occurs.", 
+        "id": 166, 
+        "name": "maelstrom"
+    }, 
+    {
+        "id": 167, 
+        "name": "recipe_desolator"
+    }, 
+    {
+        "mc": false, 
+        "img": "desolator_lg.png", 
+        "created": true, 
+        "dname": "Desolator", 
+        "notes": "Armor reduction works on buildings.", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 4100, 
+        "components": [
+            "mithril_hammer", 
+            "mithril_hammer"
+        ], 
+        "lore": "A wicked weapon, used in torturing political criminals.", 
+        "attrib": "+ <span class=\"attribVal\">60</span> <span class=\"attribValText\">Damage</span><br />\nARMOR REDUCTION: <span class=\"attribVal\">7</span>", 
+        "desc": "Passive: Corruption - Your attacks reduce target's armor for 15 seconds.<br />\n<br />\nDesolator is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.", 
+        "id": 168, 
+        "name": "desolator"
+    }, 
+    {
+        "id": 169, 
+        "name": "recipe_yasha"
+    }, 
+    {
+        "mc": false, 
+        "img": "yasha_lg.png", 
+        "created": true, 
+        "dname": "Yasha", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "artifact", 
+        "cost": 2050, 
+        "components": [
+            "blade_of_alacrity", 
+            "boots_of_elves"
+        ], 
+        "lore": "Yasha is regarded as the swiftest weapon ever created.", 
+        "attrib": "+ <span class=\"attribVal\">16</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">15</span> <span class=\"attribValText\">Attack Speed</span><br />\n+ <span class=\"attribVal\">10%</span> <span class=\"attribValText\">Movement Speed</span>", 
+        "desc": "Percentage based movement speed bonuses from multiple items do not stack.", 
+        "id": 170, 
+        "name": "yasha"
+    }, 
+    {
+        "id": 171, 
+        "name": "recipe_mask_of_madness"
+    }, 
+    {
+        "mc": 25, 
+        "img": "mask_of_madness_lg.png", 
+        "created": true, 
+        "dname": "Mask of Madness", 
+        "notes": "", 
+        "cd": 25, 
+        "qual": "artifact", 
+        "cost": 1900, 
+        "components": [
+            "lifesteal"
+        ], 
+        "lore": "Once this mask is worn, it's bearer becomes an uncontrollable aggressive force.", 
+        "attrib": "LIFESTEAL: <span class=\"attribVal\">20%</span>", 
+        "desc": "Active: Berserk - Gives 100 attack speed and 30% movement speed but causes you to take extra 30% damage.  Lasts 12 seconds.<br />\nPassive: Lifesteal - Grants lifesteal on attacks.<br />\n<br />\nMask of Madness is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.", 
+        "id": 172, 
+        "name": "mask_of_madness"
+    }, 
+    {
+        "id": 173, 
+        "name": "recipe_diffusal_blade"
+    }, 
+    {
+        "mc": false, 
+        "img": "diffusal_blade_lg.png", 
+        "created": true, 
+        "dname": "Diffusal Blade", 
+        "notes": "Instantly kills summoned units.<br />Slow lasts 4 seconds.", 
+        "cd": 8, 
+        "qual": "artifact", 
+        "cost": 3300, 
+        "components": [
+            "blade_of_alacrity", 
+            "blade_of_alacrity", 
+            "robe"
+        ], 
+        "lore": "An enchanted blade that allows the user to cut straight into the enemy's soul.", 
+        "attrib": "+ <span class=\"attribVal\">25</span>/30 <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">6</span>/10 <span class=\"attribValText\">Intelligence</span>", 
+        "desc": "Active: Purge - Purges a target unit, removing buffs, slowing, and dealing damage if it is a summoned unit.<br />\nPassive: Feedback - Your attacks burn 20/36 mana and deal the same amount in physical damage. Upgradable.<br />\n<br />\nDiffusal Blade is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.", 
+        "id": 174, 
+        "name": "diffusal_blade"
+    }, 
+    {
+        "id": 175, 
+        "name": "recipe_ethereal_blade"
+    }, 
+    {
+        "mc": 150, 
+        "img": "ethereal_blade_lg.png", 
+        "created": true, 
+        "dname": "Ethereal Blade", 
+        "notes": "Shares cooldown with Ghost Scepter.<br />Ethereal units take 40% bonus magic damage.<br />Lasts an extra second on Self or Allied cast.", 
+        "cd": 30, 
+        "qual": "epic", 
+        "cost": 4900, 
+        "components": [
+            "eagle", 
+            "ghost"
+        ], 
+        "lore": "A flickering blade of a ghastly nature, it is capable of dealing damage in both magical and physical planes.", 
+        "attrib": "+ <span class=\"attribVal\">40</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Intelligence</span><br />\nENEMY DURATION: <span class=\"attribVal\">3</span><br />\nALLY/SELF DURATION: <span class=\"attribVal\">4</span>", 
+        "desc": "Active: Ether Blast - Converts you and your target into ethereal form. Target unit is slowed and cannot attack or be attacked, and takes 2.0x of your primary attribute + 75 as damage.", 
+        "id": 176, 
+        "name": "ethereal_blade"
+    }, 
+    {
+        "id": 177, 
+        "name": "recipe_soul_ring"
+    }, 
+    {
+        "mc": false, 
+        "img": "soul_ring_lg.png", 
+        "created": true, 
+        "dname": "Soul Ring", 
+        "notes": "If the mana gain cannot fit in your mana pool, it creates a buffer of mana that is used before your mana pool.  If this mana is not used before the duration, the extra mana is lost.", 
+        "cd": 30, 
+        "qual": "common", 
+        "cost": 800, 
+        "components": [
+            "ring_of_regen", 
+            "sobi_mask"
+        ], 
+        "lore": "A ring that feeds on the souls of those around it.", 
+        "attrib": "+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">50%</span> <span class=\"attribValText\">Mana Regeneration</span>", 
+        "desc": "Active: Sacrifice - Consume 150 HP to temporarily gain 150 Mana.  Lasts 10 seconds.", 
+        "id": 178, 
+        "name": "soul_ring"
+    }, 
+    {
+        "id": 179, 
+        "name": "recipe_arcane_boots"
+    }, 
+    {
+        "mc": 35, 
+        "img": "arcane_boots_lg.png", 
+        "created": true, 
+        "dname": "Arcane Boots", 
+        "notes": "Does not work on Meepo clones.", 
+        "cd": 55, 
+        "qual": "rare", 
+        "cost": 1450, 
+        "components": [
+            "energy_booster", 
+            "boots"
+        ], 
+        "lore": "Magi equipped with these boots are valued in battle.", 
+        "attrib": "+ <span class=\"attribVal\">55</span> <span class=\"attribValText\">Movement Speed</span><br />\n+ <span class=\"attribVal\">250</span> <span class=\"attribValText\">Mana</span><br />\nMANA RESTORED: <span class=\"attribVal\">135</span>", 
+        "desc": "Active: Replenish Mana - Restores mana in an area around the hero.<br />\n<br />\nFlat movement speed bonuses from multiple pairs of boots do not stack.", 
+        "id": 180, 
+        "name": "arcane_boots"
+    }, 
+    {
+        "mc": false, 
+        "img": "orb_of_venom_lg.png", 
+        "created": false, 
+        "dname": "Orb of Venom", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "secret_shop", 
+        "cost": 275, 
+        "components": null, 
+        "lore": "Envenoms your veapon with the venom of a venomous viper.", 
+        "attrib": "MELEE SLOW: <span class=\"attribVal\">12%</span><br />\nRANGED SLOW: <span class=\"attribVal\">4%</span><br />\nDURATION: <span class=\"attribVal\">4</span><br />\nPOISON DAMAGE: <span class=\"attribVal\">3</span>", 
+        "desc": "Passive: Poison Attack - Poisons the target, dealing damage over time and slowing, depending on whether your hero is melee or ranged.<br />\n<br />\nOrb of Venom is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.", 
+        "id": 181, 
+        "name": "orb_of_venom"
+    }, 
+    {
+        "mc": false, 
+        "img": "stout_shield_lg.png", 
+        "created": false, 
+        "dname": "Stout Shield", 
+        "notes": "Multiple sources of damage block don't stack.", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 250, 
+        "components": null, 
+        "lore": "One man's wine barrel bottom is another man's shield.", 
+        "attrib": "MELEE BLOCK: <span class=\"attribVal\">20</span><br />\nRANGED BLOCK: <span class=\"attribVal\">10</span><br />\nBLOCK CHANCE: <span class=\"attribVal\">60%</span>", 
+        "desc": "Passive: Damage Block - Gives a chance to block damage, depending on the type of hero you are.", 
+        "id": 182, 
+        "name": "stout_shield"
+    }, 
+    {
+        "id": 183, 
+        "name": "recipe_invis_sword"
+    }, 
+    {
+        "id": 184, 
+        "name": "recipe_ancient_janggo"
+    }, 
+    {
+        "mc": false, 
+        "img": "ancient_janggo_lg.png", 
+        "created": true, 
+        "dname": "Drum of Endurance", 
+        "notes": "", 
+        "cd": 30, 
+        "qual": "rare", 
+        "cost": 1875, 
+        "components": [
+            "bracer", 
+            "robe"
+        ], 
+        "lore": "A relic that enchants the bodies of those around it for swifter movement in times of crisis.", 
+        "attrib": "+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">Damage</span><br />\nAURA ATTACK SPEED: <span class=\"attribVal\">5</span><br />\nAURA MOVE SPEED: <span class=\"attribVal\">5%</span>", 
+        "desc": "Active: Endurance - Gives bonus +10 attack speed and +10% movement speed to surrounding allies.<br />\nPassive: Swiftness Aura - Gives bonus attack and movement speed to surrounding allies.<br />\n<br />\nMultiple instances of Swiftness Aura do not stack.", 
+        "id": 185, 
+        "name": "ancient_janggo"
+    }, 
+    {
+        "id": 186, 
+        "name": "recipe_medallion_of_courage"
+    }, 
+    {
+        "mc": false, 
+        "img": "medallion_of_courage_lg.png", 
+        "created": true, 
+        "dname": "Medallion of Courage", 
+        "notes": "", 
+        "cd": 7, 
+        "qual": "rare", 
+        "cost": 1075, 
+        "components": [
+            "chainmail", 
+            "sobi_mask"
+        ], 
+        "lore": "The bearer has no fear of combat.", 
+        "attrib": "+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Armor</span><br />\n+ <span class=\"attribVal\">50%</span> <span class=\"attribValText\">Mana Regeneration</span><br />\nARMOR REDUCTION: <span class=\"attribVal\">6</span>", 
+        "desc": "Active: Valor - Reduces the armor of you and your target. Lasts 7 seconds.", 
+        "id": 187, 
+        "name": "medallion_of_courage"
+    }, 
+    {
+        "mc": false, 
+        "img": "smoke_of_deceit_lg.png", 
+        "created": false, 
+        "dname": "Smoke of Deceit", 
+        "notes": "", 
+        "cd": 90, 
+        "qual": "consumable", 
+        "cost": 100, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "BONUS SPEED: <span class=\"attribVal\">15%</span><br />\nDURATION: <span class=\"attribVal\">35</span>", 
+        "desc": "Use: Upon activation, the user and all nearby allied player-controlled units gain invisiblity and bonus movement speed for a brief time.  Minimap icons will also be hidden.  Upon moving within 1025 range of an enemy hero or tower, the invisibility is lost.", 
+        "id": 188, 
+        "name": "smoke_of_deceit"
+    }, 
+    {
+        "id": 189, 
+        "name": "recipe_veil_of_discord"
+    }, 
+    {
+        "mc": 75, 
+        "img": "veil_of_discord_lg.png", 
+        "created": true, 
+        "dname": "Veil of Discord", 
+        "notes": "", 
+        "cd": 30, 
+        "qual": "rare", 
+        "cost": 2675, 
+        "components": [
+            "helm_of_iron_will", 
+            "null_talisman"
+        ], 
+        "lore": "The headwear of corrupt magi.", 
+        "attrib": "RADIUS: <span class=\"attribVal\">600</span><br />\nBONUS MAGIC DAMAGE: <span class=\"attribVal\">25%</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">HP Regeneration</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Strength</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Armor</span>", 
+        "desc": "Active: Magic Weakness - Emits a weakening blast that increases the magic damage enemies take. Lasts 25.0 seconds.", 
+        "id": 190, 
+        "name": "veil_of_discord"
+    }, 
+    {
+        "id": 191, 
+        "name": "recipe_necronomicon_2"
+    }, 
+    {
+        "id": 192, 
+        "name": "recipe_necronomicon_3"
+    }, 
+    {
+        "mc": 50, 
+        "img": "necronomicon_2_lg.png", 
+        "created": true, 
+        "dname": "Necronomicon", 
+        "notes": "", 
+        "cd": 95, 
+        "qual": "rare", 
+        "cost": 2700, 
+        "components": [
+            "necronomicon", 
+            "recipe_necronomicon"
+        ], 
+        "lore": "Considered the holy grail of necromancy and demonology, a powerful malefic force is locked within its pages.", 
+        "attrib": "+ 15/<span class=\"attribVal\">21</span>/24 <span class=\"attribValText\">Intelligence</span><br />\n+ 8/<span class=\"attribVal\">12</span>/16 <span class=\"attribValText\">Strength</span>", 
+        "desc": "Active: Demonic Summoning - Summons a Necronomicon Warrior and a Necronomicon Archer to fight for you.  Their strength and abilities increase as Necronomicon increases in level.  Lasts 40 seconds.", 
+        "id": 193, 
+        "name": "necronomicon_2"
+    }, 
+    {
+        "mc": 50, 
+        "img": "necronomicon_3_lg.png", 
+        "created": true, 
+        "dname": "Necronomicon", 
+        "notes": "", 
+        "cd": 95, 
+        "qual": "rare", 
+        "cost": 2700, 
+        "components": [
+            "necronomicon_2", 
+            "recipe_necronomicon"
+        ], 
+        "lore": "Considered the holy grail of necromancy and demonology, a powerful malefic force is locked within its pages.", 
+        "attrib": "+ 15/21/<span class=\"attribVal\">24</span> <span class=\"attribValText\">Intelligence</span><br />\n+ 8/12/<span class=\"attribVal\">16</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "Active: Demonic Summoning - Summons a Necronomicon Warrior and a Necronomicon Archer to fight for you.  Their strength and abilities increase as Necronomicon increases in level.  Lasts 40 seconds.", 
+        "id": 194, 
+        "name": "necronomicon_3"
+    }, 
+    {
+        "id": 195, 
+        "name": "recipe_diffusal_blade_2"
+    }, 
+    {
+        "id": 196, 
+        "name": "recipe_diffusal_blade_2"
+    }, 
+    {
+        "id": 197, 
+        "name": "recipe_dagon_2"
+    }, 
+    {
+        "id": 198, 
+        "name": "recipe_dagon_3"
+    }, 
+    {
+        "id": 199, 
+        "name": "recipe_dagon_4"
+    }, 
+    {
+        "id": 200, 
+        "name": "recipe_dagon_5"
+    }, 
+    {
+        "mc": "180 160 140 120 100", 
+        "img": "dagon_2_lg.png", 
+        "created": true, 
+        "dname": "Dagon", 
+        "notes": "", 
+        "cd": 35, 
+        "qual": "rare", 
+        "cost": 2850, 
+        "components": [
+            "dagon", 
+            "recipe_dagon"
+        ], 
+        "lore": "A lesser wand that grows in power the longer it is used, it brings magic to the fingertips of the user.", 
+        "attrib": "+ 13/<span class=\"attribVal\">15</span>/17/19/21 <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span><br />\nBURST DAMAGE: 400/<span class=\"attribVal\">500</span>/600/700/800", 
+        "desc": "Active: Energy Burst - Burst of damage to target enemy unit. Upgradable.", 
+        "id": 201, 
+        "name": "dagon_2"
+    }, 
+    {
+        "mc": "180 160 140 120 100", 
+        "img": "dagon_3_lg.png", 
+        "created": true, 
+        "dname": "Dagon", 
+        "notes": "", 
+        "cd": 35, 
+        "qual": "rare", 
+        "cost": 2850, 
+        "components": [
+            "dagon_2", 
+            "recipe_dagon"
+        ], 
+        "lore": "A lesser wand that grows in power the longer it is used, it brings magic to the fingertips of the user.", 
+        "attrib": "+ 13/15/<span class=\"attribVal\">17</span>/19/21 <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span><br />\nBURST DAMAGE: 400/500/<span class=\"attribVal\">600</span>/700/800", 
+        "desc": "Active: Energy Burst - Burst of damage to target enemy unit. Upgradable.", 
+        "id": 202, 
+        "name": "dagon_3"
+    }, 
+    {
+        "mc": "180 160 140 120 100", 
+        "img": "dagon_4_lg.png", 
+        "created": true, 
+        "dname": "Dagon", 
+        "notes": "", 
+        "cd": 35, 
+        "qual": "rare", 
+        "cost": 2850, 
+        "components": [
+            "dagon_3", 
+            "recipe_dagon"
+        ], 
+        "lore": "A lesser wand that grows in power the longer it is used, it brings magic to the fingertips of the user.", 
+        "attrib": "+ 13/15/17/<span class=\"attribVal\">19</span>/21 <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span><br />\nBURST DAMAGE: 400/500/600/<span class=\"attribVal\">700</span>/800", 
+        "desc": "Active: Energy Burst - Burst of damage to target enemy unit. Upgradable.", 
+        "id": 203, 
+        "name": "dagon_4"
+    }, 
+    {
+        "mc": "180 160 140 120 100", 
+        "img": "dagon_5_lg.png", 
+        "created": true, 
+        "dname": "Dagon", 
+        "notes": "", 
+        "cd": 35, 
+        "qual": "rare", 
+        "cost": 2850, 
+        "components": [
+            "dagon_4", 
+            "recipe_dagon"
+        ], 
+        "lore": "A lesser wand that grows in power the longer it is used, it brings magic to the fingertips of the user.", 
+        "attrib": "+ 13/15/17/19/<span class=\"attribVal\">21</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span><br />\nBURST DAMAGE: 400/500/600/700/<span class=\"attribVal\">800</span>", 
+        "desc": "Active: Energy Burst - Burst of damage to target enemy unit. Upgradable.", 
+        "id": 204, 
+        "name": "dagon_5"
+    }, 
+    {
+        "id": 205, 
+        "name": "recipe_rod_of_atos"
+    }, 
+    {
+        "mc": 50, 
+        "img": "rod_of_atos_lg.png", 
+        "created": true, 
+        "dname": "Rod of Atos", 
+        "notes": "", 
+        "cd": 12, 
+        "qual": "rare", 
+        "cost": 3100, 
+        "components": [
+            "staff_of_wizardry", 
+            "staff_of_wizardry", 
+            "vitality_booster"
+        ], 
+        "lore": "Atos, the Lord of Blight, has his essence stored in this deceptively simple wand.", 
+        "attrib": "+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Intelligence</span><br />\n+ <span class=\"attribVal\">350</span> <span class=\"attribValText\">Health</span><br />\nCRIPPLE SLOW: <span class=\"attribVal\">60%</span><br />\nDURATION: <span class=\"attribVal\">4</span>", 
+        "desc": "Active: Cripple - Slows the target's movement speed.", 
+        "id": 206, 
+        "name": "rod_of_atos"
+    }, 
+    {
+        "id": 207, 
+        "name": "recipe_abyssal_blade"
+    }, 
+    {
+        "mc": 150, 
+        "img": "abyssal_blade_lg.png", 
+        "created": true, 
+        "dname": "Abyssal Blade", 
+        "notes": "The stun is melee range.<br />Doesn't stack with other bashes.", 
+        "cd": 60, 
+        "qual": "epic", 
+        "cost": 6750, 
+        "components": [
+            "basher", 
+            "relic"
+        ], 
+        "lore": "The lost blade of the Commander of the Abyss, this edge cuts into an enemy's soul.", 
+        "attrib": "+ <span class=\"attribVal\">100</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">10</span> <span class=\"attribValText\">Strength</span><br />\nMELEE CHANCE: <span class=\"attribVal\">25%</span><br />\nRANGED CHANCE: <span class=\"attribVal\">10%</span>", 
+        "desc": "Active: Stun a target enemy unit for 2.0 seconds. Goes through Magic Immunity. Passive: Bash - Gives a chance to stun for 1.4 seconds.", 
+        "id": 208, 
+        "name": "abyssal_blade"
+    }, 
+    {
+        "id": 209, 
+        "name": "recipe_heavens_halberd"
+    }, 
+    {
+        "mc": 100, 
+        "img": "heavens_halberd_lg.png", 
+        "created": true, 
+        "dname": "Heaven's Halberd", 
+        "notes": "The disarm effect cannot be purged.", 
+        "cd": 30, 
+        "qual": "artifact", 
+        "cost": 3850, 
+        "components": [
+            "sange", 
+            "talisman_of_evasion"
+        ], 
+        "lore": "This halberd moves with the speed of a smaller weapon, allowing the bearer to win duels that a heavy edge would not.", 
+        "attrib": "+ <span class=\"attribVal\">25%</span> <span class=\"attribValText\">Evasion</span><br />\nMAIM CHANCE: <span class=\"attribVal\">15%</span><br />\nMAIM MOVEMENT SLOW: <span class=\"attribVal\">20%</span><br />\nMAIM ATTACK SLOW: <span class=\"attribVal\">20</span><br />\n+ <span class=\"attribVal\">25</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">20</span> <span class=\"attribValText\">Strength</span>", 
+        "desc": "Active: Disarms the target for 4.5 seconds. Lasts 3.0 on Melee targets. <br />\nPassive: Lesser Maim - Gives a chance on attack to slow movement speed for 4.0 seconds.", 
+        "id": 210, 
+        "name": "heavens_halberd"
+    }, 
+    {
+        "id": 211, 
+        "name": "recipe_ring_of_aquila"
+    }, 
+    {
+        "mc": false, 
+        "img": "ring_of_aquila_lg.png", 
+        "created": true, 
+        "dname": "Ring of Aquila", 
+        "notes": "Does not stack with armor auras from Ring of Basilius, Ring of Aquila, or Vladmir's Offering.", 
+        "cd": false, 
+        "qual": "rare", 
+        "cost": 985, 
+        "components": [
+            "wraith_band", 
+            "ring_of_basilius"
+        ], 
+        "lore": "The ring of the fallen Warlord Aquila continues to support armies in battle.", 
+        "attrib": "+ <span class=\"attribVal\">9</span> <span class=\"attribValText\">Damage</span><br />\n+ <span class=\"attribVal\">3</span> <span class=\"attribValText\">All Attributes</span><br />\n+ <span class=\"attribVal\">6</span> <span class=\"attribValText\">Agility</span><br />\n+ <span class=\"attribVal\">1</span> <span class=\"attribValText\">Armor</span><br />\nAURA MANA REGEN: <span class=\"attribVal\">0.65</span><br />\nAURA BONUS ARMOR: <span class=\"attribVal\">2</span>", 
+        "desc": "Passive: Aquila Aura - Grants mana regeneration and armor in a 900 AoE.<br />\n Active: Toggle whether the aura affects other non-hero units.<br />\n<br />\nMultiple instances of Aquila Aura do not stack.", 
+        "id": 212, 
+        "name": "ring_of_aquila"
+    }, 
+    {
+        "id": 213, 
+        "name": "recipe_tranquil_boots"
+    }, 
+    {
+        "mc": false, 
+        "img": "tranquil_boots_lg.png", 
+        "created": true, 
+        "dname": "Tranquil Boots", 
+        "notes": "", 
+        "cd": 13, 
+        "qual": "rare", 
+        "cost": 975, 
+        "components": [
+            "boots", 
+            "ring_of_protection", 
+            "ring_of_regen"
+        ], 
+        "lore": "While they increase the longevity of the wearer, this boot is not particularly reliable.", 
+        "attrib": "+ <span class=\"attribVal\">90</span> <span class=\"attribValText\">Movement Speed</span><br />\n+ <span class=\"attribVal\">4</span> <span class=\"attribValText\">Armor</span><br />\n+ <span class=\"attribVal\">12</span> <span class=\"attribValText\">HP Regeneration</span>", 
+        "desc": "Passive: Break - Whenever you attack or get attacked you lose the HP regeneration and 30 Movement Speed for 13 seconds.", 
+        "id": 214, 
+        "name": "tranquil_boots"
+    }, 
+    {
+        "mc": false, 
+        "img": "shadow_amulet_lg.png", 
+        "created": false, 
+        "dname": "Shadow Amulet", 
+        "notes": "", 
+        "cd": 10, 
+        "qual": false, 
+        "cost": 1600, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "+ <span class=\"attribVal\">30</span> <span class=\"attribValText\">Attack Speed</span>", 
+        "desc": "Active: Fade - Grants invisibility to you or target allied hero over 1.5 seconds. Moving breaks the invisibility. There is no cooldown when using this item on yourself.", 
+        "id": 215, 
+        "name": "shadow_amulet"
+    }, 
+    {
+        "mc": false, 
+        "img": "halloween_candy_corn_lg.png", 
+        "created": false, 
+        "dname": "Delicious Greevil Treat", 
+        "notes": "", 
+        "cd": 0, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "A strange looking candy, made out of Greevil cream and gummy vitamins.", 
+        "attrib": "", 
+        "desc": "Use: Eat the candy to gain a permanent bonus to your stats, equal to your hero's natural stat gain.  Greevil Treats also give 500 XP.", 
+        "id": 216, 
+        "name": "halloween_candy_corn"
+    }, 
+    {
+        "mc": 140, 
+        "img": "mystery_hook_lg.png", 
+        "created": false, 
+        "dname": "Mysterious Spell Scroll #1", 
+        "notes": "", 
+        "cd": 11, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Uses the mystery spell on a target point.", 
+        "id": 217, 
+        "name": "mystery_hook"
+    }, 
+    {
+        "mc": false, 
+        "img": "mystery_arrow_lg.png", 
+        "created": false, 
+        "dname": "Mysterious Spell Scroll #2", 
+        "notes": "", 
+        "cd": 2, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Uses the mystery spell on a target point.", 
+        "id": 218, 
+        "name": "mystery_arrow"
+    }, 
+    {
+        "mc": false, 
+        "img": "mystery_missile_lg.png", 
+        "created": false, 
+        "dname": "Mysterious Spell Scroll #3", 
+        "notes": "", 
+        "cd": 20, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Uses the mystery spell on a target enemy unit.", 
+        "id": 219, 
+        "name": "mystery_missile"
+    }, 
+    {
+        "mc": false, 
+        "img": "mystery_toss_lg.png", 
+        "created": false, 
+        "dname": "Mysterious Spell Scroll #4", 
+        "notes": "", 
+        "cd": 2, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Uses the mystery spell on a target unit.", 
+        "id": 220, 
+        "name": "mystery_toss"
+    }, 
+    {
+        "mc": false, 
+        "img": "mystery_vacuum_lg.png", 
+        "created": false, 
+        "dname": "Mysterious Spell Scroll #5", 
+        "notes": "", 
+        "cd": 2, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "Use: Uses the mystery spell on a target point.", 
+        "id": 221, 
+        "name": "mystery_vacuum"
+    }, 
+    {
+        "id": 222, 
+        "name": "empty"
+    }, 
+    {
+        "id": 223, 
+        "name": "empty"
+    }, 
+    {
+        "id": 224, 
+        "name": "empty"
+    }, 
+    {
+        "id": 225, 
+        "name": "empty"
+    }, 
+    {
+        "mc": false, 
+        "img": "halloween_rapier_lg.png", 
+        "created": false, 
+        "dname": "Cursed Rapier", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "epic", 
+        "cost": 6200, 
+        "components": null, 
+        "lore": "So powerful, it cannot have a single owner.", 
+        "attrib": "", 
+        "desc": "Drops on death.  Cursed Rapier is muted to anyone but the owner, as long as he or his teammates pick it up. As soon as an enemy picks it up, Cursed Rapier is unmuted, but cannot be dropped except on death.  Cursed Rapier gives vision of its bearer to all enemy heroes  Each time Cursed Rapier gets a kill for its owner, it loses 100 damage.", 
+        "id": 226, 
+        "name": "halloween_rapier"
+    }, 
+    {
+        "mc": false, 
+        "img": "present_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_present", 
+        "notes": "", 
+        "cd": 0, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 227, 
+        "name": "present"
+    }, 
+    {
+        "mc": false, 
+        "img": "greevil_whistle_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_greevil_whistle", 
+        "notes": "", 
+        "cd": 120, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 228, 
+        "name": "greevil_whistle"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_stocking_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_stocking", 
+        "notes": "", 
+        "cd": 0, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 229, 
+        "name": "winter_stocking"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_skates_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_skates", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "component", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 230, 
+        "name": "winter_skates"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_cake_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_cake", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 231, 
+        "name": "winter_cake"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_cookie_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_cookie", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 232, 
+        "name": "winter_cookie"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_coco_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_coco", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 233, 
+        "name": "winter_coco"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_ham_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_ham", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 234, 
+        "name": "winter_ham"
+    }, 
+    {
+        "mc": false, 
+        "img": "greevil_whistle_toggle_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_greevil_whistle_toggle", 
+        "notes": "", 
+        "cd": 2, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 235, 
+        "name": "greevil_whistle_toggle"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_kringle_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_kringle", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 236, 
+        "name": "winter_kringle"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_mushroom_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_mushroom", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 237, 
+        "name": "winter_mushroom"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_greevil_treat_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_greevil_treat", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 238, 
+        "name": "winter_greevil_treat"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_greevil_garbage_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_greevil_garbage", 
+        "notes": "", 
+        "cd": false, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 239, 
+        "name": "winter_greevil_garbage"
+    }, 
+    {
+        "mc": false, 
+        "img": "winter_greevil_chewy_lg.png", 
+        "created": false, 
+        "dname": "DOTA_Tooltip_Ability_item_winter_greevil_chewy", 
+        "notes": "", 
+        "cd": 10, 
+        "qual": "consumable", 
+        "cost": 0, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 240, 
+        "name": "winter_greevil_chewy"
+    }, 
+    {
+        "mc": false, 
+        "img": "tango_single_lg.png", 
+        "created": false, 
+        "dname": "Tango (Shared)", 
+        "notes": "", 
+        "cd": 60, 
+        "qual": "consumable", 
+        "cost": 30, 
+        "components": null, 
+        "lore": "", 
+        "attrib": "", 
+        "desc": "", 
+        "id": 241, 
+        "name": "tango_single"
+    }
+]
