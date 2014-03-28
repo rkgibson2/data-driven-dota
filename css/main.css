@@ -41,6 +41,19 @@ path {
     shape-rendering: crispEdges;
 }
 
+#value_sort_label {
+  position: absolute;
+  top: 15px;
+  right: 680px;
+}
+
+#item_sort_label{
+  position: absolute;
+  top: 35px;
+  right: 687px;
+}
+
+
 /*tooltip styles*/
 
 /*these styles come from: https://github.com/Caged/d3-tip*/

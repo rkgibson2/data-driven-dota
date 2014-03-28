@@ -13,7 +13,7 @@ var margin = {
     left: 50
 };
 
-var width = 960 - margin.left - margin.right;
+var width = 1060 - margin.left - margin.right;
 
 var height = 800 - margin.bottom - margin.top;
 
@@ -60,7 +60,7 @@ var item_percent_graph = svg.append("g")
 	.attr("visibility", "hidden")
 	.attr("transform", "translate(" + bb_item_percent.x + "," + bb_item_percent.y + ")");;
 
-var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_names;
+var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_percent_color;
 
 //tool tip setup
 var tip = d3.tip()
@@ -373,13 +373,13 @@ function create_flare(data) {
 		hero_pie(hero_flare);
 
 	})
-
 }
-
 
 function draw_item_percent() {
 
 	var formatPercent = d3.format(".0%");
+
+	item_percent_color = d3.scale.linear();
 
 	item_percent_x = d3.scale.ordinal()
 			.rangeRoundBands([0, bb_item_percent.w], .1 ,1)
@@ -426,11 +426,24 @@ function draw_item_percent() {
 			  	.attr("width", function() {
 			  		return item_percent_x.rangeBand();
 			  	})
+			  	.on("mouseover", function(d) {
+			  		tip.html(d.name);
+			  		tip.show(d);
+			  	})
+			  	.on("mouseout", function(d) {
+			  		tip.hide(d);
+			  	});
+
+	item_percent_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", -20)
+		.attr("x", 350)
+		.text("Items Purchased as Percentage of Games Played");
+
 }
 
 function update_item_percent(data) {
 
-	//item_names = [];
 	var items = []
 
 	//initialize all items with a count of 0
@@ -447,19 +460,19 @@ function update_item_percent(data) {
 			if (dat.items[j].id == d.player_info.item_0) {
 				dat.items[j].count += 1;
 			}		
-			if (dat.items[j].id == d.player_info.item_1) {
+			else if (dat.items[j].id == d.player_info.item_1) {
 				dat.items[j].count += 1;
 			}		
-			if (dat.items[j].id == d.player_info.item_2) {
+			else if (dat.items[j].id == d.player_info.item_2) {
 				dat.items[j].count += 1;
 			}		
-			if (dat.items[j].id == d.player_info.item_3) {
+			else if (dat.items[j].id == d.player_info.item_3) {
 				dat.items[j].count += 1;
 			}		
-			if (dat.items[j].id == d.player_info.item_4) {
+			else if (dat.items[j].id == d.player_info.item_4) {
 				dat.items[j].count += 1;
 			}		
-			if (dat.items[j].id == d.player_info.item_5) {
+			else if (dat.items[j].id == d.player_info.item_5) {
 				dat.items[j].count += 1;
 			}		
 		}
@@ -502,6 +515,13 @@ function update_item_percent(data) {
 	bars.enter()
 		.append("rect")
 		.attr("class", "bar")
+		.on("mouseover", function(d) {
+	  		tip.html(d.name + "<br> Count: " + d.count + "</br>");
+	  		tip.show(d);
+	  	})
+	  	.on("mouseout", function(d) {
+	  		tip.hide(d);
+	  	})
 		.transition().duration(duration);
 		
 	bars
@@ -532,6 +552,64 @@ function update_item_percent(data) {
 		.attr("visibility", null);
 
 })
+
+	//sorting by value
+
+	d3.select("input#value").on("change", change);
+
+	var sortTimeout = setTimeout(function() {
+	    d3.select("input").property("checked", true).each(change);
+	  }, 2000);
+
+	function change() {
+	    clearTimeout(sortTimeout);
+
+	    // Copy-on-write since tweens are evaluated after a delay.
+	    var x0 = item_percent_x.domain(items.sort(this.checked
+	        ? function(a, b) { return b.percent - a.percent; }
+	        : function(a, b) { return d3.ascending(a.name, b.name); })
+	        .map(function(d) { return d.name; }))
+	        .copy();
+
+	    var transition = svg.transition().duration(750),
+	        delay = function(d, i) { return i * 10; };
+
+	    transition.selectAll(".bar")
+	        .delay(delay)
+	        .attr("x", function(d) { return x0(d.name); });
+
+	    transition.select(".x.axis")
+	        .call(item_percent_xAxis)
+	      .selectAll("g")
+	        .delay(delay);
+	}
+
+	//sorting by item
+
+	d3.select("input#item").on("change", change_item);
+
+	function change_item() {
+
+	    // Copy-on-write since tweens are evaluated after a delay.
+	    var x0 = item_percent_x.domain(items.sort(this.checked
+	        ? function(a, b) { return d3.ascending(a.name, b.name); }
+	        : function(a, b) { return d3.ascending(a.percent, b.percent); })
+	        .map(function(d) { return d.name; }))
+	        .copy();
+
+	    var transition = svg.transition().duration(750),
+	        delay = function(d, i) { return i * 10; };
+
+	    transition.selectAll(".bar")
+	        .delay(delay)
+	        .attr("x", function(d) { return x0(d.name); });
+
+	    transition.select(".x.axis")
+	        .call(item_percent_xAxis)
+	      .selectAll("g")
+	        .delay(delay);
+	  }
+
 
 }
 
