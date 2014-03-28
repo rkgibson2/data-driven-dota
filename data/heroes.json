@@ -208,13 +208,13 @@
 			{
 				"name": "npc_dota_hero_necrolyte",
 				"id": 36,
-				"localized_name": "Necrophos"
+				"localized_name": "Necrophos",
 				"stat": "intelligence"
 			},
 			{
 				"name": "npc_dota_hero_warlock",
 				"id": 37,
-				"localized_name": "Warlock"
+				"localized_name": "Warlock",
 				"stat": "intelligence"
 			},
 			{
