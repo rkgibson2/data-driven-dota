@@ -31,7 +31,11 @@ path {
 
 
 .axis text {
-      font: 10px sans-serif;
+  font: 10px sans-serif;
+}
+
+.x.axis text {
+  visibility: hidden;
 }
 
 .axis line,

@@ -390,7 +390,8 @@ function draw_item_percent() {
 
 	item_percent_xAxis = d3.svg.axis()
 				.scale(item_percent_x)
-				.orient("bottom");
+				.orient("bottom")
+				.ticks(0);
 
 	item_percent_yAxis = d3.svg.axis()
 			    .scale(item_percent_y)
@@ -443,6 +444,9 @@ function draw_item_percent() {
 }
 
 function update_item_percent(data) {
+
+	//d3.selectAll(".x.axis .tick text").remove();
+
 
 	var items = []
 
