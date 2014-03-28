@@ -1,4 +1,4 @@
-.win_loss{
+.win_loss rect{
   stroke: black;
   stroke-width: 2px;
 }
@@ -8,4 +8,9 @@
 
 .loss {
   fill: red;
+}
+
+.text {
+  font-family: Georgia;
+  font-color: black;
 }

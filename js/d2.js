@@ -35,6 +35,10 @@ var d2 = (function() {
         return hero["localized_name"];
     }
 
+    function idToHeroStat(id, heroData) {
+        var hero = heroData[id];
+        return hero["stat"];
+    }
 
     function idToItemName(id, itemData)
     {
@@ -69,6 +73,10 @@ var d2 = (function() {
     return {
         getHeroName: function(id) {
             return idToHeroLocalizedName(id, heroData)
+        },
+
+        getHeroStat: function(id) {
+            return idToHeroStat(id, heroData)
         },
 
         getItemName: function(id) {

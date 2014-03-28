@@ -44,6 +44,11 @@ var win_loss_graph = svg.append("g")
 	.attr("visibility", "hidden")
 	.attr("transform", "translate(" + bb_win_loss.x + "," + bb_win_loss.y + ")");
 
+var hero_pie_graph = svg.append("g")
+	.attr("class", "hero_pie")
+	//.attr("visibility", "hidden")
+	.attr("transform", "translate(" + bb_hero_pie.x + "," + bb_hero_pie.y + ")");
+
 var user_data;
 
 loadData("david");
@@ -86,6 +91,10 @@ function loadData(username) {
 
         update_win_loss(user_data);
 
+        flare_json = create_flare(data);
+
+        hero_pie(flare_json);
+
     })
 }
 
@@ -93,18 +102,44 @@ function loadData(username) {
 function draw_win_loss() {
 
 	win_loss_graph.append("rect")
-				.attr("width", bb_win_loss.w)
-				.attr("height", bb_win_loss.h)
-				.attr("x", 0)
-				.attr("y", 0)
-				.attr("class", "loss");
+			.attr("width", bb_win_loss.w)
+			.attr("height", bb_win_loss.h)
+			.attr("x", 0)
+			.attr("y", 0)
+			.attr("class", "loss")
 
 	win_loss_graph.append("rect")
-				.attr("width", bb_win_loss.w/2)
-				.attr("height", bb_win_loss.h)
-				.attr("x", 0)
-				.attr("y", 0)
-				.attr("class", "win");
+			.attr("width", bb_win_loss.w/2)
+			.attr("height", bb_win_loss.h)
+			.attr("x", 0)
+			.attr("y", 0)
+			.attr("class", "win")
+
+	win_loss_graph
+			.append("text")
+			.attr("x", 5)
+			.attr("y", 20)
+			.attr("class", "win text")
+			.attr("text-anchor", "start")
+			.text("HWELLO!!!")
+			.style("fill", "black");
+
+	win_loss_graph
+			.append("text")
+			.attr("x", 245)
+			.attr("y", 20)
+			.attr("class", "loss text")
+			.attr("text-anchor", "end")
+			.text("HWELLO!!!")
+			.style("fill", "black");
+
+	win_loss_graph.append("text")
+			.attr("transform", "translate(130,-10)")
+			.attr("text-anchor", "middle")
+			.text("Win-Loss Percentage")
+			.style("font-size", "18px")
+			.style("font-weight", null)
+			.attr("class", "text");
 }
 
 function update_win_loss(data) {
@@ -128,10 +163,136 @@ function update_win_loss(data) {
 	d3.select(".win")
 		.transition()
 		.duration(duration)
-		.attr("width", (win_count/total_matches)*bb_win_loss.w);
+		.attr("width", (win_count/total_matches)*bb_win_loss.w)
+		
+	d3.select(".win.text")
+		.text(((win_count/total_matches) * 100).toFixed(1) + "%");
+
+	d3.select(".loss.text")
+		.text(String((total_matches - win_count)/total_matches * 100) + "%");
 
 	d3.select(".win_loss")
 		.attr("visibility", null);
+
+}
+
+function hero_pie(data) {
+
+	console.log(data)
+	var radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
+	var color = d3.scale.category20c();
+
+	var partition = d3.layout.partition()
+    	.value(function(d) { return d.count; });
+
+	var arc = d3.svg.arc()
+	    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+	    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+	    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+	    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+
+	var path = svg.selectAll("path")
+	      	.data(partition.nodes(data))
+	    .enter().append("path")
+		    .attr("d", arc)
+		    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+		    .on("click", click);
+
+	function click(d) {
+	    path.transition()
+	      .duration(750)
+	      .attrTween("d", arcTween(d));
+  	}
+
+
+	d3.select(self.frameElement).style("height", height + "px");
+
+	// Interpolate the scales!
+	function arcTween(d) {
+	  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+	      yd = d3.interpolate(y.domain(), [d.y, 1]),
+	      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+	  return function(d, i) {
+	    return i
+	        ? function(t) { return arc(d); }
+	        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+	  };
+	}
+
+}
+
+function create_flare(data) {
+	
+	hero_flare = {};
+
+	hero_flare.name = "flare"
+	hero_flare.children = [{},{},{}];
+
+	hero_flare.children[0].name = "agility";
+	hero_flare.children[1].name = "strength";
+	hero_flare.children[2].name = "intelligence";
+
+	hero_flare.children[0].children = [];
+	hero_flare.children[1].children = [];
+	hero_flare.children[2].children = [];
+
+	d3.json("../data/heroes.json", function(error,dat) {
+
+		dat.result.heroes.forEach(function(d,i) {
+			d.count = 0;
+
+			if (d.stat == "agility") {
+				hero_flare.children[0].children.push(d)
+			}
+
+			if (d.stat == "strength") {
+				hero_flare.children[1].children.push(d);
+			}
+
+			if (d.stat == "strength") {
+				hero_flare.children[2].children.push(d);
+			}
+
+		})
+
+		data.matches.forEach(function(d,i) {
+
+			current_hero_stat = d2.getHeroStat(d.player_info.hero_id);
+
+			if (current_hero_stat == "agility") {
+				var cur = hero_flare.children[0].children;
+				for (var i=0; i < cur.length; i++) {
+					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
+						cur[i].count += 1;
+					}
+				}
+			}
+
+			if (current_hero_stat == "strength") {
+				var cur = hero_flare.children[1].children;
+				for (var i=0; i < cur.length; i++) {
+					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
+						cur[i].count += 1;
+					}
+				}
+
+			}
+
+			if (current_hero_stat == "intelligence") {
+				var cur = hero_flare.children[2].children;
+				for (var i=0; i < cur.length; i++) {
+					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
+						cur[i].count += 1;
+					}
+				}
+
+			}
+
+		})
+	})
+
+	return hero_flare;
 
 }
 
