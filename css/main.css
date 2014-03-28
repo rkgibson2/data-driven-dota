@@ -25,6 +25,24 @@ path {
   fill: green;
 }
 
+.bar:hover{
+  fill: brown;
+}
+
+
+.axis text {
+      font: 10px sans-serif;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+/*tooltip styles*/
+
 /*these styles come from: https://github.com/Caged/d3-tip*/
 .d3-tip {
   line-height: 1;

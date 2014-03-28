@@ -32,9 +32,9 @@ bb_hero_pie = {
 };
 
 bb_item_percent = {
-    x: 0,
-    y: 100,
-    w: 400,
+    x: 400,
+    y: 0,
+    w: 600,
     h: 300
 };
 
@@ -53,13 +53,14 @@ var win_loss_graph = svg.append("g")
 
 var hero_pie_graph = svg.append("g")
 	.attr("class", "hero_pie")
-	//.attr("visibility", "hidden")
 	.attr("transform", "translate(" + (bb_hero_pie.x + (bb_hero_pie.w / 2)) + "," + (bb_hero_pie.y+(bb_hero_pie.h / 2 + 10)) + ")");;
 
 var item_percent_graph = svg.append("g")
 	.attr("class", "item_percent")
-	//.attr("visibility", "hidden")
+	.attr("visibility", "hidden")
 	.attr("transform", "translate(" + bb_item_percent.x + "," + bb_item_percent.y + ")");;
+
+var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_names;
 
 //tool tip setup
 var tip = d3.tip()
@@ -73,7 +74,7 @@ loadData("david");
 
 draw_win_loss();
 
-//draw_item_percent();
+draw_item_percent();
 
 function loadData(username) {
 	 
@@ -375,57 +376,62 @@ function create_flare(data) {
 
 }
 
+
 function draw_item_percent() {
 
 	var formatPercent = d3.format(".0%");
 
-	var x = d3.scale.ordinal()
-			.rangeRoundBands([0, item_percent_graph.w], .1, 1);
+	item_percent_x = d3.scale.ordinal()
+			.rangeRoundBands([0, bb_item_percent.w], .1 ,1)
+			.domain(["item1"]);
 
-	var y = d3.scale.linear()
-			.range([item_percent_graph.h,0]);
+	item_percent_y = d3.scale.linear()
+			.range([bb_item_percent.h,0])
 
-	var xAxis = d3.svg.axis()
-				.scale(x)
+	item_percent_xAxis = d3.svg.axis()
+				.scale(item_percent_x)
 				.orient("bottom");
 
-	var yAxis = d3.svg.axis()
-			    .scale(y)
+	item_percent_yAxis = d3.svg.axis()
+			    .scale(item_percent_y)
 			    .orient("left")
 			    .tickFormat(formatPercent);
 
 	item_percent_graph.append("g")
 				.attr("class", "x axis")
 				.attr("transform", "translate(0," + bb_item_percent.h + ")")
-				.call(xAxis);
+				.call(item_percent_xAxis);
 
 	item_percent_graph.append("g")
 				.attr("class", "y axis")
-				.call(yAxis);
+				.call(item_percent_yAxis);
 
 	item_percent_graph.append("g")
 				.attr("class", "bars")
-				.selectAll('.bar')
-				.data(data)
+				.selectAll(".bar")
+				.data([{"name": "item1", "percent": .5}], function(d) {
+					return d.name;
+				})
 			  .enter().append("rect")
+			  	.attr("class", "bar")
 			  	.attr("x", function(d) {
-			  		return x(d);
+			  		return item_percent_x(d.name);
 			  	})
 			  	.attr("y", function(d) {
-			  		return y(0.5);
+			  		return item_percent_y(d.percent);
 			  	})
-			  	.attr("height", function() {
-			  		return bb_item_percent.h - y(0.5);
+			  	.attr("height", function(d) {
+			  		return bb_item_percent.h - item_percent_y(d.percent);
 			  	})
 			  	.attr("width", function() {
-			  		return x.rangeBand();
+			  		return item_percent_x.rangeBand();
 			  	})
 }
 
 function update_item_percent(data) {
 
-	var item_names = [];
-	var item_count = []
+	//item_names = [];
+	var items = []
 
 	//initialize all items with a count of 0
 	d3.json("../data/items.json", function(error,dat) {
@@ -433,64 +439,97 @@ function update_item_percent(data) {
 			d.count = 0;
 		})
 
-	var total_count = 0;
+	var total_count = data.matches.length;
 
 	//count all of the items
 	data.matches.forEach(function(d,i) {
 		for (var j = 0; j < dat.items.length; j++) {
 			if (dat.items[j].id == d.player_info.item_0) {
 				dat.items[j].count += 1;
-				total_count += 1;
 			}		
 			if (dat.items[j].id == d.player_info.item_1) {
 				dat.items[j].count += 1;
-				total_count += 1;
 			}		
 			if (dat.items[j].id == d.player_info.item_2) {
 				dat.items[j].count += 1;
-				total_count += 1;
 			}		
 			if (dat.items[j].id == d.player_info.item_3) {
 				dat.items[j].count += 1;
-				total_count += 1;
 			}		
 			if (dat.items[j].id == d.player_info.item_4) {
 				dat.items[j].count += 1;
-				total_count += 1;
 			}		
 			if (dat.items[j].id == d.player_info.item_5) {
 				dat.items[j].count += 1;
-				total_count += 1; 
 			}		
 		}
 	})
 
-	//console.log(dat)
-
 	//consolidate into correct form that we want
 	for (var k = 0; k < dat.items.length; k++) {
-		if (dat.items[k].count != 0) {
-			item_names.push(dat.items[k].name)
-			item_count.push((dat.items[k].count/total_count)*100)
+		if (dat.items[k].count != 0 && dat.items[k].name != "empty") {
+			dat.items[k].percent = dat.items[k].count/total_count
+			items.push(dat.items[k])
 		}
 	}
-	
-	x.domain(item_names);
-	y.domain(d3.extent(item_count));
 
-	item_percent_graph.selectAll(".bar")
-		.data(item_count)
+	if (d3.select(".item_percent").attr("visibility") == "hidden") {
+		var duration = 0;
+	}
+	else {
+		duration = 250;
+	}
+	
+	item_percent_x.domain(items.map(function(d) {
+		return d.name;
+	}));
+	item_percent_y.domain(d3.extent(items, function(d) {
+		return d.percent;
+	}));
+
+	var bars = item_percent_graph.select(".bars")
+				.selectAll(".bar")
+				.data(items, function(d) {
+					return d.name;
+				})
+
+	bars.exit()
 		.transition()
+		.duration(duration)
+		.attr("width", 0)
+		.remove();
+
+	bars.enter()
+		.append("rect")
+		.attr("class", "bar")
+		.transition().duration(duration);
+		
+	bars
+		.transition()
+		.duration(duration)
+		.attr("x", function(d) {
+			return item_percent_x(d.name);
+		})
 		.attr("y", function(d) {
-			return y(d);
+			return item_percent_y(d.percent);
 		})
 		.attr("height", function(d) {
-			return bb_item_percent.h - y(d);
+			return bb_item_percent.h - item_percent_y(d.percent);
 		})
+		.attr("width", item_percent_x.rangeBand);
 
 	item_percent_graph.select(".y.axis")
 		.transition()
-		.call(yAxis);
+		.duration(duration)
+		.call(item_percent_yAxis);
+
+	item_percent_graph.select(".x.axis")
+		.transition()
+		.duration(duration)
+		.call(item_percent_xAxis);
+
+	d3.select(".item_percent")
+		.attr("visibility", null);
 
 })
 
