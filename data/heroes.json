@@ -29,7 +29,7 @@
 				"name": "npc_dota_hero_crystal_maiden",
 				"id": 5,
 				"localized_name": "Crystal Maiden",
-				"stat": "intelligence
+				"stat": "intelligence"
 			},
 			{
 				"name": "npc_dota_hero_drow_ranger",
