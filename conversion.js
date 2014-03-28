@@ -8,7 +8,7 @@ var d2 = (function() {
 
     function loadHeroJson()
     {
-        d3.json("heroes.json", function (error, data)
+        d3.json("data/heroes.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   heroData = data["result"]["heroes"];
@@ -17,7 +17,7 @@ var d2 = (function() {
 
     function loadItemJson()
     {
-        d3.json("items.json", function (error, data)
+        d3.json("data/items.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   itemData = data["items"];
