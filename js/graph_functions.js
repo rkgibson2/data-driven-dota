@@ -1,5 +1,9 @@
 //Angela Fan
 
+//data global
+var user_data;
+
+//margins and bounding boxes for each graph visualization
 var bb_win_loss, bb_hero_pie, bb_item_percent;
 
 var margin = {
@@ -34,6 +38,7 @@ bb_item_percent = {
     h: 300
 };
 
+//set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
 	width: width + margin.left + margin.right,
 	height: height + margin.bottom + margin.top
@@ -51,17 +56,24 @@ var hero_pie_graph = svg.append("g")
 	//.attr("visibility", "hidden")
 	.attr("transform", "translate(" + (bb_hero_pie.x + (bb_hero_pie.w / 2)) + "," + (bb_hero_pie.y+(bb_hero_pie.h / 2 + 10)) + ")");;
 
+var item_percent_graph = svg.append("g")
+	.attr("class", "item_percent")
+	//.attr("visibility", "hidden")
+	.attr("transform", "translate(" + bb_item_percent.x + "," + bb_item_percent.y + ")");;
+
+//tool tip setup
 var tip = d3.tip()
         .attr("class", "d3-tip")
         .offset([0,0]);
 
 svg.call(tip);
 
-var user_data;
-
+//function calls
 loadData("david");
 
 draw_win_loss();
+
+//draw_item_percent();
 
 function loadData(username) {
 	 
@@ -98,6 +110,8 @@ function loadData(username) {
         user_data = data;
 
         update_win_loss(user_data);
+
+        update_item_percent(user_data);
 
         create_flare(data);
 
@@ -194,7 +208,8 @@ function hero_pie(data) {
 	var color = d3.scale.ordinal()
 				.domain(["flare","agility", "strength", "intelligence"])
 				//get them to be the correct dota colors
-				.range(["white","#167c13", "#b9500b", "#257dae"]);
+				.range(["white", "#2BAC00", "#E38800","#1A88FC"])
+				//.range(["white","#167c13", "#b9500b", "#257dae"]);
 
 	var x = d3.scale.linear()
     	.range([0, 2 * Math.PI]);
@@ -248,7 +263,7 @@ function hero_pie(data) {
 		    	}
 
 		    	d3.select(this)
-		    		.style("fill", "#9999FF");
+		    		.style("fill", "#476291");
 		    })
 		    .on("mouseout", function(d) {
 		    	tip.hide(d);
@@ -359,6 +374,128 @@ function create_flare(data) {
 	})
 
 }
+
+function draw_item_percent() {
+
+	var formatPercent = d3.format(".0%");
+
+	var x = d3.scale.ordinal()
+			.rangeRoundBands([0, item_percent_graph.w], .1, 1);
+
+	var y = d3.scale.linear()
+			.range([item_percent_graph.h,0]);
+
+	var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient("bottom");
+
+	var yAxis = d3.svg.axis()
+			    .scale(y)
+			    .orient("left")
+			    .tickFormat(formatPercent);
+
+	item_percent_graph.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + bb_item_percent.h + ")")
+				.call(xAxis);
+
+	item_percent_graph.append("g")
+				.attr("class", "y axis")
+				.call(yAxis);
+
+	item_percent_graph.append("g")
+				.attr("class", "bars")
+				.selectAll('.bar')
+				.data(data)
+			  .enter().append("rect")
+			  	.attr("x", function(d) {
+			  		return x(d);
+			  	})
+			  	.attr("y", function(d) {
+			  		return y(0.5);
+			  	})
+			  	.attr("height", function() {
+			  		return bb_item_percent.h - y(0.5);
+			  	})
+			  	.attr("width", function() {
+			  		return x.rangeBand();
+			  	})
+}
+
+function update_item_percent(data) {
+
+	var item_names = [];
+	var item_count = []
+
+	//initialize all items with a count of 0
+	d3.json("../data/items.json", function(error,dat) {
+		dat.items.forEach(function(d,i) {
+			d.count = 0;
+		})
+
+	var total_count = 0;
+
+	//count all of the items
+	data.matches.forEach(function(d,i) {
+		for (var j = 0; j < dat.items.length; j++) {
+			if (dat.items[j].id == d.player_info.item_0) {
+				dat.items[j].count += 1;
+				total_count += 1;
+			}		
+			if (dat.items[j].id == d.player_info.item_1) {
+				dat.items[j].count += 1;
+				total_count += 1;
+			}		
+			if (dat.items[j].id == d.player_info.item_2) {
+				dat.items[j].count += 1;
+				total_count += 1;
+			}		
+			if (dat.items[j].id == d.player_info.item_3) {
+				dat.items[j].count += 1;
+				total_count += 1;
+			}		
+			if (dat.items[j].id == d.player_info.item_4) {
+				dat.items[j].count += 1;
+				total_count += 1;
+			}		
+			if (dat.items[j].id == d.player_info.item_5) {
+				dat.items[j].count += 1;
+				total_count += 1; 
+			}		
+		}
+	})
+
+	//console.log(dat)
+
+	//consolidate into correct form that we want
+	for (var k = 0; k < dat.items.length; k++) {
+		if (dat.items[k].count != 0) {
+			item_names.push(dat.items[k].name)
+			item_count.push((dat.items[k].count/total_count)*100)
+		}
+	}
+	
+	x.domain(item_names);
+	y.domain(d3.extent(item_count));
+
+	item_percent_graph.selectAll(".bar")
+		.data(item_count)
+		.transition()
+		.attr("y", function(d) {
+			return y(d);
+		})
+		.attr("height", function(d) {
+			return bb_item_percent.h - y(d);
+		})
+
+	item_percent_graph.select(".y.axis")
+		.transition()
+		.call(yAxis);
+
+})
+
+}
+
 
 // svg.append("rect")
 // 	.attr("width", width)
