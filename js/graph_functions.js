@@ -1,3 +1,5 @@
+//Angela Fan
+
 var bb_win_loss, bb_hero_pie, bb_item_percent;
 
 var margin = {
@@ -21,7 +23,7 @@ bb_win_loss = {
 bb_hero_pie = {
     x: 0,
     y: 100,
-    w: 400,
+    w: 300,
     h: 300
 };
 
@@ -47,7 +49,13 @@ var win_loss_graph = svg.append("g")
 var hero_pie_graph = svg.append("g")
 	.attr("class", "hero_pie")
 	//.attr("visibility", "hidden")
-	.attr("transform", "translate(" + bb_hero_pie.x + "," + bb_hero_pie.y + ")");
+	.attr("transform", "translate(" + (bb_hero_pie.x + (bb_hero_pie.w / 2)) + "," + (bb_hero_pie.y+(bb_hero_pie.h / 2 + 10)) + ")");;
+
+var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([0,0]);
+
+svg.call(tip);
 
 var user_data;
 
@@ -91,9 +99,7 @@ function loadData(username) {
 
         update_win_loss(user_data);
 
-        flare_json = create_flare(data);
-
-        hero_pie(flare_json);
+        create_flare(data);
 
     })
 }
@@ -137,10 +143,9 @@ function draw_win_loss() {
 			.attr("transform", "translate(130,-10)")
 			.attr("text-anchor", "middle")
 			.text("Win-Loss Percentage")
-			.style("font-size", "18px")
-			.style("font-weight", null)
-			.attr("class", "text");
+			.style("font-weight", null);
 }
+
 
 function update_win_loss(data) {
 
@@ -176,11 +181,26 @@ function update_win_loss(data) {
 
 }
 
+
+function capitalizeFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function hero_pie(data) {
 
-	console.log(data)
 	var radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
-	var color = d3.scale.category20c();
+
+	var color = d3.scale.ordinal()
+				.domain(["flare","agility", "strength", "intelligence"])
+				//get them to be the correct dota colors
+				.range(["white","#167c13", "#b9500b", "#257dae"]);
+
+	var x = d3.scale.linear()
+    	.range([0, 2 * Math.PI]);
+
+	var y = d3.scale.sqrt()
+	    .range([0, radius]);
 
 	var partition = d3.layout.partition()
     	.value(function(d) { return d.count; });
@@ -191,20 +211,57 @@ function hero_pie(data) {
 	    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
 	    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
-
-	var path = svg.selectAll("path")
+	var path = hero_pie_graph.selectAll("path")
 	      	.data(partition.nodes(data))
 	    .enter().append("path")
 		    .attr("d", arc)
+		    .attr("class", "hero_pie")
 		    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
-		    .on("click", click);
+		    .on("click", click)
+		    .on("mouseover", function(d) {
+		    	var tooltip = true;
+
+		    	var name;
+		    	var number_text;
+
+		    	if (d.value == 1) {
+		    		number_text = " game";
+		    	}
+		    	else {
+		    		number_text = " games"
+		    	}
+
+		    	if ("localized_name" in d) {
+		    		name = d.localized_name;
+		    	}
+		    	else if (d.name == "flare") {
+		    		tooltip = false
+		    	}
+		    	else {
+		    		name = capitalizeFirstLetter(d.name) + " Heroes";
+		    	}
+		    
+		    	tip.html("<strong>"+name +"</strong>"+ "<br>" + d.value + number_text + "</br>");
+
+		    	if (tooltip) {
+		    		tip.show(d);
+		    	}
+
+		    	d3.select(this)
+		    		.style("fill", "#9999FF");
+		    })
+		    .on("mouseout", function(d) {
+		    	tip.hide(d);
+
+		    	d3.select(this)
+		    		.style("fill", function(d) { return color((d.children ? d : d.parent).name); });
+		    });
 
 	function click(d) {
 	    path.transition()
 	      .duration(750)
 	      .attrTween("d", arcTween(d));
   	}
-
 
 	d3.select(self.frameElement).style("height", height + "px");
 
@@ -219,6 +276,11 @@ function hero_pie(data) {
 	        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
 	  };
 	}
+
+	hero_pie_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", -bb_hero_pie.h/2 - 10)
+		.text("Heroes Played")
 
 }
 
@@ -250,13 +312,14 @@ function create_flare(data) {
 				hero_flare.children[1].children.push(d);
 			}
 
-			if (d.stat == "strength") {
+			if (d.stat == "intelligence") {
 				hero_flare.children[2].children.push(d);
 			}
 
 		})
 
 		data.matches.forEach(function(d,i) {
+
 
 			current_hero_stat = d2.getHeroStat(d.player_info.hero_id);
 
@@ -290,9 +353,10 @@ function create_flare(data) {
 			}
 
 		})
-	})
+	
+		hero_pie(hero_flare);
 
-	return hero_flare;
+	})
 
 }
 
