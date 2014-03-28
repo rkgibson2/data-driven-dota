@@ -31,8 +31,13 @@ var d2 = (function() {
     // and the function args - depends on our implementation
     function idToHeroLocalizedName(id, heroData)
     {
-        var hero = heroData[id];
-        return hero["localized_name"];
+        for (var i = 0; i < heroData.length; i++)
+        {
+            if (heroData[i].id == id)
+                return heroData[i].localized_name;
+        }
+        
+        return "No hero with id" + id;
     }
 
 
