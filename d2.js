@@ -42,19 +42,6 @@ var d2 = (function() {
         return item["name"];
     }
 
-    function functionlist()
-    {
-        console.log("loadHeroJson - run at start up - stored in heroData\n"
-        + "loaditemJson - run at start up - stored in itemData\n"
-        +  "idToHeroLocalizedName(id,heroData) - returns normal hero name\n"
-        	+ "idToItemName(id,itemData) - returns normal item name\n"
-        	+ "displayHeroImg(heroname) - heroname must be the same as our named img files\n"
-        	+ "displayItemImg(itemname) - itemname must be the same as our named img files\n"
-        	+ "TRY nested commands like: displayHeroImg(idToHeroLocalizedName(14,heroData))\n"
-        	+ "OR displayItemImg(idToItemName(43,itemData));\n"
-        );
-    }
-
     function displayHeroImg(heroname){
         d3.select("body").select(".heropicture").remove();
 
@@ -94,6 +81,14 @@ var d2 = (function() {
 
         functionList: function() {
             console.log(pubFunctionList)
+        },
+
+        id64To32: function(id) {
+            return id -76561197960265728
+        },
+
+        id32To64: function(id) {
+            return id + 76561197960265728
         }
 
     }
