@@ -1,0 +1,69 @@
+#timeline {
+    margin: 0px 10px 10px 10px;
+    height: 1400px;
+    width: 300px;
+    float: left;
+    background-color: red;
+}
+
+#end_screen {
+    margin: 0px 10px;
+    height: 500px;
+    width: 1000px;
+    float: left;
+}
+
+.header {
+    font-size: 12px;
+}
+
+#winner {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background: lightgray;
+    text-align: center;
+}
+
+#match_data {
+    height: 70px;
+}
+
+#left_col {
+    float: left;
+}
+
+#right_col {
+    float: right;
+    text-align: right;
+}
+
+#players {
+    margin: 10px 0px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5px 0px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td, th {
+    padding: 3px;
+}
+
+th {
+    text-align: left;
+}
+
+#stat_graph {
+    margin: 0px 10px;
+    height: 900px;
+    width: 1060px;
+    float: left;
+    background-color: blue;
+}
