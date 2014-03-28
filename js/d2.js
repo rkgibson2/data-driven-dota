@@ -37,14 +37,25 @@ var d2 = (function() {
                 return heroData[i].localized_name;
         }
         
-        return "No hero with id" + id;
+        throw new Error ("No hero with id " + id)
+    }
+
+    // returns string that is path to hero img
+    function idToHeroPic(id) {
+        var heroname = idToHeroLocalizedName(id, heroData)
+        return "http://localhost:8000/img/heroes/" + heroname.toLowerCase().replace(/ /g,"_") + ".jpg"
     }
 
 
     function idToItemName(id, itemData)
     {
-        var item = itemData[id];
-        return item["name"];
+        for (var i = 0; i < itemData.length; i++)
+        {
+            if (itemData[i].id == id)
+                return itemData[i].localized_name;
+        }
+
+        throw new Error ("No item with id " + id)
     }
 
     function displayHeroImg(heroname){
@@ -74,6 +85,10 @@ var d2 = (function() {
     return {
         getHeroName: function(id) {
             return idToHeroLocalizedName(id, heroData)
+        },
+
+        getHeroPic: function(id) {
+            return idToHeroPic(id)
         },
 
         getItemName: function(id) {
