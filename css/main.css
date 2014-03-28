@@ -1,0 +1,21 @@
+.link {
+    stroke: gray;
+    stroke-width: 1.5px;
+    fill: none;
+  }
+
+  .node {
+    fill: #66CC66;
+    stroke: #000;
+    stroke-width: 1px;
+  }
+
+  .node:hover {
+    fill: red;
+  }
+
+  .overlay {
+    fill: none;
+    pointer-events: all;
+  }
+
