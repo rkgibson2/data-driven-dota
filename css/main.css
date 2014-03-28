@@ -1,21 +1,11 @@
-.link {
-    stroke: gray;
-    stroke-width: 1.5px;
-    fill: none;
-  }
+.win_loss{
+  stroke: black;
+  stroke-width: 2px;
+}
+.win {
+  fill: green;
+}
 
-  .node {
-    fill: #66CC66;
-    stroke: #000;
-    stroke-width: 1px;
-  }
-
-  .node:hover {
-    fill: red;
-  }
-
-  .overlay {
-    fill: none;
-    pointer-events: all;
-  }
-
+.loss {
+  fill: red;
+}

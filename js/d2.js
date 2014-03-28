@@ -1,14 +1,14 @@
-var d2 = (function() {
+//Benjy Levin
+//Robbie Gibson
 
-    // varable to return that holds the accessible functions
-    d2 = {};
+var d2 = (function() {
 
     var heroData = [];
     var itemData = [];
 
     function loadHeroJson()
     {
-        d3.json("data/heroes.json", function (error, data)
+        d3.json("../data/heroes.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   heroData = data["result"]["heroes"];
@@ -17,7 +17,7 @@ var d2 = (function() {
 
     function loadItemJson()
     {
-        d3.json("data/items.json", function (error, data)
+        d3.json("../data/items.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   itemData = data["items"];
@@ -94,3 +94,53 @@ var d2 = (function() {
     }
 
 })();
+
+//Angela Fan, Robbie Gibson
+function load_user_data(username) {
+
+    d3.json("../data/" + username + "_match_details.json", function(error,data) {
+
+        //we want to look at the radiant win variable and indicate if our user won or lost
+        //we want to pull out their player array 
+        data.matches.forEach(function(d,i) {
+            our_player = d.players.filter(function(e) {
+                return (e.account_id == data.id32)
+            })
+            //pull out player array
+            d.player_info = our_player[0];
+
+            //figure out if player was on radiant or dire
+            if (d.player_info.player_slot&128) {
+                d.player_side = "dire";
+            }
+            else {
+                d.player_side = "radiant";
+            }
+
+            //figure out if the player won or lost based on his/her side
+            if (d.player_side == "radiant" && data.radiant_win == true) {
+                d.player_win = true;
+            }
+            else {
+                d.player_win = false;
+            }
+
+        })
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
