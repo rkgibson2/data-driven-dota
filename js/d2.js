@@ -46,6 +46,10 @@ var d2 = (function() {
         return "http://localhost:8000/img/heroes/" + heroname.toLowerCase().replace(/ /g,"_") + ".jpg"
     }
 
+    function idToHeroStat(id, heroData) {
+        var hero = heroData[id];
+        return hero["stat"];
+    }
 
     function idToItemName(id, itemData)
     {
@@ -89,6 +93,10 @@ var d2 = (function() {
 
         getHeroPic: function(id) {
             return idToHeroPic(id)
+        },
+
+        getHeroStat: function(id) {
+            return idToHeroStat(id, heroData)
         },
 
         getItemName: function(id) {

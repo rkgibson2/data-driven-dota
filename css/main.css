@@ -1,4 +1,4 @@
-.win_loss{
+.win_loss rect{
   stroke: black;
   stroke-width: 2px;
 }
@@ -8,4 +8,83 @@
 
 .loss {
   fill: red;
+}
+
+text {
+  font-family: Georgia;
+  color: black;
+  font-size: 18px;
+}
+
+path {
+  stroke: #fff;
+  fill-rule: evenodd;
+}
+
+.path:hover{
+  fill: green;
+}
+
+.bar:hover{
+  fill: brown;
+}
+
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.x.axis text {
+  visibility: hidden;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#value_sort_label {
+  position: absolute;
+  top: 15px;
+  right: 680px;
+}
+
+#item_sort_label{
+  position: absolute;
+  top: 35px;
+  right: 687px;
+}
+
+
+/*tooltip styles*/
+
+/*these styles come from: https://github.com/Caged/d3-tip*/
+.d3-tip {
+  line-height: 1;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  font-style: bold;
+  color: #fff;
+  border-radius: 1px;
+  text-align: center;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+/*content: "\25BC";*/
+margin: -1px 0 0 0;
+top: 100%;
+left: 0;
+text-align: center;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+/*content: "\25B2";*/
+margin: 0 0 1px 0;
+top: -8px;
+left: 0;
+text-align: center;
 }
