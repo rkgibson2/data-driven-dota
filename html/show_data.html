@@ -20,7 +20,7 @@ var data
 /* The Valve API doesn't allow Cross-Origin Resource Requests, so
  * I make a normal ajax request, using cross-domain ajax, which returns
  * an HTML object, which I can then parse */
-d3.json("./data/match_details.json", function(match_data) {
+d3.json("../data/match_details.json", function(match_data) {
 	data = match_data;
   d3.select("h1").text("Data finished loading. Go to the console and type in \"data\".")
 })
