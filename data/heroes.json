@@ -83,7 +83,7 @@
 				"name": "npc_dota_hero_pudge",
 				"id": 14,
 				"localized_name": "Pudge",
-				"stat": "strength
+				"stat": "strength"
 			},
 			{
 				"name": "npc_dota_hero_razor",
