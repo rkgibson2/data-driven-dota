@@ -11,7 +11,7 @@ var d2 = (function() {
         d3.json("../data/heroes.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
-    	   heroData = data["result"]["heroes"];
+    	   heroData = data;
         });
     };
 
@@ -20,35 +20,28 @@ var d2 = (function() {
         d3.json("../data/items.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
-    	   itemData = data["items"];
+    	   itemData = data;
         });
     };
 
     loadHeroJson();
     loadItemJson();
 
-    // can change the function names
-    // and the function args - depends on our implementation
-    function idToHeroLocalizedName(id, heroData)
-    {
-        for (var i = 0; i < heroData.length; i++)
-        {
+
+    // returns hero data for a given id
+    function idToHeroInfo(id) {
+        for (var i = 0; i < heroData.length; i++) {
             if (heroData[i].id == id)
-                return heroData[i].localized_name;
+                return heroData[i];
         }
         
         throw new Error ("No hero with id " + id)
     }
 
-    // returns string that is path to hero img
-    function idToHeroPic(id) {
-        var heroname = idToHeroLocalizedName(id, heroData)
-        return "http://localhost:8000/img/heroes/" + heroname.toLowerCase().replace(/ /g,"_") + ".jpg"
-    }
-
-    function idToHeroStat(id, heroData) {
-        var hero = heroData[id];
-        return hero["stat"];
+    // convenience method for getting name
+    function idToHeroDisplayName(id)
+    {
+        return idToHeroInfo(id).dname;
     }
 
     function idToItemName(id, itemData)
@@ -87,16 +80,20 @@ var d2 = (function() {
                             + "displayItemImg(name): displays the image for item 'name'\n"
 
     return {
+        getHeroData: function() {
+            return heroData
+        },
+
+        getItemData: function() {
+            return itemData
+        },
+
         getHeroName: function(id) {
-            return idToHeroLocalizedName(id, heroData)
+            return idToHeroDisplayName(id)
         },
 
-        getHeroPic: function(id) {
-            return idToHeroPic(id)
-        },
-
-        getHeroStat: function(id) {
-            return idToHeroStat(id, heroData)
+        getHeroInfo: function(id) {
+            return idToHeroInfo(id)
         },
 
         getItemName: function(id) {

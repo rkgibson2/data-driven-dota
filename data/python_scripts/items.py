@@ -1,6 +1,5 @@
 import json
 import requests
-import time
 
 data = requests.get('http://www.dota2.com/jsfeed/itemdata').json()['itemdata']
 
