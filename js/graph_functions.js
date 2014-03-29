@@ -447,7 +447,7 @@ function draw_item_percent() {
 
 	item_percent_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", -20)
+		.attr("y", -40)
 		.attr("x", 350)
 		.text("Items Purchased as Percentage of Games Played");
 
@@ -542,8 +542,13 @@ function update_item_percent(data) {
 			return item_percent_color(d.cost);
 		})
 		.on("mouseover", function(d) {
-			//console.log(d)
-	  		tip.html("<strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Count: " + d.count + "<br> Cost: " + d.cost + "<br>");
+			if (d.dname == "Aegis of the Immortal" || d.dname == "Cheese") {
+				var cost = "Dropped Item";
+			}
+			else {
+				cost = d.cost
+			}
+	  		tip.html("<strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Count: " + d.count + "<br> Cost: " + cost + "<br>");
 	  		tip.show(d);
 	  	})
 	  	.on("mouseout", function(d) {
@@ -637,6 +642,8 @@ function update_item_percent(data) {
 	        .delay(delay);
 	  }
 
+	//sorting by cost
+
 	d3.select("input#cost").on("change", change_cost);
 
 	function change_cost() {
@@ -669,15 +676,14 @@ function update_item_percent(data) {
 	        .delay(delay);
 	  }
 
+	//filtering with the slider
+	
+	
+	//possibly use this jquery code to dynamically update the max value
+	// $('#page').page();
+	// $('#cvote').val(3);
+	// $('#cvote').slider('refresh');
+
 
 }
 
-
-// svg.append("rect")
-// 	.attr("width", width)
-// 	.attr("height", height)
-// 	.attr("x", 0)
-// 	.attr("y", 0)
-// 	.attr("fill", "steelblue");
-
-// console.log("hello");
