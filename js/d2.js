@@ -63,7 +63,15 @@ var d2 = (function() {
     // like d3.json, you need to provide a callback when you call this function.
     // The callback is used in the same way, with paramters error and data.
     function loadUserData(username, callback) {
-        d3.json("/data/" + username.toLowerCase() + "_match_details.json", function(error, data) {
+        username_lower = username.toLowerCase()
+
+        if (username_lower != "robbie" && username_lower != "benjy" && 
+            username_lower != "david" && username_lower != "dendi" && 
+            username_lower != "aui_2000" && username_lower != "merlini") {
+            throw new Error ("No data currently for user " + username)
+        }
+
+        d3.json("/data/" + username_lower + "_match_details.json", function(error, data) {
             // find the player data for our given player and pull it to the top level
             data.matches.forEach(function(d,i) {
                 our_player = d.players.filter(function(e) {
