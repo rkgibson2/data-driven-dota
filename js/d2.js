@@ -44,15 +44,19 @@ var d2 = (function() {
         return idToHeroInfo(id).dname;
     }
 
-    function idToItemName(id, itemData)
-    {
+    function idToItemInfo(id) {
         for (var i = 0; i < itemData.length; i++)
         {
             if (itemData[i].id == id)
-                return itemData[i].localized_name;
+                return itemData[i];
         }
 
         throw new Error ("No item with id " + id)
+    }
+
+    function idToItemName(id)
+    {
+        return idToItemInfo(id).dname;
     }
 
     function displayHeroImg(heroname){
@@ -97,7 +101,11 @@ var d2 = (function() {
         },
 
         getItemName: function(id) {
-            return idToItemName(id, itemData)
+            return idToItemName(id)
+        },
+
+        getItemInfo: function(id) {
+            return idToItemInfo(id)
         },
 
         displayHeroImg: displayHeroImg,
