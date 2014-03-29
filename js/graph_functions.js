@@ -322,7 +322,7 @@ function create_flare(data) {
 
 	d3.json("../data/heroes.json", function(error,dat) {
 
-		dat.result.heroes.forEach(function(d,i) {
+		dat.forEach(function(d,i) {
 			d.count = 0;
 
 			if (d.stat == "agility") {
@@ -341,8 +341,7 @@ function create_flare(data) {
 
 		data.matches.forEach(function(d,i) {
 
-
-			current_hero_stat = d2.getHeroStat(d.player_info.hero_id);
+			current_hero_stat = d2.getHeroInfo(d.player_info.hero_id).stat;
 
 			if (current_hero_stat == "agility") {
 				var cur = hero_flare.children[0].children;
@@ -352,7 +351,7 @@ function create_flare(data) {
 					if (d.player_info.hero_id == 0) {
 						console.log(d)
 					}
-					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
+					if (cur[i].dname == d2.getHeroName(d.player_info.hero_id)) {
 						cur[i].count += 1;
 					}
 				}
@@ -361,7 +360,7 @@ function create_flare(data) {
 			if (current_hero_stat == "strength") {
 				var cur = hero_flare.children[1].children;
 				for (var i=0; i < cur.length; i++) {
-					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
+					if (cur[i].dname == d2.getHeroName(d.player_info.hero_id)) {
 						cur[i].count += 1;
 					}
 				}
@@ -371,7 +370,7 @@ function create_flare(data) {
 			if (current_hero_stat == "intelligence") {
 				var cur = hero_flare.children[2].children;
 				for (var i=0; i < cur.length; i++) {
-					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
+					if (cur[i].dname == d2.getHeroName(d.player_info.hero_id)) {
 						cur[i].count += 1;
 					}
 				}
@@ -677,8 +676,8 @@ function update_item_percent(data) {
 	  }
 
 	//filtering with the slider
-	
-	
+
+
 	//possibly use this jquery code to dynamically update the max value
 	// $('#page').page();
 	// $('#cvote').val(3);
