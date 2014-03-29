@@ -1,12 +1,13 @@
 import json
 import requests
 
-with open('items.json', 'r+') as item_file:
-    item_list = json.load(item_file)
+with open('heroes.json', 'r+') as hero_file:
+    hero_list = json.load(hero_file)
 
-for item in item_list:
-    if item['name'] != 'empty':
-        item['img'] = 'img/items/' + item['name'] + '.jpg'
+for hero in hero_list:
+    if 'img' in hero:
+        hero['img'] = '/' + hero['img']
+        print hero['img']
 
-with open('items.json', 'w') as outfile:
-    json.dump(item_list, outfile, sort_keys=True, indent=4)
+with open('heroes.json', 'w') as outfile:
+    json.dump(hero_list, outfile, indent=4)
