@@ -1,3212 +1,3212 @@
 [
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 22, 
                 "g": "2.80"
             }, 
-            "armor": 2.08, 
             "dmg": {
                 "max": 31, 
                 "min": 27
             }, 
+            "armor": 2.08, 
             "int": {
                 "b": 15, 
                 "g": "1.80"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 20, 
                 "g": "1.20"
             }
         }, 
+        "droles": "Carry - Escape", 
+        "stat": "agility", 
+        "name": "antimage", 
+        "img": "/img/heroes/anti-mage.jpg", 
         "dac": "Melee", 
         "dname": "Anti-Mage", 
-        "droles": "Carry - Escape", 
-        "id": 1, 
-        "img": "img/heroes/anti-mage.jpg", 
-        "name": "antimage", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 1
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 20, 
                 "g": "2.20"
             }, 
-            "armor": 1.8, 
             "dmg": {
                 "max": 28, 
                 "min": 24
             }, 
+            "armor": 1.8, 
             "int": {
                 "b": 18, 
                 "g": "1.60"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 25, 
                 "g": "2.50"
             }
         }, 
+        "droles": "Durable - Initiator - Disabler - Jungler", 
+        "stat": "strength", 
+        "name": "axe", 
+        "img": "/img/heroes/axe.jpg", 
         "dac": "Melee", 
         "dname": "Axe", 
-        "droles": "Durable - Initiator - Disabler - Jungler", 
-        "id": 2, 
-        "img": "img/heroes/axe.jpg", 
-        "name": "axe", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 2
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 22, 
                 "g": "2.10"
             }, 
-            "armor": 4.08, 
             "dmg": {
                 "max": 39, 
                 "min": 33
             }, 
+            "armor": 4.08, 
             "int": {
                 "b": 22, 
                 "g": "2.10"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 22, 
                 "g": "2.10"
             }
         }, 
+        "droles": "Disabler - Nuker - Support", 
+        "stat": "intelligence", 
+        "name": "bane", 
+        "img": "/img/heroes/bane.jpg", 
         "dac": "Ranged", 
         "dname": "Bane", 
-        "droles": "Disabler - Nuker - Support", 
-        "id": 3, 
-        "img": "img/heroes/bane.jpg", 
-        "name": "bane", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 3
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 24, 
                 "g": "3.00"
             }, 
-            "armor": 3.36, 
             "dmg": {
                 "max": 35, 
                 "min": 29
             }, 
+            "armor": 3.36, 
             "int": {
                 "b": 18, 
                 "g": "1.70"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 23, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Carry - Jungler", 
+        "stat": "agility", 
+        "name": "bloodseeker", 
+        "img": "/img/heroes/bloodseeker.jpg", 
         "dac": "Melee", 
         "dname": "Bloodseeker", 
-        "droles": "Carry - Jungler", 
-        "id": 4, 
-        "img": "img/heroes/bloodseeker.jpg", 
-        "name": "bloodseeker", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 4
     }, 
     {
         "attribs": {
+            "ms": 280, 
             "agi": {
                 "b": 16, 
                 "g": "1.60"
             }, 
-            "armor": 1.24, 
             "dmg": {
                 "max": 25, 
                 "min": 19
             }, 
+            "armor": 1.24, 
             "int": {
                 "b": 16, 
                 "g": "2.90"
             }, 
-            "ms": 280, 
             "str": {
                 "b": 16, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Support - Disabler - Nuker - Lane Support", 
+        "stat": "intelligence", 
+        "name": "crystal_maiden", 
+        "img": "/img/heroes/crystal_maiden.jpg", 
         "dac": "Ranged", 
         "dname": "Crystal Maiden", 
-        "droles": "Support - Disabler - Nuker - Lane Support", 
-        "id": 5, 
-        "img": "img/heroes/crystal_maiden.jpg", 
-        "name": "crystal_maiden", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 5
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 26, 
                 "g": "1.90"
             }, 
-            "armor": 0.64, 
             "dmg": {
                 "max": 29, 
                 "min": 18
             }, 
+            "armor": 0.64, 
             "int": {
                 "b": 15, 
                 "g": "1.40"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 17, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Carry", 
+        "name": "drow_ranger", 
+        "img": "/img/heroes/drow_ranger.jpg", 
         "dac": "Ranged", 
         "dname": "Drow Ranger", 
-        "droles": "Carry", 
-        "id": 6, 
-        "img": "img/heroes/drow_ranger.jpg", 
-        "name": "drow_ranger", 
+        "state": "agility", 
         "pa": "agi", 
-        "state": "agility"
+        "id": 6
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 12, 
                 "g": "1.40"
             }, 
-            "armor": 2.68, 
             "dmg": {
                 "max": 34, 
                 "min": 24
             }, 
+            "armor": 2.68, 
             "int": {
                 "b": 16, 
                 "g": "1.80"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 22, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Initiator - Disabler - Support - Lane Support", 
+        "stat": "strength", 
+        "name": "earthshaker", 
+        "img": "/img/heroes/earthshaker.jpg", 
         "dac": "Melee", 
         "dname": "Earthshaker", 
-        "droles": "Initiator - Disabler - Support - Lane Support", 
-        "id": 7, 
-        "img": "img/heroes/earthshaker.jpg", 
-        "name": "earthshaker", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 7
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 20, 
                 "g": "2.85"
             }, 
-            "armor": 3.8, 
             "dmg": {
                 "max": 28, 
                 "min": 24
             }, 
+            "armor": 3.8, 
             "int": {
                 "b": 14, 
                 "g": "1.40"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 20, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Carry - Pusher", 
+        "stat": "agility", 
+        "name": "juggernaut", 
+        "img": "/img/heroes/juggernaut.jpg", 
         "dac": "Melee", 
         "dname": "Juggernaut", 
-        "droles": "Carry - Pusher", 
-        "id": 8, 
-        "img": "img/heroes/juggernaut.jpg", 
-        "name": "juggernaut", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 8
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 20, 
                 "g": "2.75"
             }, 
-            "armor": 1.8, 
             "dmg": {
                 "max": 29, 
                 "min": 18
             }, 
+            "armor": 1.8, 
             "int": {
                 "b": 17, 
                 "g": "1.65"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 17, 
                 "g": "1.85"
             }
         }, 
+        "droles": "Carry - Nuker - Disabler - Escape", 
+        "stat": "agility", 
+        "name": "mirana", 
+        "img": "/img/heroes/mirana.jpg", 
         "dac": "Ranged", 
         "dname": "Mirana", 
-        "droles": "Carry - Nuker - Disabler - Escape", 
-        "id": 9, 
-        "img": "img/heroes/mirana.jpg", 
-        "name": "mirana", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 9
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 20, 
                 "g": "2.90"
             }, 
-            "armor": 1.8, 
             "dmg": {
                 "max": "21\t", 
                 "min": 15
             }, 
+            "armor": 1.8, 
             "int": {
                 "b": 18, 
                 "g": "2.00"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 15, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Carry - Nuker", 
+        "stat": "agility", 
+        "name": "nevermore", 
+        "img": "/img/heroes/shadow_fiend.jpg", 
         "dac": "Ranged", 
         "dname": "Shadow Fiend", 
-        "droles": "Carry - Nuker", 
-        "id": 11, 
-        "img": "img/heroes/shadow_fiend.jpg", 
-        "name": "nevermore", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 11
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 24, 
                 "g": "3.00"
             }, 
-            "armor": 1.36, 
             "dmg": {
                 "max": 22, 
                 "min": 13
             }, 
+            "armor": 1.36, 
             "int": {
                 "b": 17, 
                 "g": "1.50"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 19, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Carry - Escape - Initiator - Nuker", 
+        "stat": "agility", 
+        "name": "morphling", 
+        "img": "/img/heroes/morphling.jpg", 
         "dac": "Ranged", 
         "dname": "Morphling", 
-        "droles": "Carry - Escape - Initiator - Nuker", 
-        "id": 10, 
-        "img": "img/heroes/morphling.jpg", 
-        "name": "morphling", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 10
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 23, 
                 "g": "4.20"
             }, 
-            "armor": 3.22, 
             "dmg": {
                 "max": 44, 
                 "min": 22
             }, 
+            "armor": 3.22, 
             "int": {
                 "b": 21, 
                 "g": "2.00"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 18, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Carry - Escape - Pusher", 
+        "stat": "agility", 
+        "name": "phantom_lancer", 
+        "img": "/img/heroes/phantom_lancer.jpg", 
         "dac": "Melee", 
         "dname": "Phantom Lancer", 
-        "droles": "Carry - Escape - Pusher", 
-        "id": 12, 
-        "img": "img/heroes/phantom_lancer.jpg", 
-        "name": "phantom_lancer", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 12
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 22, 
                 "g": "1.70"
             }, 
-            "armor": 2.08, 
             "dmg": {
                 "max": 33, 
                 "min": 22
             }, 
+            "armor": 2.08, 
             "int": {
                 "b": 25, 
                 "g": "2.40"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 15, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Initiator - Nuker - Disabler - Escape", 
+        "stat": "intelligence", 
+        "name": "puck", 
+        "img": "/img/heroes/puck.jpg", 
         "dac": "Ranged", 
         "dname": "Puck", 
-        "droles": "Initiator - Nuker - Disabler - Escape", 
-        "id": 13, 
-        "img": "img/heroes/puck.jpg", 
-        "name": "puck", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 13
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 14, 
                 "g": "1.50"
             }, 
-            "armor": 0.96, 
             "dmg": {
                 "max": 33, 
                 "min": 27
             }, 
+            "armor": 0.96, 
             "int": {
                 "b": 14, 
                 "g": "1.50"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 25, 
                 "g": "3.20"
             }
         }, 
+        "droles": "Durable - Disabler", 
+        "stat": "strength", 
+        "name": "pudge", 
+        "img": "/img/heroes/pudge.jpg", 
         "dac": "Melee", 
         "dname": "Pudge", 
-        "droles": "Durable - Disabler", 
-        "id": 14, 
-        "img": "img/heroes/pudge.jpg", 
-        "name": "pudge", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 14
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 22, 
                 "g": "2.00"
             }, 
-            "armor": 2.08, 
             "dmg": {
                 "max": 25, 
                 "min": 23
             }, 
+            "armor": 2.08, 
             "int": {
                 "b": 19, 
                 "g": "1.80"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 21, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Carry - Durable - Nuker", 
+        "stat": "agility", 
+        "name": "razor", 
+        "img": "/img/heroes/razor.jpg", 
         "dac": "Ranged", 
         "dname": "Razor", 
-        "droles": "Carry - Durable - Nuker", 
-        "id": 15, 
-        "img": "img/heroes/razor.jpg", 
-        "name": "razor", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 15
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 19, 
                 "g": "2.10"
             }, 
-            "armor": 2.66, 
             "dmg": {
                 "max": 41, 
                 "min": 25
             }, 
+            "armor": 2.66, 
             "int": {
                 "b": 16, 
                 "g": "1.80"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 18, 
                 "g": "2.60"
             }
         }, 
+        "droles": "Initiator - Disabler - Nuker", 
+        "stat": "strength", 
+        "name": "sand_king", 
+        "img": "/img/heroes/sand_king.jpg", 
         "dac": "Melee", 
         "dname": "Sand King", 
-        "droles": "Initiator - Disabler - Nuker", 
-        "id": 16, 
-        "img": "img/heroes/sand_king.jpg", 
-        "name": "sand_king", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 16
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 22, 
                 "g": "1.80"
             }, 
-            "armor": 5.08, 
             "dmg": {
                 "max": 32, 
                 "min": 22
             }, 
+            "armor": 5.08, 
             "int": {
                 "b": 23, 
                 "g": "2.60"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 19, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Carry - Initiator - Escape - Disabler", 
+        "stat": "intelligence", 
+        "name": "storm_spirit", 
+        "img": "/img/heroes/storm_spirit.jpg", 
         "dac": "Ranged", 
         "dname": "Storm Spirit", 
-        "droles": "Carry - Initiator - Escape - Disabler", 
-        "id": 17, 
-        "img": "img/heroes/storm_spirit.jpg", 
-        "name": "storm_spirit", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 17
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 21, 
                 "g": "2.00"
             }, 
-            "armor": 4.94, 
             "dmg": {
                 "max": 33, 
                 "min": 31
             }, 
+            "armor": 4.94, 
             "int": {
                 "b": 14, 
                 "g": "1.30"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 23, 
                 "g": "2.70"
             }
         }, 
+        "droles": "Disabler - Initiator - Carry - Support", 
+        "stat": "strength", 
+        "name": "sven", 
+        "img": "/img/heroes/sven.jpg", 
         "dac": "Melee", 
         "dname": "Sven", 
-        "droles": "Disabler - Initiator - Carry - Support", 
-        "id": 18, 
-        "img": "img/heroes/sven.jpg", 
-        "name": "sven", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 18
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 9, 
                 "g": "0.90"
             }, 
-            "armor": 0.26, 
             "dmg": {
                 "max": 43, 
                 "min": 37
             }, 
+            "armor": 0.26, 
             "int": {
                 "b": 14, 
                 "g": "1.60"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 24, 
                 "g": "3.00"
             }
         }, 
+        "droles": "Disabler - Nuker - Initiator - Durable", 
+        "stat": "strength", 
+        "name": "tiny", 
+        "img": "/img/heroes/tiny.jpg", 
         "dac": "Melee", 
         "dname": "Tiny", 
-        "droles": "Disabler - Nuker - Initiator - Durable", 
-        "id": 19, 
-        "img": "img/heroes/tiny.jpg", 
-        "name": "tiny", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 19
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 27, 
                 "g": "2.80"
             }, 
-            "armor": 3.78, 
             "dmg": {
                 "max": 26, 
                 "min": 12
             }, 
+            "armor": 3.78, 
             "int": {
                 "b": 15, 
                 "g": "1.75"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 18, 
                 "g": "2.60"
             }
         }, 
+        "droles": "Support - Disabler - Lane Support - Initiator", 
+        "stat": "agility", 
+        "name": "vengefulspirit", 
+        "img": "/img/heroes/vengeful_spirit.jpg", 
         "dac": "Ranged", 
         "dname": "Vengeful Spirit", 
-        "droles": "Support - Disabler - Lane Support - Initiator", 
-        "id": 20, 
-        "img": "img/heroes/vengeful_spirit.jpg", 
-        "name": "vengefulspirit", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 20
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 17, 
                 "g": "1.40"
             }, 
-            "armor": 1.38, 
             "dmg": {
                 "max": 34, 
                 "min": 22
             }, 
+            "armor": 1.38, 
             "int": {
                 "b": 22, 
                 "g": "2.60"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 15, 
                 "g": "2.50"
             }
         }, 
+        "droles": "Disabler - Nuker - Support - Escape", 
+        "stat": "intelligence", 
+        "name": "windrunner", 
+        "img": "/img/heroes/windranger.jpg", 
         "dac": "Ranged", 
         "dname": "Windranger", 
-        "droles": "Disabler - Nuker - Support - Escape", 
-        "id": 21, 
-        "img": "img/heroes/windranger.jpg", 
-        "name": "windrunner", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 21
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 11, 
                 "g": "1.20"
             }, 
-            "armor": 1.54, 
             "dmg": {
                 "max": 29, 
                 "min": 21
             }, 
+            "armor": 1.54, 
             "int": {
                 "b": 20, 
                 "g": "2.70"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 19, 
                 "g": "2.30"
             }
         }, 
+        "droles": "Nuker - Support", 
+        "stat": "intelligence", 
+        "name": "zuus", 
+        "img": "/img/heroes/zeus.jpg", 
         "dac": "Ranged", 
         "dname": "Zeus", 
-        "droles": "Nuker - Support", 
-        "id": 22, 
-        "img": "img/heroes/zeus.jpg", 
-        "name": "zuus", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 22
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 14, 
                 "g": "1.30"
             }, 
-            "armor": 1.96, 
             "dmg": {
                 "max": 36, 
                 "min": 26
             }, 
+            "armor": 1.96, 
             "int": {
                 "b": 18, 
                 "g": "1.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 24, 
                 "g": "3.00"
             }
         }, 
+        "droles": "Disabler - Initiator - Carry - Durable", 
+        "stat": "strength", 
+        "name": "kunkka", 
+        "img": "/img/heroes/kunkka.jpg", 
         "dac": "Melee", 
         "dname": "Kunkka", 
-        "droles": "Disabler - Initiator - Carry - Durable", 
-        "id": 23, 
-        "img": "img/heroes/kunkka.jpg", 
-        "name": "kunkka", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 23
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 16, 
                 "g": "1.50"
             }, 
-            "armor": 1.24, 
             "dmg": {
                 "max": 31, 
                 "min": 13
             }, 
+            "armor": 1.24, 
             "int": {
                 "b": 27, 
                 "g": "3.20"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 18, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Nuker - Disabler - Support", 
+        "stat": "intelligence", 
+        "name": "lina", 
+        "img": "/img/heroes/lina.jpg", 
         "dac": "Ranged", 
         "dname": "Lina", 
-        "droles": "Nuker - Disabler - Support", 
-        "id": 25, 
-        "img": "img/heroes/lina.jpg", 
-        "name": "lina", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 25
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 15, 
                 "g": "2.00"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 33, 
                 "min": 24
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 18, 
                 "g": "3.25"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 18, 
                 "g": "1.55"
             }
         }, 
+        "droles": "Support - Lane Support - Nuker", 
+        "stat": "intelligence", 
+        "name": "lich", 
+        "img": "/img/heroes/lich.jpg", 
         "dac": "Ranged", 
         "dname": "Lich", 
-        "droles": "Support - Lane Support - Nuker", 
-        "id": 31, 
-        "img": "img/heroes/lich.jpg", 
-        "name": "lich", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 31
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 15, 
                 "g": "1.50"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 26, 
                 "min": 20
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 22, 
                 "g": "3.00"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 16, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Disabler - Nuker - Lane Support - Support", 
+        "stat": "intelligence", 
+        "name": "lion", 
+        "img": "/img/heroes/lion.jpg", 
         "dac": "Ranged", 
         "dname": "Lion", 
-        "droles": "Disabler - Nuker - Lane Support - Support", 
-        "id": 26, 
-        "img": "img/heroes/lion.jpg", 
-        "name": "lion", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 26
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 16, 
                 "g": "1.60"
             }, 
-            "armor": 1.24, 
             "dmg": {
                 "max": 33, 
                 "min": 26
             }, 
+            "armor": 1.24, 
             "int": {
                 "b": 21, 
                 "g": "3.00"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 19, 
                 "g": "1.60"
             }
         }, 
+        "droles": "Pusher - Disabler - Nuker - Support", 
+        "stat": "intelligence", 
+        "name": "shadow_shaman", 
+        "img": "/img/heroes/shadow_shaman.jpg", 
         "dac": "Ranged", 
         "dname": "Shadow Shaman", 
-        "droles": "Pusher - Disabler - Nuker - Support", 
-        "id": 27, 
-        "img": "img/heroes/shadow_shaman.jpg", 
-        "name": "shadow_shaman", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 27
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 17, 
                 "g": "2.40"
             }, 
-            "armor": 5.38, 
             "dmg": {
                 "max": 38, 
                 "min": 30
             }, 
+            "armor": 5.38, 
             "int": {
                 "b": 15, 
                 "g": "1.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 21, 
                 "g": "2.80"
             }
         }, 
+        "droles": "Carry - Durable - Disabler - Initiator", 
+        "stat": "strength", 
+        "name": "slardar", 
+        "img": "/img/heroes/slardar.jpg", 
         "dac": "Melee", 
         "dname": "Slardar", 
-        "droles": "Carry - Durable - Disabler - Initiator", 
-        "id": 28, 
-        "img": "img/heroes/slardar.jpg", 
-        "name": "slardar", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 28
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 15, 
                 "g": "1.50"
             }, 
-            "armor": 3.1, 
             "dmg": {
                 "max": 31, 
                 "min": 25
             }, 
+            "armor": 3.1, 
             "int": {
                 "b": 16, 
                 "g": "1.70"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 22, 
                 "g": "3.00"
             }
         }, 
+        "droles": "Initiator - Durable - Disabler - Support", 
+        "stat": "strength", 
+        "name": "tidehunter", 
+        "img": "/img/heroes/tidehunter.jpg", 
         "dac": "Melee", 
         "dname": "Tidehunter", 
-        "droles": "Initiator - Durable - Disabler - Support", 
-        "id": 29, 
-        "img": "img/heroes/tidehunter.jpg", 
-        "name": "tidehunter", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 29
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 13, 
                 "g": "1.40"
             }, 
-            "armor": 0.82, 
             "dmg": {
                 "max": 37, 
                 "min": 27
             }, 
+            "armor": 0.82, 
             "int": {
                 "b": 24, 
                 "g": "2.90"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 16, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Support - Disabler", 
+        "stat": "intelligence", 
+        "name": "witch_doctor", 
+        "img": "/img/heroes/witch_doctor.jpg", 
         "dac": "Ranged", 
         "dname": "Witch Doctor", 
-        "droles": "Support - Disabler", 
-        "id": 30, 
-        "img": "img/heroes/witch_doctor.jpg", 
-        "name": "witch_doctor", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 30
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 34, 
                 "g": "2.90"
             }, 
-            "armor": 5.76, 
             "dmg": {
                 "max": 18, 
                 "min": 14
             }, 
+            "armor": 5.76, 
             "int": {
                 "b": 14, 
                 "g": "1.30"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 17, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Carry - Escape", 
+        "stat": "agility", 
+        "name": "riki", 
+        "img": "/img/heroes/riki.jpg", 
         "dac": "Melee", 
         "dname": "Riki", 
-        "droles": "Carry - Escape", 
-        "id": 32, 
-        "img": "img/heroes/riki.jpg", 
-        "name": "riki", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 32
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 14, 
                 "g": "1.00"
             }, 
-            "armor": 3.96, 
             "dmg": {
                 "max": 28, 
                 "min": 22
             }, 
+            "armor": 3.96, 
             "int": {
                 "b": 20, 
                 "g": "3.40"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 17, 
                 "g": "2.10"
             }
         }, 
+        "droles": "Disabler - Initiator - Jungler - Pusher", 
+        "stat": "intelligence", 
+        "name": "enigma", 
+        "img": "/img/heroes/enigma.jpg", 
         "dac": "Ranged", 
         "dname": "Enigma", 
-        "droles": "Disabler - Initiator - Jungler - Pusher", 
-        "id": 33, 
-        "img": "img/heroes/enigma.jpg", 
-        "name": "enigma", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 33
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 13, 
                 "g": "1.20"
             }, 
-            "armor": 3.82, 
             "dmg": {
                 "max": 28, 
                 "min": 22
             }, 
+            "armor": 3.82, 
             "int": {
                 "b": 27, 
                 "g": "2.20"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 17, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Nuker - Pusher", 
+        "stat": "intelligence", 
+        "name": "tinker", 
+        "img": "/img/heroes/tinker.jpg", 
         "dac": "Ranged", 
         "dname": "Tinker", 
-        "droles": "Nuker - Pusher", 
-        "id": 34, 
-        "img": "img/heroes/tinker.jpg", 
-        "name": "tinker", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 34
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 21, 
                 "g": "2.90"
             }, 
-            "armor": 1.94, 
             "dmg": {
                 "max": 21, 
                 "min": 15
             }, 
+            "armor": 1.94, 
             "int": {
                 "b": 15, 
                 "g": "2.60"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 16, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Carry", 
+        "stat": "agility", 
+        "name": "sniper", 
+        "img": "/img/heroes/sniper.jpg", 
         "dac": "Ranged", 
         "dname": "Sniper", 
-        "droles": "Carry", 
-        "id": 35, 
-        "img": "img/heroes/sniper.jpg", 
-        "name": "sniper", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 35
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 15, 
                 "g": "1.70"
             }, 
-            "armor": 2.1, 
             "dmg": {
                 "max": 26, 
                 "min": 22
             }, 
+            "armor": 2.1, 
             "int": {
                 "b": 22, 
                 "g": "2.50"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 16, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Support - Durable - Carry", 
+        "stat": "intelligence", 
+        "name": "necrolyte", 
+        "img": "/img/heroes/necrophos.jpg", 
         "dac": "Ranged", 
         "dname": "Necrophos", 
-        "droles": "Support - Durable - Carry", 
-        "id": 36, 
-        "img": "img/heroes/necrophos.jpg", 
-        "name": "necrolyte", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 36
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 10, 
                 "g": "1.00"
             }, 
-            "armor": 2.4, 
             "dmg": {
                 "max": 32, 
                 "min": 22
             }, 
+            "armor": 2.4, 
             "int": {
                 "b": 24, 
                 "g": "2.70"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 18, 
                 "g": "2.50"
             }
         }, 
+        "droles": "Initiator - Support - Lane Support - Disabler", 
+        "stat": "intelligence", 
+        "name": "warlock", 
+        "img": "/img/heroes/warlock.jpg", 
         "dac": "Ranged", 
         "dname": "Warlock", 
-        "droles": "Initiator - Support - Lane Support - Disabler", 
-        "id": 37, 
-        "img": "img/heroes/warlock.jpg", 
-        "name": "warlock", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 37
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 18, 
                 "g": "1.60"
             }, 
-            "armor": 4.52, 
             "dmg": {
                 "max": 37, 
                 "min": 33
             }, 
+            "armor": 4.52, 
             "int": {
                 "b": 16, 
                 "g": "1.90"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 23, 
                 "g": "2.20"
             }
         }, 
+        "droles": "Initiator - Disabler - Durable", 
+        "stat": "strength", 
+        "name": "beastmaster", 
+        "img": "/img/heroes/beastmaster.jpg", 
         "dac": "Melee", 
         "dname": "Beastmaster", 
-        "droles": "Initiator - Disabler - Durable", 
-        "id": 38, 
-        "img": "img/heroes/beastmaster.jpg", 
-        "name": "beastmaster", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 38
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 18, 
                 "g": "2.00"
             }, 
-            "armor": 1.52, 
             "dmg": {
                 "max": 33, 
                 "min": 25
             }, 
+            "armor": 1.52, 
             "int": {
                 "b": 24, 
                 "g": "2.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 16, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Nuker - Escape - Carry", 
+        "stat": "intelligence", 
+        "name": "queenofpain", 
+        "img": "/img/heroes/queen_of_pain.jpg", 
         "dac": "Ranged", 
         "dname": "Queen of Pain", 
-        "droles": "Nuker - Escape - Carry", 
-        "id": 39, 
-        "img": "img/heroes/queen_of_pain.jpg", 
-        "name": "queenofpain", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 39
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 22, 
                 "g": "2.60"
             }, 
-            "armor": 3.08, 
             "dmg": {
                 "max": 21, 
                 "min": 19
             }, 
+            "armor": 3.08, 
             "int": {
                 "b": 15, 
                 "g": "1.75"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 18, 
                 "g": "1.85"
             }
         }, 
+        "droles": "Support - Nuker - Initiator - Pusher", 
+        "stat": "agility", 
+        "name": "venomancer", 
+        "img": "/img/heroes/venomancer.jpg", 
         "dac": "Ranged", 
         "dname": "Venomancer", 
-        "droles": "Support - Nuker - Initiator - Pusher", 
-        "id": 40, 
-        "img": "img/heroes/venomancer.jpg", 
-        "name": "venomancer", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 40
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 21, 
                 "g": "2.65"
             }, 
-            "armor": 3.94, 
             "dmg": {
                 "max": 43, 
                 "min": 37
             }, 
+            "armor": 3.94, 
             "int": {
                 "b": 15, 
                 "g": "1.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 23, 
                 "g": "1.60"
             }
         }, 
+        "droles": "Carry - Initiator - Disabler - Escape", 
+        "stat": "agility", 
+        "name": "faceless_void", 
+        "img": "/img/heroes/faceless_void.jpg", 
         "dac": "Melee", 
         "dname": "Faceless Void", 
-        "droles": "Carry - Initiator - Disabler - Escape", 
-        "id": 41, 
-        "img": "img/heroes/faceless_void.jpg", 
-        "name": "faceless_void", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 41
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 18, 
                 "g": "1.70"
             }, 
-            "armor": 3.52, 
             "dmg": {
                 "max": 34, 
                 "min": 32
             }, 
+            "armor": 3.52, 
             "int": {
                 "b": 18, 
                 "g": "1.60"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 22, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Durable - Carry - Disabler", 
+        "stat": "strength", 
+        "name": "skeleton_king", 
+        "img": "/img/heroes/wraith_king.jpg", 
         "dac": "Melee", 
         "dname": "Wraith King", 
-        "droles": "Durable - Carry - Disabler", 
-        "id": 42, 
-        "img": "img/heroes/wraith_king.jpg", 
-        "name": "skeleton_king", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 42
     }, 
     {
         "attribs": {
+            "ms": 280, 
             "agi": {
                 "b": 14, 
                 "g": "1.40"
             }, 
-            "armor": 2.96, 
             "dmg": {
                 "max": 36, 
                 "min": 24
             }, 
+            "armor": 2.96, 
             "int": {
                 "b": 20, 
                 "g": "3.00"
             }, 
-            "ms": 280, 
             "str": {
                 "b": 19, 
                 "g": "2.20"
             }
         }, 
+        "droles": "Pusher - Nuker - Durable", 
+        "stat": "intelligence", 
+        "name": "death_prophet", 
+        "img": "/img/heroes/death_prophet.jpg", 
         "dac": "Ranged", 
         "dname": "Death Prophet", 
-        "droles": "Pusher - Nuker - Durable", 
-        "id": 43, 
-        "img": "img/heroes/death_prophet.jpg", 
-        "name": "death_prophet", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 43
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 23, 
                 "g": "3.15"
             }, 
-            "armor": 4.22, 
             "dmg": {
                 "max": 25, 
                 "min": 23
             }, 
+            "armor": 4.22, 
             "int": {
                 "b": 13, 
                 "g": "1.00"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 20, 
                 "g": "1.85"
             }
         }, 
+        "droles": "Carry - Escape", 
+        "stat": "agility", 
+        "name": "phantom_assassin", 
+        "img": "/img/heroes/phantom_assassin.jpg", 
         "dac": "Melee", 
         "dname": "Phantom Assassin", 
-        "droles": "Carry - Escape", 
-        "id": 44, 
-        "img": "img/heroes/phantom_assassin.jpg", 
-        "name": "phantom_assassin", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 44
     }, 
     {
         "attribs": {
+            "ms": 320, 
             "agi": {
                 "b": 16, 
                 "g": "1.00"
             }, 
-            "armor": 1.24, 
             "dmg": {
                 "max": 27, 
                 "min": 19
             }, 
+            "armor": 1.24, 
             "int": {
                 "b": 26, 
                 "g": "4.00"
             }, 
-            "ms": 320, 
             "str": {
                 "b": 17, 
                 "g": "1.20"
             }
         }, 
+        "droles": "Nuker - Pusher - Support", 
+        "stat": "intelligence", 
+        "name": "pugna", 
+        "img": "/img/heroes/pugna.jpg", 
         "dac": "Ranged", 
         "dname": "Pugna", 
-        "droles": "Nuker - Pusher - Support", 
-        "id": 45, 
-        "img": "img/heroes/pugna.jpg", 
-        "name": "pugna", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 45
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 23, 
                 "g": "2.70"
             }, 
-            "armor": 4.22, 
             "dmg": {
                 "max": 36, 
                 "min": 30
             }, 
+            "armor": 4.22, 
             "int": {
                 "b": 20, 
                 "g": "2.00"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 18, 
                 "g": "2.10"
             }
         }, 
+        "droles": "Carry - Escape", 
+        "stat": "agility", 
+        "name": "templar_assassin", 
+        "img": "/img/heroes/templar_assassin.jpg", 
         "dac": "Ranged", 
         "dname": "Templar Assassin", 
-        "droles": "Carry - Escape", 
-        "id": 46, 
-        "img": "img/heroes/templar_assassin.jpg", 
-        "name": "templar_assassin", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 46
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 21, 
                 "g": "2.50"
             }, 
-            "armor": 1.94, 
             "dmg": {
                 "max": 25, 
                 "min": 23
             }, 
+            "armor": 1.94, 
             "int": {
                 "b": 15, 
                 "g": "1.80"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 20, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Carry - Durable", 
+        "stat": "agility", 
+        "name": "viper", 
+        "img": "/img/heroes/viper.jpg", 
         "dac": "Ranged", 
         "dname": "Viper", 
-        "droles": "Carry - Durable", 
-        "id": 47, 
-        "img": "img/heroes/viper.jpg", 
-        "name": "viper", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 47
     }, 
     {
         "attribs": {
+            "ms": 330, 
             "agi": {
                 "b": 22, 
                 "g": "2.80"
             }, 
-            "armor": 3.08, 
             "dmg": {
                 "max": 32, 
                 "min": 26
             }, 
+            "armor": 3.08, 
             "int": {
                 "b": 16, 
                 "g": "1.85"
             }, 
-            "ms": 330, 
             "str": {
                 "b": 15, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Carry - Nuker", 
+        "stat": "agility", 
+        "name": "luna", 
+        "img": "/img/heroes/luna.jpg", 
         "dac": "Ranged", 
         "dname": "Luna", 
-        "droles": "Carry - Nuker", 
-        "id": 48, 
-        "img": "img/heroes/luna.jpg", 
-        "name": "luna", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 48
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 19, 
                 "g": "2.20"
             }, 
-            "armor": 3.66, 
             "dmg": {
                 "max": 33, 
                 "min": 27
             }, 
+            "armor": 3.66, 
             "int": {
                 "b": 15, 
                 "g": "1.70"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 19, 
                 "g": "2.80"
             }
         }, 
+        "droles": "Carry - Durable - Disabler - Pusher", 
+        "stat": "strength", 
+        "name": "dragon_knight", 
+        "img": "/img/heroes/dragon_knight.jpg", 
         "dac": "Melee", 
         "dname": "Dragon Knight", 
-        "droles": "Carry - Durable - Disabler - Pusher", 
-        "id": 49, 
-        "img": "img/heroes/dragon_knight.jpg", 
-        "name": "dragon_knight", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 49
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 21, 
                 "g": "1.70"
             }, 
-            "armor": 1.94, 
             "dmg": {
                 "max": 32, 
                 "min": 14
             }, 
+            "armor": 1.94, 
             "int": {
                 "b": 27, 
                 "g": "3.40"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 16, 
                 "g": "1.85"
             }
         }, 
+        "droles": "Support - Lane Support", 
+        "stat": "intelligence", 
+        "name": "dazzle", 
+        "img": "/img/heroes/dazzle.jpg", 
         "dac": "Ranged", 
         "dname": "Dazzle", 
-        "droles": "Support - Lane Support", 
-        "id": 50, 
-        "img": "img/heroes/dazzle.jpg", 
-        "name": "dazzle", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 50
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 13, 
                 "g": "2.30"
             }, 
-            "armor": 1.82, 
             "dmg": {
                 "max": 33, 
                 "min": 31
             }, 
+            "armor": 1.82, 
             "int": {
                 "b": 17, 
                 "g": "1.30"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 24, 
                 "g": "2.70"
             }
         }, 
+        "droles": "Initiator - Durable", 
+        "stat": "strength", 
+        "name": "rattletrap", 
+        "img": "/img/heroes/clockwerk.jpg", 
         "dac": "Melee", 
         "dname": "Clockwerk", 
-        "droles": "Initiator - Durable", 
-        "id": 51, 
-        "img": "img/heroes/clockwerk.jpg", 
-        "name": "rattletrap", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 51
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 23, 
                 "g": "1.70"
             }, 
-            "armor": 3.22, 
             "dmg": {
                 "max": 23, 
                 "min": 19
             }, 
+            "armor": 3.22, 
             "int": {
                 "b": 26, 
                 "g": "3.00"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 16, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Nuker - Pusher - Disabler - Support", 
+        "stat": "intelligence", 
+        "name": "leshrac", 
+        "img": "/img/heroes/leshrac.jpg", 
         "dac": "Ranged", 
         "dname": "Leshrac", 
-        "droles": "Nuker - Pusher - Disabler - Support", 
-        "id": 52, 
-        "img": "img/heroes/leshrac.jpg", 
-        "name": "leshrac", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 52
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 18, 
                 "g": "1.90"
             }, 
-            "armor": 3.52, 
             "dmg": {
                 "max": 38, 
                 "min": 24
             }, 
+            "armor": 3.52, 
             "int": {
                 "b": 21, 
                 "g": "2.90"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 19, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Jungler - Pusher - Carry - Escape", 
+        "stat": "intelligence", 
+        "name": "furion", 
+        "img": "/img/heroes/nature's_prophet.jpg", 
         "dac": "Ranged", 
         "dname": "Nature's Prophet", 
-        "droles": "Jungler - Pusher - Carry - Escape", 
-        "id": 53, 
-        "img": "img/heroes/nature's_prophet.jpg", 
-        "name": "furion", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 53
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 18, 
                 "g": "1.90"
             }, 
-            "armor": 1.52, 
             "dmg": {
                 "max": 42, 
                 "min": 32
             }, 
+            "armor": 1.52, 
             "int": {
                 "b": 15, 
                 "g": "1.75"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 25, 
                 "g": "2.40"
             }
         }, 
+        "droles": "Carry - Durable - Jungler - Escape", 
+        "stat": "strength", 
+        "name": "life_stealer", 
+        "img": "/img/heroes/lifestealer.jpg", 
         "dac": "Melee", 
         "dname": "Lifestealer", 
-        "droles": "Carry - Durable - Jungler - Escape", 
-        "id": 54, 
-        "img": "img/heroes/lifestealer.jpg", 
-        "name": "life_stealer", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 54
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 12, 
                 "g": "1.20"
             }, 
-            "armor": 5.68, 
             "dmg": {
                 "max": 37, 
                 "min": 31
             }, 
+            "armor": 5.68, 
             "int": {
                 "b": 29, 
                 "g": "2.70"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 22, 
                 "g": "2.30"
             }
         }, 
+        "droles": "Initiator - Nuker - Escape", 
+        "stat": "intelligence", 
+        "name": "dark_seer", 
+        "img": "/img/heroes/dark_seer.jpg", 
         "dac": "Melee", 
         "dname": "Dark Seer", 
-        "droles": "Initiator - Nuker - Escape", 
-        "id": 55, 
-        "img": "img/heroes/dark_seer.jpg", 
-        "name": "dark_seer", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 55
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 22, 
                 "g": "3.00"
             }, 
-            "armor": 2.08, 
             "dmg": {
                 "max": 21, 
                 "min": 15
             }, 
+            "armor": 2.08, 
             "int": {
                 "b": 16, 
                 "g": "1.55"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 15, 
                 "g": "1.60"
             }
         }, 
+        "droles": "Carry - Escape", 
+        "stat": "agility", 
+        "name": "clinkz", 
+        "img": "/img/heroes/clinkz.jpg", 
         "dac": "Ranged", 
         "dname": "Clinkz", 
-        "droles": "Carry - Escape", 
-        "id": 56, 
-        "img": "img/heroes/clinkz.jpg", 
-        "name": "clinkz", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 56
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 15, 
                 "g": "1.75"
             }, 
-            "armor": 4.1, 
             "dmg": {
                 "max": 41, 
                 "min": 31
             }, 
+            "armor": 4.1, 
             "int": {
                 "b": 17, 
                 "g": "1.80"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 20, 
                 "g": "2.65"
             }
         }, 
+        "droles": "Durable - Lane Support - Support", 
+        "stat": "strength", 
+        "name": "omniknight", 
+        "img": "/img/heroes/omniknight.jpg", 
         "dac": "Melee", 
         "dname": "Omniknight", 
-        "droles": "Durable - Lane Support - Support", 
-        "id": 57, 
-        "img": "img/heroes/omniknight.jpg", 
-        "name": "omniknight", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 57
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 19, 
                 "g": "1.80"
             }, 
-            "armor": 0.66, 
             "dmg": {
                 "max": 41, 
                 "min": 31
             }, 
+            "armor": 0.66, 
             "int": {
                 "b": 16, 
                 "g": "2.80"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 16, 
                 "g": "1.00"
             }
         }, 
+        "droles": "Support - Pusher - Durable - Jungler", 
+        "stat": "intelligence", 
+        "name": "enchantress", 
+        "img": "/img/heroes/enchantress.jpg", 
         "dac": "Ranged", 
         "dname": "Enchantress", 
-        "droles": "Support - Pusher - Durable - Jungler", 
-        "id": 58, 
-        "img": "img/heroes/enchantress.jpg", 
-        "name": "enchantress", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 58
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 15, 
                 "g": "1.40"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 30, 
                 "min": 21
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 18, 
                 "g": "1.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 21, 
                 "g": "2.40"
             }
         }, 
+        "droles": "Carry - Initiator - Durable", 
+        "stat": "strength", 
+        "name": "huskar", 
+        "img": "/img/heroes/huskar.jpg", 
         "dac": "Ranged", 
         "dname": "Huskar", 
-        "droles": "Carry - Initiator - Durable", 
-        "id": 59, 
-        "img": "img/heroes/huskar.jpg", 
-        "name": "huskar", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 59
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 18, 
                 "g": "2.25"
             }, 
-            "armor": 5.52, 
             "dmg": {
                 "max": 38, 
                 "min": 34
             }, 
+            "armor": 5.52, 
             "int": {
                 "b": 16, 
                 "g": "1.60"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 23, 
                 "g": "2.80"
             }
         }, 
+        "droles": "Durable - Initiator", 
+        "stat": "strength", 
+        "name": "night_stalker", 
+        "img": "/img/heroes/night_stalker.jpg", 
         "dac": "Melee", 
         "dname": "Night Stalker", 
-        "droles": "Durable - Initiator", 
-        "id": 60, 
-        "img": "img/heroes/night_stalker.jpg", 
-        "name": "night_stalker", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 60
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 18, 
                 "g": "2.20"
             }, 
-            "armor": 2.52, 
             "dmg": {
                 "max": 32, 
                 "min": 26
             }, 
+            "armor": 2.52, 
             "int": {
                 "b": 18, 
                 "g": "2.00"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 17, 
                 "g": "2.50"
             }
         }, 
+        "droles": "Pusher - Carry - Escape", 
+        "stat": "agility", 
+        "name": "broodmother", 
+        "img": "/img/heroes/broodmother.jpg", 
         "dac": "Melee", 
         "dname": "Broodmother", 
-        "droles": "Pusher - Carry - Escape", 
-        "id": 61, 
-        "img": "img/heroes/broodmother.jpg", 
-        "name": "broodmother", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 61
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 21, 
                 "g": "3.00"
             }, 
-            "armor": 5.94, 
             "dmg": {
                 "max": 38, 
                 "min": 24
             }, 
+            "armor": 5.94, 
             "int": {
                 "b": 19, 
                 "g": "1.40"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 17, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Carry - Escape - Nuker", 
+        "stat": "agility", 
+        "name": "bounty_hunter", 
+        "img": "/img/heroes/bounty_hunter.jpg", 
         "dac": "Melee", 
         "dname": "Bounty Hunter", 
-        "droles": "Carry - Escape - Nuker", 
-        "id": 62, 
-        "img": "img/heroes/bounty_hunter.jpg", 
-        "name": "bounty_hunter", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 62
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 14, 
                 "g": "2.50"
             }, 
-            "armor": 0.96, 
             "dmg": {
                 "max": 46, 
                 "min": 36
             }, 
+            "armor": 0.96, 
             "int": {
                 "b": 15, 
                 "g": "1.80"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 15, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Carry - Escape", 
+        "stat": "agility", 
+        "name": "weaver", 
+        "img": "/img/heroes/weaver.jpg", 
         "dac": "Ranged", 
         "dname": "Weaver", 
-        "droles": "Carry - Escape", 
-        "id": 63, 
-        "img": "img/heroes/weaver.jpg", 
-        "name": "weaver", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 63
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 10, 
                 "g": "1.20"
             }, 
-            "armor": 2.4, 
             "dmg": {
                 "max": 26, 
                 "min": 18
             }, 
+            "armor": 2.4, 
             "int": {
                 "b": 28, 
                 "g": "2.80"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 24, 
                 "g": "2.30"
             }
         }, 
+        "droles": "Nuker - Pusher - Lane Support - Disabler", 
+        "stat": "intelligence", 
+        "name": "jakiro", 
+        "img": "/img/heroes/jakiro.jpg", 
         "dac": "Ranged", 
         "dname": "Jakiro", 
-        "droles": "Nuker - Pusher - Lane Support - Disabler", 
-        "id": 64, 
-        "img": "img/heroes/jakiro.jpg", 
-        "name": "jakiro", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 64
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 15, 
                 "g": "1.50"
             }, 
-            "armor": 2.1, 
             "dmg": {
                 "max": 18, 
                 "min": 14
             }, 
+            "armor": 2.1, 
             "int": {
                 "b": 24, 
                 "g": "2.50"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 23, 
                 "g": "2.40"
             }
         }, 
+        "droles": "Initiator - Disabler - Nuker - Escape", 
+        "stat": "intelligence", 
+        "name": "batrider", 
+        "img": "/img/heroes/batrider.jpg", 
         "dac": "Ranged", 
         "dname": "Batrider", 
-        "droles": "Initiator - Disabler - Nuker - Escape", 
-        "id": 65, 
-        "img": "img/heroes/batrider.jpg", 
-        "name": "batrider", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 65
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 15, 
                 "g": "2.10"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 32, 
                 "min": 22
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 21, 
                 "g": "2.80"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 20, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Support - Jungler - Pusher", 
+        "stat": "intelligence", 
+        "name": "chen", 
+        "img": "/img/heroes/chen.jpg", 
         "dac": "Ranged", 
         "dname": "Chen", 
-        "droles": "Support - Jungler - Pusher", 
-        "id": 66, 
-        "img": "img/heroes/chen.jpg", 
-        "name": "chen", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 66
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 23, 
                 "g": "2.20"
             }, 
-            "armor": 3.22, 
             "dmg": {
                 "max": 27, 
                 "min": 23
             }, 
+            "armor": 3.22, 
             "int": {
                 "b": 16, 
                 "g": "1.90"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 19, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Carry - Durable", 
+        "stat": "agility", 
+        "name": "spectre", 
+        "img": "/img/heroes/spectre.jpg", 
         "dac": "Melee", 
         "dname": "Spectre", 
-        "droles": "Carry - Durable", 
-        "id": 67, 
-        "img": "img/heroes/spectre.jpg", 
-        "name": "spectre", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 67
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 11, 
                 "g": "0.90"
             }, 
-            "armor": 0.54, 
             "dmg": {
                 "max": 43, 
                 "min": 27
             }, 
+            "armor": 0.54, 
             "int": {
                 "b": 13, 
                 "g": "2.10"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 26, 
                 "g": "3.20"
             }
         }, 
+        "droles": "Durable - Carry - Nuker", 
+        "stat": "strength", 
+        "name": "doom_bringer", 
+        "img": "/img/heroes/doom.jpg", 
         "dac": "Melee", 
         "dname": "Doom", 
-        "droles": "Durable - Carry - Nuker", 
-        "id": 69, 
-        "img": "img/heroes/doom.jpg", 
-        "name": "doom_bringer", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 69
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 20, 
                 "g": "2.20"
             }, 
-            "armor": 1.8, 
             "dmg": {
                 "max": 29, 
                 "min": 19
             }, 
+            "armor": 1.8, 
             "int": {
                 "b": 25, 
                 "g": "2.60"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 18, 
                 "g": "1.40"
             }
         }, 
+        "droles": "Support - Disabler", 
+        "stat": "intelligence", 
+        "name": "ancient_apparition", 
+        "img": "/img/heroes/ancient_apparition.jpg", 
         "dac": "Ranged", 
         "dname": "Ancient Apparition", 
-        "droles": "Support - Disabler", 
-        "id": 68, 
-        "img": "img/heroes/ancient_apparition.jpg", 
-        "name": "ancient_apparition", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 68
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 18, 
                 "g": "2.10"
             }, 
-            "armor": 5.52, 
             "dmg": {
                 "max": "31\t", 
                 "min": 27
             }, 
+            "armor": 5.52, 
             "int": {
                 "b": 16, 
                 "g": "1.50"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 23, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Carry - Jungler - Durable", 
+        "stat": "agility", 
+        "name": "ursa", 
+        "img": "/img/heroes/ursa.jpg", 
         "dac": "Melee", 
         "dname": "Ursa", 
-        "droles": "Carry - Jungler - Durable", 
-        "id": 70, 
-        "img": "img/heroes/ursa.jpg", 
-        "name": "ursa", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 70
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 17, 
                 "g": "1.70"
             }, 
-            "armor": 5.38, 
             "dmg": {
                 "max": 41, 
                 "min": 31
             }, 
+            "armor": 5.38, 
             "int": {
                 "b": 14, 
                 "g": "1.80"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 29, 
                 "g": "2.40"
             }
         }, 
+        "droles": "Durable - Carry - Initiator - Disabler", 
+        "stat": "strength", 
+        "name": "spirit_breaker", 
+        "img": "/img/heroes/spirit_breaker.jpg", 
         "dac": "Melee", 
         "dname": "Spirit Breaker", 
-        "droles": "Durable - Carry - Initiator - Disabler", 
-        "id": 71, 
-        "img": "img/heroes/spirit_breaker.jpg", 
-        "name": "spirit_breaker", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 71
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 24, 
                 "g": "2.80"
             }, 
-            "armor": 4.36, 
             "dmg": {
                 "max": 27, 
                 "min": 17
             }, 
+            "armor": 4.36, 
             "int": {
                 "b": 23, 
                 "g": "2.10"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 18, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Disabler - Initiator - Nuker", 
+        "stat": "agility", 
+        "name": "gyrocopter", 
+        "img": "/img/heroes/gyrocopter.jpg", 
         "dac": "Ranged", 
         "dname": "Gyrocopter", 
-        "droles": "Disabler - Initiator - Nuker", 
-        "id": 72, 
-        "img": "img/heroes/gyrocopter.jpg", 
-        "name": "gyrocopter", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 72
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 11, 
                 "g": "1.20"
             }, 
-            "armor": 1.54, 
             "dmg": {
                 "max": 33, 
                 "min": 24
             }, 
+            "armor": 1.54, 
             "int": {
                 "b": 25, 
                 "g": "1.80"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 25, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Durable - Carry - Disabler", 
+        "stat": "strength", 
+        "name": "alchemist", 
+        "img": "/img/heroes/alchemist.jpg", 
         "dac": "Melee", 
         "dname": "Alchemist", 
-        "droles": "Durable - Carry - Disabler", 
-        "id": 73, 
-        "img": "img/heroes/alchemist.jpg", 
-        "name": "alchemist", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 73
     }, 
     {
         "attribs": {
+            "ms": 280, 
             "agi": {
                 "b": 20, 
                 "g": "1.90"
             }, 
-            "armor": 1.8, 
             "dmg": {
                 "max": 19, 
                 "min": 13
             }, 
+            "armor": 1.8, 
             "int": {
                 "b": 22, 
                 "g": "2.50"
             }, 
-            "ms": 280, 
             "str": {
                 "b": 19, 
                 "g": "1.70"
             }
         }, 
+        "droles": "Carry - Nuker - Initiator - Escape", 
+        "stat": "intelligence", 
+        "name": "invoker", 
+        "img": "/img/heroes/invoker.jpg", 
         "dac": "Ranged", 
         "dname": "Invoker", 
-        "droles": "Carry - Nuker - Initiator - Escape", 
-        "id": 74, 
-        "img": "img/heroes/invoker.jpg", 
-        "name": "invoker", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 74
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 16, 
                 "g": "2.10"
             }, 
-            "armor": 1.24, 
             "dmg": {
                 "max": 30, 
                 "min": 16
             }, 
+            "armor": 1.24, 
             "int": {
                 "b": 27, 
                 "g": "2.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 17, 
                 "g": "2.20"
             }
         }, 
+        "droles": "Support - Carry - Initiator", 
+        "stat": "intelligence", 
+        "name": "silencer", 
+        "img": "/img/heroes/silencer.jpg", 
         "dac": "Ranged", 
         "dname": "Silencer", 
-        "droles": "Support - Carry - Initiator", 
-        "id": 75, 
-        "img": "img/heroes/silencer.jpg", 
-        "name": "silencer", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 75
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 24, 
                 "g": "2.00"
             }, 
-            "armor": 5.36, 
             "dmg": {
                 "max": 35, 
                 "min": 20
             }, 
+            "armor": 5.36, 
             "int": {
                 "b": 26, 
                 "g": "3.30"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 19, 
                 "g": "1.85"
             }
         }, 
+        "droles": "Carry", 
+        "stat": "intelligence", 
+        "name": "obsidian_destroyer", 
+        "img": "/img/heroes/outworld_devourer.jpg", 
         "dac": "Ranged", 
         "dname": "Outworld Devourer", 
-        "droles": "Carry", 
-        "id": 76, 
-        "img": "img/heroes/outworld_devourer.jpg", 
-        "name": "obsidian_destroyer", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 76
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 16, 
                 "g": "1.90"
             }, 
-            "armor": 3.24, 
             "dmg": {
                 "max": 41, 
                 "min": 36
             }, 
+            "armor": 3.24, 
             "int": {
                 "b": 17, 
                 "g": "1.55"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 22, 
                 "g": "2.75"
             }
         }, 
+        "droles": "Carry - Jungler - Pusher - Durable", 
+        "stat": "strength", 
+        "name": "lycan", 
+        "img": "/img/heroes/lycan.jpg", 
         "dac": "Melee", 
         "dname": "Lycan", 
-        "droles": "Carry - Jungler - Pusher - Durable", 
-        "id": 77, 
-        "img": "img/heroes/lycan.jpg", 
-        "name": "lycan", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 77
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 22, 
                 "g": "1.95"
             }, 
-            "armor": 4.08, 
             "dmg": {
                 "max": 36, 
                 "min": 29
             }, 
+            "armor": 4.08, 
             "int": {
                 "b": 14, 
                 "g": "1.25"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 23, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Carry - Durable - Initiator - Pusher", 
+        "stat": "strength", 
+        "name": "brewmaster", 
+        "img": "/img/heroes/brewmaster.jpg", 
         "dac": "Melee", 
         "dname": "Brewmaster", 
-        "droles": "Carry - Durable - Initiator - Pusher", 
-        "id": 78, 
-        "img": "img/heroes/brewmaster.jpg", 
-        "name": "brewmaster", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 78
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 18, 
                 "g": "2.20"
             }, 
-            "armor": 2.52, 
             "dmg": {
                 "max": 31, 
                 "min": 27
             }, 
+            "armor": 2.52, 
             "int": {
                 "b": 23, 
                 "g": "2.70"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 17, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Support - Disabler - Nuker", 
+        "stat": "intelligence", 
+        "name": "shadow_demon", 
+        "img": "/img/heroes/shadow_demon.jpg", 
         "dac": "Ranged", 
         "dname": "Shadow Demon", 
-        "droles": "Support - Disabler - Nuker", 
-        "id": 79, 
-        "img": "img/heroes/shadow_demon.jpg", 
-        "name": "shadow_demon", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 79
     }, 
     {
         "attribs": {
+            "ms": 325, 
             "agi": {
                 "b": 24, 
                 "g": "2.70"
             }, 
-            "armor": 3.36, 
             "dmg": {
                 "max": 26, 
                 "min": 22
             }, 
+            "armor": 3.36, 
             "int": {
                 "b": 13, 
                 "g": "1.40"
             }, 
-            "ms": 325, 
             "str": {
                 "b": 17, 
                 "g": "2.10"
             }
         }, 
+        "droles": "Carry - Durable - Pusher - Jungler", 
+        "stat": "agility", 
+        "name": "lone_druid", 
+        "img": "/img/heroes/lone_druid.jpg", 
         "dac": "Ranged", 
         "dname": "Lone Druid", 
-        "droles": "Carry - Durable - Pusher - Jungler", 
-        "id": 80, 
-        "img": "img/heroes/lone_druid.jpg", 
-        "name": "lone_druid", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 80
     }, 
     {
         "attribs": {
+            "ms": 325, 
             "agi": {
                 "b": 14, 
                 "g": "2.10"
             }, 
-            "armor": 3.96, 
             "dmg": {
                 "max": 59, 
                 "min": 29
             }, 
+            "armor": 3.96, 
             "int": {
                 "b": 16, 
                 "g": "1.20"
             }, 
-            "ms": 325, 
             "str": {
                 "b": 20, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Carry - Disabler - Durable - Pusher", 
+        "stat": "strength", 
+        "name": "chaos_knight", 
+        "img": "/img/heroes/chaos_knight.jpg", 
         "dac": "Melee", 
         "dname": "Chaos Knight", 
-        "droles": "Carry - Disabler - Durable - Pusher", 
-        "id": 81, 
-        "img": "img/heroes/chaos_knight.jpg", 
-        "name": "chaos_knight", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 81
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 23, 
                 "g": "1.90"
             }, 
-            "armor": 4.22, 
             "dmg": {
                 "max": 22, 
                 "min": 16
             }, 
+            "armor": 4.22, 
             "int": {
                 "b": 20, 
                 "g": "1.60"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 23, 
                 "g": "1.60"
             }
         }, 
+        "droles": "Carry - Disabler - Initiator", 
+        "stat": "agility", 
+        "name": "meepo", 
+        "img": "/img/heroes/meepo.jpg", 
         "dac": "Melee", 
         "dname": "Meepo", 
-        "droles": "Carry - Disabler - Initiator", 
-        "id": 82, 
-        "img": "img/heroes/meepo.jpg", 
-        "name": "meepo", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 82
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 15, 
                 "g": "2.00"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 64, 
                 "min": 56
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 17, 
                 "g": "1.80"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 25, 
                 "g": "3.30"
             }
         }, 
+        "droles": "Durable - Initiator - Lane Support - Disabler", 
+        "stat": "strength", 
+        "name": "treant", 
+        "img": "/img/heroes/treant_protector.jpg", 
         "dac": "Melee", 
         "dname": "Treant Protector", 
-        "droles": "Durable - Initiator - Lane Support - Disabler", 
-        "id": 83, 
-        "img": "img/heroes/treant_protector.jpg", 
-        "name": "treant", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 83
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 14, 
                 "g": "1.55"
             }, 
-            "armor": 5.96, 
             "dmg": {
                 "max": 47, 
                 "min": 41
             }, 
+            "armor": 5.96, 
             "int": {
                 "b": 17, 
                 "g": "2.40"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 23, 
                 "g": "3.20"
             }
         }, 
+        "droles": "Nuker - Disabler - Durable", 
+        "stat": "intelligence", 
+        "name": "ogre_magi", 
+        "img": "/img/heroes/ogre_magi.jpg", 
         "dac": "Melee", 
         "dname": "Ogre Magi", 
-        "droles": "Nuker - Disabler - Durable", 
-        "id": 84, 
-        "img": "img/heroes/ogre_magi.jpg", 
-        "name": "ogre_magi", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 84
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 10, 
                 "g": "0.80"
             }, 
-            "armor": 3.4, 
             "dmg": {
                 "max": 43, 
                 "min": 35
             }, 
+            "armor": 3.4, 
             "int": {
                 "b": 27, 
                 "g": "2.00"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 22, 
                 "g": "2.10"
             }
         }, 
+        "droles": "Durable - Pusher - Disabler - Initiator", 
+        "stat": "strength", 
+        "name": "undying", 
+        "img": "/img/heroes/undying.jpg", 
         "dac": "Melee", 
         "dname": "Undying", 
-        "droles": "Durable - Pusher - Disabler - Initiator", 
-        "id": 85, 
-        "img": "img/heroes/undying.jpg", 
-        "name": "undying", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 85
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 14, 
                 "g": "1.60"
             }, 
-            "armor": 0.96, 
             "dmg": {
                 "max": 27, 
                 "min": 17
             }, 
+            "armor": 0.96, 
             "int": {
                 "b": 27, 
                 "g": "2.40"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 19, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Disabler - Nuker", 
+        "stat": "intelligence", 
+        "name": "rubick", 
+        "img": "/img/heroes/rubick.jpg", 
         "dac": "Ranged", 
         "dname": "Rubick", 
-        "droles": "Disabler - Nuker", 
-        "id": 86, 
-        "img": "img/heroes/rubick.jpg", 
-        "name": "rubick", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 86
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 15, 
                 "g": "1.40"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 31, 
                 "min": 27
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 22, 
                 "g": "2.50"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 19, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Nuker - Support - Initiator - Disabler", 
+        "stat": "intelligence", 
+        "name": "disruptor", 
+        "img": "/img/heroes/disruptor.jpg", 
         "dac": "Ranged", 
         "dname": "Disruptor", 
-        "droles": "Nuker - Support - Initiator - Disabler", 
-        "id": 87, 
-        "img": "img/heroes/disruptor.jpg", 
-        "name": "disruptor", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 87
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 19, 
                 "g": "2.20"
             }, 
-            "armor": 3.66, 
             "dmg": {
                 "max": 34, 
                 "min": 30
             }, 
+            "armor": 3.66, 
             "int": {
                 "b": 18, 
                 "g": "2.10"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 18, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Disabler - Nuker", 
+        "stat": "intelligence", 
+        "name": "nyx_assassin", 
+        "img": "/img/heroes/nyx_assassin.jpg", 
         "dac": "Melee", 
         "dname": "Nyx Assassin", 
-        "droles": "Disabler - Nuker", 
-        "id": 88, 
-        "img": "img/heroes/nyx_assassin.jpg", 
-        "name": "nyx_assassin", 
         "pa": "agi", 
-        "stat": "intelligence"
+        "id": 88
     }, 
     {
         "attribs": {
+            "ms": 320, 
             "agi": {
                 "b": 21, 
                 "g": "2.75"
             }, 
-            "armor": 5.94, 
             "dmg": {
                 "max": 25, 
                 "min": 23
             }, 
+            "armor": 5.94, 
             "int": {
                 "b": 18, 
                 "g": "1.95"
             }, 
-            "ms": 320, 
             "str": {
                 "b": 21, 
                 "g": "2.30"
             }
         }, 
+        "droles": "Carry - Disabler - Pusher - Escape", 
+        "stat": "agility", 
+        "name": "naga_siren", 
+        "img": "/img/heroes/naga_siren.jpg", 
         "dac": "Melee", 
         "dname": "Naga Siren", 
-        "droles": "Carry - Disabler - Pusher - Escape", 
-        "id": 89, 
-        "img": "img/heroes/naga_siren.jpg", 
-        "name": "naga_siren", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 89
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 15, 
                 "g": "1.60"
             }, 
-            "armor": 1.1, 
             "dmg": {
                 "max": 32, 
                 "min": 18
             }, 
+            "armor": 1.1, 
             "int": {
                 "b": 22, 
                 "g": "2.80"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 14, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Nuker - Support - Lane Support", 
+        "stat": "intelligence", 
+        "name": "keeper_of_the_light", 
+        "img": "/img/heroes/keeper_of_the_light.jpg", 
         "dac": "Ranged", 
         "dname": "Keeper of the Light", 
-        "droles": "Nuker - Support - Lane Support", 
-        "id": 90, 
-        "img": "img/heroes/keeper_of_the_light.jpg", 
-        "name": "keeper_of_the_light", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 90
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 14, 
                 "g": "1.60"
             }, 
-            "armor": -0.04, 
             "dmg": {
                 "max": 35, 
                 "min": 26
             }, 
+            "armor": -0.04, 
             "int": {
                 "b": 23, 
                 "g": "1.70"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 17, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Support - Lane Support - Nuker", 
+        "stat": "strength", 
+        "name": "wisp", 
+        "img": "/img/heroes/io.jpg", 
         "dac": "Ranged", 
         "dname": "Io", 
-        "droles": "Support - Lane Support - Nuker", 
-        "id": 91, 
-        "img": "img/heroes/io.jpg", 
-        "name": "wisp", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 91
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 11, 
                 "g": "1.30"
             }, 
-            "armor": -0.46, 
             "dmg": {
                 "max": 34, 
                 "min": 24
             }, 
+            "armor": -0.46, 
             "int": {
                 "b": 24, 
                 "g": "2.50"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 22, 
                 "g": "2.40"
             }
         }, 
+        "droles": "Nuker - Durable - Disabler", 
+        "stat": "intelligence", 
+        "name": "visage", 
+        "img": "/img/heroes/visage.jpg", 
         "dac": "Ranged", 
         "dname": "Visage", 
-        "droles": "Nuker - Durable - Disabler", 
-        "id": 92, 
-        "img": "img/heroes/visage.jpg", 
-        "name": "visage", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 92
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 21, 
                 "g": "1.50"
             }, 
-            "armor": 1.94, 
             "dmg": {
                 "max": 41, 
                 "min": 33
             }, 
+            "armor": 1.94, 
             "int": {
                 "b": 16, 
                 "g": "1.90"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 21, 
                 "g": "1.80"
             }
         }, 
+        "droles": "Escape", 
+        "stat": "agility", 
+        "name": "slark", 
+        "img": "/img/heroes/slark.jpg", 
         "dac": "Melee", 
         "dname": "Slark", 
-        "droles": "Escape", 
-        "id": 93, 
-        "img": "img/heroes/slark.jpg", 
-        "name": "slark", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 93
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 20, 
                 "g": "2.50"
             }, 
-            "armor": 1.8, 
             "dmg": {
                 "max": 30, 
                 "min": 24
             }, 
+            "armor": 1.8, 
             "int": {
                 "b": 19, 
                 "g": "1.85"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 14, 
                 "g": "1.65"
             }
         }, 
+        "droles": "Carry", 
+        "stat": "strength", 
+        "name": "medusa", 
+        "img": "/img/heroes/medusa.jpg", 
         "dac": "Ranged", 
         "dname": "Medusa", 
-        "droles": "Carry", 
-        "id": 94, 
-        "img": "img/heroes/medusa.jpg", 
-        "name": "medusa", 
         "pa": "agi", 
-        "stat": "strength"
+        "id": 94
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 21, 
                 "g": "2.75"
             }, 
-            "armor": 1.94, 
             "dmg": {
                 "max": 35, 
                 "min": 17
             }, 
+            "armor": 1.94, 
             "int": {
                 "b": 13, 
                 "g": "1.00"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 17, 
                 "g": "2.20"
             }
         }, 
+        "droles": "Carry", 
+        "stat": "agility", 
+        "name": "troll_warlord", 
+        "img": "/img/heroes/troll_warlord.jpg", 
         "dac": "Ranged", 
         "dname": "Troll Warlord", 
-        "droles": "Carry", 
-        "id": 95, 
-        "img": "img/heroes/troll_warlord.jpg", 
-        "name": "troll_warlord", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 95
     }, 
     {
         "attribs": {
+            "ms": 300, 
             "agi": {
                 "b": 15, 
                 "g": "2.00"
             }, 
-            "armor": 3.1, 
             "dmg": {
                 "max": 34, 
                 "min": 32
             }, 
+            "armor": 3.1, 
             "int": {
                 "b": 15, 
                 "g": "1.60"
             }, 
-            "ms": 300, 
             "str": {
                 "b": 23, 
                 "g": "3.80"
             }
         }, 
+        "droles": "Durable - Disabler - Initiator", 
+        "stat": "strength", 
+        "name": "centaur", 
+        "img": "/img/heroes/centaur_warrunner.jpg", 
         "dac": "Melee", 
         "dname": "Centaur Warrunner", 
-        "droles": "Durable - Disabler - Initiator", 
-        "id": 96, 
-        "img": "img/heroes/centaur_warrunner.jpg", 
-        "name": "centaur", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 96
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 15, 
                 "g": "2.50"
             }, 
-            "armor": 4.1, 
             "dmg": {
                 "max": 40, 
                 "min": 28
             }, 
+            "armor": 4.1, 
             "int": {
                 "b": 19, 
                 "g": "1.65"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 21, 
                 "g": "2.75"
             }
         }, 
+        "droles": "Initiator - Disabler - Nuker - Carry", 
+        "stat": "strength", 
+        "name": "magnataur", 
+        "img": "/img/heroes/magnus.jpg", 
         "dac": "Melee", 
         "dname": "Magnus", 
-        "droles": "Initiator - Disabler - Nuker - Carry", 
-        "id": 97, 
-        "img": "img/heroes/magnus.jpg", 
-        "name": "magnataur", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 97
     }, 
     {
         "attribs": {
+            "ms": 290, 
             "agi": {
                 "b": 16, 
                 "g": "1.30"
             }, 
-            "armor": 0.24, 
             "dmg": {
                 "max": 30, 
                 "min": 26
             }, 
+            "armor": 0.24, 
             "int": {
                 "b": 21, 
                 "g": "2.40"
             }, 
-            "ms": 290, 
             "str": {
                 "b": 22, 
                 "g": "2.10"
             }
         }, 
+        "droles": "Durable - Nuker - Escape", 
+        "stat": "strength", 
+        "name": "shredder", 
+        "img": "/img/heroes/timbersaw.jpg", 
         "dac": "Melee", 
         "dname": "Timbersaw", 
-        "droles": "Durable - Nuker - Escape", 
-        "id": 98, 
-        "img": "img/heroes/timbersaw.jpg", 
-        "name": "shredder", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 98
     }, 
     {
         "attribs": {
+            "ms": 295, 
             "agi": {
                 "b": 17, 
                 "g": "1.80"
             }, 
-            "armor": 3.38, 
             "dmg": {
                 "max": 36, 
                 "min": 26
             }, 
+            "armor": 3.38, 
             "int": {
                 "b": 14, 
                 "g": "2.80"
             }, 
-            "ms": 295, 
             "str": {
                 "b": 22, 
                 "g": "2.20"
             }
         }, 
+        "droles": "Durable - Initiator - Disabler", 
+        "stat": "strength", 
+        "name": "bristleback", 
+        "img": "/img/heroes/bristleback.jpg", 
         "dac": "Melee", 
         "dname": "Bristleback", 
-        "droles": "Durable - Initiator - Disabler", 
-        "id": 99, 
-        "img": "img/heroes/bristleback.jpg", 
-        "name": "bristleback", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 99
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 23, 
                 "g": "2.10"
             }, 
-            "armor": 3.22, 
             "dmg": {
                 "max": 31, 
                 "min": 27
             }, 
+            "armor": 3.22, 
             "int": {
                 "b": 18, 
                 "g": "1.70"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 23, 
                 "g": "2.30"
             }
         }, 
+        "droles": "Initiator - Durable", 
+        "stat": "strength", 
+        "name": "tusk", 
+        "img": "/img/heroes/tusk.jpg", 
         "dac": "Melee", 
         "dname": "Tusk", 
-        "droles": "Initiator - Durable", 
-        "id": 100, 
-        "img": "img/heroes/tusk.jpg", 
-        "name": "tusk", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 100
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 18, 
                 "g": "0.80"
             }, 
-            "armor": 0.52, 
             "dmg": {
                 "max": 22, 
                 "min": 12
             }, 
+            "armor": 0.52, 
             "int": {
                 "b": 27, 
                 "g": "3.60"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 19, 
                 "g": "1.50"
             }
         }, 
+        "droles": "Nuker - Support", 
+        "stat": "intelligence", 
+        "name": "skywrath_mage", 
+        "img": "/img/heroes/skywrath_mage.jpg", 
         "dac": "Ranged", 
         "dname": "Skywrath Mage", 
-        "droles": "Nuker - Support", 
-        "id": 101, 
-        "img": "img/heroes/skywrath_mage.jpg", 
-        "name": "skywrath_mage", 
         "pa": "int", 
-        "stat": "intelligence"
+        "id": 101
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 17, 
                 "g": "1.50"
             }, 
-            "armor": 1.38, 
             "dmg": {
                 "max": 42, 
                 "min": 32
             }, 
+            "armor": 1.38, 
             "int": {
                 "b": 21, 
                 "g": "2.00"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 23, 
                 "g": "2.70"
             }
         }, 
+        "droles": "", 
+        "stat": "strength", 
+        "name": "abaddon", 
+        "img": "/img/heroes/abaddon.jpg", 
         "dac": "Melee", 
         "dname": "Abaddon", 
-        "droles": "", 
-        "id": 102, 
-        "img": "img/heroes/abaddon.jpg", 
-        "name": "abaddon", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 102
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 14, 
                 "g": "1.50"
             }, 
-            "armor": 2.96, 
             "dmg": {
                 "max": 33, 
                 "min": 23
             }, 
+            "armor": 2.96, 
             "int": {
                 "b": 23, 
                 "g": "1.60"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 24, 
                 "g": "2.30"
             }
         }, 
+        "droles": "Initiator - Durable", 
+        "stat": "strength", 
+        "name": "elder_titan", 
+        "img": "/img/heroes/elder_titan.jpg", 
         "dac": "Melee", 
         "dname": "Elder Titan", 
-        "droles": "Initiator - Durable", 
-        "id": 103, 
-        "img": "img/heroes/elder_titan.jpg", 
-        "name": "elder_titan", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 103
     }, 
     {
         "attribs": {
+            "ms": 320, 
             "agi": {
                 "b": 18, 
                 "g": "1.70"
             }, 
-            "armor": 2.52, 
             "dmg": {
                 "max": 35, 
                 "min": 31
             }, 
+            "armor": 2.52, 
             "int": {
                 "b": 20, 
                 "g": "2.20"
             }, 
-            "ms": 320, 
             "str": {
                 "b": 26, 
                 "g": "2.60"
             }
         }, 
+        "droles": "Carry - Durable", 
+        "stat": "strength", 
+        "name": "legion_commander", 
+        "img": "/img/heroes/legion_commander.jpg", 
         "dac": "Melee", 
         "dname": "Legion Commander", 
-        "droles": "Carry - Durable", 
-        "id": 104, 
-        "img": "img/heroes/legion_commander.jpg", 
-        "name": "legion_commander", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 104
     }, 
     {
         "attribs": {
+            "ms": 310, 
             "agi": {
                 "b": 22, 
                 "g": "1.80"
             }, 
-            "armor": 1.08, 
             "dmg": {
                 "max": 34, 
                 "min": 30
             }, 
+            "armor": 1.08, 
             "int": {
                 "b": 20, 
                 "g": "1.80"
             }, 
-            "ms": 310, 
             "str": {
                 "b": 19, 
                 "g": "2.00"
             }
         }, 
+        "droles": "Carry - Nuker", 
+        "stat": "agility", 
+        "name": "ember_spirit", 
+        "img": "/img/heroes/ember_spirit.jpg", 
         "dac": "Melee", 
         "dname": "Ember Spirit", 
-        "droles": "Carry - Nuker", 
-        "id": 106, 
-        "img": "img/heroes/ember_spirit.jpg", 
-        "name": "ember_spirit", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 106
     }, 
     {
         "attribs": {
+            "ms": 305, 
             "agi": {
                 "b": 17, 
                 "g": "1.50"
             }, 
-            "armor": 3.38, 
             "dmg": {
                 "max": 35, 
                 "min": 25
             }, 
+            "armor": 3.38, 
             "int": {
                 "b": 18, 
                 "g": "2.40"
             }, 
-            "ms": 305, 
             "str": {
                 "b": 21, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Carry - Nuker", 
+        "stat": "strength", 
+        "name": "earth_spirit", 
+        "img": "/img/heroes/earth_spirit.jpg", 
         "dac": "Melee", 
         "dname": "Earth Spirit", 
-        "droles": "Carry - Nuker", 
-        "id": 107, 
-        "img": "img/heroes/earth_spirit.jpg", 
-        "name": "earth_spirit", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 107
     }, 
     {
         "attribs": {
+            "ms": 315, 
             "agi": {
                 "b": 22, 
                 "g": "3.20"
             }, 
-            "armor": 7.08, 
             "dmg": {
                 "max": 32, 
                 "min": 26
             }, 
+            "armor": 7.08, 
             "int": {
                 "b": 19, 
                 "g": "1.75"
             }, 
-            "ms": 315, 
             "str": {
                 "b": 15, 
                 "g": "1.90"
             }
         }, 
+        "droles": "Carry", 
+        "stat": "agility", 
+        "name": "terrorblade", 
+        "img": "/img/heroes/terrorblade.jpg", 
         "dac": "Melee", 
         "dname": "Terrorblade", 
-        "droles": "Carry", 
-        "id": 109, 
-        "img": "img/heroes/terrorblade.jpg", 
-        "name": "terrorblade", 
         "pa": "agi", 
-        "stat": "agility"
+        "id": 109
     }, 
     {
         "attribs": {
+            "ms": 285, 
             "agi": {
                 "b": 12, 
                 "g": "1.30"
             }, 
-            "armor": -0.32, 
             "dmg": {
                 "max": 36, 
                 "min": 26
             }, 
+            "armor": -0.32, 
             "int": {
                 "b": 18, 
                 "g": "1.80"
             }, 
-            "ms": 285, 
             "str": {
                 "b": 17, 
                 "g": "2.90"
             }
         }, 
+        "droles": "Initiator - Disabler - Nuker", 
+        "stat": "strength", 
+        "name": "phoenix", 
+        "img": "/img/heroes/phoenix.jpg", 
         "dac": "Ranged", 
         "dname": "Phoenix", 
-        "droles": "Initiator - Disabler - Nuker", 
-        "id": 110, 
-        "img": "img/heroes/phoenix.jpg", 
-        "name": "phoenix", 
         "pa": "str", 
-        "stat": "strength"
+        "id": 110
     }
 ]
