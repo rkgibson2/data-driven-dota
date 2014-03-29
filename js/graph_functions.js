@@ -269,7 +269,7 @@ function hero_pie(data) {
 		    	}
 
 		    	d3.select(this)
-		    		.style("fill", "#476291");
+		    		.style("fill", "brown");
 		    })
 		    .on("mouseout", function(d) {
 		    	tip.hide(d);
@@ -455,9 +455,6 @@ function draw_item_percent() {
 
 function update_item_percent(data) {
 
-	//d3.selectAll(".x.axis .tick text").remove();
-
-
 	var items = []
 
 	//initialize all items with a count of 0
@@ -546,7 +543,7 @@ function update_item_percent(data) {
 		})
 		.on("mouseover", function(d) {
 			//console.log(d)
-	  		tip.html(d.dname + "<br> Count: " + d.count + "</br>");
+	  		tip.html("<strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Count: " + d.count + "<br> Cost: " + d.cost + "<br>");
 	  		tip.show(d);
 	  	})
 	  	.on("mouseout", function(d) {
