@@ -47,16 +47,27 @@ path {
 
 #value_sort_label {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 680px;
 }
 
 #item_sort_label{
   position: absolute;
-  top: 35px;
+  top: 22px;
   right: 687px;
 }
 
+#cost_sort_label{
+  position: absolute;
+  top: 39px;
+  right: 689px;
+}
+
+#item_filter{
+  position: absolute;
+  top: 50px;
+  right: 180px;
+}
 
 /*tooltip styles*/
 

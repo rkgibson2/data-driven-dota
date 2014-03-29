@@ -33,7 +33,7 @@ bb_hero_pie = {
 
 bb_item_percent = {
     x: 400,
-    y: 0,
+    y: 5,
     w: 600,
     h: 300
 };
@@ -106,6 +106,11 @@ function loadData(username) {
                 d.player_win = false;
             }
 
+        })
+
+        //player left game before s/he even picked a hero, get rid of these matches
+        data.matches = data.matches.filter(function(d) {
+        	return (d.player_info.hero_id != 0);
         })
 
         user_data = data;
@@ -189,7 +194,7 @@ function update_win_loss(data) {
 		.text(((win_count/total_matches) * 100).toFixed(1) + "%");
 
 	d3.select(".loss.text")
-		.text(String((total_matches - win_count)/total_matches * 100) + "%");
+		.text(((total_matches - win_count)/total_matches * 100).toFixed(1) + "%");
 
 	d3.select(".win_loss")
 		.attr("visibility", null);
@@ -341,7 +346,12 @@ function create_flare(data) {
 
 			if (current_hero_stat == "agility") {
 				var cur = hero_flare.children[0].children;
+				//console.log(cur)
+				//console.log(d2.getHeroName(d.player_info.hero_id))
 				for (var i=0; i < cur.length; i++) {
+					if (d.player_info.hero_id == 0) {
+						console.log(d)
+					}
 					if (cur[i].localized_name == d2.getHeroName(d.player_info.hero_id)) {
 						cur[i].count += 1;
 					}
@@ -428,7 +438,7 @@ function draw_item_percent() {
 			  		return item_percent_x.rangeBand();
 			  	})
 			  	.on("mouseover", function(d) {
-			  		tip.html(d.name);
+			  		tip.html(d.dname);
 			  		tip.show(d);
 			  	})
 			  	.on("mouseout", function(d) {
@@ -452,7 +462,13 @@ function update_item_percent(data) {
 
 	//initialize all items with a count of 0
 	d3.json("../data/items.json", function(error,dat) {
-		dat.items.forEach(function(d,i) {
+
+		item_percent_color.domain(d3.extent(dat,function(d) {
+			return d.cost;
+		}))
+		item_percent_color.range(["gray","#FFD700"])
+
+		dat.forEach(function(d,i) {
 			d.count = 0;
 		})
 
@@ -460,33 +476,33 @@ function update_item_percent(data) {
 
 	//count all of the items
 	data.matches.forEach(function(d,i) {
-		for (var j = 0; j < dat.items.length; j++) {
-			if (dat.items[j].id == d.player_info.item_0) {
-				dat.items[j].count += 1;
+		for (var j = 0; j < dat.length; j++) {
+			if (dat[j].id == d.player_info.item_0) {
+				dat[j].count += 1;
 			}		
-			else if (dat.items[j].id == d.player_info.item_1) {
-				dat.items[j].count += 1;
+			else if (dat[j].id == d.player_info.item_1) {
+				dat[j].count += 1;
 			}		
-			else if (dat.items[j].id == d.player_info.item_2) {
-				dat.items[j].count += 1;
+			else if (dat[j].id == d.player_info.item_2) {
+				dat[j].count += 1;
 			}		
-			else if (dat.items[j].id == d.player_info.item_3) {
-				dat.items[j].count += 1;
+			else if (dat[j].id == d.player_info.item_3) {
+				dat[j].count += 1;
 			}		
-			else if (dat.items[j].id == d.player_info.item_4) {
-				dat.items[j].count += 1;
+			else if (dat[j].id == d.player_info.item_4) {
+				dat[j].count += 1;
 			}		
-			else if (dat.items[j].id == d.player_info.item_5) {
-				dat.items[j].count += 1;
+			else if (dat[j].id == d.player_info.item_5) {
+				dat[j].count += 1;
 			}		
 		}
 	})
 
 	//consolidate into correct form that we want
-	for (var k = 0; k < dat.items.length; k++) {
-		if (dat.items[k].count != 0 && dat.items[k].name != "empty") {
-			dat.items[k].percent = dat.items[k].count/total_count
-			items.push(dat.items[k])
+	for (var k = 0; k < dat.length; k++) {
+		if (dat[k].count != 0 && dat[k].name != "empty") {
+			dat[k].percent = dat[k].count/total_count
+			items.push(dat[k])
 		}
 	}
 
@@ -519,8 +535,18 @@ function update_item_percent(data) {
 	bars.enter()
 		.append("rect")
 		.attr("class", "bar")
+		.attr("fill", function(d) {
+			if (d.dname == "Aegis of the Immortal") {
+				return "red";
+			}
+			if (d.dname == "Cheese") {
+				return "red";
+			}
+			return item_percent_color(d.cost);
+		})
 		.on("mouseover", function(d) {
-	  		tip.html(d.name + "<br> Count: " + d.count + "</br>");
+			//console.log(d)
+	  		tip.html(d.dname + "<br> Count: " + d.count + "</br>");
 	  		tip.show(d);
 	  	})
 	  	.on("mouseout", function(d) {
@@ -598,6 +624,38 @@ function update_item_percent(data) {
 	    var x0 = item_percent_x.domain(items.sort(this.checked
 	        ? function(a, b) { return d3.ascending(a.name, b.name); }
 	        : function(a, b) { return d3.ascending(a.percent, b.percent); })
+	        .map(function(d) { return d.name; }))
+	        .copy();
+
+	    var transition = svg.transition().duration(750),
+	        delay = function(d, i) { return i * 10; };
+
+	    transition.selectAll(".bar")
+	        .delay(delay)
+	        .attr("x", function(d) { return x0(d.name); });
+
+	    transition.select(".x.axis")
+	        .call(item_percent_xAxis)
+	      .selectAll("g")
+	        .delay(delay);
+	  }
+
+	d3.select("input#cost").on("change", change_cost);
+
+	function change_cost() {
+
+	    // Copy-on-write since tweens are evaluated after a delay.
+	    var x0 = item_percent_x.domain(items.sort(this.checked
+	        ? function(a, b) { 
+	        	if (a.dname == "Aegis of the Immortal" || a.dname == "Cheese") {
+	        		a.cost = 100000;
+	        	}
+	        	if (b.dname == "Aegis of the Immortal" || b.dname == "Cheese") {
+	        		b.cost = 100000;
+	        	}
+	        	return d3.ascending(a.cost, b.cost); 
+	        }
+	        : function(a, b) { return d3.ascending(a.name, b.name); })
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
