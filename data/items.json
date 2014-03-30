@@ -1,7 +1,8 @@
 [
     {
         "id": 0, 
-        "name": "empty"
+        "name": "empty",
+        "img": ""
     }, 
     {
         "mc": false, 
