@@ -5,10 +5,11 @@ var d2 = (function() {
 
     var heroData = [];
     var itemData = [];
+    var gameModes = [];
 
     function loadHeroJson()
     {
-        d3.json("../data/heroes.json", function (error, data)
+        d3.json("/data/heroes.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   heroData = data;
@@ -17,15 +18,23 @@ var d2 = (function() {
 
     function loadItemJson()
     {
-        d3.json("../data/items.json", function (error, data)
+        d3.json("/data/items.json", function (error, data)
         {
     	   // an array of all the hero names indexed appropriately - starting at 1
     	   itemData = data;
         });
     };
 
+    function loadGameModes() {
+        d3.json("/data/game_modes.json", function (error, data) {
+            // array of all the game modes
+            gameModes = data;
+        })
+    }
+
     loadHeroJson();
     loadItemJson();
+    loadGameModes();
 
 
     // returns hero data for a given id
@@ -57,6 +66,16 @@ var d2 = (function() {
     function idToItemName(id)
     {
         return idToItemInfo(id).dname;
+    }
+
+    function idToGameMode(id) {
+        for (var i = 0; i < gameModes.length; i++) {
+            if (gameModes[i].id == id) {
+                return gameModes[i].name
+            }
+        }
+
+        throw new Error ("No game mode with id " + id)
     }
 
     // loads user data using d3.json
@@ -158,6 +177,8 @@ var d2 = (function() {
         getItemInfo: function(id) {
             return idToItemInfo(id)
         },
+
+        getGameMode: idToGameMode,
 
         loadUserData: loadUserData,
 
