@@ -29,6 +29,25 @@ path {
   fill: brown;
 }
 
+.bar {
+  /*stroke-width: 1px;*/
+  /*stroke: black;*/
+}
+
+#item_percent_tooltip_img {
+  margin-top: 4px;
+  float: left;
+}
+
+#tooltip_text {
+  float: left;
+  margin-left: 5px;
+}
+
+#hero_sunburst_tip {
+  float: left;
+  margin-top: 2px;
+}
 
 .axis text {
   font: 10px sans-serif;

@@ -252,8 +252,8 @@ function hero_pie(data) {
 		    		number_text = " games"
 		    	}
 
-		    	if ("localized_name" in d) {
-		    		name = d.localized_name;
+		    	if ("dname" in d) {
+		    		name = d.dname;
 		    	}
 		    	else if (d.name == "flare") {
 		    		tooltip = false
@@ -262,7 +262,16 @@ function hero_pie(data) {
 		    		name = capitalizeFirstLetter(d.name) + " Heroes";
 		    	}
 		    
-		    	tip.html("<strong>"+name +"</strong>"+ "<br>" + d.value + number_text + "</br>");
+		    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+
+		    	if ("dname" in d) {
+		    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
+		    	}
+		    	else {
+		    		var img_tip = "";
+		    	}
+
+		    	tip.html(img_tip + basic_tip);
 
 		    	if (tooltip) {
 		    		tip.show(d);
@@ -391,7 +400,7 @@ function draw_item_percent() {
 	item_percent_color = d3.scale.linear();
 
 	item_percent_x = d3.scale.ordinal()
-			.rangeRoundBands([0, bb_item_percent.w], .1 ,1)
+			.rangeRoundBands([0, bb_item_percent.w], .3 ,.5)
 			.domain(["item1"]);
 
 	item_percent_y = d3.scale.linear()
@@ -541,13 +550,18 @@ function update_item_percent(data) {
 			return item_percent_color(d.cost);
 		})
 		.on("mouseover", function(d) {
+
 			if (d.dname == "Aegis of the Immortal" || d.dname == "Cheese") {
 				var cost = "Dropped Item";
 			}
 			else {
 				cost = d.cost
 			}
-	  		tip.html("<strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Count: " + d.count + "<br> Cost: " + cost + "<br>");
+
+			var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br></div>"
+	  		var img_tip = "<div id='item_percent_tooltip_img'><img src='" + d.img + "' height='40px' width='53.125px'></div>"
+
+	  		tip.html(img_tip + basic_tip);
 	  		tip.show(d);
 	  	})
 	  	.on("mouseout", function(d) {
