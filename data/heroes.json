@@ -1553,7 +1553,7 @@
         "droles": "Jungler - Pusher - Carry - Escape", 
         "stat": "intelligence", 
         "name": "furion", 
-        "img": "/img/heroes/nature's_prophet.jpg", 
+        "img": "/img/heroes/natures_prophet.jpg", 
         "dac": "Ranged", 
         "dname": "Nature's Prophet", 
         "pa": "int", 
