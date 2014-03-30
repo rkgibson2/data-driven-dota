@@ -8,7 +8,7 @@
 
 #end_screen {
     margin: 0px 10px;
-    height: 500px;
+    height: 600px;
     width: 1000px;
     float: left;
 }
@@ -42,22 +42,31 @@
     margin: 10px 0px;
 }
 
-table {
+#players table{
     border-collapse: collapse;
     width: 100%;
     margin: 5px 0px;
 }
 
-table, th, td {
+#players td {
     border: 1px solid black;
 }
 
-td, th {
+#players td, #players th {
     padding: 3px;
 }
 
-th {
+#players th {
     text-align: left;
+}
+
+#players td {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+#players td * {
+    vertical-align:middle;
 }
 
 #stat_graph {
