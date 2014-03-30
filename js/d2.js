@@ -62,6 +62,7 @@ var d2 = (function() {
     // loads user data using d3.json
     // like d3.json, you need to provide a callback when you call this function.
     // The callback is used in the same way, with paramters error and data.
+    // This function was written by Angela Fan !!! :)
     function loadUserData(username, callback) {
         username_lower = username.toLowerCase()
 
