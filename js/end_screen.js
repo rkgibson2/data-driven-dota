@@ -23,7 +23,6 @@ function create_end_screen() {
     }
 }
 
-
 function update_end_screen(game) {
     console.log(game)
     this_game = game;
@@ -74,28 +73,20 @@ function update_end_screen(game) {
                 });
     });
 
-    rows.selectAll("tbody td").html(function(d) {
+    rows.selectAll("td").html(function(d) {
         this_cell = d3.select(this)
         if (this_cell.attr("class") == "player_name") {
             var name_text = (d.account_id == 4294967295) ? "Private account" : (d.account_id == user_data.id32) ? user_data.user : d.account_id
             return name_text
         } else if (this_cell.attr("class") == "items") {
-            this_cell.selectAll(".end_screen_item_pic").remove();
+            return ""
 
-            for (var i = 0; i < 6; i++) {
-                var this_item = 
-                this_cell.append("img")
-                    .data()
-                    .attr("class", "end_screen_item_pic")
-                    .attr("src",)
-            }
-
-            var item_string = "";
-            d.items.map(function(d) {
-                item_string = item_string + "<img class='end_screen_item_pic' src='" + d2.getItemInfo(d).img + "' alt='" + d2.getItemInfo(d).dname + "' height='36px' width='48px'>"
-            })
-            item_string = item_string + "<img class='end_screen_item_pic src='' height='36px' width='48px'>"
-            return item_string
+            // var item_string = "";
+            // d.items.map(function(d) {
+            //     item_string = item_string + "<img class='end_screen_item_pic' src='" + d2.getItemInfo(d).img + "' alt='" + d2.getItemInfo(d).dname + "' height='36px' width='48px'>"
+            // })
+            // item_string = item_string + "<img class='end_screen_item_pic src='' height='36px' width='48px'>"
+            // return item_string
         } else if (this_cell.attr("class") == "hero") {
             var hero = d2.getHeroInfo(d.hero_id)
             var hero_name = "<img src='" + hero.img + "' height='36px'> " + hero.dname
@@ -104,4 +95,19 @@ function update_end_screen(game) {
             return d[this_cell.attr("class")]
         }
     })
+
+    // add item images
+    // remove old item images
+    d3.selectAll(".end_screen_item_pic")
+
+    // add new images, one to each at a time for six times
+    for (var i = 0; i < 6; i++) {
+        rows.selectAll(".items").append("img")
+            .attr("class", "end_screen_item_pic")
+            .attr("src", function(d) { return (i in d.items) ? d2.getItemInfo(d.items[i]).img : "" })
+            .attr("alt", function(d) { return (i in d.items) ? d2.getItemInfo(d.items[i]).dname : "" })
+            .attr("title", function(d) { return (i in d.items) ? d2.getItemInfo(d.items[i]).dname : "empty" })
+            .attr("height", "36px")
+            .attr("width", "48px")
+    }
 }
