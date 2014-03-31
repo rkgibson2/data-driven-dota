@@ -51,8 +51,10 @@ var d2 = (function() {
             if (heroData[i].id == id)
                 return heroData[i];
         }
-        
-        throw new Error ("No hero with id " + id)
+        return 0; // i dont think we want to throw an error here
+        // if you traverse array and land on 25 or 105 which have no value
+        // an error would be thrown even though we havent finished searching the array
+       // throw new Error ("No hero with id " + id)
     }
 
     // convenience method for getting name
