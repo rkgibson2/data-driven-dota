@@ -2,10 +2,10 @@ var user_data;
 
 var this_game;
 
-d2.loadUserData("robbie", function(error, data) {
+d2.loadUserData("angela", function(error, data) {
     user_data = data;
 
-    update_end_screen(user_data.matches[0])
+    update_end_screen(user_data.matches[12])
 })
 
 
@@ -24,7 +24,8 @@ function update_end_screen(game) {
 
     // game.start_time is in seconds since UNIX Epoch, but d3 new Date needs milliseconds   
     var start = new Date(game.start_time * 1000)
-    d3.select("#date .text").text(start)
+    var date_string = d3.time.format("%a %b %-d, %Y %X %Z")
+    d3.select("#date .text").text(date_string(start))
 
     // convert duration (in seconds) to hours + seconds
     var hours = Math.floor(game.duration / 60);
@@ -54,7 +55,7 @@ function update_end_screen(game) {
 
         // update hero name
         var hero = d2.getHeroInfo(cur_player.hero_id)
-        var hero_name = "<img src='" + hero.img + "' height='24px'> " + hero.dname
+        var hero_name = "<img src='" + hero.img + "' height='36px'> " + hero.dname
         row.select(".hero").html(hero_name)
 
         // update kills
@@ -68,12 +69,12 @@ function update_end_screen(game) {
 
 
         // update items
-        row.select(".item0").html("<img src='" + d2.getItemInfo(cur_player.item_0).img + "' height='24'px width='32px'>")
-        row.select(".item1").html("<img src='" + d2.getItemInfo(cur_player.item_1).img + "' height='24'px width='32px'>")
-        row.select(".item2").html("<img src='" + d2.getItemInfo(cur_player.item_2).img + "' height='24'px width='32px'>")
-        row.select(".item3").html("<img src='" + d2.getItemInfo(cur_player.item_3).img + "' height='24'px width='32px'>")
-        row.select(".item4").html("<img src='" + d2.getItemInfo(cur_player.item_4).img + "' height='24'px width='32px'>")
-        row.select(".item5").html("<img src='" + d2.getItemInfo(cur_player.item_5).img + "' height='24'px width='32px'>")
+        row.select(".item0").html("<img src='" + d2.getItemInfo(cur_player.item_0).img + "' height='36'px width='48px'>")
+        row.select(".item1").html("<img src='" + d2.getItemInfo(cur_player.item_1).img + "' height='36'px width='48px'>")
+        row.select(".item2").html("<img src='" + d2.getItemInfo(cur_player.item_2).img + "' height='36'px width='48px'>")
+        row.select(".item3").html("<img src='" + d2.getItemInfo(cur_player.item_3).img + "' height='36'px width='48px'>")
+        row.select(".item4").html("<img src='" + d2.getItemInfo(cur_player.item_4).img + "' height='36'px width='48px'>")
+        row.select(".item5").html("<img src='" + d2.getItemInfo(cur_player.item_5).img + "' height='36'px width='48px'>")
 
         // update gold
         row.select("td:nth-child(13)").text(cur_player.gold)
