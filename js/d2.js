@@ -5,6 +5,7 @@ var d2 = (function() {
 
     var heroData = [];
     var itemData = [];
+    var abilityData =[];
     var gameModes = [];
 
     function loadHeroJson()
@@ -25,6 +26,12 @@ var d2 = (function() {
         });
     };
 
+    function loadAbilityJson() {
+        d3.json("/data/abilities.json", function (error, data) {
+            abilityData = data;
+        })
+    }
+
     function loadGameModes() {
         d3.json("/data/game_modes.json", function (error, data) {
             // array of all the game modes
@@ -34,6 +41,7 @@ var d2 = (function() {
 
     loadHeroJson();
     loadItemJson();
+    loadAbilityJson();
     loadGameModes();
 
 
@@ -68,6 +76,16 @@ var d2 = (function() {
         return idToItemInfo(id).dname;
     }
 
+    function idToAbilityInfo (id) {
+        for (var i = 0; i < abilityData.length; i++)
+        {
+            if (abilityData[i].id == id)
+                return abilityData[i];
+        }
+
+        throw new Error ("No ability with id " + id)
+    }
+
     function idToGameMode(id) {
         for (var i = 0; i < gameModes.length; i++) {
             if (gameModes[i].id == id) {
@@ -87,7 +105,8 @@ var d2 = (function() {
 
         if (username_lower != "robbie" && username_lower != "benjy" && 
             username_lower != "david" && username_lower != "dendi" && 
-            username_lower != "aui_2000" && username_lower != "merlini") {
+            username_lower != "aui_2000" && username_lower != "merlini" &&
+            username_lower != "angela") {
             throw new Error ("No data currently for user " + username)
         }
 
@@ -162,6 +181,10 @@ var d2 = (function() {
             return itemData
         },
 
+        getAbilityData: function() {
+            return abilityData
+        },
+
         getHeroName: function(id) {
             return idToHeroDisplayName(id)
         },
@@ -176,6 +199,10 @@ var d2 = (function() {
 
         getItemInfo: function(id) {
             return idToItemInfo(id)
+        },
+
+        getAbilityInfo: function(id) {
+            return idToAbilityInfo(id);
         },
 
         getGameMode: idToGameMode,
