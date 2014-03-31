@@ -2,12 +2,18 @@ var user_data;
 
 var this_game;
 
+var remaining = 2;
+
 create_end_screen();
+
+d2.loadJson(function() {
+    if (!--remaining) update_end_screen(user_data.matches[0])
+})
 
 d2.loadUserData("robbie", function(error, data) {
     user_data = data;
 
-    update_end_screen(user_data.matches[0])
+    if (!--remaining) update_end_screen(user_data.matches[0])
 })
 
 function create_end_screen() {

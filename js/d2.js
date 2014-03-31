@@ -10,11 +10,7 @@ var d2 = (function() {
 
     function loadHeroJson()
     {
-        d3.json("/data/heroes.json", function (error, data)
-        {
-    	   // an array of all the hero names indexed appropriately - starting at 1
-    	   heroData = data;
-        });
+        
     };
 
     function loadItemJson()
@@ -39,10 +35,39 @@ var d2 = (function() {
         })
     }
 
-    loadHeroJson();
-    loadItemJson();
-    loadAbilityJson();
-    loadGameModes();
+    function loadJSON(callback) {
+        var remaining = 4;
+
+        d3.json("/data/heroes.json", function (error, data)
+        {            // an array of all the hero names indexed appropriately - starting at 1
+            heroData = data;
+
+            if (!--remaining) callback();
+
+        });
+
+        d3.json("/data/abilities.json", function (error, data) {
+            abilityData = data;
+
+            if (!--remaining) callback();
+        });
+
+        d3.json("/data/items.json", function (error, data)
+        {
+           // an array of all the hero names indexed appropriately - starting at 1
+           itemData = data;
+
+           if (!--remaining) callback();
+        });
+
+        d3.json("/data/game_modes.json", function (error, data) {
+            // array of all the game modes
+            gameModes = data;
+
+            if (!--remaining) callback();
+        })
+
+    }
 
 
     // returns hero data for a given id
@@ -175,6 +200,8 @@ var d2 = (function() {
                             + "displayItemImg(name): displays the image for item 'name'\n"
 
     return {
+        loadJson: loadJSON,
+
         getHeroData: function() {
             return heroData
         },
