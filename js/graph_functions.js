@@ -70,7 +70,7 @@ var tip = d3.tip()
 svg.call(tip);
 
 //function calls
-loadData("benjy");
+loadData("robbie");
 
 draw_win_loss();
 
@@ -495,9 +495,9 @@ function update_item_percent(data) {
 	item_percent_x.domain(items.map(function(d) {
 		return d.name;
 	}));
-	item_percent_y.domain(d3.extent(items, function(d) {
+	item_percent_y.domain([0, d3.max(items, function(d) {
 		return d.percent;
-	}));
+	})]);
 
 	var bars = item_percent_graph.select(".bars")
 				.selectAll(".bar")
