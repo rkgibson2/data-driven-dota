@@ -69,6 +69,10 @@
     vertical-align:middle;
 }
 
+.end_screen_item_pic {
+    margin: 0px 2px;
+}
+
 #stat_graph {
     margin: 0px 10px;
     height: 900px;
