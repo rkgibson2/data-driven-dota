@@ -1,4 +1,4 @@
-setTimeout(function(){
+d2.loadJson(function(){
 
 //herolist = new Array();
 for(var i=1;  i<=110 ;i++)
@@ -31,7 +31,7 @@ for(var i=1;  i<=110 ;i++)
      }
 }
 
-},2000);
+});
 
 function highlight(){
 	
