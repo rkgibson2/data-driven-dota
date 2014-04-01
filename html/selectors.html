@@ -2,24 +2,75 @@
 <html>
 <head>
     <title>Selector tools</title>
+    
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
+<script src="../js/d2.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+<script src="../bootstrap/js/bootstrap.js"></script>
+
 </head>
 
-
-<body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script src="../js/d2.js"></script>
-
 <style type="text/css"> 
+
+
 #intimages.pic, #agiimages.pic, #strimages.pic {
 float: right;
 
 }
-.container {
-height: 300px;
-width: 400px;
- line-height: 0;
+
+.modal{
+margin: -1050 0 0 0;
+position: fixed;
+top: 30%;
+left: 30%;
+	
+width:1100px;
+max-height:1000px;
 }
+div.modal-header{
+background-color:black;
+width:1050px;
+color:white;
+/*font: 20pt white;*/
+
+}
+
+div.modal-footer{
+background-color:black;
+width:1050px;
+
+}
+
+div.modal-body{
+width:1050px;
+max-height:800px;
+background-color:black;
+height: 510px;
+	margin: -1050 0 0 0;
+	overflow: visible;
+};
+
+
+div#selector {
+	margin: 0 0 0 0;
+	max-height:1100px;
+	width:990px;
+	/*height: 800px;*/
+	background-color:black;
+}
+div.container {
+height: 440px;
+width: 336px;
+ line-height: 0;
+ background-color: black;
+ z-index: 1000;
+}
+
+
+
+
 img{
 /*padding-right:3px;
 padding-bottom: 3px;*/
@@ -29,18 +80,44 @@ border: 2px solid black;
 
 /*border-color: red;*/
 }
+
+table {
+  border-spacing: 10px;
+}
 /*
 .unselected{
 border-color: black;
 }*/
 </style>
-<table>
-<tr>
-<td><div id="strimages" class = "container"></div></td>
-<td><div id="agiimages" class = "container"></div></td>
-<td><div id="intimages" class = "container"></div></td>
-</tr>
-</table>
+<body>
+<div class="bigcontainer">
+<div id = "selector" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">  
+        <!--<a class="close" data-dismiss="modal">×</a>  -->
+        <h3>Select Heroes to Filter</h3>  
+    </div>  
+    <div class="modal-body">  
+   <!-- <h4> Some text here </h4>-->
+        <table>
+            <tr>
+                <td><div id="strimages" class = "container"></div></td>
+                <td><div id="agiimages" class = "container"></div></td>
+                <td><div id="intimages" class = "container"></div></td>
+            </tr>
+        </table>
+    </div>    
+    <div class="modal-footer">  
+        <a href="#" onclick="selected()" class="btn btn-success">Filter</a>  
+        <a href="#" class="btn" data-dismiss="modal">Close</a>  
+    </div>  
+</div>
+<p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large">Filter</a>
+		</p>
+
+</div>
+		
+
+
 <script src="../js/selectors.js"></script>
 
 </body>
