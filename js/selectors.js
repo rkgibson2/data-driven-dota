@@ -1,9 +1,11 @@
 d2.loadJson(function(){
 
 //herolist = new Array();
-for(var i=1;  i<=110 ;i++)
+hero_keys = d2.getKeys("heroes");
+
+for(var i=1;  i<hero_keys.length; i++)
 {
-     var hero =  d2.getHeroInfo(i);;
+     var hero =  d2.getHeroInfo(hero_keys[i]);;
      if (hero)
      {
         var herodname = hero.dname.toLowerCase().replace(/ /g,"_").replace(/'/g,"");

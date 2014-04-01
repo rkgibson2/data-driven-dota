@@ -8,34 +8,11 @@ var d2 = (function() {
     var abilityData =[];
     var gameModes = [];
 
-    function loadHeroJson()
-    {
-        
-    };
-
-    function loadItemJson()
-    {
-        d3.json("/data/items.json", function (error, data)
-        {
-    	   // an array of all the hero names indexed appropriately - starting at 1
-    	   itemData = data;
-        });
-    };
-
-    function loadAbilityJson() {
-        d3.json("/data/abilities.json", function (error, data) {
-            abilityData = data;
-        })
-    }
-
-    function loadGameModes() {
-        d3.json("/data/game_modes.json", function (error, data) {
-            // array of all the game modes
-            gameModes = data;
-        })
-    }
 
     function loadJSON(callback) {
+        // if no callback was passed, make function that does nothing
+        if (callback === undefined)
+            callback = function() {}
         var remaining = 4;
 
         d3.json("/data/heroes.json", function (error, data)
@@ -72,14 +49,10 @@ var d2 = (function() {
 
     // returns hero data for a given id
     function idToHeroInfo(id) {
-        for (var i = 0; i < heroData.length; i++) {
-            if (heroData[i].id == id)
-                return heroData[i];
-        }
-        return 0; // i dont think we want to throw an error here
-        // if you traverse array and land on 25 or 105 which have no value
-        // an error would be thrown even though we havent finished searching the array
-       // throw new Error ("No hero with id " + id)
+        if (id in heroData)
+            return heroData[id]
+        else
+            throw new Error ("No hero with id " + id)
     }
 
     // convenience method for getting name
@@ -89,13 +62,10 @@ var d2 = (function() {
     }
 
     function idToItemInfo(id) {
-        for (var i = 0; i < itemData.length; i++)
-        {
-            if (itemData[i].id == id)
-                return itemData[i];
-        }
-
-        throw new Error ("No item with id " + id)
+        if (id in itemData)
+            return itemData[id]
+        else
+            throw new Error ("No item with id " + id)
     }
 
     function idToItemName(id)
@@ -104,23 +74,36 @@ var d2 = (function() {
     }
 
     function idToAbilityInfo (id) {
-        for (var i = 0; i < abilityData.length; i++)
-        {
-            if (abilityData[i].id == id)
-                return abilityData[i];
-        }
-
-        throw new Error ("No ability with id " + id)
+        if (id in abilityData)
+            return abilityData[id]
+        else
+            throw new Error ("No ability with id " + id)
     }
 
     function idToGameMode(id) {
-        for (var i = 0; i < gameModes.length; i++) {
-            if (gameModes[i].id == id) {
-                return gameModes[i].name
-            }
-        }
+        if (id in gameModes)
+            return gameModes[id]
+        else
+            throw new Error ("No game mode with id " + id)
+    }
 
-        throw new Error ("No game mode with id " + id)
+    function getKeys (datatype) {
+        switch (datatype.toLowerCase()) {
+            case "heroes":
+                return Object.keys(heroData);
+                break;
+            case "items":
+                return Object.keys(itemData);
+                break;
+            case "abilities":
+                return Object.keys(abilityData);
+                break;
+            case "game_modes":
+                return Object.keys(gameModes.keys());
+                break;
+            default:
+                throw new Error (datatype + " must be \'heroes,\" \"items,\" \"abilities,\" or \"game_modes.\"")
+        }
     }
 
     // loads user data using d3.json
@@ -234,7 +217,9 @@ var d2 = (function() {
             return idToAbilityInfo(id);
         },
 
-        getGameMode: idToGameMode,
+        getGameModeInfo: idToGameMode,
+
+        getKeys: getKeys,
 
         loadUserData: loadUserData,
 

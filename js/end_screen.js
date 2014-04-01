@@ -45,7 +45,7 @@ function update_end_screen(game) {
     d3.select("#match_id .text").text(game.match_id)
 
     // set game mode text
-    d3.select("#game_mode .text").text(d2.getGameMode(game.game_mode))
+    d3.select("#game_mode .text").text(d2.getGameModeInfo(game.game_mode))
 
     // game.start_time is in seconds since UNIX Epoch, but d3 new Date needs milliseconds   
     var start = new Date(game.start_time * 1000)
