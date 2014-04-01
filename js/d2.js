@@ -52,10 +52,7 @@ var d2 = (function() {
         if (id in heroData)
             return heroData[id]
         else
-            return 0; // i dont think we want to throw an error here
-        // if you traverse array and land on 25 or 105 which have no value
-        // an error would be thrown even though we havent finished searching the array
-       // throw new Error ("No hero with id " + id)
+            throw new Error ("No hero with id " + id)
     }
 
     // convenience method for getting name
@@ -88,6 +85,25 @@ var d2 = (function() {
             return gameModes[id]
         else
             throw new Error ("No game mode with id " + id)
+    }
+
+    function getKeys (datatype) {
+        switch (datatype.toLowerCase()) {
+            case "heroes":
+                return Object.keys(heroData);
+                break;
+            case "items":
+                return Object.keys(itemData);
+                break;
+            case "abilities":
+                return Object.keys(abilityData);
+                break;
+            case "game_modes":
+                return Object.keys(gameModes.keys());
+                break;
+            default:
+                throw new Error (datatype + " must be \'heroes,\" \"items,\" \"abilities,\" or \"game_modes.\"")
+        }
     }
 
     // loads user data using d3.json
@@ -202,6 +218,8 @@ var d2 = (function() {
         },
 
         getGameModeInfo: idToGameMode,
+
+        getKeys: getKeys,
 
         loadUserData: loadUserData,
 
