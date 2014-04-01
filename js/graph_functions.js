@@ -907,8 +907,8 @@ function draw_hero_chord_graph(matrix) {
 	                vertices: {}};
 	    }
 	};
-	 
-	console.log(polygons)
+		 
+	//console.log(polygons)
 
 	var h, samebase, subgroups = [];
  
@@ -930,7 +930,16 @@ function draw_hero_chord_graph(matrix) {
 	    }
 	}
 
-	console.log(subgroups)
+	//console.log(subgroups)
+
+	i = -1; while (++i < connections.length) {
+	    if (connections[i].length === 1) {
+	        subgroups[connections[i][0].group].push({
+	                   'ribbons': [],
+	                   'basevalue': connections[i][0].value
+	                 });
+	    }
+	}
 
 	var range = function(n) {
 	    var out = [], i = -1;
@@ -977,9 +986,11 @@ function draw_hero_chord_graph(matrix) {
 	    x += padding;
 	}
 
-	console.log(groups)
+	//console.log(groups)
 
 	var chords = [];
+
+	console.log(polygons)
  
 	i = -1; while (++i < polygons.length) {
 	    j = -1; while (++j < polygons[i].edges.length) {
@@ -993,38 +1004,24 @@ function draw_hero_chord_graph(matrix) {
 	    }
 	}
 
-	// hero_chord_graph.append("g").selectAll("path")
-	//     .data(groupings)
-	//   .enter().append("path")
-	//     .style("fill", function(d) { return fill(d.index); })
-	//     .style("stroke", function(d) { return fill(d.index); })
-	//     .attr("d", d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius))
-	//     .on("mouseover", fade(.1))
-	//     .on("mouseout", fade(1));
+	hero_chord_graph.append("g").selectAll("path")
+	    .data(groups)
+	  .enter().append("path")
+	    .style("fill", function(d) { return fill(d.index); })
+	    .style("stroke", function(d) { return fill(d.index); })
+	    .attr("d", d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius))
+	    .on("mouseover", fade(.1))
+	    .on("mouseout", fade(1));
 
-	// var ticks = hero_chord_graph.append("g").selectAll("g")
-	//     .data(groupings)
-	//   .enter().append("g").selectAll("g")
-	//     .data(groupTicks)
-	//   .enter().append("g")
-	//     .attr("transform", function(d) {
-	//       return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-	//           + "translate(" + outerRadius + ",0)";
-	//     });
-
-	// ticks.append("line")
-	//     .attr("x1", 1)
-	//     .attr("y1", 0)
-	//     .attr("x2", 5)
-	//     .attr("y2", 0)
-	//     .style("stroke", "#000");
-
-	// ticks.append("text")
-	//     .attr("x", 8)
-	//     .attr("dy", ".35em")
-	//     .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180)translate(-16)" : null; })
-	//     .style("text-anchor", function(d, i) { return d.angle > Math.PI ? "end" : null; })
-	//     .text(function(d,i) { return "0"; });
+	var ticks = hero_chord_graph.append("g").selectAll("g")
+	    .data(groups)
+	  .enter().append("g").selectAll("g")
+	    .data(groupTicks)
+	  .enter().append("g")
+	    .attr("transform", function(d) {
+	      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+	          + "translate(" + outerRadius + ",0)";
+	    });
 
 	// hero_chord_graph.append("g")
 	//     .attr("class", "chord")
@@ -1035,26 +1032,26 @@ function draw_hero_chord_graph(matrix) {
 	//     .style("fill", function(d) { return fill(d.target.index); })
 	//     .style("opacity", 1);
 
-	// // Returns an array of tick angles and labels, given a group.
-	// function groupTicks(d) {
-	// 	//console.log(d)
-	//   var k = (d.endAngle - d.startAngle) / d.value;
-	//   return d3.range(0, d.value, 1000).map(function(v, i) {
-	//     return {
-	//       angle: v * k + d.startAngle,
-	//       label: i % 5 ? null : v / 1000 + "k"
-	//     };
-	//   });
-	// }
+	// Returns an array of tick angles and labels, given a group.
+	function groupTicks(d) {
+		//console.log(d)
+	  var k = (d.endAngle - d.startAngle) / d.value;
+	  return d3.range(0, d.value, 1000).map(function(v, i) {
+	    return {
+	      angle: v * k + d.startAngle,
+	      label: i % 5 ? null : v / 1000 + "k"
+	    };
+	  });
+	}
 
-	// // Returns an event handler for fading a given chord group.
-	// function fade(opacity) {
-	//   return function(g, i) {
-	//     svg.selectAll(".chord path")
-	//         .filter(function(d) { return d.source.index != i && d.target.index != i; })
-	//       .transition()
-	//         .style("opacity", opacity);
-	//   };
-	// }
+	// Returns an event handler for fading a given chord group.
+	function fade(opacity) {
+	  return function(g, i) {
+	    svg.selectAll(".chord path")
+	        .filter(function(d) { return d.source.index != i && d.target.index != i; })
+	      .transition()
+	        .style("opacity", opacity);
+	  };
+	}
 }
 
