@@ -1,78 +1,78 @@
-[
-    {
+{
+    "0": {
         "id": 0, 
         "name": "Unknown"
     }, 
-    {
+    "1": {
         "id": 1, 
         "name": "All Pick"
     }, 
-    {
+    "2": {
         "id": 2, 
         "name": "Captains Mode"
     }, 
-    {
+    "3": {
         "id": 3, 
         "name": "Random Draft"
     }, 
-    {
+    "4": {
         "id": 4, 
         "name": "Single Draft"
     }, 
-    {
+    "5": {
         "id": 5, 
         "name": "All Random"
     }, 
-    {
+    "6": {
         "id": 6, 
         "name": "?? INTRO/DEATH ??"
     }, 
-    {
+    "7": {
         "id": 7, 
         "name": "The Diretide"
     }, 
-    {
+    "8": {
         "id": 8, 
         "name": "Reverse Captains Mode"
     }, 
-    {
+    "9": {
         "id": 9, 
         "name": "Greeviling"
     }, 
-    {
+    "10": {
         "id": 10, 
         "name": "Tutorial"
     }, 
-    {
+    "11": {
         "id": 11, 
         "name": "Mid Only"
     }, 
-    {
+    "12": {
         "id": 12, 
         "name": "Least Played"
     }, 
-    {
+    "13": {
         "id": 13, 
         "name": "New Player Pool"
     }, 
-    {
+    "14": {
         "id": 14, 
         "name": "Compendium Matchmaking"
     }, 
-    {
+    "15": {
         "id": 15, 
         "name": "Custom"
     }, 
-    {
+    "16": {
         "id": 16, 
         "name": "Captains Draft"
     }, 
-    {
+    "17": {
         "id": 17, 
         "name": "Balanced Draft"
     }, 
-    {
+    "18": {
         "id": 18, 
         "name": "Ability Draft"
     }
-]
+}

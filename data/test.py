@@ -1,18 +1,14 @@
 import json
 import requests
 
-ability_list = requests.get('https://raw.githubusercontent.com/kronusme/dota2-api/master/data/abilities.json').json()['abilities']
 
+with open('items.json', 'r') as item_file:
+    data = json.load(item_file)
 
-with open('abilities.json', 'r') as ability_file:
-    data = json.load(ability_file)
+new_data = {}
 
-for key, value in data.items():
-    for ability in ability_list:
-        if key == ability['name']:
-            for key2, value2 in value.items():
-                ability[key2] = value2
+for item in data:
+    new_data[item['id']] = item
 
-
-with open('abilities.json', 'w') as outfile:
-     json.dump(ability_list, outfile, sort_keys=True, indent=4)
+with open('items.json', 'w') as outfile:
+     json.dump(new_data, outfile, sort_keys=True, indent=4)
