@@ -323,22 +323,22 @@ function create_flare(data) {
 
 	d3.json("../data/heroes.json", function(error,dat) {
 
-		dat.forEach(function(d,i) {
-			d.count = 0;
+		for (d in dat) {
+			dat[d].count = 0;
 
-			if (d.stat == "agility") {
-				hero_flare.children[0].children.push(d)
+			if (dat[d].stat == "agility") {
+				hero_flare.children[0].children.push(dat[d])
 			}
 
-			if (d.stat == "strength") {
-				hero_flare.children[1].children.push(d);
+			if (dat[d].stat == "strength") {
+				hero_flare.children[1].children.push(dat[d]);
 			}
 
-			if (d.stat == "intelligence") {
-				hero_flare.children[2].children.push(d);
+			if (dat[d].stat == "intelligence") {
+				hero_flare.children[2].children.push(dat[d]);
 			}
 
-		})
+		}
 
 		data.matches.forEach(function(d,i) {
 
@@ -459,20 +459,24 @@ function update_item_percent(data) {
 	//initialize all items with a count of 0
 	d3.json("../data/items.json", function(error,dat) {
 
-		item_percent_color.domain(d3.extent(dat,function(d) {
-			return d.cost;
-		}))
+		var extent_array = [];
+
+		for (id in dat) {
+			extent_array.push(dat[id].cost);
+		}
+
+		item_percent_color.domain(d3.extent(extent_array))
 		item_percent_color.range(["gray","#FFD700"])
 
-		dat.forEach(function(d,i) {
-			d.count = 0;
-		})
+		for (id in dat) {
+			dat[id].count = 0;
+		}
 
 	var total_count = data.matches.length;
 
 	//count all of the items
 	data.matches.forEach(function(d,i) {
-		for (var j = 0; j < dat.length; j++) {
+		for (j in dat) {
 			if (dat[j].id == d.player_info.item_0) {
 				dat[j].count += 1;
 			}		
@@ -495,7 +499,7 @@ function update_item_percent(data) {
 	})
 
 	//consolidate into correct form that we want
-	for (var k = 0; k < dat.length; k++) {
+	for (k in dat) {
 		if (dat[k].count != 0 && dat[k].name != "empty") {
 			dat[k].percent = dat[k].count/total_count
 			items.push(dat[k])
