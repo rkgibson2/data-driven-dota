@@ -47,11 +47,10 @@ div.modal-body{
 width:1050px;
 max-height:800px;
 background-color:black;
-height: 510px;
+height: 540px;
 	margin: -1050 0 0 0;
 	overflow: visible;
 };
-
 
 div#selector {
 	margin: 0 0 0 0;
@@ -68,7 +67,13 @@ width: 336px;
  z-index: 1000;
 }
 
+td text{
+padding-bottom:15px;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
 
+}
 
 
 img{
@@ -80,6 +85,12 @@ border: 2px solid black;
 
 /*border-color: red;*/
 }
+
+#strlabel,#intlabel,#agilabel{
+color: white;
+font-size: 20px;
+}
+
 
 table {
   border-spacing: 10px;
@@ -100,9 +111,9 @@ border-color: black;
    <!-- <h4> Some text here </h4>-->
         <table>
             <tr>
-                <td><div id="strimages" class = "container"></div></td>
-                <td><div id="agiimages" class = "container"></div></td>
-                <td><div id="intimages" class = "container"></div></td>
+                <td><text id="strlabel">Strength</text><div id="strimages" class = "container"></div></td>
+                <td><text id="agilabel">Agility</text><div id="agiimages" class = "container"></div></td>
+                <td><text id="intlabel">Intelligence</text><div id="intimages" class = "container"></div></td>
             </tr>
         </table>
     </div>    
