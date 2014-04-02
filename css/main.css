@@ -88,6 +88,12 @@ path {
   right: 180px;
 }
 
+#hero_filter{
+  position:absolute;
+  top: 450px;
+  right: 280px;
+}
+
 /*tooltip styles*/
 
 /*these styles come from: https://github.com/Caged/d3-tip*/

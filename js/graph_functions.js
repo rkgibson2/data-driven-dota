@@ -15,7 +15,7 @@ var margin = {
 
 var width = 1060 - margin.left - margin.right;
 
-var height = 800 - margin.bottom - margin.top;
+var height = 1000 - margin.bottom - margin.top;
 
 bb_win_loss = {
     x: 0,
@@ -40,7 +40,7 @@ bb_item_percent = {
 
 bb_hero_chord = {
     x: 350,
-    y: 350,
+    y: 380,
     w: 400,
     h: 400
 };
@@ -84,7 +84,7 @@ svg.call(tip);
 
 //function calls
 d2.loadJson(function() {
-	loadData("robbie");
+	loadData("david");
 });
 
 //loadData("robbie");
@@ -107,7 +107,7 @@ function loadData(username) {
 
         create_flare(data);
 
-        create_matrix(data);
+        create_matrix(data, 8);
 
     })
 }
@@ -748,7 +748,7 @@ function reset_index(hero_id) {
 	}
 }
 
-function create_matrix (data) {
+function create_matrix (data, filter_value) {
 
 	var matrix = [];
 
@@ -781,6 +781,10 @@ function create_matrix (data) {
 			continue;
 		}
 
+		if (data.matches[i].players.length < 10) {
+			continue;
+		}
+
 		for (var j = 0; j < 9; j++) {
 			set.push(data.matches[i].players[j].hero_id);
 		}
@@ -799,6 +803,9 @@ function create_matrix (data) {
 	}
 
 	var new_dict = {};
+	var lookup_dict = {};
+	var counter = 0;
+	var new_arr = [];
 
 	for (var y = 0; y < 107; y ++) {
 		for (var z = 0; z < 107; z++) {
@@ -810,31 +817,54 @@ function create_matrix (data) {
 			// 	new_dict[z] = {};
 			// 	new_dict[z][y] = matrix[z][y]
 			// }
-			if (matrix[y][z] < 7) {
-				matrix[y][z] = 0
+			if (matrix[y][z] < filter_value) {
+				matrix[y][z] = 0;
+			}
+			else {
+				//it stays 
+				if (!(y in new_dict)) {
+					new_dict[y] = counter;
+					new_arr[counter] = [];
+					lookup_dict[counter] = y;
+					counter++;
+				}
+				if (!(z in new_dict)) {
+					new_dict[z] = counter;
+					new_arr[counter] = [];
+					lookup_dict[counter] = z;
+					counter++;
+				}
+				new_arr[new_dict[y]][new_dict[z]] = matrix[y][z];
 			}
 		}
 	}
 
-	console.log(new_dict)
-	var dense_matrix = [];
-
-	for (var y = 0; y < Object.keys(new_dict).length; y ++) {
-		var new_array = [];
-		//console.log(new_dict[y]);
-
-		for (var key in new_dict[y]) {
-		  new_array.push(new_dict[y][key])
+	for (var i = 0; i < new_arr.length; i++) {
+		for (var j = 0; j < new_arr.length; j++){
+			if (new_arr[i][j] === undefined) {
+				new_arr[i][j] = 0;
+			}
 		}
-
-		dense_matrix.push(new_array);
 	}
-	console.log(dense_matrix)
 
-	draw_hero_chord_graph(matrix);
+	// var dense_matrix = [];
+
+	// for (var y = 0; y < Object.keys(new_dict).length; y ++) {
+	// 	var new_array = [];
+	// 	//console.log(new_dict[y]);
+
+	// 	for (var key in new_dict[y]) {
+	// 	  new_array.push(new_dict[y][key])
+	// 	}
+
+	// 	dense_matrix.push(new_array);
+	// }
+	// console.log(dense_matrix)
+
+	draw_hero_chord_graph(new_arr, lookup_dict);
 }
 
-function draw_hero_chord_graph(matrix) {
+function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	var chord = d3.layout.chord()
 	    .padding(.05)
@@ -847,178 +877,225 @@ function draw_hero_chord_graph(matrix) {
 	    outerRadius = innerRadius * 1.1;
 
 	var fill = d3.scale.ordinal()
-	    .domain(d3.range(4))
-	    .range(["#000000", "#FFDD89", "#957244", "#F26223"]);
+	    .domain(["strength", "agility", "intelligence"])
+	    .range(["#2BAC00", "#E38800","#1A88FC"]);
 
-	var groupings = {};
-	for (var i = 0; i < 106; i++) {
-		if (chord.groups()[i].value != 0) {
-			//console.log(chord.groups()[i].endAngle)
-			//chord.groups()[i].endAngle = chord.groups()[i].endAngle + (chord.groups()[i].value*.01)
-			groupings[i] = chord.groups()[i].value;
-		}
-	}
+	// var groupings = {};
+	// for (var i = 0; i < 106; i++) {
+	// 	if (chord.groups()[i].value != 0) {
+	// 		//console.log(chord.groups()[i].endAngle)
+	// 		//chord.groups()[i].endAngle = chord.groups()[i].endAngle + (chord.groups()[i].value*.01)
+	// 		groupings[i] = chord.groups()[i].value;
+	// 	}
+	// }
 
-	//console.log(groupings)
+	// //console.log(groupings)
 
-	var padding = 0.05;
+	// var padding = 0.05;
 
-	var k = 0;
+	// var k = 0;
 
-	for(var i in Object.keys(groupings)) { 
-		if (groupings[String(i)]) {
-			k += groupings[i]; 
-			//console.log(k)
-		}
-	}
+	// for(var i in Object.keys(groupings)) { 
+	// 	if (groupings[String(i)]) {
+	// 		k += groupings[i]; 
+	// 		//console.log(k)
+	// 	}
+	// }
 
-	var ngroups = Object.keys(groupings).length;
+
+
+
+	// var ngroups = Object.keys(groupings).length;
 	
-	k = ((2 * 3.1415 - padding * ngroups) / k);
+	// k = ((2 * 3.1415 - padding * ngroups) / k);
 
-	var connections = [];
-	for (var i in Object.keys(groupings)) {
-		if (groupings[String(i)]) {
-			connections.push([{group: parseInt(i), value: groupings[i]}])
-		}
-	}
+	// var connections = [];
+	// for (var i in Object.keys(groupings)) {
+	// 	if (groupings[String(i)]) {
+	// 		connections.push([{group: parseInt(i), value: groupings[i]}])
+	// 	}
+	// }
 
-	//console.log(connections[1].length)
+	// //console.log(chord.chords())
 
-	var polygons = [];
-	var poly = {edges: [],
-	            vertices: {}};
+	// var polygons = [];
+	// var poly = {edges: [],
+	//             vertices: {}
+	//         };
 	 
-	var i, j;
-	i = -1; while (++i < connections.length) {
-	    if (connections[i].length >= 1) {
-	        j = 0; while (++j < connections[i].length) {
-	            poly.edges.push({
-	                                source: connections[i][j-1],
-	                                target: connections[i][j]
-	                            });
-	            poly.vertices[connections[i][j-1].group + ''] = '';
-	        }
-	        poly.vertices[connections[i][j-1].group + ''] = '';
-	        if (poly.edges.length >= 1) {
-	            poly.edges.push({
-	                            source: connections[i][0],
-	                            target: connections[i][j-1]
-	                            });
-	        }
-	        polygons.push(poly);
-	        poly = {edges: [],
-	                vertices: {}};
-	    }
-	};
+	// var i, j;
+	// i = -1; while (++i < connections.length) {
+	//     if (connections[i].length >= 1) {
+	//         j = 0; while (++j < connections[i].length) {
+	//             poly.edges.push({
+	//                                 source: connections[i][j-1],
+	//                                 target: connections[i][j]
+	//                             });
+	//             poly.vertices[connections[i][0].group + ''] = '';
+	//         }
+	//         poly.vertices[connections[i][0].group + ''] = '';
+	//         if (poly.edges.length >= 1) {
+	//             poly.edges.push({
+	//                             source: connections[i][0],
+	//                             target: connections[i][j-1]
+	//                             });
+	//         }
+	//         polygons.push(poly);
+	//         poly = {edges: [],
+	//                 vertices: {}
+	//             };
+	//     }
+	// };
 		 
-	//console.log(polygons)
+	// //console.log(polygons)
+	
+	// var h, samebase, subgroups = [];
 
-	var h, samebase, subgroups = [];
+	// // var id_array = [];
+
+	// for (var id = 0; id < Object.keys(groupings).length; id++){
+	// 	id_array.push(parseInt(Object.keys(groupings)[id]))
+	// }
  
-	i = -1; while (++i < ngroups) {
-	    subgroups[i] = [];
-	    j = -1; while (++j < polygons.length) {
-	        samebase = {'ribbons': [],
-	                    'basevalue': 0};
-	        h = -1; while (++h < polygons[j].edges.length) {
-	            if (polygons[j].edges[h].source.group === i) {
-	                samebase.ribbons.push(polygons[j].edges[h]);
-	                samebase.basevalue = polygons[j].edges[h].source.value;
-	            } else if (polygons[j].edges[h].target.group === i) {
-	                samebase.ribbons.push(polygons[j].edges[h]);
-	                samebase.basevalue = polygons[j].edges[h].target.value;
-	            }
-	        }
-	        subgroups[i].push(samebase);
-	    }
-	}
+	// //for (item in id_array) {
+	// i = -1; while (++i < ngroups) {
+	//     subgroups[i] = [];
+	//     j = -1; while (++j < polygons.length) {
+	//         samebase = {'ribbons': [],
+	//                     'basevalue': 0};
+	//         h = -1; while (++h < polygons[j].edges.length) {
+	//             if (polygons[j].edges[h].source.group === i) {
+	//                 samebase.ribbons.push(polygons[j].edges[h]);
+	//                 samebase.basevalue = polygons[j].edges[h].source.value;
+	//             } 
+	//             else if (polygons[j].edges[h].target.group === i) {
+	//                 samebase.ribbons.push(polygons[j].edges[h]);
+	//                 samebase.basevalue = polygons[j].edges[h].target.value;
+	//             }
+	//         }
+	//         subgroups[i].push(samebase);
+	//     }
+	// }
 
-	//console.log(subgroups)
+	// i = -1; while (++i < connections.length) {
+	//     if (connections[i].length === 1) {
+	//         subgroups[connections[i][0].group].push({
+	//                    'ribbons': [],
+	//                    'basevalue': connections[i][0].value
+	//                  });
+	//     }
+	// }
 
-	i = -1; while (++i < connections.length) {
-	    if (connections[i].length === 1) {
-	        subgroups[connections[i][0].group].push({
-	                   'ribbons': [],
-	                   'basevalue': connections[i][0].value
-	                 });
-	    }
-	}
+	// var range = function(n) {
+	//     var out = [], i = -1;
+	//     while(++i<n) {out.push(i);}
+	//     return out;
+	// }
 
-	var range = function(n) {
-	    var out = [], i = -1;
-	    while(++i<n) {out.push(i);}
-	    return out;
-	}
+	// var subgroupIndex = [];
+	// i = -1; while (++i < ngroups) {
+ //    	subgroupIndex.push(range(subgroups[i].length));
+	// }
 
-	var subgroupIndex = [];
-	i = -1; while (++i < ngroups) {
-    	subgroupIndex.push(range(subgroups[i].length));
-	}
-
-	var pt, pt1, pt2, groups = [];
+	// var pt, pt1, pt2, groups = [];
  
- 	var groupIndex = range(ngroups);
+ // 	var groupIndex = range(ngroups);
 
-	var x = 0, i = -1; while (++i < ngroups) {
-	    var di = groupIndex[i];
-	    var x0 = x, j = -1; while (++j < subgroupIndex[di].length) {
-	        var dj = subgroupIndex[di][j],
-	        v = subgroups[di][dj].basevalue,
-	        a0 = x,
-	        a1 = x += v * k;
-	        h = -1; while(++h < subgroups[di][dj].ribbons.length) {
-	            pt1 = subgroups[di][dj].ribbons[h].source;
-	            pt2 = subgroups[di][dj].ribbons[h].target;
-	            if (pt1.group === di) { pt = pt1; }
-	            else { pt = pt2; }
-	            pt['geometry'] = {
-	                index: di,
-	                subindex: dj,
-	                startAngle: a0,
-	                endAngle: a1,
-	                value: v
-	            };
-	        }
-	    }
-	    groups[di] = {
-	        index: di,
-	        startAngle: x0,
-	        endAngle: x,
-	        value: (x - x0) / k
-	    };
-	    x += padding;
-	}
+	// var x = 0, i = -1; while (++i < ngroups) {
+	//     var di = groupIndex[i];
+	//     var x0 = x, j = -1; while (++j < subgroupIndex[di].length) {
+	//         var dj = subgroupIndex[di][j],
+	//         v = subgroups[di][dj].basevalue,
+	//         a0 = x,
+	//         a1 = x += v * k;
+	//         h = -1; while(++h < subgroups[di][dj].ribbons.length) {
+	//             pt1 = subgroups[di][dj].ribbons[h].source;
+	//             pt2 = subgroups[di][dj].ribbons[h].target;
+	//             if (pt1.group === di) { pt = pt1; }
+	//             else { pt = pt2; }
+	//             pt['geometry'] = {
+	//                 index: di,
+	//                 subindex: dj,
+	//                 startAngle: a0,
+	//                 endAngle: a1,
+	//                 value: v
+	//             };
+	//         }
+	//     }
+	//     groups[di] = {
+	//         index: di,
+	//         startAngle: x0,
+	//         endAngle: x,
+	//         value: (x - x0) / k
+	//     };
+	//     x += padding;
+	// }
 
-	//console.log(groups)
+	// // //console.log(groups)
 
-	var chords = [];
+	// var chords = [];
 
-	console.log(polygons)
+	// // //console.log(polygons)
  
-	i = -1; while (++i < polygons.length) {
-	    j = -1; while (++j < polygons[i].edges.length) {
-	        var source = polygons[i].edges[j].source.geometry,
-	        target = polygons[i].edges[j].target.geometry;
-	        if (source.value || target.value) {
-	            chords.push(source.value < target.value
-	                        ? {source: target, target: source, groups: polygons[i].vertices}
-	                        : {source: source, target: target, groups: polygons[i].vertices});
-	        }
-	    }
+	// i = -1; while (++i < polygons.length) {
+	//     j = -1; while (++j < polygons[i].edges.length) {
+	//         var source = polygons[i].edges[j].source,
+	//         target = polygons[i].edges[j].target;
+	//         //console.log(source)
+	//         if (source.value || target.value) {
+	//             chords.push(source.value < target.value
+	//                         ? {source: target, target: source, groups: polygons[i].vertices}
+	//                         : {source: source, target: target, groups: polygons[i].vertices});
+	//         }
+	//     }
+	// }
+
+	// console.log(groups)
+
+	// //console.log(chords)
+
+	// for (var index = 0; index < chord.chords().length; index ++) {
+	// 	chord.chords()[index].source.group = chord.chords()[index].source.index;
+	// 	chord.chords()[index].target.group = chord.chords()[index].target.index;
+
+	// }
+
+	// console.log(chord.chords())
+
+	var groupings = [];
+
+	for (var i = 0; i < chord.groups().length; i++) {
+		chord.groups()[i].hero_id = lookup_dict[chord.groups()[i].index]
 	}
 
-	hero_chord_graph.append("g").selectAll("path")
-	    .data(groups)
+	//console.log(chord.groups())
+
+	var arcs = hero_chord_graph.append("g").selectAll("path")
+	    .data(chord.groups)
 	  .enter().append("path")
-	    .style("fill", function(d) { return fill(d.index); })
-	    .style("stroke", function(d) { return fill(d.index); })
+	    .style("fill", function(d) { 
+	    	return fill(d2.getHeroInfo(d.hero_id).stat); 
+	    })
+	    .style("stroke", "white")
 	    .attr("d", d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius))
-	    .on("mouseover", fade(.1))
-	    .on("mouseout", fade(1));
+	    .on("mouseover", function(d,i) {
+	    	var cur_hero_name = d2.getHeroName(d.hero_id)
+
+	    	tip.html(cur_hero_name)
+	    	tip.show(d);
+
+	    	fade(.1)(d,i);
+
+	    })
+	    .on("mouseout", function(d,i){
+	    	tip.hide(d);
+
+	    	fade(1)(d,i);
+
+	   	});
 
 	var ticks = hero_chord_graph.append("g").selectAll("g")
-	    .data(groups)
+	    .data(chord.groups)
 	  .enter().append("g").selectAll("g")
 	    .data(groupTicks)
 	  .enter().append("g")
@@ -1027,18 +1104,19 @@ function draw_hero_chord_graph(matrix) {
 	          + "translate(" + outerRadius + ",0)";
 	    });
 
-	// hero_chord_graph.append("g")
-	//     .attr("class", "chord")
-	//   .selectAll("path")
-	//     .data(chord.chords)
-	//   .enter().append("path")
-	//     .attr("d", d3.svg.chord().radius(innerRadius))
-	//     .style("fill", function(d) { return fill(d.target.index); })
-	//     .style("opacity", 1);
+	hero_chord_graph.append("g")
+	    .attr("class", "chord")
+	  .selectAll("path")
+	    .data(chord.chords)
+	  .enter().append("path")
+	    .attr("d", d3.svg.chord().radius(innerRadius))
+	    .style("fill", function(d) { 
+	    	return fill(d2.getHeroInfo(lookup_dict[d.target.index]).stat); 
+	    })
+	    .style("opacity", .7);
 
 	// Returns an array of tick angles and labels, given a group.
 	function groupTicks(d) {
-		//console.log(d)
 	  var k = (d.endAngle - d.startAngle) / d.value;
 	  return d3.range(0, d.value, 1000).map(function(v, i) {
 	    return {
@@ -1048,11 +1126,32 @@ function draw_hero_chord_graph(matrix) {
 	  });
 	}
 
+	hero_chord_graph
+			.append("text")
+			.attr("y", -210)
+			.attr("class", "text")
+			.attr("text-anchor", "middle")
+			.text("Heroes Played Together Most Often")
+			.style("fill", "black");
+
+	hero_chord_graph
+			.append("text")
+			.attr("y", -195)
+			.attr("class", "text")
+			.attr("text-anchor", "middle")
+			.text("in your dataset")
+			.style("fill", "black")
+			.style("font-size", "12px");
+
 	// Returns an event handler for fading a given chord group.
 	function fade(opacity) {
 	  return function(g, i) {
-	    svg.selectAll(".chord path")
-	        .filter(function(d) { return d.source.index != i && d.target.index != i; })
+	  	//console.log(i)
+	    hero_chord_graph.selectAll(".chord path")
+	        .filter(function(d) { 
+	        	//console.log(d)
+	        	return d.source.index != i && d.target.index != i; 
+	        })
 	      .transition()
 	        .style("opacity", opacity);
 	  };
