@@ -49,6 +49,23 @@ d2.loadJson(function ()
 	});
 });
 
+// selecting label headings, highlights or unhighlights all imgs in that div
+var labels = ["str", "int", "agi"];
+labels.forEach(function (d) {
+    d3.select("#" + d + "label").on("click", function () {
+        var images = d3.select("#" + d + "images").selectAll("img");
+        var numselected = d3.select("#" + d + "images").selectAll(".pic.selected")[0].length;
+        if (numselected != images[0].length) {
+            images.attr("class", "pic selected");
+            images.style("border", "2px solid red");
+        } else if (numselected == images[0].length) {
+            images.classed("selected", false);
+            images.style("border", "2px solid black");
+        }
+    });
+});
+
+
 function highlight()
 {
 	if (!this.classList.contains("selected"))
