@@ -5,7 +5,8 @@
     }, 
     "5002": {
         "id": "5002", 
-        "name": "stats"
+        "name": "stats",
+        "img": "/img/abilities/stats.png"
     }, 
     "5003": {
         "affects": "ABILITY: <span class=\"attribVal\">Passive</span><br />DAMAGE: <span class=\"attribVal\">Physical</span><br />", 
@@ -246,8 +247,18 @@
         "notes": "The slow duration is refreshed on successive casts."
     }, 
     "5020": {
+        "affects":"ABILITY: <span class=\"attribVal\">Point Target<\/span><br \/>",
+        "attrib":"AOE: <span class=\"attribVal\">250<\/span><br \/>\nDURATION: <span class=\"attribVal\">3 \/ 4 \/ 5 \/ 6<\/span>",
+        "cmb":"<div class=\"cooldownMana\"><div class=\"mana\"><img alt=\"Mana Cost\" title=\"Mana Cost\" class=\"manaImg\" src=\"http:\/\/cdn.dota2.com\/apps\/dota2\/images\/tooltips\/mana.png\" width=\"16\" height=\"16\" border=\"0\" \/> 90<\/div><div class=\"cooldown\"><img alt=\"Cooldown\" title=\"Cooldown\" class=\"cooldownImg\" src=\"http:\/\/cdn.dota2.com\/apps\/dota2\/images\/tooltips\/cooldown.png\" width=\"16\" height=\"16\" border=\"0\" \/> 13<\/div><br clear=\"left\" \/><\/div>",
+        "desc":"Releases a wave that silences and knocks back enemy units. Knockback distance is relative to how close they are to you.",
+        "dmg": "",
+        "dname":"Gust",
+        "hurl":"Drow_Ranger",
         "id": "5020", 
-        "name": "drow_ranger_silence"
+        "img": "/img/abilities/drow_ranger_wave_of_silence_hp2.png", 
+        "lore":"Traxex is rather fond of the tranquility of physical combat, calling on her Drow heritage to end the incantations of opposing magi.",
+        "name": "drow_ranger_wave_of_silence",
+        "notes":""
     }, 
     "5021": {
         "affects": "ABILITY: <span class=\"attribVal\">No Target</span><br />AFFECTS: <span class=\"attribVal\">Allies</span><br />", 
