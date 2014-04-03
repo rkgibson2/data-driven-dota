@@ -9,7 +9,7 @@
 #end_screen {
     margin: 0px 10px;
     height: 700px;
-    width: 1000px;
+    width: 1200px;
     float: left;
 }
 
@@ -39,25 +39,31 @@
 }
 
 #players {
+    position: relative;
     margin: 10px 0px;
 }
 
-#players table{
+#players table {
+    table-layout: fixed;
     border-collapse: collapse;
-    width: 100%;
     margin: 5px 0px;
-}
-
-#players td {
-    border: 1px solid black;
 }
 
 #players td, #players th {
     padding: 3px;
+    border: 1px solid black;
 }
 
-#players th {
-    text-align: left;
+#players .team th{
+    border: none;
+}
+
+#players .team th{
+    text-align:left;
+}
+
+#players th, #players td {
+    text-align: center;
 }
 
 #players td {
@@ -69,8 +75,56 @@
     vertical-align:middle;
 }
 
+#players #user {
+    background-color: brown;
+}
+
+#players .player_name {
+    text-align: left;
+    width: 150px;
+}
+
+.level {
+    width: 40px;
+}
+
+#players .hero {
+    text-align: left;
+    width: 200px;
+}
+
+.kills, .deaths, .assists {
+    width: 20px;
+}
+
+.items {
+    width: 310px;
+}
+
+.gold {
+    width: 45px;
+}
+
+.last_hits {
+    width: 70px;
+}
+
+.denies {
+    width: 45px;
+}
+
 .end_screen_item_pic {
     margin: 0px 2px;
+}
+
+.ability_build {
+    position: absolute;
+    width: 700px;
+    height: 230px;
+    left: 415px;
+    top: 30px;
+    background-color: white;
+    border: 2px solid black;
 }
 
 #stat_graph {

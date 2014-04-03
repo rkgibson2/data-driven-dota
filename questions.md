@@ -7,4 +7,9 @@ Questions for Travis
 
 1. At what point do we need to worry about speed?
 
-1. How can we make our page pretty? CSS-wise. 
+1. How can we make our page pretty? CSS-wise.
+
+Questions for discussion:
+=========================
+
+1. How much filtering on load vs. in each separate part of the page?
