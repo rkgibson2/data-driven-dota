@@ -53,7 +53,7 @@ path {
   font: 10px sans-serif;
 }
 
-.x.axis text {
+.item_percent .x.axis text {
   visibility: hidden;
 }
 

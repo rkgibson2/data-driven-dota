@@ -4,7 +4,7 @@
 var user_data;
 
 //margins and bounding boxes for each graph visualization
-var bb_win_loss, bb_hero_pie, bb_item_percent, bb_hero_chord;
+var bb_win_loss, bb_hero_pie, bb_item_percent, bb_hero_chord, bb_gpm, bb_xpm;
 
 var margin = {
     top: 50,
@@ -39,12 +39,32 @@ bb_item_percent = {
 };
 
 bb_hero_chord = {
-    x: 350,
+    x: 450,
     y: 380,
     w: 400,
     h: 400
 };
 
+bb_user_interact = {
+	x: 0,
+	y: 450,
+	h: 400,
+	w: 400
+}
+
+bb_gpm = {
+	x: 0,
+	y: 450,
+	h: 400,
+	w: 400
+}
+
+bb_xpm = {
+	x: 500,
+	y: 450,
+	h: 400,
+	w: 400
+}
 
 //set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
@@ -73,6 +93,18 @@ var hero_chord_graph = svg.append("g")
 	//.attr("visibility", "hidden")
 	.attr("transform", "translate(" + (bb_hero_chord.x+(bb_hero_chord.w/2)) + "," + (bb_hero_chord.y +(bb_hero_chord.h / 2)) + ")");
 
+var user_interact_graph = svg.append("g")
+	.attr("class", "user_interact")
+	.attr("transform", "translate(" + bb_hero_chord.x + "," + bb_hero_chord.y + ")");
+
+var gpm_graph = svg.append("g")
+	.attr("class", "gpm")
+	.attr("transform", "translate(" + bb_gpm.x + "," + bb_gpm.y + ")");
+
+var xpm_graph = svg.append("g")
+	.attr("class", "xpm")
+	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
+
 var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_percent_color;
 
 //tool tip setup
@@ -93,6 +125,9 @@ draw_win_loss();
 
 draw_item_percent();
 
+draw_gpm();
+
+draw_xpm();
 
 function loadData(username) {
 	 
@@ -109,10 +144,15 @@ function loadData(username) {
 
         create_matrix(data);
 
+        update_gpm(user_data);
+
+        update_xpm(user_data);
+
+        //update chord diagram
 		d3.select("input[name=hero_filter]").on("change", function() { 
 			d3.select("#hero_filter .filterInput").text(this.value);
 			rerender(data);  
-		})
+		});
 
     })
 }
@@ -965,4 +1005,269 @@ function rerender(data) {
 
 }
 
+var gpm_, gpm_y, gpm_color, gpm_xAxis, gpm_yAxis;
+
+function draw_gpm() {
+	gpm_x = d3.scale.linear()
+    .range([0, bb_gpm.w]);
+
+	gpm_y = d3.scale.linear()
+	    .range([bb_gpm.h, 0]);
+
+	gpm_color = d3.scale.ordinal()
+		.domain([true,false])
+		.range(["green", "red"]);
+
+	gpm_xAxis = d3.svg.axis()
+	    .scale(gpm_x)
+	    .orient("bottom");
+
+	gpm_yAxis = d3.svg.axis()
+	    .scale(gpm_y)
+	    .orient("left");
+
+	gpm_graph.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + bb_gpm.h + ")")
+      .call(gpm_xAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("x", bb_gpm.w)
+      .attr("y", -6)
+      .style("text-anchor", "end")
+      .text("Average GPM of Hero");
+
+  	gpm_graph.append("g")
+      .attr("class", "y axis")
+      .call(gpm_yAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("GPM of hero in game");
+
+   	gpm_graph.append('line')
+   		.attr("class", "forty-five")
+	    .attr('x1', gpm_x(0))
+	    .attr('x2', gpm_x(1))
+	    .attr('y1', gpm_y(0))
+	    .attr('y2', gpm_y(1))
+	    .style("stroke", "black")
+	    .style("stroke-width", "3px");
+
+
+}
+
+function update_gpm(data) {
+	//console.log(data);
+
+	var gpm_dict = {};
+
+	data.matches.map(function(d) {
+		var player = d.player_info;	
+		if (!(player.hero_id in gpm_dict)) {
+			gpm_dict[player.hero_id] = []
+		}
+		gpm_dict[player.hero_id].push(d);
+	});
+
+	var gpm_array = [];
+
+	//now calculate all of the averages
+	for (id in gpm_dict) {
+		var total = gpm_dict[id].reduce(function(rest,match) {
+			return (rest + match.player_info.gold_per_min);
+		}, 0)
+		var hero_average = total/gpm_dict[id].length;
+
+		gpm_dict[id].map(function(d) { 
+			d.player_info.hero_avg_gpm = hero_average; 
+			gpm_array.push(d)
+		});
+	}
+
+	//console.log(gpm_array)
+
+	var max_value = Math.max(
+		d3.max(gpm_array, function(d) {
+			return d.player_info.hero_avg_gpm;}), 
+		d3.max(gpm_array, function(d) {
+			return d.player_info.gold_per_min;
+	}));
+
+
+	gpm_x.domain([0, max_value]);
+
+	gpm_y.domain([0, max_value]);
+
+	var datapoints = gpm_graph.selectAll(".dot")
+      .data(gpm_array)
+
+    datapoints
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 3.5)
+      .attr("cx", function(d) { return gpm_x(d.player_info.hero_avg_gpm); })
+      .attr("cy", function(d) { return gpm_y(d.player_info.gold_per_min); })
+      .style("fill", function(d) { return gpm_color(d.player_win); })
+      .on("mouseover", function(d) {
+      	var format = d3.format(".2f");
+
+      	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>GPM this Game: " + d.player_info.gold_per_min + "<br>Average GPM on this hero: " + format(d.player_info.hero_avg_gpm); 
+      	
+      	tip.html(text);
+      	tip.show(d)
+      })
+      .on("mouseout", function(d) {
+      	tip.hide(d);
+      });
+
+    datapoints.exit().remove();
+
+   	gpm_graph.select(".x.axis")
+   		.call(gpm_xAxis);
+
+   	gpm_graph.select(".y.axis")
+   		.call(gpm_yAxis);
+
+   	gpm_graph.select(".forty-five")
+   		.attr("x2", gpm_x(max_value))
+   		.attr("y2", gpm_y(max_value));
+
+}
+
+var xpm_x, xpm_y, xpm_color, xpm_xAxis, xpm_yAxis;
+
+function draw_xpm() {
+	xpm_x = d3.scale.linear()
+    .range([0, bb_xpm.w]);
+
+	xpm_y = d3.scale.linear()
+	    .range([bb_xpm.h, 0]);
+
+	xpm_color = d3.scale.ordinal()
+		.domain([true,false])
+		.range(["green", "red"]);
+
+	xpm_xAxis = d3.svg.axis()
+	    .scale(xpm_x)
+	    .orient("bottom");
+
+	xpm_yAxis = d3.svg.axis()
+	    .scale(xpm_y)
+	    .orient("left");
+
+	xpm_graph.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + bb_xpm.h + ")")
+      .call(xpm_xAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("x", bb_xpm.w)
+      .attr("y", -6)
+      .style("text-anchor", "end")
+      .text("Average XPM of Hero");
+
+  	xpm_graph.append("g")
+      .attr("class", "y axis")
+      .call(xpm_yAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("XPM of hero in game");
+
+   	xpm_graph.append('line')
+   		.attr("class", "forty-five")
+	    .attr('x1', xpm_x(0))
+	    .attr('x2', xpm_x(1))
+	    .attr('y1', xpm_y(0))
+	    .attr('y2', xpm_y(1))
+	    .style("stroke", "black")
+	    .style("stroke-width", "3px");
+
+
+}
+
+function update_xpm(data) {
+	//console.log(data);
+
+	var xpm_dict = {};
+
+	data.matches.map(function(d) {
+		var player = d.player_info;	
+		if (!(player.hero_id in xpm_dict)) {
+			xpm_dict[player.hero_id] = []
+		}
+		xpm_dict[player.hero_id].push(d);
+	});
+
+	var xpm_array = [];
+
+	//now calculate all of the averages
+	for (id in xpm_dict) {
+		var total = xpm_dict[id].reduce(function(rest,match) {
+			return (rest + match.player_info.xp_per_min);
+		}, 0)
+		var hero_average = total/xpm_dict[id].length;
+
+		xpm_dict[id].map(function(d) { 
+			d.player_info.hero_avg_xpm = hero_average; 
+			xpm_array.push(d)
+		});
+	}
+
+	//console.log(gpm_array)
+
+	var max_value = Math.max(
+		d3.max(xpm_array, function(d) {
+			return d.player_info.hero_avg_xpm;}), 
+		d3.max(xpm_array, function(d) {
+			return d.player_info.xp_per_min;
+	}));
+
+
+	xpm_x.domain([0, max_value]);
+
+	xpm_y.domain([0, max_value]);
+
+	var datapoints = xpm_graph.selectAll(".dot")
+      .data(xpm_array)
+
+    datapoints
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 3.5)
+      .attr("cx", function(d) { return xpm_x(d.player_info.hero_avg_xpm); })
+      .attr("cy", function(d) { return xpm_y(d.player_info.xp_per_min); })
+      .style("fill", function(d) { return xpm_color(d.player_win); })
+      .on("mouseover", function(d) {
+      	var format = d3.format(".2f");
+
+      	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_xpm); 
+      	
+      	tip.html(text);
+      	tip.show(d)
+      })
+      .on("mouseout", function(d) {
+      	tip.hide(d);
+      });
+
+    datapoints.exit().remove();
+
+   	xpm_graph.select(".x.axis")
+   		.call(xpm_xAxis);
+
+   	xpm_graph.select(".y.axis")
+   		.call(xpm_yAxis);
+
+   	xpm_graph.select(".forty-five")
+   		.attr("x2", xpm_x(max_value))
+   		.attr("y2", xpm_y(max_value));
+
+}
 
