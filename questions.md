@@ -13,3 +13,9 @@ Questions for discussion:
 =========================
 
 1. How much filtering on load vs. in each separate part of the page?
+2. 
+
+
+tips:
+1. put legend
+2. think about color choice
