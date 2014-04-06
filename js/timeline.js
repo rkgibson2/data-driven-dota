@@ -129,7 +129,9 @@ d2.loadJson(function ()
 			.attr('height', 50)
 			.attr("y", 10);
           // add the nodes to the overview vis
-		var dots = bbOverviewVis.selectAll(".dot")
+		var dots = svg.append("g").attr({
+			"transform": "translate(" + bbOverview.x + "," + (bbOverview.y) + ")"
+		}).selectAll(".dot")
 			.data(matches)
 			.enter()
 			.append("circle")
@@ -146,9 +148,9 @@ d2.loadJson(function ()
 			})
 			.attr("r", 3)
 			.style("fill", function(d){return d.player_win? "green" : "red"})
-			.style("stroke", "black")
+			.style("stroke", "black");
 			// mouseover tips
-			.on("mouseover", function (d)
+			dots.on("mouseover", function (d)
 			{
 			var tooltip = true;
 
