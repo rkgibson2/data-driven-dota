@@ -177,7 +177,7 @@
         "img": "/img/heroes/drow_ranger.jpg", 
         "name": "drow_ranger", 
         "pa": "agi", 
-        "state": "agility"
+        "stat": "agility"
     }, 
     "7": {
         "attribs": {
