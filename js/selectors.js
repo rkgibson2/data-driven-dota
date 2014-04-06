@@ -87,9 +87,26 @@ function selected()
 	selectedarr = new Array();
 	selectedheroes.forEach(function (d)
 	{
-		selectedarr.push(d.getAttribute("value"));
+		selectedarr.push(+d.getAttribute("value"));
 	});
+
 	console.log(selectedarr);
+
+	filtered_data = {
+		id32: user_data.id32,
+		id64: user_data.id64,
+		matches: [],
+		user: user_data.user
+	}
+
+	console.log(filtered_data)
+
+	var filtered_matches = user_data.matches.filter(function(d,i) {
+		var player_hero_id = d.player_info.hero_id;
+
+		if (selectedarr.indexOf(player_hero_id) <= -1)
+			console.log(player_hero_id)
+	})
 }
 
 function sorting(a, b)
