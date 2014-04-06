@@ -99,13 +99,17 @@ function selected()
 		user: user_data.user
 	}
 
-	var filtered_matches = user_data.matches.filter(function(d,i) {
-		var player_hero_id = d.player_info.hero_id;
 
-		return selectedarr.indexOf(player_hero_id) > -1
-	})
+	// if filter is empty, use all heroes
+	if (selectedarr.length == 0) {
+		filtered_data.matches = user_data.matches;
+	} else {
+		filtered_data.matches = user_data.matches.filter(function(d,i) {
+			var player_hero_id = d.player_info.hero_id;
 
-	filtered_data.matches = filtered_matches;
+			return selectedarr.indexOf(player_hero_id) > -1
+		})
+	}
 
 	update_win_loss(filtered_data);
 
