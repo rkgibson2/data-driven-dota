@@ -122,7 +122,7 @@ d2.loadJson(function() {
 	var intheroes = new Array();
 	var agiheroes = new Array();
 	var strheroes = new Array();
-	for (var i = 1; i < hero_keys.length; i++)
+	for (var i = 0; i < hero_keys.length; i++)
 	{
 		var hero = d2.getHeroInfo(hero_keys[i]);;
 		if (hero)
