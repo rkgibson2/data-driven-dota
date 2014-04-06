@@ -5,10 +5,10 @@
     
     <script src="http://d3js.org/d3.v3.min.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
-<script src="../js/d2.js"></script>
+<script src="/js/d2.js"></script>
 <script src="http://code.jquery.com/jquery.js"></script>
-<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-<script src="../bootstrap/js/bootstrap.js"></script>
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+<script src="/bootstrap/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/selectors.css"></link>
 
 </head>
@@ -16,34 +16,33 @@
 
 <body>
 <div class="bigcontainer">
-<div id = "selector" class="modal hide fade in" style="display: none; ">
-    <div class="modal-header">  
-        <!--<a class="close" data-dismiss="modal">×</a>  -->
-        <h3>Select Heroes to Filter</h3>  
-    </div>  
-    <div class="modal-body">  
-   <!-- <h4> Some text here </h4>-->
-        <table>
-            <tr>
-                <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text><div id="strimages" class = "container"></div></td>
-                <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text><div id="agiimages" class = "container"></div></td>
-                <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text><div id="intimages" class = "container"></div></td>
-            </tr>
-        </table>
-    </div>    
-    <div class="modal-footer">  
-        <a href="#" onclick="selected()" class="btn btn-success">Filter</a>  
-        <a href="#" class="btn" data-dismiss="modal">Close</a>  
-    </div>  
-</div>
-<p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large">Filter</a>
-		</p>
+    <div id = "selector" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">  
+            <!--<a class="close" data-dismiss="modal">×</a>  -->
+            <h3>Select Heroes to Filter</h3>  
+        </div>  
+        <div class="modal-body">  
+       <!-- <h4> Some text here </h4>-->
+            <table>
+                <tr>
+                    <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text><div id="strimages" class = "container"></div></td>
+                    <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text><div id="agiimages" class = "container"></div></td>
+                    <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text><div id="intimages" class = "container"></div></td>
+                </tr>
+            </table>
+        </div>    
+        <div class="modal-footer">  
+            <a href="#" onclick="selected()" class="btn btn-success">Filter</a>  
+            <a href="#" class="btn" data-dismiss="modal">Close</a>  
+        </div>  
+    </div>
+<p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large">Filter</a></p>
 
 </div>
 		
 
 
-<script src="../js/selectors.js"></script>
+<script src="/js/selectors.js"></script>
 
 </body>
 </html>

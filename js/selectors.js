@@ -1,3 +1,4 @@
+/*
 d2.loadJson(function ()
 {
 	hero_keys = d2.getKeys("heroes");
@@ -47,7 +48,7 @@ d2.loadJson(function ()
 		d3.select("#intimages").select("#" + heroname).attr('src', d.img).attr("width", "80px").attr("value", d.id);
 		d3.select("#intimages").select("#" + heroname).on("click", highlight);
 	});
-});
+});*/
 
 // selecting label headings, highlights or unhighlights all imgs in that div
 var labels = ["str", "int", "agi"];

@@ -4,11 +4,13 @@
     float: right;
 }
 
-.modal{
-    margin: -1050 0 0 0;
+#selector.modal{
     position: absolute;
-    top: 30%;
-    left: 30%;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
         
     width:1050px;
     max-height:1000px;
@@ -30,9 +32,8 @@ div.modal-body{
     max-height:800px;
     background-color:black;
     height: 540px;
-    margin: -1050 0 0 0;
     overflow: visible;
-};
+}
 
 div#selector {
     margin: 0 0 0 0;
@@ -49,7 +50,7 @@ div.container {
     z-index: 1000;
 }
 
-.bigcontainer td text{
+#selector td text{
     padding-bottom:15px;
     display: flex;
     justify-content: center; /* align horizontal */
@@ -58,7 +59,7 @@ div.container {
 }
 
 
-.bigcontainer img{
+#selector img{
     /*padding-right:3px;
     padding-bottom: 3px;*/
     border: 2px solid black;
@@ -73,7 +74,7 @@ div.container {
 }
 
 
-.bigcontainer table {
+#selector table {
     border-spacing: 10px;
 }
 /*
