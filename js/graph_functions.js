@@ -116,6 +116,56 @@ svg.call(tip);
 
 //function calls
 d2.loadJson(function() {
+
+	// Benjy's stuff
+	hero_keys = d2.getKeys("heroes");
+	var intheroes = new Array();
+	var agiheroes = new Array();
+	var strheroes = new Array();
+	for (var i = 0; i < hero_keys.length; i++)
+	{
+		var hero = d2.getHeroInfo(hero_keys[i]);;
+		if (hero)
+		{
+			if (hero.stat == "strength")
+			{
+				strheroes.push(hero);
+			}
+			else if (hero.stat == "agility")
+			{
+				agiheroes.push(hero);
+			}
+			else if (hero.stat == "intelligence")
+			{
+				intheroes.push(hero);
+			}
+		}
+	};
+	strheroes.sort(sorting);
+	agiheroes.sort(sorting);
+	intheroes.sort(sorting);
+	strheroes.forEach(function (d)
+	{
+		var heroname = d.name;
+		d3.select("#strimages").append("img").attr("id", heroname).attr("class", "pic");
+		d3.select("#strimages").select("#" + heroname).attr('src', d.img).attr("width", "80px").attr("value", d.id);
+		d3.select("#strimages").select("#" + heroname).on("click", highlight);
+	});
+	agiheroes.forEach(function (d)
+	{
+		var heroname = d.name;
+		d3.select("#agiimages").append("img").attr("id", heroname).attr("class", "pic");
+		d3.select("#agiimages").select("#" + heroname).attr('src', d.img).attr("width", "80px").attr("value", d.id);
+		d3.select("#agiimages").select("#" + heroname).on("click", highlight);
+	});
+	intheroes.forEach(function (d)
+	{
+		var heroname = d.name;
+		d3.select("#intimages").append("img").attr("id", heroname).attr("class", "pic");
+		d3.select("#intimages").select("#" + heroname).attr('src', d.img).attr("width", "80px").attr("value", d.id);
+		d3.select("#intimages").select("#" + heroname).on("click", highlight);
+	});
+
 	loadData("david");
 });
 

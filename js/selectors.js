@@ -1,3 +1,4 @@
+/*
 d2.loadJson(function ()
 {
 	hero_keys = d2.getKeys("heroes");
@@ -47,7 +48,7 @@ d2.loadJson(function ()
 		d3.select("#intimages").select("#" + heroname).attr('src', d.img).attr("width", "80px").attr("value", d.id);
 		d3.select("#intimages").select("#" + heroname).on("click", highlight);
 	});
-});
+});*/
 
 // selecting label headings, highlights or unhighlights all imgs in that div
 var labels = ["str", "int", "agi"];
@@ -86,9 +87,37 @@ function selected()
 	selectedarr = new Array();
 	selectedheroes.forEach(function (d)
 	{
-		selectedarr.push(d.getAttribute("value"));
+		selectedarr.push(+d.getAttribute("value"));
 	});
+
 	console.log(selectedarr);
+
+	filtered_data = {
+		id32: user_data.id32,
+		id64: user_data.id64,
+		matches: [],
+		user: user_data.user
+	}
+
+	var filtered_matches = user_data.matches.filter(function(d,i) {
+		var player_hero_id = d.player_info.hero_id;
+
+		return selectedarr.indexOf(player_hero_id) > -1
+	})
+
+	filtered_data.matches = filtered_matches;
+
+	update_win_loss(filtered_data);
+
+    update_item_percent(filtered_data);
+
+    create_flare(filtered_data);
+
+    create_matrix(filtered_data);
+
+    update_gpm(filtered_data);
+
+    update_xpm(filtered_data);
 }
 
 function sorting(a, b)
