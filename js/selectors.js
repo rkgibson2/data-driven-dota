@@ -99,14 +99,25 @@ function selected()
 		user: user_data.user
 	}
 
-	console.log(filtered_data)
-
 	var filtered_matches = user_data.matches.filter(function(d,i) {
 		var player_hero_id = d.player_info.hero_id;
 
-		if (selectedarr.indexOf(player_hero_id) <= -1)
-			console.log(player_hero_id)
+		return selectedarr.indexOf(player_hero_id) > -1
 	})
+
+	filtered_data.matches = filtered_matches;
+
+	update_win_loss(filtered_data);
+
+    update_item_percent(filtered_data);
+
+    create_flare(filtered_data);
+
+    create_matrix(filtered_data);
+
+    update_gpm(filtered_data);
+
+    update_xpm(filtered_data);
 }
 
 function sorting(a, b)
