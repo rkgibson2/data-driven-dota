@@ -39,6 +39,11 @@ path {
   float: left;
 }
 
+#scatter_tooltip_img {
+  margin-top: 13px;
+  float: left;
+}
+
 #tooltip_text {
   float: left;
   margin-left: 5px;

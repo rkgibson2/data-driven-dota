@@ -15,7 +15,7 @@ var margin = {
 
 var width = 1060 - margin.left - margin.right;
 
-var height = 1000 - margin.bottom - margin.top;
+var height = 1500 - margin.bottom - margin.top;
 
 bb_win_loss = {
     x: 0,
@@ -60,8 +60,8 @@ bb_gpm = {
 }
 
 bb_xpm = {
-	x: 500,
-	y: 450,
+	x: 0,
+	y: 950,
 	h: 400,
 	w: 400
 }
@@ -106,13 +106,14 @@ var xpm_graph = svg.append("g")
 	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
 
 var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_percent_color;
+var hero_pie_radius, hero_pie_color, hero_pie_x, hero_pie_y, partition, hero_pie_arc, hero_pie_path;
 
 //tool tip setup
-var tip = d3.tip()
+var graph_tip = d3.tip()
         .attr("class", "d3-tip")
         .offset([0,0]);
 
-svg.call(tip);
+svg.call(graph_tip);
 
 //function calls
 d2.loadJson(function() {
@@ -169,8 +170,6 @@ d2.loadJson(function() {
 	loadData("david");
 });
 
-//loadData("robbie");
-
 draw_win_loss();
 
 draw_item_percent();
@@ -190,18 +189,24 @@ function loadData(username) {
 
         update_item_percent(user_data);
 
-        create_flare(data);
+        create_flare(user_data);
 
-        create_matrix(data);
+        create_matrix(user_data);
 
         update_gpm(user_data);
 
         update_xpm(user_data);
 
+        //console.log(create_flare(user_data));
+
+        //hero_pie(create_flare(user_data));
+
+        //hero_pie_transition(create_flare(user_data));
+
         //update chord diagram
 		d3.select("input[name=hero_filter]").on("change", function() { 
 			d3.select("#hero_filter .filterInput").text(this.value);
-			rerender(data);  
+			rerender(user_data);  
 		});
 
     })
@@ -209,6 +214,7 @@ function loadData(username) {
 
 
 //win loss rect graph
+//transition working
 function draw_win_loss() {
 
 	win_loss_graph.append("rect")
@@ -266,7 +272,7 @@ function update_win_loss(data) {
 		var duration = 0;
 	}
 	else {
-		duration = 250;
+		duration = 1000;
 	}
 
 	d3.select(".win")
@@ -291,111 +297,137 @@ function capitalizeFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
+function hero_pie_transition(data){
+
+	hero_pie_path 
+		.data(data)
+		.exit()
+		.transition()
+		.attr("visibility", "hidden")
+		.remove();
+
+	hero_pie_path
+		.data(data)
+		.enter()
+		.append("path")			
+		.attr("class", "hero_pie")
+		.attr("visibility", "visible")
+	    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+	    .on("click", click)
+	    .on("mouseover", function(d) {
+	    	var tooltip = true;
+
+	    	var name;
+	    	var number_text;
+
+	    	if (d.value == 1) {
+	    		number_text = " game";
+	    	}
+	    	else {
+	    		number_text = " games"
+	    	}
+
+	    	if ("dname" in d) {
+	    		name = d.dname;
+	    	}
+	    	else if (d.name == "flare") {
+	    		tooltip = false
+	    	}
+	    	else {
+	    		name = capitalizeFirstLetter(d.name) + " Heroes";
+	    	}
+	    
+	    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+
+	    	if ("dname" in d) {
+	    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
+	    	}
+	    	else {
+	    		var img_tip = "";
+	    	}
+
+	    	graph_tip.html(img_tip + basic_tip);
+
+	    	if (tooltip) {
+	    		graph_tip.show(d);
+	    	}
+
+	    	d3.select(this)
+	    		.style("fill", "brown");
+	    })
+	    .on("mouseout", function(d) {
+	    	graph_tip.hide(d);
+
+	    	d3.select(this)
+	    		.style("fill", function(d) { return color((d.children ? d : d.parent).name); });
+	    })
+	    .transition()
+	    .attr("d", hero_pie_arc);
+}
+
+function click(d) {
+    path.transition()
+      .duration(750)
+      .attrTween("d", arcTween(d))
+};
+
+// Interpolate the scales!
+function arcTween(d) {
+  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+      yd = d3.interpolate(y.domain(), [d.y, 1]),
+      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+  return function(d, i) {
+    return i
+        ? function(t) { return arc(d); }
+        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+  };
+}
+
 //creates hero sunburst graph based on hero flare json data
 function hero_pie(data) {
 
-	var radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
+	//console.log(data)
 
-	var color = d3.scale.ordinal()
+	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
+
+	hero_pie_color = d3.scale.ordinal()
 				.domain(["flare","agility", "strength", "intelligence"])
 				//get them to be the correct dota colors
 				.range(["white", "#2BAC00", "#E38800","#1A88FC"])
 				//.range(["white","#167c13", "#b9500b", "#257dae"]);
 
-	var x = d3.scale.linear()
+	hero_pie_x = d3.scale.linear()
     	.range([0, 2 * Math.PI]);
 
-	var y = d3.scale.sqrt()
-	    .range([0, radius]);
+	hero_pie_y = d3.scale.sqrt()
+	    .range([0, hero_pie_radius]);
 
-	var partition = d3.layout.partition()
+	partition = d3.layout.partition()
     	.value(function(d) { return d.count; });
 
-	var arc = d3.svg.arc()
-	    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-	    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-	    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-	    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+	hero_pie_arc = d3.svg.arc()
+	    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, hero_pie_x(d.x))); })
+	    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, hero_pie_x(d.x + d.dx))); })
+	    .innerRadius(function(d) { return Math.max(0, hero_pie_y(d.y)); })
+	    .outerRadius(function(d) { return Math.max(0, hero_pie_y(d.y + d.dy)); });
 
-	var path = hero_pie_graph.selectAll("path")
-	      	.data(partition.nodes(data))
+	hero_pie_path = hero_pie_graph.selectAll("path")
+	      	.data(partition.nodes(data));
+
+	hero_pie_path
 	    .enter().append("path")
-		    .attr("d", arc)
+		    .attr("d", hero_pie_arc)
 		    .attr("class", "hero_pie")
-		    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
-		    .on("click", click)
-		    .on("mouseover", function(d) {
-		    	var tooltip = true;
-
-		    	var name;
-		    	var number_text;
-
-		    	if (d.value == 1) {
-		    		number_text = " game";
-		    	}
-		    	else {
-		    		number_text = " games"
-		    	}
-
-		    	if ("dname" in d) {
-		    		name = d.dname;
-		    	}
-		    	else if (d.name == "flare") {
-		    		tooltip = false
-		    	}
-		    	else {
-		    		name = capitalizeFirstLetter(d.name) + " Heroes";
-		    	}
-		    
-		    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
-
-		    	if ("dname" in d) {
-		    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
-		    	}
-		    	else {
-		    		var img_tip = "";
-		    	}
-
-		    	tip.html(img_tip + basic_tip);
-
-		    	if (tooltip) {
-		    		tip.show(d);
-		    	}
-
-		    	d3.select(this)
-		    		.style("fill", "brown");
-		    })
-		    .on("mouseout", function(d) {
-		    	tip.hide(d);
-
-		    	d3.select(this)
-		    		.style("fill", function(d) { return color((d.children ? d : d.parent).name); });
-		    });
-
-	function click(d) {
-	    path.transition()
-	      .duration(750)
-	      .attrTween("d", arcTween(d));
-  	}
+		    .style("fill", function(d) { 
+		    	return hero_pie_color((d.children ? d : d.parent).name); });
 
 	d3.select(self.frameElement).style("height", height + "px");
-
-	// Interpolate the scales!
-	function arcTween(d) {
-	  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-	      yd = d3.interpolate(y.domain(), [d.y, 1]),
-	      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-	  return function(d, i) {
-	    return i
-	        ? function(t) { return arc(d); }
-	        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-	  };
-	}
 
 	hero_pie_graph.append("text")
 		.attr("text-anchor", "middle")
 		.attr("y", -bb_hero_pie.h/2 - 10)
-		.text("Heroes Played")
+		.text("Heroes Played");
 
 }
 
@@ -470,12 +502,11 @@ function create_flare(data) {
 
 		})
 
-		//console.log(hero_flare)
-	
-		hero_pie(hero_flare);
+		return hero_flare;
 
 	})
 }
+
 
 //draws the item percent bar chart
 function draw_item_percent() {
@@ -531,11 +562,11 @@ function draw_item_percent() {
 			  		return item_percent_x.rangeBand();
 			  	})
 			  	.on("mouseover", function(d) {
-			  		tip.html(d.dname);
-			  		tip.show(d);
+			  		graph_tip.html(d.dname);
+			  		graph_tip.show(d);
 			  	})
 			  	.on("mouseout", function(d) {
-			  		tip.hide(d);
+			  		graph_tip.hide(d);
 			  	});
 
 	item_percent_graph.append("text")
@@ -605,7 +636,7 @@ function update_item_percent(data) {
 		var duration = 0;
 	}
 	else {
-		duration = 250;
+		duration = 1000;
 	}
 	
 	item_percent_x.domain(items.map(function(d) {
@@ -648,14 +679,16 @@ function update_item_percent(data) {
 				cost = d.cost
 			}
 
+			//console.log(d)
+
 			var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br></div>"
 	  		var img_tip = "<div id='item_percent_tooltip_img'><img src='" + d.img + "' height='40px' width='53.125px'></div>"
 
-	  		tip.html(img_tip + basic_tip);
-	  		tip.show(d);
+	  		graph_tip.html(img_tip + basic_tip);
+	  		graph_tip.show(d);
 	  	})
 	  	.on("mouseout", function(d) {
-	  		tip.hide(d);
+	  		graph_tip.hide(d);
 	  	})
 		.transition().duration(duration);
 		
@@ -823,6 +856,8 @@ function k_combinations(set, k) {
 
 function create_matrix (data) {
 
+	//console.log(data)
+
 
 	var filter_value = d3.select("input[name=hero_filter]")[0][0].value;
 	//d3.select("input[name=hero_filter]")[0][0].value;
@@ -926,6 +961,9 @@ function create_matrix (data) {
 		}
 	}
 
+	d3.selectAll(".chord").remove();
+	d3.selectAll(".arcs").remove();
+
 	draw_hero_chord_graph(new_arr, lookup_dict);
 }
 
@@ -933,6 +971,14 @@ function create_matrix (data) {
 function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	//console.log(lookup_dict)
+
+	if (matrix.length == 0) {
+		hero_chord_graph.append("text")
+			.attr("x", -100)
+			.attr("y", 0)
+			.style("font-size", "12px")
+			.text("Sorry, no data meets your selection criteria.");
+	}
 
 	var chord = d3.layout.chord()
 	    .padding(.05)
@@ -966,15 +1012,15 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	    	var img_tip = "<div id='hero_sunburst_tip'><img src='" + hero_info.img + "'' width='64px' height='36px'></div>";
 
-	    	tip.html(img_tip + basic_tip);
+	    	graph_tip.html(img_tip + basic_tip);
 
-	    	tip.show(d);
+	    	graph_tip.show(d);
 
 	    	fade(.1)(d,i);
 
 	    })
 	    .on("mouseout", function(d,i){
-	    	tip.hide(d);
+	    	graph_tip.hide(d);
 
 	    	fade(1)(d,i);
 
@@ -989,7 +1035,6 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	   	.style("opacity", 1)
 	    .style("stroke", "white")
 	    .attr("d", d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius))
-	    
 
 	hero_chord_graph.append("g")
 	    .attr("class", "chord")
@@ -1079,13 +1124,7 @@ function draw_gpm() {
 	gpm_graph.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + bb_gpm.h + ")")
-      .call(gpm_xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", bb_gpm.w)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("Average GPM of Hero");
+      .call(gpm_xAxis);
 
   	gpm_graph.append("g")
       .attr("class", "y axis")
@@ -1155,31 +1194,55 @@ function update_gpm(data) {
 	var datapoints = gpm_graph.selectAll(".dot")
       .data(gpm_array)
 
+    datapoints.exit().remove();
+
     datapoints
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
-      .attr("cx", function(d) { return gpm_x(d.player_info.hero_avg_gpm); })
-      .attr("cy", function(d) { return gpm_y(d.player_info.gold_per_min); })
       .style("fill", function(d) { return gpm_color(d.player_win); })
       .on("mouseover", function(d) {
+      	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
 
       	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>GPM this Game: " + d.player_info.gold_per_min + "<br>Average GPM on this hero: " + format(d.player_info.hero_avg_gpm); 
       	
-      	tip.html(text);
-      	tip.show(d)
+      	//get the correct hero image and build the tooltip with an image
+      	var hero_data = d2.getHeroData(d.player_info.hero_id);
+
+      	for (var i in hero_data) {
+      		if (hero_data[i].dname == d2.getHeroName(d.player_info.hero_id)) {
+      			var hero_image = hero_data[i].img
+      		}
+      	}
+
+      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
+
+      	graph_tip.html(img_tip + text);
+      	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
-      	tip.hide(d);
+      	graph_tip.hide(d);
       });
 
-    datapoints.exit().remove();
+	datapoints
+		.transition()
+		.duration(1000)
+		.attr("cx", function(d) {
+			return gpm_x(d.player_info.hero_avg_gpm)
+		})
+		.attr("cy", function(d) {
+			return gpm_y(d.player_info.gold_per_min)
+		});
 
    	gpm_graph.select(".x.axis")
+   		.transition()
+   		.duration(1000)
    		.call(gpm_xAxis);
 
    	gpm_graph.select(".y.axis")
+   		.transition()
+   		.duration(1000)
    		.call(gpm_yAxis);
 
    	gpm_graph.select(".forty-five")
@@ -1288,31 +1351,54 @@ function update_xpm(data) {
 	var datapoints = xpm_graph.selectAll(".dot")
       .data(xpm_array)
 
+    datapoints.exit().remove();
+
     datapoints
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
-      .attr("cx", function(d) { return xpm_x(d.player_info.hero_avg_xpm); })
-      .attr("cy", function(d) { return xpm_y(d.player_info.xp_per_min); })
       .style("fill", function(d) { return xpm_color(d.player_win); })
       .on("mouseover", function(d) {
       	var format = d3.format(".2f");
 
       	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_xpm); 
       	
-      	tip.html(text);
-      	tip.show(d)
+      	//get the correct hero image and build the tooltip with an image
+      	var hero_data = d2.getHeroData(d.player_info.hero_id);
+
+      	for (var i in hero_data) {
+      		if (hero_data[i].dname == d2.getHeroName(d.player_info.hero_id)) {
+      			var hero_image = hero_data[i].img
+      		}
+      	}
+
+      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
+
+      	graph_tip.html(img_tip + text);
+      	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
-      	tip.hide(d);
+      	graph_tip.hide(d);
       });
 
-    datapoints.exit().remove();
+    datapoints
+		.transition()
+		.duration(1000)
+		.attr("cx", function(d) {
+			return xpm_x(d.player_info.hero_avg_xpm)
+		})
+		.attr("cy", function(d) {
+			return xpm_y(d.player_info.xp_per_min)
+		});
 
    	xpm_graph.select(".x.axis")
+   		.transition()
+   		.duration(1000)
    		.call(xpm_xAxis);
 
    	xpm_graph.select(".y.axis")
+   		.transition()
+   		.duration(1000)
    		.call(xpm_yAxis);
 
    	xpm_graph.select(".forty-five")
