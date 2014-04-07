@@ -856,9 +856,6 @@ function k_combinations(set, k) {
 
 function create_matrix (data) {
 
-	//console.log(data)
-
-
 	var filter_value = d3.select("input[name=hero_filter]")[0][0].value;
 	//d3.select("input[name=hero_filter]")[0][0].value;
 
@@ -969,8 +966,6 @@ function create_matrix (data) {
 
 
 function draw_hero_chord_graph(matrix, lookup_dict) {
-
-	//console.log(lookup_dict)
 
 	if (matrix.length == 0) {
 		hero_chord_graph.append("text")
@@ -1406,4 +1401,3 @@ function update_xpm(data) {
    		.attr("y2", xpm_y(max_value));
 
 }
-
