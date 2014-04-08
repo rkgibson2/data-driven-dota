@@ -1163,10 +1163,27 @@ function draw_gpm() {
 	    .scale(gpm_y)
 	    .orient("left");
 
+	gpm_graph.append("defs").append("clipPath")
+   		.attr("transform", "translate(0,-5)")
+   		.attr("id", "clip")
+   		.append("rect")
+   		.attr("width", bb_gpm.w)
+   		.attr("height", bb_gpm.h+5);
+
+    gpm_graph.append("g")
+		.attr("class", "gpm_brush");
+
 	gpm_graph.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + bb_gpm.h + ")")
-      .call(gpm_xAxis);
+      .call(gpm_xAxis)
+      .append("text")
+      .attr("class", "label")
+      .attr("y", 0)
+      .attr("x", bb_gpm.w)
+      .attr("dy", "-.71em")
+      .style("text-anchor", "end")
+      .text("Average GPM of hero");
 
   	gpm_graph.append("g")
       .attr("class", "y axis")
@@ -1189,15 +1206,9 @@ function draw_gpm() {
 	    .style("stroke-width", "3px")
 	    .attr("clip-path", "url(#clip)");
 
-	gpm_graph.append("defs").append("clipPath")
-   		.attr("transform", "translate(0,-5)")
-   		.attr("id", "clip")
-   		.append("rect")
-   		.attr("width", bb_gpm.w)
-   		.attr("height", bb_gpm.h+5);
+	d3.selectAll(".circle")
+		.attr("clip-path", "url(#clip)");
 
-    gpm_graph.append("g")
-		.attr("class", "gpm_brush");
 }
 
 var gpm_brush;
