@@ -66,6 +66,7 @@ bb_xpm = {
 	w: 400
 }
 
+
 //set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
 	width: width + margin.left + margin.right,
@@ -90,7 +91,6 @@ var item_percent_graph = svg.append("g")
 
 var hero_chord_graph = svg.append("g")
 	.attr("class", "hero_chord")
-	//.attr("visibility", "hidden")
 	.attr("transform", "translate(" + (bb_hero_chord.x+(bb_hero_chord.w/2)) + "," + (bb_hero_chord.y +(bb_hero_chord.h / 2)) + ")");
 
 var user_interact_graph = svg.append("g")
@@ -367,20 +367,20 @@ function hero_pie_transition(data){
 }
 
 function click(d) {
-    path.transition()
+    hero_pie_path.transition()
       .duration(750)
       .attrTween("d", arcTween(d))
 };
 
 // Interpolate the scales!
 function arcTween(d) {
-  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-      yd = d3.interpolate(y.domain(), [d.y, 1]),
-      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+  var xd = d3.interpolate(hero_pie_x.domain(), [d.x, d.x + d.dx]),
+      yd = d3.interpolate(hero_pie_y.domain(), [d.y, 1]),
+      yr = d3.interpolate(hero_pie_y.range(), [d.y ? 20 : 0, hero_pie_radius]);
   return function(d, i) {
     return i
-        ? function(t) { return arc(d); }
-        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+        ? function(t) { return hero_pie_arc(d); }
+        : function(t) { hero_pie_x.domain(xd(t)); hero_pie_y.domain(yd(t)).range(yr(t)); return hero_pie_arc(d); };
   };
 }
 
@@ -420,14 +420,62 @@ function hero_pie(data) {
 		    .attr("d", hero_pie_arc)
 		    .attr("class", "hero_pie")
 		    .style("fill", function(d) { 
-		    	return hero_pie_color((d.children ? d : d.parent).name); });
+		    	return hero_pie_color((d.children ? d : d.parent).name); })
+		    .on("click", click)
+		    .on("mouseover", function(d) {
+		    	var tooltip = true;
+
+		    	var name;
+		    	var number_text;
+
+		    	if (d.value == 1) {
+		    		number_text = " game";
+		    	}
+		    	else {
+		    		number_text = " games"
+		    	}
+
+		    	if ("dname" in d) {
+		    		name = d.dname;
+		    	}
+		    	else if (d.name == "flare") {
+		    		tooltip = false
+		    	}
+		    	else {
+		    		name = capitalizeFirstLetter(d.name) + " Heroes";
+		    	}
+		    
+		    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+
+		    	if ("dname" in d) {
+		    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
+		    	}
+		    	else {
+		    		var img_tip = "";
+		    	}
+
+		    	graph_tip.html(img_tip + basic_tip);
+
+		    	if (tooltip) {
+		    		graph_tip.show(d);
+		    	}
+
+		    	d3.select(this)
+		    		.style("fill", "brown");
+		    })
+		    .on("mouseout", function(d) {
+		    	graph_tip.hide(d);
+
+		    	d3.select(this)
+		    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
+		    });
 
 	d3.select(self.frameElement).style("height", height + "px");
 
 	hero_pie_graph.append("text")
 		.attr("text-anchor", "middle")
 		.attr("y", -bb_hero_pie.h/2 - 10)
-		.text("Heroes Played");
+		.text("Heroes Played");	    
 
 }
 
@@ -502,7 +550,7 @@ function create_flare(data) {
 
 		})
 
-		return hero_flare;
+		hero_pie(hero_flare);
 
 	})
 }
@@ -598,128 +646,128 @@ function update_item_percent(data) {
 			dat[id].count = 0;
 		}
 
-	var total_count = data.matches.length;
+		var total_count = data.matches.length;
 
-	//count all of the items
-	data.matches.forEach(function(d,i) {
-		for (j in dat) {
-			if (dat[j].id == d.player_info.item_0) {
-				dat[j].count += 1;
-			}		
-			else if (dat[j].id == d.player_info.item_1) {
-				dat[j].count += 1;
-			}		
-			else if (dat[j].id == d.player_info.item_2) {
-				dat[j].count += 1;
-			}		
-			else if (dat[j].id == d.player_info.item_3) {
-				dat[j].count += 1;
-			}		
-			else if (dat[j].id == d.player_info.item_4) {
-				dat[j].count += 1;
-			}		
-			else if (dat[j].id == d.player_info.item_5) {
-				dat[j].count += 1;
-			}		
-		}
-	})
-
-	//consolidate into correct form that we want
-	for (k in dat) {
-		if (dat[k].count != 0 && dat[k].name != "empty") {
-			dat[k].percent = dat[k].count/total_count
-			items.push(dat[k])
-		}
-	}
-
-	if (d3.select(".item_percent").attr("visibility") == "hidden") {
-		var duration = 0;
-	}
-	else {
-		duration = 1000;
-	}
-	
-	item_percent_x.domain(items.map(function(d) {
-		return d.name;
-	}));
-	item_percent_y.domain([0, d3.max(items, function(d) {
-		return d.percent;
-	})]);
-
-	var bars = item_percent_graph.select(".bars")
-				.selectAll(".bar")
-				.data(items, function(d) {
-					return d.name;
-				})
-
-	bars.exit()
-		.transition()
-		.duration(duration)
-		.attr("width", 0)
-		.remove();
-
-	bars.enter()
-		.append("rect")
-		.attr("class", "bar")
-		.attr("fill", function(d) {
-			if (d.dname == "Aegis of the Immortal") {
-				return "red";
+		//count all of the items
+		data.matches.forEach(function(d,i) {
+			for (j in dat) {
+				if (dat[j].id == d.player_info.item_0) {
+					dat[j].count += 1;
+				}		
+				else if (dat[j].id == d.player_info.item_1) {
+					dat[j].count += 1;
+				}		
+				else if (dat[j].id == d.player_info.item_2) {
+					dat[j].count += 1;
+				}		
+				else if (dat[j].id == d.player_info.item_3) {
+					dat[j].count += 1;
+				}		
+				else if (dat[j].id == d.player_info.item_4) {
+					dat[j].count += 1;
+				}		
+				else if (dat[j].id == d.player_info.item_5) {
+					dat[j].count += 1;
+				}		
 			}
-			if (d.dname == "Cheese") {
-				return "red";
-			}
-			return item_percent_color(d.cost);
 		})
-		.on("mouseover", function(d) {
 
-			if (d.dname == "Aegis of the Immortal" || d.dname == "Cheese") {
-				var cost = "Dropped Item";
+		//consolidate into correct form that we want
+		for (k in dat) {
+			if (dat[k].count != 0 && dat[k].name != "empty") {
+				dat[k].percent = dat[k].count/total_count
+				items.push(dat[k])
 			}
-			else {
-				cost = d.cost
-			}
+		}
 
-			//console.log(d)
-
-			var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br></div>"
-	  		var img_tip = "<div id='item_percent_tooltip_img'><img src='" + d.img + "' height='40px' width='53.125px'></div>"
-
-	  		graph_tip.html(img_tip + basic_tip);
-	  		graph_tip.show(d);
-	  	})
-	  	.on("mouseout", function(d) {
-	  		graph_tip.hide(d);
-	  	})
-		.transition().duration(duration);
+		if (d3.select(".item_percent").attr("visibility") == "hidden") {
+			var duration = 0;
+		}
+		else {
+			duration = 1000;
+		}
 		
-	bars
-		.transition()
-		.duration(duration)
-		.attr("x", function(d) {
-			return item_percent_x(d.name);
-		})
-		.attr("y", function(d) {
-			return item_percent_y(d.percent);
-		})
-		.attr("height", function(d) {
-			return bb_item_percent.h - item_percent_y(d.percent);
-		})
-		.attr("width", item_percent_x.rangeBand);
+		item_percent_x.domain(items.map(function(d) {
+			return d.name;
+		}));
+		item_percent_y.domain([0, d3.max(items, function(d) {
+			return d.percent;
+		})]);
 
-	item_percent_graph.select(".y.axis")
-		.transition()
-		.duration(duration)
-		.call(item_percent_yAxis);
+		var bars = item_percent_graph.select(".bars")
+					.selectAll(".bar")
+					.data(items, function(d) {
+						return d.name;
+					})
 
-	item_percent_graph.select(".x.axis")
-		.transition()
-		.duration(duration)
-		.call(item_percent_xAxis);
+		bars.exit()
+			.transition()
+			.duration(duration)
+			.attr("width", 0)
+			.remove();
 
-	d3.select(".item_percent")
-		.attr("visibility", null);
+		bars.enter()
+			.append("rect")
+			.attr("class", "bar")
+			.attr("fill", function(d) {
+				if (d.dname == "Aegis of the Immortal") {
+					return "red";
+				}
+				if (d.dname == "Cheese") {
+					return "red";
+				}
+				return item_percent_color(d.cost);
+			})
+			.on("mouseover", function(d) {
 
-})
+				if (d.dname == "Aegis of the Immortal" || d.dname == "Cheese") {
+					var cost = "Dropped Item";
+				}
+				else {
+					cost = d.cost
+				}
+
+				//console.log(d)
+
+				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br></div>"
+		  		var img_tip = "<div id='item_percent_tooltip_img'><img src='" + d.img + "' height='40px' width='53.125px'></div>"
+
+		  		graph_tip.html(img_tip + basic_tip);
+		  		graph_tip.show(d);
+		  	})
+		  	.on("mouseout", function(d) {
+		  		graph_tip.hide(d);
+		  	})
+			.transition().duration(duration);
+			
+		bars
+			.transition()
+			.duration(duration)
+			.attr("x", function(d) {
+				return item_percent_x(d.name);
+			})
+			.attr("y", function(d) {
+				return item_percent_y(d.percent);
+			})
+			.attr("height", function(d) {
+				return bb_item_percent.h - item_percent_y(d.percent);
+			})
+			.attr("width", item_percent_x.rangeBand);
+
+		item_percent_graph.select(".y.axis")
+			.transition()
+			.duration(duration)
+			.call(item_percent_yAxis);
+
+		item_percent_graph.select(".x.axis")
+			.transition()
+			.duration(duration)
+			.call(item_percent_xAxis);
+
+		d3.select(".item_percent")
+			.attr("visibility", null);
+
+	})
 
 	//sorting by value
 
@@ -811,16 +859,6 @@ function update_item_percent(data) {
 	      .selectAll("g")
 	        .delay(delay);
 	  }
-
-	//filtering with the slider
-
-
-	//possibly use this jquery code to dynamically update the max value
-	// $('#page').page();
-	// $('#cvote').val(3);
-	// $('#cvote').slider('refresh');
-
-
 }
 
 function k_combinations(set, k) {
@@ -972,8 +1010,11 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	//console.log(lookup_dict)
 
+	d3.selectAll(".error_message").remove();
+
 	if (matrix.length == 0) {
 		hero_chord_graph.append("text")
+			.attr("class", "error_message")
 			.attr("x", -100)
 			.attr("y", 0)
 			.style("font-size", "12px")
@@ -1100,7 +1141,8 @@ function rerender(data) {
 
 }
 
-var gpm_, gpm_y, gpm_color, gpm_xAxis, gpm_yAxis;
+var gpm_x, gpm_y, gpm_color, gpm_xAxis, gpm_yAxis;
+var gpm_xdomain, gpm_ydomain;
 
 function draw_gpm() {
 	gpm_x = d3.scale.linear()
@@ -1110,7 +1152,7 @@ function draw_gpm() {
 	    .range([bb_gpm.h, 0]);
 
 	gpm_color = d3.scale.ordinal()
-		.domain([true,false])
+		.domain([true, false])
 		.range(["green", "red"]);
 
 	gpm_xAxis = d3.svg.axis()
@@ -1144,13 +1186,29 @@ function draw_gpm() {
 	    .attr('y1', gpm_y(0))
 	    .attr('y2', gpm_y(1))
 	    .style("stroke", "black")
-	    .style("stroke-width", "3px");
+	    .style("stroke-width", "3px")
+	    .attr("clip-path", "url(#clip)");
 
+	gpm_graph.append("defs").append("clipPath")
+   		.attr("transform", "translate(0,-5)")
+   		.attr("id", "clip")
+   		.append("rect")
+   		.attr("width", bb_gpm.w)
+   		.attr("height", bb_gpm.h+5);
 
+    gpm_graph.append("g")
+		.attr("class", "gpm_brush");
 }
+
+var gpm_brush;
 
 function update_gpm(data) {
 	//console.log(data);
+
+	gpm_brush = d3.svg.brush()
+   		.x(gpm_x)
+   		.y(gpm_y)
+   		.on("brushend", gpm_brushend);
 
 	var gpm_dict = {};
 
@@ -1177,8 +1235,6 @@ function update_gpm(data) {
 		});
 	}
 
-	//console.log(gpm_array)
-
 	var max_value = Math.max(
 		d3.max(gpm_array, function(d) {
 			return d.player_info.hero_avg_gpm;}), 
@@ -1186,10 +1242,13 @@ function update_gpm(data) {
 			return d.player_info.gold_per_min;
 	}));
 
+	gpm_xdomain = [0, max_value];
+	gpm_ydomain = [0, max_value];
 
-	gpm_x.domain([0, max_value]);
+	gpm_x.domain(gpm_xdomain);
+	gpm_y.domain(gpm_ydomain);
 
-	gpm_y.domain([0, max_value]);
+	d3.select(".gpm_brush").call(gpm_brush);
 
 	var datapoints = gpm_graph.selectAll(".dot")
       .data(gpm_array)
@@ -1200,7 +1259,10 @@ function update_gpm(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
-      .style("fill", function(d) { return gpm_color(d.player_win); })
+      .style("fill", function(d) { 
+      		//console.log(d.player_win)
+      		return gpm_color(d.player_win); 
+      })
       .on("mouseover", function(d) {
       	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
@@ -1223,9 +1285,13 @@ function update_gpm(data) {
       })
       .on("mouseout", function(d) {
       	graph_tip.hide(d);
-      });
+      })
+      .attr("clip-path", "url(#clip)");
 
 	datapoints
+		.style("fill", function(d) {
+			return gpm_color(d.player_win)
+		})
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {
@@ -1248,10 +1314,89 @@ function update_gpm(data) {
    	gpm_graph.select(".forty-five")
    		.attr("x2", gpm_x(max_value))
    		.attr("y2", gpm_y(max_value));
+}
 
+var gpm_clear_button;
+
+function gpm_brushend() {
+
+	get_button = d3.select(".clear-button_gpm");
+	if (get_button.empty() === true)
+	{
+		gpm_clear_button = gpm_graph.append('text')
+			.attr("y", bb_gpm.h - 430)
+			.attr("x", bb_gpm.w - 100)
+			.attr("class", "clear-button_gpm")
+			.text("Clear Brush");
+	}
+
+	gpm_x.domain([gpm_brush.extent()[0][0], gpm_brush.extent()[1][0]]);
+	gpm_y.domain([gpm_brush.extent()[0][1], gpm_brush.extent()[1][1]]);
+
+	gpm_transition();
+
+	d3.select(".gpm_brush").call(gpm_brush.clear());
+
+	// add the on click events for the button
+	gpm_clear_button.on('click', function ()
+	{
+	    // reset everything
+		gpm_x.domain(gpm_xdomain);
+		gpm_y.domain(gpm_ydomain);
+
+		gpm_transition();
+
+		gpm_clear_button.remove();
+	});
+
+	function gpm_transition() {
+		
+		gpm_graph.select(".x.axis")
+			.transition()
+			.duration(1000)
+			.call(gpm_xAxis);
+
+		gpm_graph.select(".y.axis")
+			.transition()
+			.duration(1000)
+			.call(gpm_yAxis);
+
+		var x_vals = [];
+		var y_vals = [];
+
+		gpm_graph.selectAll("circle")
+		  	.transition()
+		  	.duration(1000)
+          	.attr("cx",function(d) { 
+          		x_vals.push(d.player_info.hero_avg_gpm);
+          		return (gpm_x(d.player_info.hero_avg_gpm)); 
+          	})
+          	.attr("cy",function(d) { 
+          		y_vals.push(d.player_info.gold_per_min);
+          		return gpm_y(d.player_info.gold_per_min); 
+          	});
+
+		var max_arr = Math.max(
+			d3.max(x_vals, function(d) {
+				return d;
+			}), 
+			d3.max(y_vals, function(d) {
+				return d;
+		}));
+
+		gpm_graph.selectAll(".forty-five")
+			.transition()
+			.duration(1000)
+			.attr("x1", gpm_x(0))
+			.attr("y1", gpm_y(0))
+			.attr("x2", gpm_x(max_arr))
+			.attr("y2", gpm_y(max_arr));
+	}
 }
 
 var xpm_x, xpm_y, xpm_color, xpm_xAxis, xpm_yAxis;
+var xpm_xdomain, xpm_ydomain;
+var xpm_brush;
 
 function draw_xpm() {
 	xpm_x = d3.scale.linear()
@@ -1275,13 +1420,7 @@ function draw_xpm() {
 	xpm_graph.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + bb_xpm.h + ")")
-      .call(xpm_xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", bb_xpm.w)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("Average XPM of Hero");
+      .call(xpm_xAxis);
 
   	xpm_graph.append("g")
       .attr("class", "y axis")
@@ -1301,13 +1440,28 @@ function draw_xpm() {
 	    .attr('y1', xpm_y(0))
 	    .attr('y2', xpm_y(1))
 	    .style("stroke", "black")
-	    .style("stroke-width", "3px");
+	    .style("stroke-width", "3px")
+	    .attr("clip-path", "url(#clip)");
 
+   	xpm_graph.append("defs").append("clipPath")
+   		.attr("transform", "translate(0,-5)")
+   		.attr("id", "clip")
+   		.append("rect")
+   		.attr("width", bb_xpm.w)
+   		.attr("height", bb_xpm.h+5);
 
+	xpm_graph.append("g")
+   		.attr("class", "xpm_brush")
 }
+
 
 function update_xpm(data) {
 	//console.log(data);
+
+	xpm_brush = d3.svg.brush()
+   		.x(xpm_x)
+   		.y(xpm_y)
+   		.on("brushend", xpm_brushend);
 
 	var xpm_dict = {};
 
@@ -1334,8 +1488,6 @@ function update_xpm(data) {
 		});
 	}
 
-	//console.log(gpm_array)
-
 	var max_value = Math.max(
 		d3.max(xpm_array, function(d) {
 			return d.player_info.hero_avg_xpm;}), 
@@ -1343,10 +1495,14 @@ function update_xpm(data) {
 			return d.player_info.xp_per_min;
 	}));
 
+	xpm_xdomain = [0, max_value];
+	xpm_ydomain = [0, max_value];
 
-	xpm_x.domain([0, max_value]);
+	xpm_x.domain(xpm_xdomain);
+	xpm_y.domain(xpm_ydomain);
 
-	xpm_y.domain([0, max_value]);
+	d3.select(".xpm_brush")
+   		.call(xpm_brush);
 
 	var datapoints = xpm_graph.selectAll(".dot")
       .data(xpm_array)
@@ -1359,9 +1515,10 @@ function update_xpm(data) {
       .attr("r", 3.5)
       .style("fill", function(d) { return xpm_color(d.player_win); })
       .on("mouseover", function(d) {
+      	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
 
-      	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_xpm); 
+      	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_gpm); 
       	
       	//get the correct hero image and build the tooltip with an image
       	var hero_data = d2.getHeroData(d.player_info.hero_id);
@@ -1379,16 +1536,20 @@ function update_xpm(data) {
       })
       .on("mouseout", function(d) {
       	graph_tip.hide(d);
-      });
+      })
+      .attr("clip-path", "url(#clip)");
 
-    datapoints
+	datapoints
+		.style("fill", function(d) {
+			return xpm_color(d.player_win)
+		})
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {
-			return xpm_x(d.player_info.hero_avg_xpm)
+			return xpm_x(d.player_info.hero_avg_gpm)
 		})
 		.attr("cy", function(d) {
-			return xpm_y(d.player_info.xp_per_min)
+			return xpm_y(d.player_info.gold_per_min)
 		});
 
    	xpm_graph.select(".x.axis")
@@ -1404,6 +1565,82 @@ function update_xpm(data) {
    	xpm_graph.select(".forty-five")
    		.attr("x2", xpm_x(max_value))
    		.attr("y2", xpm_y(max_value));
-
 }
 
+var xpm_clear_button;
+
+function xpm_brushend() {
+
+	get_button = d3.select(".clear-button_xpm");
+
+	if (get_button.empty() === true)
+	{
+		xpm_clear_button = xpm_graph.append('text')
+			.attr("y", bb_xpm.h - 430)
+			.attr("x", bb_xpm.w - 100)
+			.attr("class", "clear-button_xpm")
+			.text("Clear Brush");
+	}
+
+	xpm_x.domain([xpm_brush.extent()[0][0], xpm_brush.extent()[1][0]]);
+	xpm_y.domain([xpm_brush.extent()[0][1], xpm_brush.extent()[1][1]]);
+
+	xpm_transition();
+
+	d3.select(".xpm_brush").call(xpm_brush.clear());
+	// add the on click events for the button
+	xpm_clear_button.on('click', function ()
+	{
+	    // reset everything
+		xpm_x.domain(xpm_xdomain);
+		xpm_y.domain(xpm_ydomain);
+		
+		xpm_transition();
+
+		xpm_clear_button.remove();
+	});
+
+	function xpm_transition() {
+
+		xpm_graph.select(".x.axis")
+			.transition()
+			.duration(1000)
+			.call(xpm_xAxis);
+
+		xpm_graph.select(".y.axis")
+			.transition()
+			.duration(1000)
+			.call(xpm_yAxis);
+
+		var x_vals = [];
+		var y_vals = [];
+
+		xpm_graph.selectAll("circle")
+			.transition()
+			.duration(1000)
+	        .attr("cx",function(d) { 
+	        	x_vals.push(d.player_info.hero_avg_gpm);
+	        	return (xpm_x(d.player_info.hero_avg_gpm)); 
+	        })
+	        .attr("cy",function(d) { 
+	          	y_vals.push(d.player_info.xp_per_min);
+	          	return xpm_y(d.player_info.xp_per_min); 
+	        });
+
+		var max_arr = Math.max(
+			d3.max(x_vals, function(d) {
+				return d;
+			}), 
+			d3.max(y_vals, function(d) {
+				return d;
+		}));
+
+		xpm_graph.selectAll(".forty-five")
+			.transition()
+			.duration(1000)
+			.attr("x1", xpm_x(0))
+			.attr("y1", xpm_y(0))
+			.attr("x2", xpm_x(max_arr))
+			.attr("y2", xpm_y(max_arr));
+	}
+}

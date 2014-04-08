@@ -1,3 +1,7 @@
+#stat_graphs {
+  position: relative;
+}
+
 .win_loss rect{
   stroke: black;
   stroke-width: 2px;
@@ -8,6 +12,16 @@
 
 .loss {
   fill: red;
+}
+
+.gpm_brush .extent{
+      fill:gray;
+      opacity: .3;
+}
+
+.xpm_brush .extent{
+      fill:gray;
+      opacity: .3;
 }
 
 text {
@@ -71,32 +85,32 @@ path {
 
 #value_sort_label {
   position: absolute;
-  top: 5px;
+  top: 0px;
   right: 680px;
 }
 
 #item_sort_label{
   position: absolute;
-  top: 22px;
+  top: 17px;
   right: 687px;
 }
 
 #cost_sort_label{
   position: absolute;
-  top: 39px;
+  top: 34px;
   right: 689px;
 }
 
 #item_filter{
   position: absolute;
-  top: 30px;
+  top: 25px;
   right: 180px;
 }
 
 #hero_filter{
   position:absolute;
-  top: 450px;
-  right: 280px;
+  top: 425px;
+  right: 150px;
 }
 
 /*tooltip styles*/
