@@ -1431,7 +1431,14 @@ function draw_xpm() {
 	xpm_graph.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + bb_xpm.h + ")")
-      .call(xpm_xAxis);
+      .call(xpm_xAxis)
+      .append("text")
+	      .attr("class", "labels")
+	      .attr("y", 0)
+	      .attr("x", bb_xpm.w)
+	      .attr("dy", "-.71em")
+	      .style("text-anchor", "end")
+	      .text("Average XPM on hero");
 
   	xpm_graph.append("g")
       .attr("class", "y axis")
