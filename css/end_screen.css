@@ -8,8 +8,8 @@
 
 #end_screen {
     margin: 0px 10px;
-    height: 700px;
-    width: 1200px;
+    height: 675px;
+    width: 1124px;
     float: left;
 }
 
@@ -17,12 +17,32 @@
     font-size: 12px;
 }
 
-#winner {
-    width: 100px;
+#winner_spacer {
+    width: 300px;
+    height: 12px;
     margin-left: auto;
     margin-right: auto;
+}
+
+#winner {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
     background: lightgray;
     text-align: center;
+    border: 5px ridge darkgray;
+    border-radius:10px;
+}
+
+.radiant {
+    color: #598307;
+}
+
+.dire {
+    color: #A83806;
 }
 
 #match_data {
@@ -49,25 +69,27 @@
     margin: 5px 0px;
 }
 
-#players td, #players th {
-    padding: 3px;
-    border: 1px solid black;
+#players tbody tr:nth-child(odd) {
+    background-color: lightgrey;
 }
 
-#players .team th{
-    border: none;
+#players td, #players th {
+    padding: 3px;
+}
+
+#players .headers {
+    background-color: darkgray;
 }
 
 #players .team th{
     text-align:left;
-}
-
-#players th, #players td {
-    text-align: center;
+    border: none;
+    font-size: 22px;
 }
 
 #players td {
     white-space: nowrap;
+    overflow: hidden;
     vertical-align: middle;
 }
 
@@ -76,15 +98,17 @@
 }
 
 #players #user {
-    background-color: brown;
+    background-color: yellow;
 }
 
 #players .player_name {
     text-align: left;
-    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
 }
 
 .level {
+    text-align: right;
     width: 40px;
 }
 
@@ -94,22 +118,37 @@
 }
 
 .kills, .deaths, .assists {
+    text-align: right;
     width: 20px;
 }
 
 .items {
+    text-align: center;
     width: 310px;
 }
 
 .gold {
+    text-align: right;
     width: 45px;
 }
 
 .last_hits {
+    text-align: right;
     width: 70px;
 }
 
 .denies {
+    text-align: right;
+    width: 45px;
+}
+
+.gold_per_min {
+    text-align: right;
+    width: 45px;
+}
+
+.xp_per_min {
+    text-align: right;
     width: 45px;
 }
 
@@ -125,6 +164,10 @@
     top: 30px;
     background-color: white;
     border: 2px solid black;
+}
+
+#players img {
+    border: 1px solid black;
 }
 
 #stat_graph {

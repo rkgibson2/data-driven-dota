@@ -3,6 +3,9 @@
 //data global
 var user_data;
 
+//filtered data global
+var filtered_data;
+
 //margins and bounding boxes for each graph visualization
 var bb_win_loss, bb_hero_pie, bb_item_percent, bb_hero_chord, bb_gpm, bb_xpm;
 
@@ -196,6 +199,8 @@ function loadData(username) {
         update_gpm(user_data);
 
         update_xpm(user_data);
+        
+        create_timeline(user_data);
 
         //console.log(create_flare(user_data));
 
@@ -894,9 +899,6 @@ function k_combinations(set, k) {
 
 function create_matrix (data) {
 
-	//console.log(data)
-
-
 	var filter_value = d3.select("input[name=hero_filter]")[0][0].value;
 	//d3.select("input[name=hero_filter]")[0][0].value;
 
@@ -1007,8 +1009,6 @@ function create_matrix (data) {
 
 
 function draw_hero_chord_graph(matrix, lookup_dict) {
-
-	//console.log(lookup_dict)
 
 	d3.selectAll(".error_message").remove();
 

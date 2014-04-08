@@ -122,6 +122,13 @@ function selected()
     update_gpm(filtered_data);
 
     update_xpm(filtered_data);
+    
+    update_timeline(filtered_data.matches);
+
+    d3.select("input[name=hero_filter]").on("change", function() { 
+			d3.select("#hero_filter .filterInput").text(this.value);
+			rerender(filtered_data);  
+		});
 }
 
 function sorting(a, b)
