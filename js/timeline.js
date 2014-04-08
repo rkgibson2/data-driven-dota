@@ -391,7 +391,7 @@ function update_timeline(filtereddata)
 	// set up x and y scale
 	xScaleOverview = d3.time.scale().domain(xdomain).range([10, bbOverview.w - 10]);
 	yScaleOverview = d3.scale.ordinal().domain(["strength", "agility", "intelligence"]).rangePoints([0, 50], 1, 0);
-	transition_data(filtereddata);
+	transition_data(matches);
 	xAxisOverview = d3.svg.axis()
 		.scale(xScaleOverview)
 		.ticks(10)
