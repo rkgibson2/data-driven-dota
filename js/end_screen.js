@@ -73,6 +73,7 @@ function update_end_screen(game) {
 
     // set winner
     d3.select("#winner").text(((game.radiant_win) ? "Radiant" : "Dire") + " Victory")
+        .attr("class", (game.radiant_win) ? "radiant" : "dire")
 
     // set match id text
     d3.select("#match_id .text").text(game.match_id)
