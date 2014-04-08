@@ -163,9 +163,9 @@ function update_ability_build(player) {
     // position div over whichever team the player is on
     // if radiant
     if (player.player_slot & 0x80) {
-        d3.select(".ability_build").style("top", "304px")
+        d3.select(".ability_build").style("top", "320px")
     } else {
-        d3.select(".ability_build").style("top", "30px")
+        d3.select(".ability_build").style("top", "38px")
     }
 
     var levels = ability_svg.selectAll(".level")
