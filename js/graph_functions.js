@@ -1165,7 +1165,7 @@ function draw_gpm() {
 
 	gpm_graph.append("defs").append("clipPath")
    		.attr("transform", "translate(0,-5)")
-   		.attr("id", "clip")
+   		.attr("id", "gpm_clip")
    		.append("rect")
    		.attr("width", bb_gpm.w)
    		.attr("height", bb_gpm.h+5);
@@ -1204,10 +1204,10 @@ function draw_gpm() {
 	    .attr('y2', gpm_y(1))
 	    .style("stroke", "black")
 	    .style("stroke-width", "3px")
-	    .attr("clip-path", "url(#clip)");
+	    .attr("clip-path", "url(#gpm_clip)");
 
 	d3.selectAll(".circle")
-		.attr("clip-path", "url(#clip)");
+		.attr("clip-path", "url(#gpm_clip)");
 
 }
 
@@ -1297,7 +1297,7 @@ function update_gpm(data) {
       .on("mouseout", function(d) {
       	graph_tip.hide(d);
       })
-      .attr("clip-path", "url(#clip)");
+      .attr("clip-path", "url(#gpm_clip)");
 
 	datapoints
 		.style("fill", function(d) {
@@ -1459,11 +1459,11 @@ function draw_xpm() {
 	    .attr('y2', xpm_y(1))
 	    .style("stroke", "black")
 	    .style("stroke-width", "3px")
-	    .attr("clip-path", "url(#clip)");
+	    .attr("clip-path", "url(#xpm_clip)");
 
    	xpm_graph.append("defs").append("clipPath")
    		.attr("transform", "translate(0,-5)")
-   		.attr("id", "clip")
+   		.attr("id", "xpm_clip")
    		.append("rect")
    		.attr("width", bb_xpm.w)
    		.attr("height", bb_xpm.h+5);
@@ -1555,7 +1555,7 @@ function update_xpm(data) {
       .on("mouseout", function(d) {
       	graph_tip.hide(d);
       })
-      .attr("clip-path", "url(#clip)");
+      .attr("clip-path", "url(#xpm_clip)");
 
 	datapoints
 		.style("fill", function(d) {
