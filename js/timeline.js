@@ -328,7 +328,7 @@ function create_timeline(userdata)
 	.on("brushend", brushend);
 	// add the brush to the svg
 	svgTimeLine.append("g")
-		.attr("class", "brush")
+		.attr("class", "timeline_brush")
 		.call(brush)
 		.selectAll('rect')
 		.attr('height', 50)
@@ -409,7 +409,7 @@ function update_timeline(filtereddata)
 	// end of selection
 	.on("brushend", brushend);
 	// add the brush to the svg
-	svgTimeLine.select("g.brush")
+	svgTimeLine.select("g.timeline_brush")
 		.call(brush)
 		.selectAll('rect')
 		.attr('height', 50)
@@ -451,7 +451,7 @@ function brushend()
 	// reclass dots as no longer selected
 	dots.classed("selected", false);
 	// clear the brush 
-	d3.select(".brush").call(brush.clear());
+	d3.select(".timeline_brush").call(brush.clear());
 	// add the on click events for the button
 	clear_button.on('click', function ()
 	{
