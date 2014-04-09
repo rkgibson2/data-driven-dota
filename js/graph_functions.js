@@ -1303,6 +1303,8 @@ function update_gpm(data) {
 		.style("fill", function(d) {
 			return gpm_color(d.player_win)
 		})
+		.attr("cx", gpm_x(0))
+		.attr("cy", gpm_y(0))
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {
@@ -1561,6 +1563,8 @@ function update_xpm(data) {
 		.style("fill", function(d) {
 			return xpm_color(d.player_win)
 		})
+		.attr("cx", xpm_x(0))
+		.attr("cy", xpm_y(0))
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {
