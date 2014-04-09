@@ -318,7 +318,6 @@ function hero_pie_transition(data){
 		.append("path")			
 		.attr("class", "hero_pie")
 		.attr("visibility", "visible")
-	    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
 	    .on("click", click)
 	    .on("mouseover", function(d) {
 	    	var tooltip = true;
@@ -368,6 +367,7 @@ function hero_pie_transition(data){
 	    		.style("fill", function(d) { return color((d.children ? d : d.parent).name); });
 	    })
 	    .transition()
+	    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
 	    .attr("d", hero_pie_arc);
 }
 
