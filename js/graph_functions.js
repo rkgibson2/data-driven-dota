@@ -523,6 +523,8 @@ function hero_pie(flare) {
 
 	d3.select(self.frameElement).style("height", height + "px");
 
+	hero_pie_graph.selectAll("text").remove();
+
 	hero_pie_graph.append("text")
 		.attr("text-anchor", "middle")
 		.attr("y", -bb_hero_pie.h/2 - 10)
@@ -1136,6 +1138,8 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	  	.transition().duration(1000)
 	    .attr("d", d3.svg.chord().radius(innerRadius))
 	    .style("opacity", .7);
+
+	hero_chord_graph.selectAll("text").remove();
 
 	hero_chord_graph
 			.append("text")

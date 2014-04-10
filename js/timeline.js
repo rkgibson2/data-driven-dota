@@ -267,7 +267,7 @@ function create_timeline(userdata)
 	// bbOverview = timeline
 	// add svg
 	var width = 1260 - margin.left - margin.right;
-	var height = 800 - margin.bottom - margin.top;
+	var height = 200 - margin.bottom - margin.top;
 	svgTimeLine = d3.select("#timeline").append("svg").attr(
 	{
 		width: width + margin.left + margin.right,
