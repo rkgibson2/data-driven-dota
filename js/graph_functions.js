@@ -170,10 +170,43 @@ d2.loadJson(function() {
 		d3.select("#intimages").select("#" + heroname).on("click", highlight);
 	});
 
-	// build initial hero_flare
+	// creates sunburst parent-child nested array-dict object whatever format
+	//for use in the hero sunburst, although without any data
+	hero_flare = {};
 
+	hero_flare.name = "flare"
+	hero_flare.children = [{},{},{}];
 
-	loadData("david");
+	hero_flare.children[0].name = "agility";
+	hero_flare.children[1].name = "strength";
+	hero_flare.children[2].name = "intelligence";
+
+	hero_flare.children[0].children = [];
+	hero_flare.children[1].children = [];
+	hero_flare.children[2].children = [];
+
+	d3.json("../data/heroes.json", function(error,dat) {
+
+		for (d in dat) {
+
+			if (dat[d].stat == "agility") {
+				hero_flare.children[0].children.push(dat[d])
+			}
+
+			if (dat[d].stat == "strength") {
+				hero_flare.children[1].children.push(dat[d]);
+			}
+
+			if (dat[d].stat == "intelligence") {
+				hero_flare.children[2].children.push(dat[d]);
+			}
+
+		}
+
+		console.log(hero_flare)
+
+		loadData("david");
+	})
 });
 
 draw_win_loss();
@@ -201,7 +234,7 @@ function updateGraphs (filtered_data) {
 
     update_item_percent(filtered_data);
 
-    create_flare(filtered_data);
+    hero_pie(update_flare(filtered_data));
 
     create_matrix(filtered_data);
 
@@ -376,11 +409,11 @@ function hero_pie_transition(data){
 function click(d) {
     hero_pie_path.transition()
       .duration(750)
-      .attrTween("d", arcTween(d))
+      .attrTween("d", clickArcTween(d))
 };
 
 // Interpolate the scales!
-function arcTween(d) {
+function clickArcTween(d) {
   var xd = d3.interpolate(hero_pie_x.domain(), [d.x, d.x + d.dx]),
       yd = d3.interpolate(hero_pie_y.domain(), [d.y, 1]),
       yr = d3.interpolate(hero_pie_y.range(), [d.y ? 20 : 0, hero_pie_radius]);
@@ -392,9 +425,7 @@ function arcTween(d) {
 }
 
 //creates hero sunburst graph based on hero flare json data
-function hero_pie(data) {
-
-	//console.log(data)
+function hero_pie(flare) {
 
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
@@ -413,6 +444,12 @@ function hero_pie(data) {
 	partition = d3.layout.partition()
     	.value(function(d) { return d.count; });
 
+    var zero_arc = d3.svg.arc()
+	    .startAngle(0)
+	    .endAngle(0)
+	    .innerRadius(function(d) { return Math.max(0, hero_pie_y(d.y)); })
+	    .outerRadius(function(d) { return Math.max(0, hero_pie_y(d.y + d.dy)); });
+
 	hero_pie_arc = d3.svg.arc()
 	    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, hero_pie_x(d.x))); })
 	    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, hero_pie_x(d.x + d.dx))); })
@@ -420,66 +457,69 @@ function hero_pie(data) {
 	    .outerRadius(function(d) { return Math.max(0, hero_pie_y(d.y + d.dy)); });
 
 	hero_pie_path = hero_pie_graph.selectAll("path")
-	      	.data(partition.nodes(data));
+	      	.data(partition.nodes(flare), function (d) { return d.name });
 
 	hero_pie_path
 	    .enter().append("path")
-	    	.attr("d", hero_pie_arc)
-	    	.on("click", click)
-		    .on("mouseover", function(d) {
-		    	var tooltip = true;
+	    .attr("class", "hero_pie")
+    	.attr("d", zero_arc)
+    	.on("click", click)
+	    .on("mouseover", function(d) {
+	    	var tooltip = true;
 
-		    	var name;
-		    	var number_text;
+	    	var name;
+	    	var number_text;
 
-		    	if (d.value == 1) {
-		    		number_text = " game";
-		    	}
-		    	else {
-		    		number_text = " games"
-		    	}
+	    	if (d.value == 1) {
+	    		number_text = " game";
+	    	}
+	    	else {
+	    		number_text = " games"
+	    	}
 
-		    	if ("dname" in d) {
-		    		name = d.dname;
-		    	}
-		    	else if (d.name == "flare") {
-		    		tooltip = false
-		    	}
-		    	else {
-		    		name = capitalizeFirstLetter(d.name) + " Heroes";
-		    	}
-		    
-		    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+	    	if ("dname" in d) {
+	    		name = d.dname;
+	    	}
+	    	else if (d.name == "flare") {
+	    		tooltip = false
+	    	}
+	    	else {
+	    		name = capitalizeFirstLetter(d.name) + " Heroes";
+	    	}
+	    
+	    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
 
-		    	if ("dname" in d) {
-		    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
-		    	}
-		    	else {
-		    		var img_tip = "";
-		    	}
+	    	if ("dname" in d) {
+	    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
+	    	}
+	    	else {
+	    		var img_tip = "";
+	    	}
 
-		    	graph_tip.html(img_tip + basic_tip);
+	    	graph_tip.html(img_tip + basic_tip);
 
-		    	if (tooltip) {
-		    		graph_tip.show(d);
-		    	}
+	    	if (tooltip) {
+	    		graph_tip.show(d);
+	    	}
 
-		    	d3.select(this)
-		    		.style("fill", "brown");
-		    })
-		    .on("mouseout", function(d) {
-		    	graph_tip.hide(d);
+	    	d3.select(this)
+	    		.style("fill", "brown");
+	    })
+	    .on("mouseout", function(d) {
+	    	graph_tip.hide(d);
 
-		    	d3.select(this)
-		    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
-		    })
-	    	.style("fill", "white")
-	    	.transition()
-	    	.duration(1000)
-		    .attr("d", hero_pie_arc)
-		    .attr("class", "hero_pie")
-		    .style("fill", function(d) { 
-		    	return hero_pie_color((d.children ? d : d.parent).name); });
+	    	d3.select(this)
+	    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
+	    })
+
+
+    hero_pie_path
+    	.style("fill", "white")
+    	.attr("d", hero_pie_arc)
+    .transition()
+    	.duration(1000)
+	    .style("fill", function(d) { 
+	    	return hero_pie_color((d.children ? d : d.parent).name); });
 
 	d3.select(self.frameElement).style("height", height + "px");
 
@@ -490,80 +530,33 @@ function hero_pie(data) {
 
 }
 
-//creates sunburst parent-child nested array-dict object whatever format
-//for use in the hero sunburst 
-function create_flare(data) {
-	
-	hero_flare = {};
 
-	hero_flare.name = "flare"
-	hero_flare.children = [{},{},{}];
-
-	hero_flare.children[0].name = "agility";
-	hero_flare.children[1].name = "strength";
-	hero_flare.children[2].name = "intelligence";
-
-	hero_flare.children[0].children = [];
-	hero_flare.children[1].children = [];
-	hero_flare.children[2].children = [];
-
-	d3.json("../data/heroes.json", function(error,dat) {
-
-		for (d in dat) {
-			dat[d].count = 0;
-
-			if (dat[d].stat == "agility") {
-				hero_flare.children[0].children.push(dat[d])
-			}
-
-			if (dat[d].stat == "strength") {
-				hero_flare.children[1].children.push(dat[d]);
-			}
-
-			if (dat[d].stat == "intelligence") {
-				hero_flare.children[2].children.push(dat[d]);
-			}
-
+// update the hero_flare to contain the counts for `data`
+function update_flare(data) {
+	// zero counts
+	for (var i = 0; i < hero_flare.children.length; i++) {
+		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
+			hero_flare.children[i].children[j].count = 0;
 		}
+	}
 
-		data.matches.forEach(function(d,i) {
+	console.log(hero_flare)
 
-			current_hero_stat = d2.getHeroInfo(d.player_info.hero_id).stat;
+	data.matches.forEach(function(d,i) {
 
-			if (current_hero_stat == "agility") {
-				var cur = hero_flare.children[0].children;
-				for (var i=0; i < cur.length; i++) {
-					if (cur[i].dname == d2.getHeroName(d.player_info.hero_id)) {
-						cur[i].count += 1;
-					}
-				}
-			}
+		var current_hero = d2.getHeroInfo(d.player_info.hero_id)
 
-			if (current_hero_stat == "strength") {
-				var cur = hero_flare.children[1].children;
-				for (var i=0; i < cur.length; i++) {
-					if (cur[i].dname == d2.getHeroName(d.player_info.hero_id)) {
-						cur[i].count += 1;
-					}
-				}
+		// find which child array holds the heroes for this stat
+		var children_pos = hero_flare.children.map(function (d) { return d.name }).indexOf(current_hero.stat);
+		var cur = hero_flare.children[children_pos].children;
 
-			}
-
-			if (current_hero_stat == "intelligence") {
-				var cur = hero_flare.children[2].children;
-				for (var i=0; i < cur.length; i++) {
-					if (cur[i].dname == d2.getHeroName(d.player_info.hero_id)) {
-						cur[i].count += 1;
-					}
-				}
-
-			}
-
-		})
-
-		hero_pie(hero_flare);
+		// find which element of that array holds this hero
+		var hero_pos = cur.map(function (d) { return d.dname }).indexOf(current_hero.dname)
+		cur[hero_pos].count += 1;
 
 	})
+
+	return hero_flare
 }
 
 
