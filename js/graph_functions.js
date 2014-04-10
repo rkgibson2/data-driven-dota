@@ -42,7 +42,7 @@ bb_item_percent = {
 };
 
 bb_hero_chord = {
-    x: 0,
+    x: -50,
     y: 550,
     w: 400,
     h: 400
@@ -1259,6 +1259,12 @@ function draw_gpm() {
 	d3.selectAll(".circle")
 		.attr("clip-path", "url(#gpm_clip)");
 
+	gpm_graph.append("text")
+		.attr("y", -20)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_gpm.w/2)
+		.text("GPM Statistics")
+
 }
 
 var gpm_brush;
@@ -1522,7 +1528,14 @@ function draw_xpm() {
    		.attr("height", bb_xpm.h+5);
 
 	xpm_graph.append("g")
-   		.attr("class", "xpm_brush")
+   		.attr("class", "xpm_brush");
+
+    xpm_graph.append("text")
+		.attr("y", -15)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_xpm.w/2)
+		.text("XPM Statistics")
+
 }
 
 
