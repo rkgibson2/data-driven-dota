@@ -202,12 +202,6 @@ function loadData(username) {
         
         create_timeline(user_data);
 
-        //console.log(create_flare(user_data));
-
-        //hero_pie(create_flare(user_data));
-
-        //hero_pie_transition(create_flare(user_data));
-
         //update chord diagram
 		d3.select("input[name=hero_filter]").on("change", function() { 
 			d3.select("#hero_filter .filterInput").text(this.value);
@@ -318,7 +312,6 @@ function hero_pie_transition(data){
 		.append("path")			
 		.attr("class", "hero_pie")
 		.attr("visibility", "visible")
-	    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
 	    .on("click", click)
 	    .on("mouseover", function(d) {
 	    	var tooltip = true;
@@ -368,6 +361,7 @@ function hero_pie_transition(data){
 	    		.style("fill", function(d) { return color((d.children ? d : d.parent).name); });
 	    })
 	    .transition()
+	    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
 	    .attr("d", hero_pie_arc);
 }
 
@@ -422,11 +416,8 @@ function hero_pie(data) {
 
 	hero_pie_path
 	    .enter().append("path")
-		    .attr("d", hero_pie_arc)
-		    .attr("class", "hero_pie")
-		    .style("fill", function(d) { 
-		    	return hero_pie_color((d.children ? d : d.parent).name); })
-		    .on("click", click)
+	    	.attr("d", hero_pie_arc)
+	    	.on("click", click)
 		    .on("mouseover", function(d) {
 		    	var tooltip = true;
 
@@ -473,7 +464,14 @@ function hero_pie(data) {
 
 		    	d3.select(this)
 		    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
-		    });
+		    })
+	    	.style("fill", "white")
+	    	.transition()
+	    	.duration(1000)
+		    .attr("d", hero_pie_arc)
+		    .attr("class", "hero_pie")
+		    .style("fill", function(d) { 
+		    	return hero_pie_color((d.children ? d : d.parent).name); });
 
 	d3.select(self.frameElement).style("height", height + "px");
 
@@ -1304,6 +1302,8 @@ function update_gpm(data) {
 		.style("fill", function(d) {
 			return gpm_color(d.player_win)
 		})
+		.attr("cx", gpm_x(0))
+		.attr("cy", gpm_y(0))
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {
@@ -1563,6 +1563,8 @@ function update_xpm(data) {
 		.style("fill", function(d) {
 			return xpm_color(d.player_win)
 		})
+		.attr("cx", xpm_x(0))
+		.attr("cy", xpm_y(0))
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {

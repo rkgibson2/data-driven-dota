@@ -115,7 +115,9 @@ function selected()
 
     update_item_percent(filtered_data);
 
-    create_flare(filtered_data);
+    d3.selectAll(".hero_pie path").remove();
+
+    hero_pie_transition(create_flare(filtered_data));
 
     create_matrix(filtered_data);
 
