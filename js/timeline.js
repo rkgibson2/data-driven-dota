@@ -381,9 +381,9 @@ function create_timeline(userdata)
 
 function update_timeline(filtereddata)
 {
-	matches = filtereddata;
+	matches = filtereddata.matches;
 	// store domain from matches
-	xdomain = d3.extent(filtereddata,
+	xdomain = d3.extent(matches,
 		function (d)
 		{
 			return (new Date(d.start_time * 1000));
@@ -468,7 +468,7 @@ function brushend()
 // transitioning data points
 function transition_data(matchdata)
 {
-	console.log(matches.length)
+	//console.log(matches.length)
 	// rebind data and transition
 	svgTimeLine.selectAll(".dot")
 		.data(matchdata)
@@ -487,7 +487,7 @@ var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
-		.attr("clip-path", "url(#clip)")
+		.attr("clip-path", "url(#timeline_clip)")
 	// add a circular node at the correct coordinates from our dataSet
 	.attr("cx", function (d)
 	{
@@ -548,7 +548,7 @@ function update_graphs(){
 	var extent = xScaleOverview.domain();
 	filtered_data.matches = matches.filter(function(d){if ((extent[0] <= (new Date(d.start_time * 1000))) && ((new Date(d.start_time * 1000)) <= extent[1])) return 1});
 
-	update_win_loss(filtered_data);
+    update_win_loss(filtered_data);
 
     update_item_percent(filtered_data);
 

@@ -111,7 +111,7 @@ function selected()
 		})
 	}
 
-	updateGraphs(filtered_data)
+	updateGraphs(filtered_data);
 }
 
 function sorting(a, b)

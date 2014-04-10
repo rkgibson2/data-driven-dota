@@ -221,6 +221,8 @@ function loadData(username) {
 
         user_data = data;
 
+	create_timeline(user_data);
+
         updateGraphs(user_data)
 
     })
@@ -240,7 +242,7 @@ function updateGraphs (filtered_data) {
 
     update_xpm(filtered_data);
     
-    create_timeline(filtered_data);
+    update_timeline(filtered_data);
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
