@@ -552,7 +552,7 @@ function update_graphs(){
 
     update_item_percent(filtered_data);
 
-    create_flare(filtered_data);
+    hero_pie(update_flare(filtered_data));
 
     create_matrix(filtered_data);
 
