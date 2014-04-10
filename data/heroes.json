@@ -2607,7 +2607,7 @@
         "img": "/img/heroes/nyx_assassin.jpg", 
         "name": "nyx_assassin", 
         "pa": "agi", 
-        "stat": "intelligence"
+        "stat": "agility"
     }, 
     "89": {
         "attribs": {

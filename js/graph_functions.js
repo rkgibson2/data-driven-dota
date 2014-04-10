@@ -203,8 +203,6 @@ d2.loadJson(function() {
 
 		}
 
-		console.log(hero_flare)
-
 		loadData("david");
 	})
 });
@@ -469,7 +467,7 @@ function hero_pie(flare) {
 
 	    	var name;
 	    	var number_text;
-
+	    	
 	    	if (d.value == 1) {
 	    		number_text = " game";
 	    	}
@@ -511,13 +509,14 @@ function hero_pie(flare) {
 	    	d3.select(this)
 	    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
 	    })
+	    .each(stash); // store the initial angles
 
 
     hero_pie_path
     	.style("fill", "white")
-    	.attr("d", hero_pie_arc)
     .transition()
     	.duration(1000)
+    	.attrTween("d", heroPieArcTween)
 	    .style("fill", function(d) { 
 	    	return hero_pie_color((d.children ? d : d.parent).name); });
 
@@ -530,6 +529,25 @@ function hero_pie(flare) {
 
 }
 
+// the below functions for arc interpolation come from
+// http://johan.github.io/d3/ex/sunburst.html
+
+// Stash the old values for transition.
+function stash(d) {
+	d.x0 = d.x;
+    d.dx0 = d.dx;
+}
+ 
+// Interpolate the arcs in data space.
+function heroPieArcTween(a) {
+	var i = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+    return function(t) {
+    	var b = i(t);
+     	a.x0 = b.x;
+     	a.dx0 = b.dx;
+     	return hero_pie_arc(b);
+   	};
+ }
 
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
@@ -539,8 +557,6 @@ function update_flare(data) {
 			hero_flare.children[i].children[j].count = 0;
 		}
 	}
-
-	console.log(hero_flare)
 
 	data.matches.forEach(function(d,i) {
 
