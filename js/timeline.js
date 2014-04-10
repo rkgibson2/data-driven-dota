@@ -462,7 +462,7 @@ function brushend()
 		clear_button.remove();
 		update_graphs();
 	});
-		update_graphs();
+	update_graphs();
 }
 // transitioning data points
 function transition_data(matchdata)

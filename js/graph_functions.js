@@ -417,14 +417,7 @@ function hero_pie(data) {
 	hero_pie_path
 	    .enter().append("path")
 	    	.attr("d", hero_pie_arc)
-	    	.style("fill", "white")
-	    	.transition()
-	    	.duration(1000)
-		    .attr("d", hero_pie_arc)
-		    .attr("class", "hero_pie")
-		    .style("fill", function(d) { 
-		    	return hero_pie_color((d.children ? d : d.parent).name); })
-		    .on("click", click)
+	    	.on("click", click)
 		    .on("mouseover", function(d) {
 		    	var tooltip = true;
 
@@ -471,7 +464,14 @@ function hero_pie(data) {
 
 		    	d3.select(this)
 		    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
-		    });
+		    })
+	    	.style("fill", "white")
+	    	.transition()
+	    	.duration(1000)
+		    .attr("d", hero_pie_arc)
+		    .attr("class", "hero_pie")
+		    .style("fill", function(d) { 
+		    	return hero_pie_color((d.children ? d : d.parent).name); });
 
 	d3.select(self.frameElement).style("height", height + "px");
 
