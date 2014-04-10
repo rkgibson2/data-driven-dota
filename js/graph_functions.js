@@ -170,6 +170,9 @@ d2.loadJson(function() {
 		d3.select("#intimages").select("#" + heroname).on("click", highlight);
 	});
 
+	// build initial hero_flare
+
+
 	loadData("david");
 });
 
@@ -182,33 +185,37 @@ draw_gpm();
 draw_xpm();
 
 function loadData(username) {
-	 
+ 
 	d2.loadUserData(username, function(error,data) {
 
         user_data = data;
 
-        //update function calls
-        update_win_loss(user_data);
-
-        update_item_percent(user_data);
-
-        create_flare(user_data);
-
-        create_matrix(user_data);
-
-        update_gpm(user_data);
-
-        update_xpm(user_data);
-        
-        create_timeline(user_data);
-
-        //update chord diagram
-		d3.select("input[name=hero_filter]").on("change", function() { 
-			d3.select("#hero_filter .filterInput").text(this.value);
-			rerender(user_data);  
-		});
+        updateGraphs(user_data)
 
     })
+}
+
+function updateGraphs (filtered_data) {
+	//update function calls
+    update_win_loss(filtered_data);
+
+    update_item_percent(filtered_data);
+
+    create_flare(filtered_data);
+
+    create_matrix(filtered_data);
+
+    update_gpm(filtered_data);
+
+    update_xpm(filtered_data);
+    
+    create_timeline(filtered_data);
+
+    //update chord diagram
+	d3.select("input[name=hero_filter]").on("change", function() { 
+		d3.select("#hero_filter .filterInput").text(this.value);
+		rerender(filtered_data);  
+	});
 }
 
 
@@ -298,6 +305,7 @@ function capitalizeFirstLetter(string)
 
 
 function hero_pie_transition(data){
+	console.log("called")
 
 	hero_pie_path 
 		.data(data)
