@@ -117,7 +117,7 @@ function selected()
 
     d3.selectAll(".hero_pie path").remove();
 
-    hero_pie_transition(create_flare(filtered_data));
+   // hero_pie_transition(create_flare(filtered_data));
 
     create_matrix(filtered_data);
 
