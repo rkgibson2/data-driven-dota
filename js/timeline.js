@@ -301,13 +301,13 @@ function create_timeline(userdata)
 	bbOverviewVis.append("g")
 		.attr("class", "xx axis")
 		.attr("transform", "translate(0," + bbOverview.h + ")")
-		.attr("clip-path", "url(#clip)")
+		.attr("clip-path", "url(#timeline_clip)")
 		.call(xAxisOverview);
 	bbOverviewVis.append("g")
 		.attr("class", "yy axis")
 		.call(yAxisOverview);
 	var clip = svgTimeLine.append("defs").append("svg:clipPath")
-		.attr("id", "clip")
+		.attr("id", "timeline_clip")
 		.append("svg:rect")
 		.attr("id", "clip-rect")
 		.attr("x", 0)
@@ -342,7 +342,7 @@ function create_timeline(userdata)
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
-		.attr("clip-path", "url(#clip)")
+		.attr("clip-path", "url(#timeline_clip)")
 	// add a circular node at the correct coordinates from our dataSet
 	.attr("cx", function (d)
 	{
@@ -404,10 +404,11 @@ function update_timeline(filtereddata)
 	// add brush function
 	brush = d3.svg.brush()
 		.x(xScaleOverview)
-	// on selection
-	.on("brush", brushmove)
-	// end of selection
-	.on("brushend", brushend);
+		// on selection
+		.on("brush", brushmove)
+		// end of selection
+		.on("brushend", brushend);
+
 	// add the brush to the svg
 	svgTimeLine.select("g.timeline_brush")
 		.call(brush)
@@ -433,13 +434,13 @@ function brushmove()
 function brushend()
 {
 	// add a clear brush selection if we have brushed in
-	get_button = d3.select(".clear-button");
+	get_button = d3.select(".clear-button_timeline");
 	if (get_button.empty() === true)
 	{
 		clear_button = svgTimeLine.append('text')
 			.attr("y", bbOverview.h + 50)
 			.attr("x", bbOverview.w - 100)
-			.attr("class", "clear-button")
+			.attr("class", "clear-button_timeline")
 			.text("Clear Brush");
 	}
 	// change the xscale domain to the brush selection extent
@@ -467,6 +468,7 @@ function brushend()
 // transitioning data points
 function transition_data(matchdata)
 {
+	console.log(matches.length)
 	// rebind data and transition
 	svgTimeLine.selectAll(".dot")
 		.data(matchdata)

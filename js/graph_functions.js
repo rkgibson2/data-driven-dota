@@ -1261,8 +1261,9 @@ function update_gpm(data) {
 
 	d3.select(".gpm_brush").call(gpm_brush);
 
+	// use match id to key data
 	var datapoints = gpm_graph.selectAll(".dot")
-      .data(gpm_array)
+      .data(gpm_array, function(d) { return d.match_id })
 
     datapoints.exit().remove();
 
@@ -1522,8 +1523,9 @@ function update_xpm(data) {
 	d3.select(".xpm_brush")
    		.call(xpm_brush);
 
+   	// use match id to bind key data
 	var datapoints = xpm_graph.selectAll(".dot")
-      .data(xpm_array)
+      .data(xpm_array, function(d) { return d.match_id })
 
     datapoints.exit().remove();
 
@@ -1619,6 +1621,8 @@ function xpm_brushend() {
 	});
 
 	function xpm_transition() {
+			console.log("called")
+
 
 		xpm_graph.select(".x.axis")
 			.transition()
