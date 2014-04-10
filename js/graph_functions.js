@@ -202,12 +202,6 @@ function loadData(username) {
         
         create_timeline(user_data);
 
-        //console.log(create_flare(user_data));
-
-        //hero_pie(create_flare(user_data));
-
-        //hero_pie_transition(create_flare(user_data));
-
         //update chord diagram
 		d3.select("input[name=hero_filter]").on("change", function() { 
 			d3.select("#hero_filter .filterInput").text(this.value);
@@ -422,6 +416,10 @@ function hero_pie(data) {
 
 	hero_pie_path
 	    .enter().append("path")
+	    	.attr("d", hero_pie_arc)
+	    	.style("fill", "white")
+	    	.transition()
+	    	.duration(1000)
 		    .attr("d", hero_pie_arc)
 		    .attr("class", "hero_pie")
 		    .style("fill", function(d) { 
