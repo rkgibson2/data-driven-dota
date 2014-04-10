@@ -203,8 +203,6 @@ d2.loadJson(function() {
 
 		}
 
-		console.log(hero_flare)
-
 		loadData("david");
 	})
 });
@@ -461,74 +459,94 @@ function hero_pie(flare) {
 
 	hero_pie_path
 	    .enter().append("path")
-	    	.attr("class", "hero_pie")
-	    	.attr("d", zero_arc)
-	    	.on("click", click)
-		    .on("mouseover", function(d) {
-		    	var tooltip = true;
+	    .attr("class", "hero_pie")
+    	.attr("d", zero_arc)
+    	.on("click", click)
+	    .on("mouseover", function(d) {
+	    	var tooltip = true;
 
-		    	var name;
-		    	var number_text;
+	    	var name;
+	    	var number_text;
+	    	
+	    	if (d.value == 1) {
+	    		number_text = " game";
+	    	}
+	    	else {
+	    		number_text = " games"
+	    	}
 
-		    	if (d.value == 1) {
-		    		number_text = " game";
-		    	}
-		    	else {
-		    		number_text = " games"
-		    	}
+	    	if ("dname" in d) {
+	    		name = d.dname;
+	    	}
+	    	else if (d.name == "flare") {
+	    		tooltip = false
+	    	}
+	    	else {
+	    		name = capitalizeFirstLetter(d.name) + " Heroes";
+	    	}
+	    
+	    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
 
-		    	if ("dname" in d) {
-		    		name = d.dname;
-		    	}
-		    	else if (d.name == "flare") {
-		    		tooltip = false
-		    	}
-		    	else {
-		    		name = capitalizeFirstLetter(d.name) + " Heroes";
-		    	}
-		    
-		    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+	    	if ("dname" in d) {
+	    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
+	    	}
+	    	else {
+	    		var img_tip = "";
+	    	}
 
-		    	if ("dname" in d) {
-		    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
-		    	}
-		    	else {
-		    		var img_tip = "";
-		    	}
+	    	graph_tip.html(img_tip + basic_tip);
 
-		    	graph_tip.html(img_tip + basic_tip);
+	    	if (tooltip) {
+	    		graph_tip.show(d);
+	    	}
 
-		    	if (tooltip) {
-		    		graph_tip.show(d);
-		    	}
+	    	d3.select(this)
+	    		.style("fill", "brown");
+	    })
+	    .on("mouseout", function(d) {
+	    	graph_tip.hide(d);
 
-		    	d3.select(this)
-		    		.style("fill", "aquamarine");
-		    })
-		    .on("mouseout", function(d) {
-		    	graph_tip.hide(d);
+	    	d3.select(this)
+	    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
+	    })
+	    .each(stash); // store the initial angles  
 
-		    	d3.select(this)
-		    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
-		    });
+    hero_pie_path
+    	.style("fill", "white")
+    .transition()
+    	.duration(1000)
+    	.attrTween("d", heroPieArcTween)
+	    .style("fill", function(d) { 
+	    	return hero_pie_color((d.children ? d : d.parent).name); });
 
 	d3.select(self.frameElement).style("height", height + "px");
 
 	hero_pie_graph.append("text")
 		.attr("text-anchor", "middle")
 		.attr("y", -bb_hero_pie.h/2 - 10)
-		.text("Heroes Played");	    
-
-    hero_pie_path
-    	.style("fill", "white")
-    	.attr("d", hero_pie_arc)
-    .transition()
-    	.duration(1000)
-	    .style("fill", function(d) { 
-	    	return hero_pie_color((d.children ? d : d.parent).name); });
+		.text("Heroes Played");	  
 
 }
 
+// the below functions for arc interpolation come from
+// http://johan.github.io/d3/ex/sunburst.html
+
+// Stash the old values for transition.
+function stash(d) {
+	d.x0 = d.x;
+    d.dx0 = d.dx;
+}
+ 
+// Interpolate the arcs in data space.
+function heroPieArcTween(a) {
+	var i = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+    return function(t) {
+    	var b = i(t);
+     	a.x0 = b.x;
+     	a.dx0 = b.dx;
+     	return hero_pie_arc(b);
+   	};
+ }
 
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
@@ -538,8 +556,6 @@ function update_flare(data) {
 			hero_flare.children[i].children[j].count = 0;
 		}
 	}
-
-	console.log(hero_flare)
 
 	data.matches.forEach(function(d,i) {
 
