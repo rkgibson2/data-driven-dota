@@ -42,8 +42,8 @@ bb_item_percent = {
 };
 
 bb_hero_chord = {
-    x: 450,
-    y: 380,
+    x: 0,
+    y: 550,
     w: 400,
     h: 400
 };
@@ -56,14 +56,14 @@ bb_user_interact = {
 }
 
 bb_gpm = {
-	x: 0,
+	x: 500,
 	y: 450,
 	h: 400,
 	w: 400
 }
 
 bb_xpm = {
-	x: 0,
+	x: 500,
 	y: 950,
 	h: 400,
 	w: 400
@@ -501,7 +501,7 @@ function hero_pie(flare) {
 	    	}
 
 	    	d3.select(this)
-	    		.style("fill", "brown");
+	    		.style("fill", "aquamarine");
 	    })
 	    .on("mouseout", function(d) {
 	    	graph_tip.hide(d);
@@ -798,7 +798,10 @@ function update_item_percent(data) {
 			.attr("height", function(d) {
 				return bb_item_percent.h - item_percent_y(d.percent);
 			})
-			.attr("width", item_percent_x.rangeBand);
+			.attr("width", item_percent_x.rangeBand)
+			.attr("fill", function(d) {
+				return item_percent_color(d.winrate);
+			});
 
 		item_percent_graph.select(".y.axis")
 			.transition()
@@ -1134,14 +1137,14 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	hero_chord_graph
 			.append("text")
-			.attr("y", -210)
+			.attr("y", -260)
 			.attr("class", "text")
 			.attr("text-anchor", "middle")
 			.text("Heroes Played Together Most Often");
 
 	hero_chord_graph
 			.append("text")
-			.attr("y", -195)
+			.attr("y", -245)
 			.attr("class", "text")
 			.attr("text-anchor", "middle")
 			.text("in your dataset")

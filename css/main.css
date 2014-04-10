@@ -85,21 +85,21 @@ path {
 
 #value_sort_label {
   position: absolute;
-  top: 0px;
+  top: -2px;
   /*right: 651px;*/
   left: 416px;
 }
 
 #item_sort_label{
   position: absolute;
-  top: 17px;
+  top: 15px;
   /*right: 687px;*/
   left: 416px;
 }
 
 #cost_sort_label{
   position: absolute;
-  top: 34px;
+  top: 32px;
   left: 416px;
   /*right: 689px;*/
 }
@@ -113,8 +113,8 @@ path {
 
 #hero_filter{
   position:absolute;
-  top: 425px;
-  left: 750px;
+  top: 575px;
+  left: 170px;
   /*right: 150px;*/
 }
 
