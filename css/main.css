@@ -7,11 +7,11 @@
   stroke-width: 2px;
 }
 .win {
-  fill: green;
+  fill: #1a9641;
 }
 
 .loss {
-  fill: red;
+  fill: #d7191c;
 }
 
 .gpm_brush .extent{
@@ -36,11 +36,11 @@ path {
 }
 
 .path:hover{
-  fill: green;
+  fill: aquamarine;
 }
 
 .bar:hover{
-  fill: brown;
+  fill: aquamarine;
 }
 
 .bar {
@@ -85,32 +85,37 @@ path {
 
 #value_sort_label {
   position: absolute;
-  top: 0px;
-  right: 680px;
+  top: -2px;
+  /*right: 651px;*/
+  left: 416px;
 }
 
 #item_sort_label{
   position: absolute;
-  top: 17px;
-  right: 687px;
+  top: 15px;
+  /*right: 687px;*/
+  left: 416px;
 }
 
 #cost_sort_label{
   position: absolute;
-  top: 34px;
-  right: 689px;
+  top: 32px;
+  left: 416px;
+  /*right: 689px;*/
 }
 
 #item_filter{
   position: absolute;
   top: 25px;
-  right: 180px;
+  left: 900px;
+  /*right: 180px;*/
 }
 
 #hero_filter{
   position:absolute;
-  top: 425px;
-  right: 150px;
+  top: 575px;
+  left: 170px;
+  /*right: 150px;*/
 }
 
 /*tooltip styles*/
