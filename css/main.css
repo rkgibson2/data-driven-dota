@@ -7,11 +7,11 @@
   stroke-width: 2px;
 }
 .win {
-  fill: green;
+  fill: #1a9641;
 }
 
 .loss {
-  fill: red;
+  fill: #d7191c;
 }
 
 .gpm_brush .extent{
@@ -36,11 +36,11 @@ path {
 }
 
 .path:hover{
-  fill: green;
+  fill: aquamarine;
 }
 
 .bar:hover{
-  fill: brown;
+  fill: aquamarine;
 }
 
 .bar {
@@ -86,7 +86,7 @@ path {
 #value_sort_label {
   position: absolute;
   top: 0px;
-  right: 680px;
+  right: 651px;
 }
 
 #item_sort_label{

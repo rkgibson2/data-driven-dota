@@ -352,7 +352,7 @@ function hero_pie_transition(data){
 	    	}
 
 	    	d3.select(this)
-	    		.style("fill", "brown");
+	    		.style("fill", "aquamarine");
 	    })
 	    .on("mouseout", function(d) {
 	    	graph_tip.hide(d);
@@ -457,7 +457,7 @@ function hero_pie(data) {
 		    	}
 
 		    	d3.select(this)
-		    		.style("fill", "brown");
+		    		.style("fill", "aquamarine");
 		    })
 		    .on("mouseout", function(d) {
 		    	graph_tip.hide(d);
@@ -631,22 +631,25 @@ function draw_item_percent() {
 //updates the item percent bar chart based on user's data selection
 function update_item_percent(data) {
 
+	//console.log(data)
+
 	var items = []
 
 	//initialize all items with a count of 0
 	d3.json("../data/items.json", function(error,dat) {
 
-		var extent_array = [];
+		//for coloring by cost
+		// var extent_array = [];
 
-		for (id in dat) {
-			extent_array.push(dat[id].cost);
-		}
+		// for (id in dat) {
+		// 	extent_array.push(dat[id].cost);
+		// }
 
-		item_percent_color.domain(d3.extent(extent_array))
-		item_percent_color.range(["gray","#FFD700"])
+		item_percent_color.range(["#d7191c","#1a9641"])
 
 		for (id in dat) {
 			dat[id].count = 0;
+			dat[id].num_wins = 0;
 		}
 
 		var total_count = data.matches.length;
@@ -656,21 +659,39 @@ function update_item_percent(data) {
 			for (j in dat) {
 				if (dat[j].id == d.player_info.item_0) {
 					dat[j].count += 1;
+					if (d.player_win == true) {
+						dat[j].num_wins += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_1) {
 					dat[j].count += 1;
+					if (d.player_win == true) {
+						dat[j].num_wins += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_2) {
 					dat[j].count += 1;
+					if (d.player_win == true) {
+						dat[j].num_wins += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_3) {
 					dat[j].count += 1;
+					if (d.player_win == true) {
+						dat[j].num_wins += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_4) {
 					dat[j].count += 1;
+					if (d.player_win == true) {
+						dat[j].num_wins += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_5) {
 					dat[j].count += 1;
+					if (d.player_win == true) {
+						dat[j].num_wins += 1;
+					}
 				}		
 			}
 		})
@@ -678,10 +699,20 @@ function update_item_percent(data) {
 		//consolidate into correct form that we want
 		for (k in dat) {
 			if (dat[k].count != 0 && dat[k].name != "empty") {
-				dat[k].percent = dat[k].count/total_count
+				dat[k].percent = dat[k].count/total_count;
+				dat[k].winrate = (dat[k].num_wins/dat[k].count);
 				items.push(dat[k])
 			}
 		}
+
+		var extent_array = [];
+		for (id in dat) {
+			extent_array.push(dat[id].winrate);
+		}
+
+		//item_percent_color.domain(d3.extent(extent_array));
+		item_percent_color.domain([0,.5,1])
+		item_percent_color.range(["#d7191c", "#8d8d8d", "#1a9641"]);
 
 		if (d3.select(".item_percent").attr("visibility") == "hidden") {
 			var duration = 0;
@@ -713,13 +744,9 @@ function update_item_percent(data) {
 			.append("rect")
 			.attr("class", "bar")
 			.attr("fill", function(d) {
-				if (d.dname == "Aegis of the Immortal") {
-					return "red";
-				}
-				if (d.dname == "Cheese") {
-					return "red";
-				}
-				return item_percent_color(d.cost);
+				//console.log(d)
+				//console.log(d.winrate)
+				return item_percent_color(d.winrate);
 			})
 			.on("mouseover", function(d) {
 
@@ -732,7 +759,7 @@ function update_item_percent(data) {
 
 				//console.log(d)
 
-				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br></div>"
+				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br> Winrate: " + (100*d.winrate).toFixed(1) + "%<br></div>"
 		  		var img_tip = "<div id='item_percent_tooltip_img'><img src='" + d.img + "' height='40px' width='53.125px'></div>"
 
 		  		graph_tip.html(img_tip + basic_tip);
@@ -1151,7 +1178,7 @@ function draw_gpm() {
 
 	gpm_color = d3.scale.ordinal()
 		.domain([true, false])
-		.range(["green", "red"]);
+		.range(["#1a9641", "#d7191c"]);
 
 	gpm_xAxis = d3.svg.axis()
 	    .scale(gpm_x)
@@ -1418,7 +1445,7 @@ function draw_xpm() {
 
 	xpm_color = d3.scale.ordinal()
 		.domain([true,false])
-		.range(["green", "red"]);
+		.range(["#1a9641", "#d7191c"]);
 
 	xpm_xAxis = d3.svg.axis()
 	    .scale(xpm_x)
