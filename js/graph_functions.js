@@ -252,6 +252,26 @@ function updateGraphs (filtered_data) {
 }
 
 
+// jQuery tooltip helper adapted from: http://www.davidjrush.com/blog/2011/12/simple-jquery-tooltip/
+$(document).ready(function ()
+{
+	$("span.question").hover(function ()
+	{
+		$(this).append('<div class="tooltip">' +
+			'<p><strong>Win-Loss Percentage:</strong> Win-loss percentage for current selected data <br></p>' +
+			'<p><strong>Heroes Played:</strong> Heroes you’ve played grouped by their primary attribute- agility, intelligence, or strength, and ordered by the number of games in which you’ve played them. This graph is colored by primary attribute. <br></p>' +
+			'<p><strong>Heroes Played Together Most Often:</strong> This graph shows which heroes have appeared together on the same team most frequently. Heroes are represented as arcs on the circumference of the circle, colored by primary attribute, and are linked by chords. These chords represent the number of games in which both heroes appeared on the same team. This graph is filterable to set a lower bound on the number of games in which the heroes appeared together, on the same team. <br></p>' +
+			'<p><strong>Items Purchased as Percentage of Games Played:</strong> Percentage of games in which you ended the game with a given item. Bars are colored by win rate with that item- gray if the win rate is around 50%, red if win rate is low, and green if win rate is high. Sorting can be conducted by percentage, alphabetically by item name, and item cost (dropped items, such as Aegis and Cheese, sort as infinite cost). <br></p>' +
+			'<p><strong>GPM Statistics:</strong> Scatterplot of GPM of hero for a given game against average GPM while playing that hero. Games falling above the line indicate that GPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
+			'<p><strong>XPM Statistics:</strong> Scatterplot of XPM of hero for a given game against average XPM while playing that hero. Games falling above the line indicate that XPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
+			'</div>');
+	}, function ()
+	{
+		$("div.tooltip").remove();
+	});
+});
+
+
 //win loss rect graph
 //transition working
 function draw_win_loss() {
@@ -1058,6 +1078,7 @@ function create_matrix (data) {
 
 function draw_hero_chord_graph(matrix, lookup_dict) {
 
+	hero_chord_graph.selectAll("text").remove();
 	d3.selectAll(".error_message").remove();
 
 	if (matrix.length == 0) {
@@ -1138,8 +1159,6 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	  	.transition().duration(1000)
 	    .attr("d", d3.svg.chord().radius(innerRadius))
 	    .style("opacity", .7);
-
-	hero_chord_graph.selectAll("text").remove();
 
 	hero_chord_graph
 			.append("text")
