@@ -31,8 +31,9 @@ text {
 }
 
 path {
-  stroke: #fff;
-  fill-rule: evenodd;
+/*  stroke: #fff;
+*/  fill-rule: evenodd;
+    stroke: black;
 }
 
 .path:hover{

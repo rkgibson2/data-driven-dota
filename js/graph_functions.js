@@ -190,7 +190,7 @@ d2.loadJson(function() {
 		for (d in dat) {
 
 			if (dat[d].stat == "agility") {
-				hero_flare.children[0].children.push(dat[d])
+				hero_flare.children[0].children.push(dat[d]);
 			}
 
 			if (dat[d].stat == "strength") {
@@ -201,9 +201,10 @@ d2.loadJson(function() {
 				hero_flare.children[2].children.push(dat[d]);
 			}
 
+
 		}
 
-		loadData("david");
+		loadData("robbie");
 	})
 });
 
@@ -243,6 +244,8 @@ function updateGraphs (filtered_data) {
     update_xpm(filtered_data);
     
     update_timeline(filtered_data);
+
+    draw_user_interact(filtered_data);
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
@@ -447,6 +450,35 @@ function clickArcTween(d) {
 //creates hero sunburst graph based on hero flare json data
 function hero_pie(flare) {
 
+	console.log(flare)
+
+	for (var i = 0; i < flare.children.length; i++) {
+		var current_hero = flare.children[i]
+		
+		if (current_hero.count != 0){
+			
+			for (var j = 0; j < current_hero.children.length; j++) {
+				var current_children = current_hero.children[j];
+
+				if ("children" in current_children){
+
+					var total_item_count = current_children.children.reduce(function(sum, current_item) {
+						return (current_item.number + sum)
+					}, 0);
+
+					for (var k = 0; k < current_hero.children[j].children.length; k++) {
+						var current_item = flare.children[i].children[j].children[k];
+
+						current_item.count = (current_item.number/total_item_count)*flare.children[i].children[j].games_played
+					}
+				}
+			}
+		}
+
+	}
+
+	console.log(flare)
+
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
 	hero_pie_color = d3.scale.ordinal()
@@ -574,10 +606,11 @@ function heroPieArcTween(a) {
 
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
+
 	// zero counts
 	for (var i = 0; i < hero_flare.children.length; i++) {
 		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
-			hero_flare.children[i].children[j].count = 0;
+			hero_flare.children[i].children[j].games_played = 0;
 		}
 	}
 
@@ -591,9 +624,48 @@ function update_flare(data) {
 
 		// find which element of that array holds this hero
 		var hero_pos = cur.map(function (d) { return d.dname }).indexOf(current_hero.dname)
-		cur[hero_pos].count += 1;
+		cur[hero_pos].games_played += 1;
 
 	})
+
+	for (var i = 0; i < data.matches.length; i++) {
+
+		if (data.matches[i].players.length == 5) {
+			continue;
+		}
+			
+		for (var j = 0; j < 6; j++) {
+
+			var current_item = d2.getItemInfo(data.matches[i].player_info["item_"+j]);
+
+			if (current_item.dname == "empty") {
+				continue;
+			}
+			var current_hero = d2.getHeroInfo(data.matches[i].player_info.hero_id);
+
+			// find which child array holds the heroes for this stat
+			var children_pos = hero_flare.children.map(function (d) { return d.name }).indexOf(current_hero.stat);
+			var cur = hero_flare.children[children_pos].children;
+
+			// find which element of that array holds this hero
+			var hero_pos = cur.map(function (d) { return d.dname }).indexOf(current_hero.dname)
+
+			if (!("children" in cur[hero_pos])) {
+				cur[hero_pos]["children"] = []
+			}
+
+			var item_pos = cur[hero_pos].children.map(function(d) {return d.name}).indexOf(current_item.name);
+			
+			if (item_pos == -1) {
+				current_item.number = 1;
+				cur[hero_pos]["children"].push(current_item);
+			}
+			else {
+				cur[hero_pos]["children"][item_pos].number += 1;
+			}
+		}
+		
+	}
 
 	return hero_flare
 }
@@ -1751,4 +1823,66 @@ function xpm_brushend() {
 			.attr("x2", xpm_x(max_arr))
 			.attr("y2", xpm_y(max_arr));
 	}
+}
+
+function draw_user_interact(data){
+
+	var diameter= bb_user_interact.w;
+	var color = d3.scale.category20c();
+
+	var bubble = d3.layout.pack()
+		.sort(null)
+		.size([diameter, diameter])
+		.padding(1.5)
+
+	user_interact_graph.attr("class", "bubble");
+
+	console.log(data)
+
+	var user_flare = {
+		name: "user_flare",
+		child_dict: {},
+		children: []
+	};
+
+
+	for (var i = 0; i < data.matches.length; i++) {
+		var all_players = data.matches[i].players;
+
+		if (all_players.length == 10) {
+			for (var j = 0; j < 10; j++) {
+
+				var account_id_num = all_players[j].account_id;
+
+				if (account_id_num === undefined) {
+					continue;
+				}
+				if (account_id_num == 4294967295) {
+					continue;
+				}
+
+				if (!(account_id_num in user_flare.child_dict)) {
+					user_flare.child_dict[account_id_num] = {
+						name: account_id_num,
+						count: 1
+					};
+				}
+				else {
+					user_flare.child_dict[account_id_num].count += 1;
+				}
+
+			}
+
+		}
+	}
+
+	for (var k in user_flare.child_dict) {
+		if (user_flare.child_dict[k].count == 1) {
+			delete user_flare.child_dict[k];
+		}
+		else {
+			user_flare.children.push(user_flare.child_dict[k]);
+		}
+	}
+
 }
