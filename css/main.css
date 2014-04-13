@@ -33,7 +33,7 @@ text {
 path {
 /*  stroke: #fff;
 */  fill-rule: evenodd;
-    stroke: black;
+    stroke: white;
 }
 
 .path:hover{
