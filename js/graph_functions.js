@@ -50,7 +50,7 @@ bb_hero_chord = {
 
 bb_user_interact = {
 	x: 0,
-	y: 450,
+	y: 1000,
 	h: 400,
 	w: 400
 }
@@ -98,7 +98,7 @@ var hero_chord_graph = svg.append("g")
 
 var user_interact_graph = svg.append("g")
 	.attr("class", "user_interact")
-	.attr("transform", "translate(" + bb_hero_chord.x + "," + bb_hero_chord.y + ")");
+	.attr("transform", "translate(" + bb_user_interact.x + "," + bb_user_interact.y + ")");
 
 var gpm_graph = svg.append("g")
 	.attr("class", "gpm")
@@ -1837,8 +1837,6 @@ function draw_user_interact(data){
 
 	user_interact_graph.attr("class", "bubble");
 
-	console.log(data)
-
 	var user_flare = {
 		name: "user_flare",
 		child_dict: {},
@@ -1884,5 +1882,55 @@ function draw_user_interact(data){
 			user_flare.children.push(user_flare.child_dict[k]);
 		}
 	}
+
+	user_interact_graph.selectAll(".text error").remove();
+
+	if (user_flare.children.length == 0) {
+		user_interact_graph.append("text")
+			.attr("class", "error")
+			.text("Sorry, no data matches your selection criteria.")
+			.style("font-size", "12px")
+			.attr("dx", "3.3em")
+		return; 
+	}
+
+	var node = user_interact_graph.selectAll(".node")
+		.data(bubble.nodes(classes(user_flare))
+		.filter(function(d) {return !d.children;}))
+		.enter().append("g")
+		.attr("class", "node")
+		.attr("transform", function(d) {
+			return "translate(" + d.x + "," + d.y + ")"
+		});
+
+	node.append("circle")
+		.attr("r", function(d) {return d.r})
+		.style("fill", function(d) {return color(d.packageName)});
+
+	node
+		.on("mouseover", function(d) {
+			graph_tip.html(d.packageName);
+			graph_tip.show(d);
+		})
+		.on("mouseout", function(d) {
+			graph_tip.hide(d);
+		})
+
+	// Returns a flattened hierarchy containing all leaf nodes under the root.
+	function classes(root) {
+	  var classes = [];
+
+	  function recurse(name, node) {
+	    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+	    else classes.push({packageName: name, className: node.name, value: node.count});
+	  }
+
+	  recurse(null, root);
+	  return {children: classes};
+	}
+
+}
+
+function update_user_interact(data) {
 
 }
