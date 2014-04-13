@@ -262,6 +262,7 @@ var xdomain;
 
 function create_timeline(userdata)
 {
+    d3.select("#timeline").select("svg").remove();
 	// user matches array
 	matches = userdata.matches;
 	// bbOverview = timeline
@@ -342,6 +343,7 @@ function create_timeline(userdata)
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
+		
 		.attr("clip-path", "url(#timeline_clip)")
 	// add a circular node at the correct coordinates from our dataSet
 	.attr("cx", function (d)
@@ -358,8 +360,11 @@ function create_timeline(userdata)
 			return d.player_win ? "green" : "red"
 		})
 		.style("stroke", "black");
+		
+		
+		
 	// mouseover tips
-	dots.on("mouseover", function (d)
+	svgTimeLine.selectAll(".dot").on("mouseover", function (d)
 	{
 		var tooltip = true;
 		var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;

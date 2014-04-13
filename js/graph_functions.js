@@ -202,8 +202,8 @@ d2.loadJson(function() {
 			}
 
 		}
-
-		loadData("david");
+        // first option in the dropdown selector
+		loadData(d3.select("#userdropdown").node().value);
 	})
 });
 
@@ -215,14 +215,14 @@ draw_gpm();
 
 draw_xpm();
 
+
+
 function loadData(username) {
  
 	d2.loadUserData(username, function(error,data) {
 
         user_data = data;
-
-	create_timeline(user_data);
-
+        create_timeline(user_data);
         updateGraphs(user_data)
 
     })
