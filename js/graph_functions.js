@@ -510,7 +510,7 @@ function hero_pie(flare) {
 		}
 	}
 
-	console.log(hero_flare)
+	console.log(hero_flare);
 
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 

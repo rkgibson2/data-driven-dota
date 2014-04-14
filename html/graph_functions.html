@@ -16,6 +16,33 @@
 </head>
 <body>
 <div id="selectuser"></div>
+
+<table border="10" cellspacing="10" cellpadding="10" id ="game_mode_table" >
+    <tr>
+        <td id="AP" onclick="changeColor(this.id);">AP</td>
+        <td id="CM" onclick="changeColor(this.id);">CM</td>
+        <td id="CD" onclick="changeColor(this.id);">CD</td>
+    </tr>
+    
+    <tr>
+        <td id="SD" onclick="changeColor(this.id);">SD</td>
+        <td id="RD" onclick="changeColor(this.id);">RD</td>
+        <td id="AR" onclick="changeColor(this.id);">AR</td>
+    </tr>
+    
+    <tr>
+        <td id="LP" onclick="changeColor(this.id);">LP</td>
+        <td id="LH" onclick="changeColor(this.id);">LH</td>
+        <td id="AD" onclick="changeColor(this.id);">AD</td>
+    </tr>
+   
+</table>
+
+
+
+
+
+
   <div class="bigcontainer">
     <div id = "selector" class="modal hide fade in" style="display: none; ">
       <div class="modal-header">  
@@ -54,7 +81,7 @@
   <script src="/js/graph_functions.js"></script>
   <script src="/js/selectors.js"></script>
   <script src="/js/timeline.js"></script>
-
+  <script src="/js/game_mode.js"></script>
 
 
 </body>
