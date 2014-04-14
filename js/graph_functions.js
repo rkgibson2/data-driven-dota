@@ -909,6 +909,52 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
+		var gradient = item_percent_graph.append("svg:defs")
+			.append("svg:linearGradient")
+			.attr("id", "gradient")
+			.attr("x1", "0%")
+			.attr("x2", "100%")
+			.attr("y1", "0%")
+			.attr("y2", "0%")
+			.attr("spreadMethod", "pad");
+
+		gradient.append("svg:stop")
+			.attr("offset", "0%")
+			.attr("stop-color", "red")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "50%")
+			.attr("stop-color", "gray")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "100%")
+			.attr("stop-color", "green")
+			.attr("stop-opacity", 1);
+
+		item_percent_graph.append("svg:rect")
+			.attr("width", 150)
+			.attr("height", 25)
+			.attr("x", 250)
+			.attr("y", -30)
+			.style("fill", "url(#gradient)")
+			.style("stroke-width", "1px")
+			.style("stroke", "white");
+
+		item_percent_graph.append("text")
+			.attr("x", 246)
+			.attr("y", -15)
+			.style("font-size", "14px")
+			.style("text-anchor", "end")
+			.text("100% loss");
+
+		item_percent_graph.append("text")
+			.attr("x", 462)
+			.attr("y", -15)
+			.style("font-size", "14px")
+			.style("text-anchor", "end")
+			.text("100% win");
 	})
 
 	//sorting by value
