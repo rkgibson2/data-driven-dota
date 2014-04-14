@@ -216,7 +216,7 @@ draw_gpm();
 
 draw_xpm();
 
-
+draw_user_interact();
 
 function loadData(username) {
  
@@ -245,7 +245,7 @@ function updateGraphs (filtered_data) {
     
     update_timeline(filtered_data);
 
-    draw_user_interact(filtered_data);
+    update_user_interact(filtered_data);
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
@@ -361,7 +361,6 @@ function capitalizeFirstLetter(string)
 
 
 function hero_pie_transition(data){
-	console.log("called")
 
 	hero_pie_path 
 		.data(data)
@@ -449,8 +448,6 @@ function clickArcTween(d) {
 
 //creates hero sunburst graph based on hero flare json data
 function hero_pie(flare) {
-
-	console.log(flare)
 
 	for (var i = 0; i < flare.children.length; i++) {
 		var current_hero = flare.children[i]
@@ -1825,24 +1822,69 @@ function xpm_brushend() {
 	}
 }
 
-function draw_user_interact(data){
+var diameter, user_interact_color, bubble, user_flare, node;
 
-	var diameter= bb_user_interact.w;
-	var color = d3.scale.category20c();
+function draw_user_interact(){
 
-	var bubble = d3.layout.pack()
+	diameter= bb_user_interact.w;
+	user_interact_color = d3.scale.ordinal()
+		.domain([])
+		.range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
+
+	bubble = d3.layout.pack()
 		.sort(null)
 		.size([diameter, diameter])
 		.padding(1.5)
 
 	user_interact_graph.attr("class", "bubble");
 
-	var user_flare = {
+	user_flare = {
 		name: "user_flare",
 		child_dict: {},
 		children: []
 	};
 
+	user_interact_graph.selectAll("text").remove();
+
+	user_interact_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", 0)
+		.attr("x", 180)
+		.text("Users You've Played with more than Once")
+
+	if (user_flare.children.length == 0) {
+		user_interact_graph.append("text")
+			.attr("class", "error")
+			.attr("y", 100)
+			.text("Sorry, no data matches your selection criteria.")
+			.style("font-size", "12px")
+			.attr("dx", "3.3em")
+		return; 
+	}
+}
+
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.count});
+  }
+
+  recurse(null, root);
+  return {children: classes};
+}
+
+function update_user_interact(data) {
+
+	user_interact_graph.selectAll("text").remove();
+
+	user_interact_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", 0)
+		.attr("x", 180)
+		.text("Users You've Played with more than Once")
 
 	for (var i = 0; i < data.matches.length; i++) {
 		var all_players = data.matches[i].players;
@@ -1883,54 +1925,52 @@ function draw_user_interact(data){
 		}
 	}
 
-	user_interact_graph.selectAll(".text error").remove();
-
 	if (user_flare.children.length == 0) {
 		user_interact_graph.append("text")
 			.attr("class", "error")
+			.attr("y", 100)
 			.text("Sorry, no data matches your selection criteria.")
 			.style("font-size", "12px")
 			.attr("dx", "3.3em")
 		return; 
 	}
 
-	var node = user_interact_graph.selectAll(".node")
+	d3.selectAll(".node").remove();
+
+	node = user_interact_graph.selectAll(".node")
 		.data(bubble.nodes(classes(user_flare))
 		.filter(function(d) {return !d.children;}))
-		.enter().append("g")
-		.attr("class", "node")
-		.attr("transform", function(d) {
-			return "translate(" + d.x + "," + d.y + ")"
-		});
-
-	node.append("circle")
-		.attr("r", function(d) {return d.r})
-		.style("fill", function(d) {return color(d.packageName)});
 
 	node
+		.enter().append("g")
+		.attr("class", "node")
+		.append("circle")
+		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
-			graph_tip.html(d.packageName);
+			graph_tip.html("User: " + d.className + "<br>Number of games: " + d.value);
 			graph_tip.show(d);
 		})
 		.on("mouseout", function(d) {
 			graph_tip.hide(d);
 		})
 
-	// Returns a flattened hierarchy containing all leaf nodes under the root.
-	function classes(root) {
-	  var classes = [];
+	node
+		.transition()
+		.duration(1000)
+		.attr("transform", function(d) {
+			return "translate(" + d.x + "," + d.y + ")";
+		})
+		.style("fill", function(d) {return user_interact_color(d.className)});
 
-	  function recurse(name, node) {
-	    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-	    else classes.push({packageName: name, className: node.name, value: node.count});
-	  }
-
-	  recurse(null, root);
-	  return {children: classes};
-	}
-
-}
-
-function update_user_interact(data) {
+	d3.selectAll(".node").append("text")
+      	.attr("dy", ".3em")
+      	.style("text-anchor", "middle")
+      	.text(function(d) { 
+      		if (toString(d.className).length < d.r*.6) {
+      			return d.className
+      		}
+      	})
+      	.style("fill", "black")
+      	.style("font-size", "12px");
 
 }
