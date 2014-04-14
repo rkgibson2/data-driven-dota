@@ -129,6 +129,7 @@ path {
   color: #fff;
   border-radius: 1px;
   text-align: center;
+  pointer-events: none;
 }
 
 /* Northward tooltips */
@@ -210,6 +211,8 @@ text-align: center;
       text-align: center;
       line-height: 1;
       position: absolute;
+      pointer-events: none;
+
   }
 
 .hidden { 

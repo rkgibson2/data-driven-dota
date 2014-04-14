@@ -1249,8 +1249,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    })
 	    .on("mouseout", function(d,i){
 	    	graph_tip.hide(d);
-
-	    	fade(1)(d,i);
+	    	fade(.7)(d,i);
 
 	   	})	    
 	   	.style("fill", function(d) { 
@@ -1274,12 +1273,12 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    	return fill(d2.getHeroInfo(lookup_dict[d.target.index]).stat); 
 	    })
 	    .style("opacity", 0)
-	    .on("mouseover", function(d,i) {
+	    .on("mouseover", function(d) {
 	    	var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
 
                 //toggle the hide on the tooltip
                 chord_tip.classed("hidden", false)
-                    .attr("style", "left:"+(mouse[0]+20)+"px;top:"+(mouse[1]+20)+"px")
+                    .attr("style", "left:"+(mouse[0]+50)+"px;top:"+(mouse[1]+50)+"px")
                     .html(function(e){
 
                     	var source = d.source.index;
@@ -1290,6 +1289,9 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
                     	return name1 + " - " + name2 + "<br>Number of Games: " + d.source.value
                     })
+	    })
+	    .on("mouseout", function(d){
+	    	chord_tip.classed("hidden", true);
 	    })
 	  	.transition().duration(1000)
 	    .attr("d", d3.svg.chord().radius(innerRadius))
