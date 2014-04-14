@@ -1274,14 +1274,21 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    	return fill(d2.getHeroInfo(lookup_dict[d.target.index]).stat); 
 	    })
 	    .style("opacity", 0)
-	    .on("mouseover", function(d) {
+	    .on("mouseover", function(d,i) {
 	    	var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
 
                 //toggle the hide on the tooltip
                 chord_tip.classed("hidden", false)
                     .attr("style", "left:"+(mouse[0]+20)+"px;top:"+(mouse[1]+20)+"px")
                     .html(function(e){
-                    	return "Number of Games: " + d.source.value
+
+                    	var source = d.source.index;
+                    	var target = d.target.index;
+
+                    	var name1 = d2.getHeroName(chord.groups()[source].hero_id);
+                    	var name2 = d2.getHeroName(chord.groups()[target].hero_id);
+
+                    	return name1 + " - " + name2 + "<br>Number of Games: " + d.source.value
                     })
 	    })
 	  	.transition().duration(1000)
