@@ -1191,6 +1191,9 @@ function create_matrix (data) {
 }
 
 
+var chord_tip = d3.select("#stat_graphs").append("div").attr("class", "chordtip hidden")
+
+
 function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	hero_chord_graph.selectAll("text").remove();
@@ -1271,6 +1274,16 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    	return fill(d2.getHeroInfo(lookup_dict[d.target.index]).stat); 
 	    })
 	    .style("opacity", 0)
+	    .on("mouseover", function(d) {
+	    	var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+
+                //toggle the hide on the tooltip
+                chord_tip.classed("hidden", false)
+                    .attr("style", "left:"+(mouse[0]+20)+"px;top:"+(mouse[1]+20)+"px")
+                    .html(function(e){
+                    	return "Number of Games: " + d.source.value
+                    })
+	    })
 	  	.transition().duration(1000)
 	    .attr("d", d3.svg.chord().radius(innerRadius))
 	    .style("opacity", .7);
