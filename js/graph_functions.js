@@ -460,21 +460,7 @@ function hero_pie(flare) {
 	        else { return -1; }
 	    });
 
-	    if (array1.length == 0) {
-    		return [];
-    	}
-
-    	else if (array1.length == 1) {
-    		return [array1[0]];
-    	}
-
-    	else if (array1.length == 2) {
-    		return [array1[0], array1[1]];
-    	}
-
-    	else {
-    		return [array1[0], array1[1], array1[2]];
-    	}
+	    return array1.slice(0,3)
 	}
 
 	for (var i = 0; i < hero_flare.children.length; i++) {
