@@ -189,6 +189,8 @@ d2.loadJson(function() {
 
 		for (d in dat) {
 
+			dat[d].items = [];
+
 			if (dat[d].stat == "agility") {
 				hero_flare.children[0].children.push(dat[d]);
 			}
@@ -221,8 +223,9 @@ draw_user_interact();
 function loadData(username) {
  
 	d2.loadUserData(username, function(error,data) {
-
+  
         user_data = data;
+        resetGameMode();
         create_timeline(user_data);
         updateGraphs(user_data)
 
@@ -449,55 +452,31 @@ function clickArcTween(d) {
 //creates hero sunburst graph based on hero flare json data
 function hero_pie(flare) {
 
-	// for (var i = 0; i < flare.children.length; i++) {
-	// 	var current_hero = flare.children[i]
-		
-	// 	if (current_hero.count != 0){
-			
-	// 		for (var j = 0; j < current_hero.children.length; j++) {
-	// 			var current_children = current_hero.children[j];
-
-	// 			if ("children" in current_children){
-
-	// 				var total_item_count = current_children.children.reduce(function(sum, current_item) {
-	// 					return (current_item.number + sum)
-	// 				}, 0);
-
-	// 				for (var k = 0; k < current_hero.children[j].children.length; k++) {
-	// 					var current_item = flare.children[i].children[j].children[k];
-
-	// 					current_item.count = (current_item.number/total_item_count)*flare.children[i].children[j].games_played
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-
-	// }
-
 	function findLargest3(array1){
     // sort descending
+
 	    array1.sort(function(a,b) {
 	        if (a[1] < b[1]) { return 1; }
 	        else if (a[1] == b[1]) { return 0; }
 	        else { return -1; }
 	    });
 
-	    return [array1[0], array1[1], array1[2]]
+	    return array1.slice(0,3)
 	}
 
-	for (var i = 0; i < item_flare.children.length; i++) {
+	for (var i = 0; i < hero_flare.children.length; i++) {
 		
-		for (var j = 0; j < item_flare.children[i].children.length; j++) {
+		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
 
-			var current_children = item_flare.children[i].children[j];
+			var current_children = hero_flare.children[i].children[j];
 			
-			if ("children" in current_children) {
+			if ("items" in current_children) {
 
 				var max_item_array = [];
 
-				for (var k = 0; k < item_flare.children[i].children[j].children.length; k ++) {
+				for (var k = 0; k < hero_flare.children[i].children[j].items.length; k ++) {
 					
-					var current_item = item_flare.children[i].children[j].children[k];
+					var current_item = hero_flare.children[i].children[j].items[k];
 
 					max_item_array.push([current_item.dname, current_item.number]);
 
@@ -509,8 +488,6 @@ function hero_pie(flare) {
 			
 		}
 	}
-
-	console.log(hero_flare)
 
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
@@ -550,6 +527,7 @@ function hero_pie(flare) {
     	.attr("d", zero_arc)
     	.on("click", click)
 	    .on("mouseover", function(d) {
+
 	    	var tooltip = true;
 
 	    	var name;
@@ -575,7 +553,23 @@ function hero_pie(flare) {
 	    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
 
 	    	if ("item_max" in d) {
-	    		basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br>" + "<br><strong>Most bought items: </strong><br>" + d.item_max[0][0] + ", " + d.item_max[0][1] + " times<br>" + d.item_max[1][0] + ", " + d.item_max[1][1] + " times<br>" + d.item_max[2][0] + ", " + d.item_max[2][1] + " times" + "</br></div>";
+
+	    		//if buy less than three items, you noob or maybe doob. No item array for you!
+	    		if (d.item_max.length < 3) {
+	    			basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+	    		}
+
+	    		else {
+	    			
+	    			var item_text1, item_text2, item_text3;
+
+		    		//look i has a ternary
+					item_text1 = (d.item_max[0][1] == 1) ? "time" : "times";
+					item_text2 = (d.item_max[1][1] == 1) ? "time" : "times";
+					item_text3 = (d.item_max[2][1] == 1) ? "time" : "times";
+
+		    		basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br>" + "<br><strong>Most bought items: </strong><br>" + d.item_max[0][0] + ", " + d.item_max[0][1] + " " + item_text1 + "<br>" + d.item_max[1][0] + ", " + d.item_max[1][1] + " " + item_text2 + "<br>" + d.item_max[2][0] + ", " + d.item_max[2][1] + " " + item_text3 + "</br></div>";
+	    		}
 	    	}
 
 	    	if ("dname" in d) {
@@ -641,15 +635,20 @@ function heroPieArcTween(a) {
    	};
  }
 
-var item_flare;
-
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
 
+	//heroes
 	// zero counts
 	for (var i = 0; i < hero_flare.children.length; i++) {
 		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
 			hero_flare.children[i].children[j].games_played = 0;
+			hero_flare.children[i].children[j].items = [];
+
+			// for (var k = 0; k < hero_flare.children[i].children[j].items.length; k++) {
+			// 	hero_flare.children[i].children[j].items[k].number = 0;
+			// }
+		
 		}
 	}
 
@@ -667,8 +666,11 @@ function update_flare(data) {
 
 	})
 
-	item_flare = jQuery.extend(true, {}, hero_flare);
+	//deep copy attempts
+	//item_flare = jQuery.extend(true, {}, hero_flare);
+	//item_flare = JSON.parse(JSON.stringify(hero_flare));
 
+	//get items to each hero and enumerate a count
 	for (var i = 0; i < data.matches.length; i++) {
 
 		if (data.matches[i].players.length == 5) {
@@ -677,7 +679,7 @@ function update_flare(data) {
 			
 		for (var j = 0; j < 6; j++) {
 
-			var current_item = d2.getItemInfo(data.matches[i].player_info["item_"+j]);
+			var current_item = d2.getItemInfoCopy(data.matches[i].player_info["item_"+j]);
 
 			if (current_item.dname == "empty") {
 				continue;
@@ -685,24 +687,24 @@ function update_flare(data) {
 			var current_hero = d2.getHeroInfo(data.matches[i].player_info.hero_id);
 
 			// find which child array holds the heroes for this stat
-			var children_pos = item_flare.children.map(function (d) { return d.name }).indexOf(current_hero.stat);
-			var cur = item_flare.children[children_pos].children;
+			var children_pos = hero_flare.children.map(function (d) { return d.name }).indexOf(current_hero.stat);
+			var cur = hero_flare.children[children_pos].children;
 
 			// find which element of that array holds this hero
 			var hero_pos = cur.map(function (d) { return d.dname }).indexOf(current_hero.dname)
 
-			if (!("children" in cur[hero_pos])) {
-				cur[hero_pos]["children"] = []
+			if (!("items" in cur[hero_pos])) {
+				cur[hero_pos]["items"] = [];
 			}
 
-			var item_pos = cur[hero_pos].children.map(function(d) {return d.name}).indexOf(current_item.name);
+			var item_pos = cur[hero_pos].items.map(function(d) {return d.name}).indexOf(current_item.name);
 			
 			if (item_pos == -1) {
 				current_item.number = 1;
-				cur[hero_pos]["children"].push(current_item);
+				cur[hero_pos]["items"].push(current_item);
 			}
 			else {
-				cur[hero_pos]["children"][item_pos].number += 1;
+				cur[hero_pos]["items"][item_pos].number += 1;
 			}
 		}
 		
@@ -953,6 +955,8 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
+		d3.select(".legend text").remove();
+
 		var gradient = item_percent_graph.append("svg:defs")
 			.append("svg:linearGradient")
 			.attr("id", "gradient")
@@ -989,11 +993,13 @@ function update_item_percent(data) {
 		item_percent_graph.append("text")
 			.attr("x", 246)
 			.attr("y", -15)
+			.attr("class", "legend")
 			.style("font-size", "14px")
 			.style("text-anchor", "end")
 			.text("100% loss");
 
 		item_percent_graph.append("text")
+			.attr("class", "legend")
 			.attr("x", 462)
 			.attr("y", -15)
 			.style("font-size", "14px")
@@ -1991,6 +1997,12 @@ function classes(root) {
 function update_user_interact(data) {
 
 	user_interact_graph.selectAll("text").remove();
+
+	user_flare = {
+		name: "user_flare",
+		child_dict: {},
+		children: []
+	};
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")

@@ -218,5 +218,10 @@ text-align: center;
 .hidden { 
     display: none; 
 }
-
-
+#game_mode_table td{
+background-color:#E8CE38;
+text-align: center;
+}
+#game_mode_table{
+background-color:black;
+}

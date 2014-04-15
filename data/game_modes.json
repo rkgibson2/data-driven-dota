@@ -5,23 +5,28 @@
     }, 
     "1": {
         "id": 1, 
-        "name": "All Pick"
+        "name": "All Pick",
+        "short_name": "AP"
     }, 
     "2": {
         "id": 2, 
-        "name": "Captains Mode"
+        "name": "Captains Mode",
+        "short_name": "CM"
     }, 
     "3": {
         "id": 3, 
-        "name": "Random Draft"
+        "name": "Random Draft",
+        "short_name": "RD"
     }, 
     "4": {
         "id": 4, 
-        "name": "Single Draft"
+        "name": "Single Draft",
+        "short_name": "SD"
     }, 
     "5": {
         "id": 5, 
-        "name": "All Random"
+        "name": "All Random",
+        "short_name": "AR"
     }, 
     "6": {
         "id": 6, 
@@ -49,11 +54,13 @@
     }, 
     "12": {
         "id": 12, 
-        "name": "Least Played"
+        "name": "Least Played",
+        "short_name": "LP"
     }, 
     "13": {
         "id": 13, 
-        "name": "New Player Pool"
+        "name": "New Player Pool",
+        "short_name": "LH"
     }, 
     "14": {
         "id": 14, 
@@ -65,14 +72,17 @@
     }, 
     "16": {
         "id": 16, 
-        "name": "Captains Draft"
+        "name": "Captains Draft",
+        "short_name": "CD"
     }, 
     "17": {
         "id": 17, 
-        "name": "Balanced Draft"
+        "name": "Balanced Draft",
+        "short_name": "BD"
     }, 
     "18": {
         "id": 18, 
-        "name": "Ability Draft"
+        "name": "Ability Draft",
+        "short_name": "AD"
     }
 }

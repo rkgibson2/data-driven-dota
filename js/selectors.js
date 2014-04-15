@@ -83,38 +83,50 @@ function highlight()
 
 function selected()
 {
-	var selectedheroes = d3.selectAll(".selected")[0];
-	selectedarr = new Array();
-	selectedheroes.forEach(function (d)
-	{
-		selectedarr.push(+d.getAttribute("value"));
-	});
-
-	console.log(selectedarr);
-
-	filtered_data = {
-		id32: user_data.id32,
-		id64: user_data.id64,
-		matches: [],
-		user: user_data.user
-	}
-
-
-	// if filter is empty, use all heroes
-	if (selectedarr.length == 0) {
-		filtered_data.matches = user_data.matches;
-	} else {
-		filtered_data.matches = user_data.matches.filter(function(d,i) {
-			var player_hero_id = d.player_info.hero_id;
-
-			return selectedarr.indexOf(player_hero_id) > -1
-		})
-	}
-
-	updateGraphs(filtered_data);
+	// game_mode.js - calls the updateFilteredSelectionByHero as well
+	// as updateFilteredSelectionByGameMode
+    updateFilteredSelectionByGameMode();
 }
 
 function sorting(a, b)
 {
 	return a.dname.localeCompare(b.dname)
 };
+
+
+function updateFilteredSelectionByHero(){
+
+   filtered_data = {
+		    id32: user_data.id32,
+		    id64: user_data.id64,
+		    matches: [],
+		    user: user_data.user
+	    }
+	    // copy the user_data matches
+        filtered_data.matches.push.apply(filtered_data.matches, user_data.matches);
+
+
+var selectedheroes = d3.selectAll(".selected")[0];
+	selectedarr = new Array();
+	selectedheroes.forEach(function (d)
+	{
+		selectedarr.push(+d.getAttribute("value"));
+	});
+
+    //console.log(selectedarr);
+
+
+
+	// if filter is empty, use all heroes
+	if (selectedarr.length == 0) {
+		// already copied above so just return
+		return;
+	} else {
+        // filter for only selected heroes
+		filtered_data.matches = filtered_data.matches.filter(function(d,i) {
+			var player_hero_id = d.player_info.hero_id;
+
+			return selectedarr.indexOf(player_hero_id) > -1
+		})
+	}
+}
