@@ -453,13 +453,28 @@ function hero_pie(flare) {
 
 	function findLargest3(array1){
     // sort descending
+
 	    array1.sort(function(a,b) {
 	        if (a[1] < b[1]) { return 1; }
 	        else if (a[1] == b[1]) { return 0; }
 	        else { return -1; }
 	    });
 
-	    return [array1[0], array1[1], array1[2]]
+	    if (array1.length == 0) {
+    		return [];
+    	}
+
+    	else if (array1.length == 1) {
+    		return [array1[0]];
+    	}
+
+    	else if (array1.length == 2) {
+    		return [array1[0], array1[1]];
+    	}
+
+    	else {
+    		return [array1[0], array1[1], array1[2]];
+    	}
 	}
 
 	for (var i = 0; i < hero_flare.children.length; i++) {
@@ -557,14 +572,17 @@ function hero_pie(flare) {
 	    			basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
 	    		}
 
-	    		var item_text1, item_text2, item_text3;
+	    		else {
+	    			
+	    			var item_text1, item_text2, item_text3;
 
-	    		//look i has a ternary
-				item_text1 = (d.item_max[0][1] == 1) ? "time" : "times";
-				item_text2 = (d.item_max[1][1] == 1) ? "time" : "times";
-				item_text3 = (d.item_max[2][1] == 1) ? "time" : "times";
+		    		//look i has a ternary
+					item_text1 = (d.item_max[0][1] == 1) ? "time" : "times";
+					item_text2 = (d.item_max[1][1] == 1) ? "time" : "times";
+					item_text3 = (d.item_max[2][1] == 1) ? "time" : "times";
 
-	    		basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br>" + "<br><strong>Most bought items: </strong><br>" + d.item_max[0][0] + ", " + d.item_max[0][1] + " " + item_text1 + "<br>" + d.item_max[1][0] + ", " + d.item_max[1][1] + " " + item_text2 + "<br>" + d.item_max[2][0] + ", " + d.item_max[2][1] + " " + item_text3 + "</br></div>";
+		    		basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br>" + "<br><strong>Most bought items: </strong><br>" + d.item_max[0][0] + ", " + d.item_max[0][1] + " " + item_text1 + "<br>" + d.item_max[1][0] + ", " + d.item_max[1][1] + " " + item_text2 + "<br>" + d.item_max[2][0] + ", " + d.item_max[2][1] + " " + item_text3 + "</br></div>";
+	    		}
 	    	}
 
 	    	if ("dname" in d) {
@@ -638,12 +656,12 @@ function update_flare(data) {
 	for (var i = 0; i < hero_flare.children.length; i++) {
 		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
 			hero_flare.children[i].children[j].games_played = 0;
+			hero_flare.children[i].children[j].items = [];
 
-			if ("items" in hero_flare.children[i].children[j]) {
-				for (var k = 0; k < hero_flare.children[i].children[j].items.length; k++) {
-					hero_flare.children[i].children[j].items[k].number = 0;
-				}
-			}
+			// for (var k = 0; k < hero_flare.children[i].children[j].items.length; k++) {
+			// 	hero_flare.children[i].children[j].items[k].number = 0;
+			// }
+		
 		}
 	}
 
