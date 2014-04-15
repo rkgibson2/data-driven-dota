@@ -185,14 +185,6 @@ var d2 = (function() {
     return {
         loadJson: loadJSON,
 
-        getHeroData: function() {
-            return heroData
-        },
-
-        getItemData: function() {
-            return itemData
-        },
-
         getAbilityData: function() {
             return abilityData
         },
