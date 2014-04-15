@@ -1545,13 +1545,9 @@ function update_gpm(data) {
       	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>GPM this Game: " + d.player_info.gold_per_min + "<br>Average GPM on this hero: " + format(d.player_info.hero_avg_gpm); 
       	
       	//get the correct hero image and build the tooltip with an image
-      	var hero_data = d2.getHeroData(d.player_info.hero_id);
+      	var hero_data = d2.getHeroInfo(d.player_info.hero_id);
 
-      	for (var i in hero_data) {
-      		if (hero_data[i].dname == d2.getHeroName(d.player_info.hero_id)) {
-      			var hero_image = hero_data[i].img
-      		}
-      	}
+      	var hero_image = hero_data.img;
 
       	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
 
@@ -1813,13 +1809,9 @@ function update_xpm(data) {
       	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_gpm); 
       	
       	//get the correct hero image and build the tooltip with an image
-      	var hero_data = d2.getHeroData(d.player_info.hero_id);
+      	var hero_data = d2.getHeroInfo(d.player_info.hero_id);
 
-      	for (var i in hero_data) {
-      		if (hero_data[i].dname == d2.getHeroName(d.player_info.hero_id)) {
-      			var hero_image = hero_data[i].img
-      		}
-      	}
+      	var hero_image = hero_data.img;
 
       	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
 
@@ -2029,11 +2021,15 @@ function update_user_interact(data) {
 				if (!(account_id_num in user_flare.child_dict)) {
 					user_flare.child_dict[account_id_num] = {
 						name: account_id_num,
-						count: 1
+						count: 1,
+						num_wins: 0
 					};
 				}
 				else {
 					user_flare.child_dict[account_id_num].count += 1;
+					if (data.matches[i].player_win == true) {
+						user_flare.child_dict[account_id_num].num_wins += 1;
+					}
 				}
 
 			}
