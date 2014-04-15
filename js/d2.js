@@ -219,7 +219,7 @@ var d2 = (function() {
         },
 
         getHeroInfoCopy: function(id) {
-            object = idToItemInfo(id)
+            object = idToHeroInfo(id)
             return jQuery.extend(true, {}, object)
         },
 

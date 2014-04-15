@@ -128,7 +128,7 @@ d2.loadJson(function() {
 	var strheroes = new Array();
 	for (var i = 0; i < hero_keys.length; i++)
 	{
-		var hero = d2.getHeroInfo(hero_keys[i]);;
+		var hero = d2.getHeroInfoCopy(hero_keys[i]);
 		if (hero)
 		{
 			if (hero.stat == "strength")
@@ -185,29 +185,29 @@ d2.loadJson(function() {
 	hero_flare.children[1].children = [];
 	hero_flare.children[2].children = [];
 
-	d3.json("../data/heroes.json", function(error,dat) {
+	for (var i = 0; i < hero_keys.length; i++)
+	{
+		var hero = d2.getHeroInfoCopy(hero_keys[i]);
 
-		for (d in dat) {
+		hero.items = [];
 
-			dat[d].items = [];
-
-			if (dat[d].stat == "agility") {
-				hero_flare.children[0].children.push(dat[d]);
-			}
-
-			if (dat[d].stat == "strength") {
-				hero_flare.children[1].children.push(dat[d]);
-			}
-
-			if (dat[d].stat == "intelligence") {
-				hero_flare.children[2].children.push(dat[d]);
-			}
-
-
+		if (hero.stat == "agility") {
+			hero_flare.children[0].children.push(hero);
 		}
-        // first option in the dropdown selector
-		loadData(d3.select("#userdropdown").node().value);
-	})
+
+		if (hero.stat == "strength") {
+			hero_flare.children[1].children.push(hero);
+		}
+
+		if (hero.stat == "intelligence") {
+			hero_flare.children[2].children.push(hero);
+		}
+
+
+	}
+
+    // first option in the dropdown selector
+	loadData(d3.select("#userdropdown").node().value);
 });
 
 // reset selected heroes in the filter for user change - all to unselected
@@ -652,7 +652,7 @@ function heroPieArcTween(a) {
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
 
-	//heroes
+	// heroes
 	// zero counts
 	for (var i = 0; i < hero_flare.children.length; i++) {
 		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
@@ -2081,7 +2081,7 @@ function update_user_interact(data) {
 		.append("circle")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
-			graph_tip.html("User: " + d.className + "<br>Number of games: " + d.value);
+			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value);
 			graph_tip.show(d);
 		})
 		.on("mouseout", function(d) {
@@ -2099,9 +2099,10 @@ function update_user_interact(data) {
 	d3.selectAll(".node").append("text")
       	.attr("dy", ".3em")
       	.style("text-anchor", "middle")
-      	.text(function(d) { 
-      		if (toString(d.className).length < d.r*.6) {
-      			return d.className
+      	.text(function(d) {
+      		var username = d2.getUserName(d.className)
+      		if (username.length < d.r*.4) {
+      			return username
       		}
       	})
       	.style("fill", "black")
