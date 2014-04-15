@@ -7,13 +7,14 @@ var d2 = (function() {
     var itemData = [];
     var abilityData =[];
     var gameModes = [];
+    var userData = [];
 
 
     function loadJSON(callback) {
         // if no callback was passed, make function that does nothing
         if (callback === undefined)
             callback = function() {}
-        var remaining = 4;
+        var remaining = 5;
 
         d3.json("/data/heroes.json", function (error, data)
         {            // an array of all the hero names indexed appropriately - starting at 1
@@ -40,6 +41,13 @@ var d2 = (function() {
         d3.json("/data/game_modes.json", function (error, data) {
             // array of all the game modes
             gameModes = data;
+
+            if (!--remaining) callback();
+        })
+
+        d3.json("/data/username_data/angela_usernames.json", function(error, data) {
+            // array of all usernames we've pulled
+            userData = data;
 
             if (!--remaining) callback();
         })
@@ -87,6 +95,14 @@ var d2 = (function() {
             throw new Error ("No game mode with id " + id)
     }
 
+    // returns user data for a given id
+    function idToUserInfo(id) {
+        if (id in userData)
+            return userData[id][0]
+        else
+            throw new Error ("No user with account id " + id)
+    }
+
     function getKeys (datatype) {
         switch (datatype.toLowerCase()) {
             case "heroes":
@@ -99,10 +115,13 @@ var d2 = (function() {
                 return Object.keys(abilityData);
                 break;
             case "game_modes":
-                return Object.keys(gameModes.keys());
+                return Object.keys(gameModes);
+                break;
+            case "users":
+                return Object.keys(userData);
                 break;
             default:
-                throw new Error (datatype + " must be \'heroes,\" \"items,\" \"abilities,\" or \"game_modes.\"")
+                throw new Error ("datatype (you entered " + datatype + ") must be \'heroes,\" \"items,\" \"abilities,\" \"game_modes,\" or \"users.\"")
         }
     }
 
@@ -183,6 +202,8 @@ var d2 = (function() {
                             + "displayItemImg(name): displays the image for item 'name'\n"
 
     return {
+        getUserData: function() {return userData },
+
         loadJson: loadJSON,
 
         getAbilityData: function() {
@@ -217,6 +238,14 @@ var d2 = (function() {
 
         getAbilityInfo: function(id) {
             return idToAbilityInfo(id);
+        },
+
+        getUserInfo: function(id) {
+            return idToUserInfo(id);
+        },
+
+        getUserName: function(id) {
+            return idToUserInfo(id).personaname;
         },
 
         getGameModeInfo: idToGameMode,
