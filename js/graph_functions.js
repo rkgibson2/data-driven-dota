@@ -1999,6 +1999,12 @@ function update_user_interact(data) {
 
 	user_interact_graph.selectAll("text").remove();
 
+	user_flare = {
+		name: "user_flare",
+		child_dict: {},
+		children: []
+	};
+
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
 		.attr("y", 0)
