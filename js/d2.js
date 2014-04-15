@@ -185,14 +185,6 @@ var d2 = (function() {
     return {
         loadJson: loadJSON,
 
-        getHeroData: function() {
-            return heroData
-        },
-
-        getItemData: function() {
-            return itemData
-        },
-
         getAbilityData: function() {
             return abilityData
         },
@@ -205,12 +197,22 @@ var d2 = (function() {
             return idToHeroInfo(id)
         },
 
+        getHeroInfoCopy: function(id) {
+            object = idToItemInfo(id)
+            return jQuery.extend(true, {}, object)
+        },
+
         getItemName: function(id) {
             return idToItemName(id)
         },
 
         getItemInfo: function(id) {
             return idToItemInfo(id)
+        },
+
+        getItemInfoCopy: function(id) {
+            object =  idToItemInfo(id)
+            return jQuery.extend(true, {}, object)
         },
 
         getAbilityInfo: function(id) {
