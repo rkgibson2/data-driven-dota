@@ -461,21 +461,7 @@ function hero_pie(flare) {
 	        else { return -1; }
 	    });
 
-	    if (array1.length == 0) {
-    		return [];
-    	}
-
-    	else if (array1.length == 1) {
-    		return [array1[0]];
-    	}
-
-    	else if (array1.length == 2) {
-    		return [array1[0], array1[1]];
-    	}
-
-    	else {
-    		return [array1[0], array1[1], array1[2]];
-    	}
+	    return array1.slice(0,3)
 	}
 
 	for (var i = 0; i < hero_flare.children.length; i++) {
@@ -502,8 +488,6 @@ function hero_pie(flare) {
 			
 		}
 	}
-
-	console.log(hero_flare);
 
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
@@ -971,6 +955,8 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
+		d3.select(".legend text").remove();
+
 		var gradient = item_percent_graph.append("svg:defs")
 			.append("svg:linearGradient")
 			.attr("id", "gradient")
@@ -1007,11 +993,13 @@ function update_item_percent(data) {
 		item_percent_graph.append("text")
 			.attr("x", 246)
 			.attr("y", -15)
+			.attr("class", "legend")
 			.style("font-size", "14px")
 			.style("text-anchor", "end")
 			.text("100% loss");
 
 		item_percent_graph.append("text")
+			.attr("class", "legend")
 			.attr("x", 462)
 			.attr("y", -15)
 			.style("font-size", "14px")
