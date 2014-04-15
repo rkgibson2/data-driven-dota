@@ -128,7 +128,7 @@ d2.loadJson(function() {
 	var strheroes = new Array();
 	for (var i = 0; i < hero_keys.length; i++)
 	{
-		var hero = d2.getHeroInfo(hero_keys[i]);;
+		var hero = d2.getHeroInfoCopy(hero_keys[i]);
 		if (hero)
 		{
 			if (hero.stat == "strength")
@@ -185,29 +185,29 @@ d2.loadJson(function() {
 	hero_flare.children[1].children = [];
 	hero_flare.children[2].children = [];
 
-	d3.json("../data/heroes.json", function(error,dat) {
+	for (var i = 0; i < hero_keys.length; i++)
+	{
+		var hero = d2.getHeroInfoCopy(hero_keys[i]);
 
-		for (d in dat) {
+		hero.items = [];
 
-			dat[d].items = [];
-
-			if (dat[d].stat == "agility") {
-				hero_flare.children[0].children.push(dat[d]);
-			}
-
-			if (dat[d].stat == "strength") {
-				hero_flare.children[1].children.push(dat[d]);
-			}
-
-			if (dat[d].stat == "intelligence") {
-				hero_flare.children[2].children.push(dat[d]);
-			}
-
-
+		if (hero.stat == "agility") {
+			hero_flare.children[0].children.push(hero);
 		}
-        // first option in the dropdown selector
-		loadData(d3.select("#userdropdown").node().value);
-	})
+
+		if (hero.stat == "strength") {
+			hero_flare.children[1].children.push(hero);
+		}
+
+		if (hero.stat == "intelligence") {
+			hero_flare.children[2].children.push(hero);
+		}
+
+
+	}
+
+    // first option in the dropdown selector
+	loadData(d3.select("#userdropdown").node().value);
 });
 
 draw_win_loss();
@@ -2067,6 +2067,7 @@ function update_user_interact(data) {
 		.append("circle")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
+			console.log(d2.getUserName(d.className))
 			graph_tip.html("User: " + d.className + "<br>Number of games: " + d.value);
 			graph_tip.show(d);
 		})
