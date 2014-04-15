@@ -205,12 +205,22 @@ var d2 = (function() {
             return idToHeroInfo(id)
         },
 
+        getHeroInfoCopy: function(id) {
+            object = idToItemInfo(id)
+            return jQuery.extend(true, {}, object)
+        },
+
         getItemName: function(id) {
             return idToItemName(id)
         },
 
         getItemInfo: function(id) {
             return idToItemInfo(id)
+        },
+
+        getItemInfoCopy: function(id) {
+            object =  idToItemInfo(id)
+            return jQuery.extend(true, {}, object)
         },
 
         getAbilityInfo: function(id) {
