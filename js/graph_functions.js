@@ -223,8 +223,10 @@ draw_user_interact();
 function loadData(username) {
  
 	d2.loadUserData(username, function(error,data) {
+   
 
         user_data = data;
+     
         create_timeline(user_data);
         updateGraphs(user_data)
 
@@ -487,6 +489,8 @@ function hero_pie(flare) {
 			
 		}
 	}
+
+	console.log(hero_flare);
 
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
