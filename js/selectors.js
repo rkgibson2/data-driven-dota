@@ -49,7 +49,7 @@ d2.loadJson(function ()
 		d3.select("#intimages").select("#" + heroname).on("click", highlight);
 	});
 });*/
-
+var selectedarr = new Array();
 // selecting label headings, highlights or unhighlights all imgs in that div
 var labels = ["str", "int", "agi"];
 labels.forEach(function (d) {
@@ -109,7 +109,7 @@ function updateFilteredSelectionByHero(){
 
 
 var selectedheroes = d3.selectAll(".selected")[0];
-	selectedarr = new Array();
+	selectedarr = [];//new Array();
 	selectedheroes.forEach(function (d)
 	{
 		selectedarr.push(+d.getAttribute("value"));
@@ -131,4 +131,13 @@ var selectedheroes = d3.selectAll(".selected")[0];
 			return selectedarr.indexOf(player_hero_id) > -1
 		})
 	}
+}
+
+function reselectHeroes(){
+    // first reset selection to blank
+    resetSelectedHeroes();
+    // then select previous selection
+    selectedarr.forEach(function(d,i){d3.select("#" + d2.getHeroInfo(d).name)
+        .classed("selected",true).style("border", "2px solid red");
+});
 }

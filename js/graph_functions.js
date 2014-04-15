@@ -210,7 +210,7 @@ d2.loadJson(function() {
 	})
 });
 
-// reset selected heroes in the filter for user change
+// reset selected heroes in the filter for user change - all to unselected
 function resetSelectedHeroes(){
 
 d3.selectAll(".pic.selected").classed("selected", false).style("border", "2px solid black");
@@ -234,8 +234,12 @@ function loadData(username) {
 	d2.loadUserData(username, function(error,data) {
   
         user_data = data;
+        
+        // clear the filtered heroes and game modes
+        selectedarr = [];
         resetGameMode();
         resetSelectedHeroes();
+        
         create_timeline(user_data);
         updateGraphs(user_data)
 
