@@ -648,7 +648,7 @@ function heroPieArcTween(a) {
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
 
-	//heroes
+	// heroes
 	// zero counts
 	for (var i = 0; i < hero_flare.children.length; i++) {
 		for (var j = 0; j < hero_flare.children[i].children.length; j++) {
@@ -2077,8 +2077,7 @@ function update_user_interact(data) {
 		.append("circle")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
-			console.log(d2.getUserName(d.className))
-			graph_tip.html("User: " + d.className + "<br>Number of games: " + d.value);
+			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value);
 			graph_tip.show(d);
 		})
 		.on("mouseout", function(d) {
@@ -2096,9 +2095,10 @@ function update_user_interact(data) {
 	d3.selectAll(".node").append("text")
       	.attr("dy", ".3em")
       	.style("text-anchor", "middle")
-      	.text(function(d) { 
-      		if (toString(d.className).length < d.r*.6) {
-      			return d.className
+      	.text(function(d) {
+      		var username = d2.getUserName(d.className)
+      		if (username.length < d.r*.4) {
+      			return username
       		}
       	})
       	.style("fill", "black")
