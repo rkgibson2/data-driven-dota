@@ -449,32 +449,68 @@ function clickArcTween(d) {
 //creates hero sunburst graph based on hero flare json data
 function hero_pie(flare) {
 
-	for (var i = 0; i < flare.children.length; i++) {
-		var current_hero = flare.children[i]
+	// for (var i = 0; i < flare.children.length; i++) {
+	// 	var current_hero = flare.children[i]
 		
-		if (current_hero.count != 0){
+	// 	if (current_hero.count != 0){
 			
-			for (var j = 0; j < current_hero.children.length; j++) {
-				var current_children = current_hero.children[j];
+	// 		for (var j = 0; j < current_hero.children.length; j++) {
+	// 			var current_children = current_hero.children[j];
 
-				if ("children" in current_children){
+	// 			if ("children" in current_children){
 
-					var total_item_count = current_children.children.reduce(function(sum, current_item) {
-						return (current_item.number + sum)
-					}, 0);
+	// 				var total_item_count = current_children.children.reduce(function(sum, current_item) {
+	// 					return (current_item.number + sum)
+	// 				}, 0);
 
-					for (var k = 0; k < current_hero.children[j].children.length; k++) {
-						var current_item = flare.children[i].children[j].children[k];
+	// 				for (var k = 0; k < current_hero.children[j].children.length; k++) {
+	// 					var current_item = flare.children[i].children[j].children[k];
 
-						current_item.count = (current_item.number/total_item_count)*flare.children[i].children[j].games_played
-					}
-				}
-			}
-		}
+	// 					current_item.count = (current_item.number/total_item_count)*flare.children[i].children[j].games_played
+	// 				}
+	// 			}
+	// 		}
+	// 	}
 
+	// }
+
+	function findLargest3(array1){
+    // sort descending
+	    array1.sort(function(a,b) {
+	        if (a[1] < b[1]) { return 1; }
+	        else if (a[1] == b[1]) { return 0; }
+	        else { return -1; }
+	    });
+
+	    return [array1[0], array1[1], array1[2]]
 	}
 
-	console.log(flare)
+	for (var i = 0; i < item_flare.children.length; i++) {
+		
+		for (var j = 0; j < item_flare.children[i].children.length; j++) {
+
+			var current_children = item_flare.children[i].children[j];
+			
+			if ("children" in current_children) {
+
+				var max_item_array = [];
+
+				for (var k = 0; k < item_flare.children[i].children[j].children.length; k ++) {
+					
+					var current_item = item_flare.children[i].children[j].children[k];
+
+					max_item_array.push([current_item.dname, current_item.number]);
+
+				}
+
+			}
+
+			hero_flare.children[i].children[j].item_max = findLargest3(max_item_array)
+			
+		}
+	}
+
+	console.log(hero_flare)
 
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
@@ -491,7 +527,7 @@ function hero_pie(flare) {
 	    .range([0, hero_pie_radius]);
 
 	partition = d3.layout.partition()
-    	.value(function(d) { return d.count; });
+    	.value(function(d) { return d.games_played; });
 
     var zero_arc = d3.svg.arc()
 	    .startAngle(0)
@@ -537,6 +573,10 @@ function hero_pie(flare) {
 	    	}
 	    
 	    	var basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br></div>";
+
+	    	if ("item_max" in d) {
+	    		basic_tip = "<div id='tooltip_text'><strong>"+ name +"</strong>"+ "<br>" + d.value + number_text + "</br>" + "<br><strong>Most bought items: </strong><br>" + d.item_max[0][0] + ", " + d.item_max[0][1] + " times<br>" + d.item_max[1][0] + ", " + d.item_max[1][1] + " times<br>" + d.item_max[2][0] + ", " + d.item_max[2][1] + " times" + "</br></div>";
+	    	}
 
 	    	if ("dname" in d) {
 	    		var img_tip = "<div id='hero_sunburst_tip'><img src='" + d.img + "'' width='64px' height='36px'></div>";
@@ -601,6 +641,8 @@ function heroPieArcTween(a) {
    	};
  }
 
+var item_flare;
+
 // update the hero_flare to contain the counts for `data`
 function update_flare(data) {
 
@@ -625,6 +667,8 @@ function update_flare(data) {
 
 	})
 
+	item_flare = jQuery.extend(true, {}, hero_flare);
+
 	for (var i = 0; i < data.matches.length; i++) {
 
 		if (data.matches[i].players.length == 5) {
@@ -641,8 +685,8 @@ function update_flare(data) {
 			var current_hero = d2.getHeroInfo(data.matches[i].player_info.hero_id);
 
 			// find which child array holds the heroes for this stat
-			var children_pos = hero_flare.children.map(function (d) { return d.name }).indexOf(current_hero.stat);
-			var cur = hero_flare.children[children_pos].children;
+			var children_pos = item_flare.children.map(function (d) { return d.name }).indexOf(current_hero.stat);
+			var cur = item_flare.children[children_pos].children;
 
 			// find which element of that array holds this hero
 			var hero_pos = cur.map(function (d) { return d.dname }).indexOf(current_hero.dname)
@@ -664,7 +708,7 @@ function update_flare(data) {
 		
 	}
 
-	return hero_flare
+	return hero_flare;
 }
 
 
@@ -909,6 +953,52 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
+		var gradient = item_percent_graph.append("svg:defs")
+			.append("svg:linearGradient")
+			.attr("id", "gradient")
+			.attr("x1", "0%")
+			.attr("x2", "100%")
+			.attr("y1", "0%")
+			.attr("y2", "0%")
+			.attr("spreadMethod", "pad");
+
+		gradient.append("svg:stop")
+			.attr("offset", "0%")
+			.attr("stop-color", "red")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "50%")
+			.attr("stop-color", "gray")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "100%")
+			.attr("stop-color", "green")
+			.attr("stop-opacity", 1);
+
+		item_percent_graph.append("svg:rect")
+			.attr("width", 150)
+			.attr("height", 25)
+			.attr("x", 250)
+			.attr("y", -30)
+			.style("fill", "url(#gradient)")
+			.style("stroke-width", "1px")
+			.style("stroke", "white");
+
+		item_percent_graph.append("text")
+			.attr("x", 246)
+			.attr("y", -15)
+			.style("font-size", "14px")
+			.style("text-anchor", "end")
+			.text("100% loss");
+
+		item_percent_graph.append("text")
+			.attr("x", 462)
+			.attr("y", -15)
+			.style("font-size", "14px")
+			.style("text-anchor", "end")
+			.text("100% win");
 	})
 
 	//sorting by value
@@ -1145,6 +1235,9 @@ function create_matrix (data) {
 }
 
 
+var chord_tip = d3.select("#stat_graphs").append("div").attr("class", "chordtip hidden")
+
+
 function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	hero_chord_graph.selectAll("text").remove();
@@ -1200,8 +1293,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    })
 	    .on("mouseout", function(d,i){
 	    	graph_tip.hide(d);
-
-	    	fade(1)(d,i);
+	    	fade(.7)(d,i);
 
 	   	})	    
 	   	.style("fill", function(d) { 
@@ -1225,6 +1317,26 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    	return fill(d2.getHeroInfo(lookup_dict[d.target.index]).stat); 
 	    })
 	    .style("opacity", 0)
+	    .on("mouseover", function(d) {
+	    	var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+
+                //toggle the hide on the tooltip
+                chord_tip.classed("hidden", false)
+                    .attr("style", "left:"+(mouse[0]+50)+"px;top:"+(mouse[1]+50)+"px")
+                    .html(function(e){
+
+                    	var source = d.source.index;
+                    	var target = d.target.index;
+
+                    	var name1 = d2.getHeroName(chord.groups()[source].hero_id);
+                    	var name2 = d2.getHeroName(chord.groups()[target].hero_id);
+
+                    	return name1 + " - " + name2 + "<br>Number of Games: " + d.source.value
+                    })
+	    })
+	    .on("mouseout", function(d){
+	    	chord_tip.classed("hidden", true);
+	    })
 	  	.transition().duration(1000)
 	    .attr("d", d3.svg.chord().radius(innerRadius))
 	    .style("opacity", .7);
