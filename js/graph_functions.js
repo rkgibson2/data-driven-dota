@@ -221,8 +221,10 @@ draw_user_interact();
 function loadData(username) {
  
 	d2.loadUserData(username, function(error,data) {
+   
 
         user_data = data;
+     
         create_timeline(user_data);
         updateGraphs(user_data)
 

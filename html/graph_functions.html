@@ -15,8 +15,33 @@
   <script src="/js/d2.js"></script>
 </head>
 <body>
+<!--USER DROPDOWN -->
 <div id="selectuser"></div>
 
+<!--FILTER MODAL BUTTON -->
+  <div class="bigcontainer">
+    <div id = "selector" class="modal hide fade in" style="display: none; ">
+      <div class="modal-header">  
+        <h3>Select Heroes to Filter</h3>  
+      </div>  
+      <div class="modal-body">  
+         <table>
+          <tr>
+            <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text><div id="strimages" class = "container"></div></td>
+            <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text><div id="agiimages" class = "container"></div></td>
+            <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text><div id="intimages" class = "container"></div></td>
+          </tr>
+        </table>
+      </div>    
+      <div class="modal-footer">  
+        <a href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</a>  
+        <a href="#" class="btn" data-dismiss="modal">Close</a>  
+      </div>  
+    </div>
+    <p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large">Filter</a></p>
+  </div>
+
+<!-- GAME MODE SELECTOR TABLE -->
 <table border="10" cellspacing="10" cellpadding="10" id ="game_mode_table" >
     <tr>
         <td id="AP" onclick="changeColor(this.id);">AP</td>
@@ -35,39 +60,12 @@
         <td id="LH" onclick="changeColor(this.id);">LH</td>
         <td id="AD" onclick="changeColor(this.id);">AD</td>
     </tr>
-   
 </table>
 
-
-
-
-
-
-  <div class="bigcontainer">
-    <div id = "selector" class="modal hide fade in" style="display: none; ">
-      <div class="modal-header">  
-        <!--<a class="close" data-dismiss="modal">×</a>  -->
-        <h3>Select Heroes to Filter</h3>  
-      </div>  
-      <div class="modal-body">  
-        <!-- <h4> Some text here </h4>-->
-        <table>
-          <tr>
-            <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text><div id="strimages" class = "container"></div></td>
-            <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text><div id="agiimages" class = "container"></div></td>
-            <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text><div id="intimages" class = "container"></div></td>
-          </tr>
-        </table>
-      </div>    
-      <div class="modal-footer">  
-        <a href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</a>  
-        <a href="#" class="btn" data-dismiss="modal">Close</a>  
-      </div>  
-    </div>
-    <p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large">Filter</a></p>
-  </div>
+<!-- HELP QUESTION MARK -->
 <span class="question">?</span>
 
+<!-- TIMELINE OVERVIEW -->
   <div id ="timeline"></div>
 
   <div id="stat_graphs">
@@ -77,7 +75,7 @@
     <!-- <label id="item_filter"><input class="this1" type="range" name="points" min="0" max="51" step="1" value="50" disabled> <span class="filterInput">51 </span> Items</label> -->
     <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
   </div>
-    <script src="/js/user.js"></script>
+  <script src="/js/user.js"></script>
   <script src="/js/graph_functions.js"></script>
   <script src="/js/selectors.js"></script>
   <script src="/js/timeline.js"></script>
