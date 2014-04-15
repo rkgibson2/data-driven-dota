@@ -490,8 +490,6 @@ function hero_pie(flare) {
 		}
 	}
 
-	console.log(hero_flare);
-
 	hero_pie_radius = Math.min(bb_hero_pie.w, bb_hero_pie.h) / 2;
 
 	hero_pie_color = d3.scale.ordinal()
@@ -958,6 +956,8 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
+		d3.select(".legend text").remove();
+
 		var gradient = item_percent_graph.append("svg:defs")
 			.append("svg:linearGradient")
 			.attr("id", "gradient")
@@ -994,11 +994,13 @@ function update_item_percent(data) {
 		item_percent_graph.append("text")
 			.attr("x", 246)
 			.attr("y", -15)
+			.attr("class", "legend")
 			.style("font-size", "14px")
 			.style("text-anchor", "end")
 			.text("100% loss");
 
 		item_percent_graph.append("text")
+			.attr("class", "legend")
 			.attr("x", 462)
 			.attr("y", -15)
 			.style("font-size", "14px")
