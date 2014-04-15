@@ -83,6 +83,8 @@ function highlight()
 
 function selected()
 {
+    // remove timeline clear selection button if filter was done after a brush
+    d3.select(".clear-button_timeline").remove();
 	// game_mode.js - calls the updateFilteredSelectionByHero as well
 	// as updateFilteredSelectionByGameMode
     updateFilteredSelectionByGameMode();

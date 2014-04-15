@@ -210,6 +210,15 @@ d2.loadJson(function() {
 	loadData(d3.select("#userdropdown").node().value);
 });
 
+// reset selected heroes in the filter for user change
+function resetSelectedHeroes(){
+
+d3.selectAll(".pic.selected").classed("selected", false).style("border", "2px solid black");
+
+}
+
+
+
 draw_win_loss();
 
 draw_item_percent();
@@ -226,6 +235,7 @@ function loadData(username) {
   
         user_data = data;
         resetGameMode();
+        resetSelectedHeroes();
         create_timeline(user_data);
         updateGraphs(user_data)
 
