@@ -832,7 +832,11 @@ function draw_legend(graph) {
 		.attr("y", -30)
 		.style("fill", "url(#gradient)")
 		.style("stroke-width", "1px")
-		.style("stroke", "white");
+		.style("stroke", "white")
+		.style("opacity", 0)
+		.transition()
+		.duration(1000)
+		.style("opacity", 1);
 
 	graph.append("text")
 		.attr("x", 243)
@@ -840,7 +844,11 @@ function draw_legend(graph) {
 		.attr("class", "legend")
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
-		.text("100% loss");
+		.text("100% loss")
+		.style("opacity", 0)
+		.transition()
+		.duration(1000)
+		.style("opacity", 1);
 
 	graph.append("text")
 		.attr("class", "legend")
@@ -848,7 +856,11 @@ function draw_legend(graph) {
 		.attr("y", -15)
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
-		.text("100% win");
+		.text("100% win")
+		.style("opacity", 0)
+		.transition()
+		.duration(1000)
+		.style("opacity", 1);
 }
 
 
@@ -2206,8 +2218,8 @@ function update_user_interact(data) {
 
 	d3.select("input#rainbow").on("change", function() {
 
-		user_interact_graph.selectAll(".legend").remove();
-		user_interact_graph.selectAll(".grad").remove();
+		user_interact_graph.selectAll(".legend").transition().duration(1000).style("opacity", 0).remove();
+		user_interact_graph.selectAll(".grad").transition().duration(1000).style("opacity", 0).remove();
 
 		d3.selectAll(".node circle").transition().duration(1000).style("fill", function(d){ return user_interact_color(d.value) })
 
