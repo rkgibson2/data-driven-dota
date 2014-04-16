@@ -154,6 +154,8 @@ function update_end_screen(game) {
     }
 
     enter_end_screen();
+    
+    d3.select("#winner").on("click", exit_end_screen)
 }
 
 function update_ability_build(player) {
