@@ -461,20 +461,20 @@ function clickArcTween(d) {
   };
 }
 
+function findLargest3(array1){
+// sort descending
+
+    array1.sort(function(a,b) {
+        if (a[1] < b[1]) { return 1; }
+        else if (a[1] == b[1]) { return 0; }
+        else { return -1; }
+    });
+
+    return array1.slice(0,3)
+}
+
 //creates hero sunburst graph based on hero flare json data
 function hero_pie(flare) {
-
-	function findLargest3(array1){
-    // sort descending
-
-	    array1.sort(function(a,b) {
-	        if (a[1] < b[1]) { return 1; }
-	        else if (a[1] == b[1]) { return 0; }
-	        else { return -1; }
-	    });
-
-	    return array1.slice(0,3)
-	}
 
 	for (var i = 0; i < hero_flare.children.length; i++) {
 		
@@ -874,6 +874,7 @@ function update_item_percent(data) {
 		for (id in dat) {
 			dat[id].count = 0;
 			dat[id].num_wins = 0;
+			dat[id].hero_array = [];
 		}
 
 		var total_count = data.matches.length;
@@ -881,10 +882,22 @@ function update_item_percent(data) {
 		//count all of the items
 		data.matches.forEach(function(d,i) {
 			for (j in dat) {
+
+				var hero = d.player_info.hero_id;
+
+				var index = dat[j].hero_array.map(function(d){return d[0]}).indexOf(hero);
+
 				if (dat[j].id == d.player_info.item_0) {
 					dat[j].count += 1;
 					if (d.player_win == true) {
 						dat[j].num_wins += 1;
+					}
+
+					if (index == -1) {
+						dat[j].hero_array.push([hero, 1]);
+					}
+					else {
+						dat[j].hero_array[index][1] += 1;
 					}
 				}		
 				else if (dat[j].id == d.player_info.item_1) {
@@ -892,11 +905,26 @@ function update_item_percent(data) {
 					if (d.player_win == true) {
 						dat[j].num_wins += 1;
 					}
+
+					if (index == -1) {
+						dat[j].hero_array.push([hero, 1]);
+					}
+					else {
+						dat[j].hero_array[index][1] += 1;
+					}
+				
 				}		
 				else if (dat[j].id == d.player_info.item_2) {
 					dat[j].count += 1;
 					if (d.player_win == true) {
 						dat[j].num_wins += 1;
+					}
+
+					if (index == -1) {
+						dat[j].hero_array.push([hero, 1]);
+					}
+					else {
+						dat[j].hero_array[index][1] += 1;
 					}
 				}		
 				else if (dat[j].id == d.player_info.item_3) {
@@ -904,17 +932,38 @@ function update_item_percent(data) {
 					if (d.player_win == true) {
 						dat[j].num_wins += 1;
 					}
+
+					if (index == -1) {
+						dat[j].hero_array.push([hero, 1]);
+					}
+					else {
+						dat[j].hero_array[index][1] += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_4) {
 					dat[j].count += 1;
 					if (d.player_win == true) {
 						dat[j].num_wins += 1;
 					}
+
+					if (index == -1) {
+						dat[j].hero_array.push([hero, 1]);
+					}
+					else {
+						dat[j].hero_array[index][1] += 1;
+					}
 				}		
 				else if (dat[j].id == d.player_info.item_5) {
 					dat[j].count += 1;
 					if (d.player_win == true) {
 						dat[j].num_wins += 1;
+					}
+
+					if (index == -1) {
+						dat[j].hero_array.push([hero, 1]);
+					}
+					else {
+						dat[j].hero_array[index][1] += 1;
 					}
 				}		
 			}
@@ -983,10 +1032,24 @@ function update_item_percent(data) {
 
 				//console.log(d)
 
-				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + "</span></strong>" + "<br> Number of Games: " + d.count + "<br> Cost: " + cost + "<br> Winrate: " + (100*d.winrate).toFixed(1) + "%<br></div>"
+				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + 
+					"</span></strong>" + "<br> Number of Games: " + d.count + 
+					"<br> Cost: " + cost + "<br> Winrate: " + (100*d.winrate).toFixed(1) + 
+					"%<br></div>"
 		  		var img_tip = "<div id='item_percent_tooltip_img'><img src='" + d.img + "' height='40px' width='53.125px'></div>"
 
-		  		graph_tip.html(img_tip + basic_tip);
+		  		var most_purchased = "<br><div id='item_percent_tooltip_most_purchased'><strong>Most purchased on: </strong><br>";
+
+		  		var topthree = findLargest3(d.hero_array);
+
+		  		for (var i = 0; i < topthree.length; i++) {
+		  			var img_text = "<img src='" + d2.getHeroInfo(topthree[i][0]).img + "' height='36px' width='64px'>"
+		  			most_purchased = most_purchased + img_text
+		  		}
+
+		  		most_purchased = most_purchased + "</div>"
+
+		  		graph_tip.html(img_tip + basic_tip + most_purchased);
 		  		graph_tip.show(d);
 		  	})
 		  	.on("mouseout", function(d) {

@@ -54,6 +54,16 @@ path {
   float: left;
 }
 
+#item_percent_tooltip_most_purchased {
+  margin-top: 2px;
+}
+
+#item_percent_tooltip_most_purchased img {
+  margin-left: 1.5px;
+  margin-right: 1.5px;
+  margin-top: 2px;
+}
+
 #scatter_tooltip_img {
   margin-top: 13px;
   float: left;
