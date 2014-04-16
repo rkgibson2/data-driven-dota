@@ -797,6 +797,8 @@ function draw_item_percent() {
 
 function draw_legend(graph) {
 
+	graph.selectAll(".legend").remove();
+
 	var gradient = graph.append("svg:defs")
 		.attr("class", "grad")
 		.append("svg:linearGradient")
@@ -1021,8 +1023,6 @@ function update_item_percent(data) {
 
 		d3.select(".item_percent")
 			.attr("visibility", null);
-
-		item_percent_graph.selectAll(".legend").remove();
 
 		draw_legend(item_percent_graph);
 		
