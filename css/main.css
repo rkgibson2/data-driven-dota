@@ -121,16 +121,20 @@ path {
 
 #toggle_color_pretty{
   position: absolute;
-  top: 1060px;
-  left: 100px;
+  top: 1050px;
+  left: 73px;
   /*right: 689px;*/
 }
 
 #toggle_color_ugly{
   position: absolute;
-  top: 1060px;
-  left: 226px;
+  top: 1050px;
+  left: 252px;
   /*right: 689px;*/
+}
+
+.bubble a:visited {
+  color:gray;
 }
 
 
