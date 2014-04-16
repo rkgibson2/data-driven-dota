@@ -119,6 +119,21 @@ path {
   /*right: 150px;*/
 }
 
+#toggle_color_pretty{
+  position: absolute;
+  top: 1060px;
+  left: 100px;
+  /*right: 689px;*/
+}
+
+#toggle_color_ugly{
+  position: absolute;
+  top: 1060px;
+  left: 226px;
+  /*right: 689px;*/
+}
+
+
 /*tooltip styles*/
 
 /*these styles come from: https://github.com/Caged/d3-tip*/

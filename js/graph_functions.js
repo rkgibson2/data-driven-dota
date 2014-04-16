@@ -50,7 +50,7 @@ bb_hero_chord = {
 
 bb_user_interact = {
 	x: 0,
-	y: 1000,
+	y: 1050,
 	h: 400,
 	w: 400
 }
@@ -217,8 +217,6 @@ d3.selectAll(".pic.selected").classed("selected", false).style("border", "2px so
 
 }
 
-
-
 draw_win_loss();
 
 draw_item_percent();
@@ -259,10 +257,10 @@ function updateGraphs (filtered_data) {
     update_gpm(filtered_data);
 
     update_xpm(filtered_data);
-    
-    update_timeline(filtered_data);
 
     update_user_interact(filtered_data);
+    
+    update_timeline(filtered_data);
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
@@ -969,7 +967,7 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
-		d3.select(".legend text").remove();
+		d3.select("text .legend").remove();
 
 		var gradient = item_percent_graph.append("svg:defs")
 			.append("svg:linearGradient")
@@ -1972,7 +1970,7 @@ function draw_user_interact(){
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", 0)
+		.attr("y", -55)
 		.attr("x", 180)
 		.text("Users You've Played with more than Once")
 
@@ -1993,7 +1991,7 @@ function classes(root) {
 
   function recurse(name, node) {
     if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-    else classes.push({packageName: name, className: node.name, value: node.count});
+    else classes.push({packageName: name, className: node.name, value: node.count, wins: node.num_wins});
   }
 
   recurse(null, root);
@@ -2012,7 +2010,7 @@ function update_user_interact(data) {
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", 0)
+		.attr("y", -55)
 		.attr("x", 180)
 		.text("Users You've Played with more than Once")
 
@@ -2081,12 +2079,23 @@ function update_user_interact(data) {
 		.append("circle")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
-			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value);
-			graph_tip.show(d);
+
+			format = d3.format(".2%")
+
+			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value + "<br>Winrate Playing Together : " + format(d.wins/d.value));
+			
+			if (d.className != user_data.id32) {
+				graph_tip.show(d);
+			}
 		})
 		.on("mouseout", function(d) {
+
 			graph_tip.hide(d);
 		})
+
+	user_interact_color_win = d3.scale.linear()
+		.domain([0,.5,1])
+		.range(["red", "gray", "green"]);
 
 	node
 		.transition()
@@ -2094,7 +2103,9 @@ function update_user_interact(data) {
 		.attr("transform", function(d) {
 			return "translate(" + d.x + "," + d.y + ")";
 		})
-		.style("fill", function(d) {return user_interact_color(d.className)});
+		.style("fill", function(d) {
+			return user_interact_color(d.value)
+		});
 
 	d3.selectAll(".node").append("text")
       	.attr("dy", ".3em")
@@ -2107,5 +2118,16 @@ function update_user_interact(data) {
       	})
       	.style("fill", "black")
       	.style("font-size", "12px");
+
+	d3.select("input#rainbow").on("change", function() {
+
+		d3.selectAll(".node").transition().duration(1000).style("fill", function(d){ return user_interact_color(d.value) })
+
+	});
+
+	d3.select("input#winrate").on("change", function() {
+		d3.selectAll(".node").transition().duration(1000).style("fill", function(d){ return user_interact_color_win(d.wins/d.value) })
+
+	});
 
 }
