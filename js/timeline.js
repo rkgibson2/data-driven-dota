@@ -564,6 +564,9 @@ function update_graphs(){
     update_gpm(filtered_data);
 
     update_xpm(filtered_data);	
+
+    update_user_interact(filtered_data);
+
 	
 
 };

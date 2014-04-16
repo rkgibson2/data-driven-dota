@@ -21,7 +21,7 @@ var width = 1060 - margin.left - margin.right;
 var height = 1500 - margin.bottom - margin.top;
 
 bb_win_loss = {
-    x: 0,
+    x: 23,
     y: 0,
     w: 250,
     h: 30
@@ -50,7 +50,7 @@ bb_hero_chord = {
 
 bb_user_interact = {
 	x: 0,
-	y: 1000,
+	y: 1050,
 	h: 400,
 	w: 400
 }
@@ -217,8 +217,6 @@ d3.selectAll(".pic.selected").classed("selected", false).style("border", "2px so
 
 }
 
-
-
 draw_win_loss();
 
 draw_item_percent();
@@ -259,10 +257,10 @@ function updateGraphs (filtered_data) {
     update_gpm(filtered_data);
 
     update_xpm(filtered_data);
-    
-    update_timeline(filtered_data);
 
     update_user_interact(filtered_data);
+    
+    update_timeline(filtered_data);
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
@@ -312,7 +310,7 @@ function draw_win_loss() {
 
 	win_loss_graph
 			.append("text")
-			.attr("x", 5)
+			.attr("x", -65)
 			.attr("y", 20)
 			.attr("class", "win text")
 			.attr("text-anchor", "start")
@@ -321,7 +319,7 @@ function draw_win_loss() {
 
 	win_loss_graph
 			.append("text")
-			.attr("x", 245)
+			.attr("x", 315)
 			.attr("y", 20)
 			.attr("class", "loss text")
 			.attr("text-anchor", "end")
@@ -797,6 +795,63 @@ function draw_item_percent() {
 
 }
 
+function draw_legend(graph) {
+
+	graph.selectAll(".legend").remove();
+
+	var gradient = graph.append("svg:defs")
+		.attr("class", "grad")
+		.append("svg:linearGradient")
+		.attr("id", "gradient")
+		.attr("x1", "0%")
+		.attr("x2", "100%")
+		.attr("y1", "0%")
+		.attr("y2", "0%")
+		.attr("spreadMethod", "pad");
+
+	gradient.append("svg:stop")
+		.attr("offset", "0%")
+		.attr("stop-color", "red")
+		.attr("stop-opacity", 1);
+
+	gradient.append("svg:stop")
+		.attr("offset", "50%")
+		.attr("stop-color", "gray")
+		.attr("stop-opacity", 1);
+
+	gradient.append("svg:stop")
+		.attr("offset", "100%")
+		.attr("stop-color", "green")
+		.attr("stop-opacity", 1);
+
+	graph.append("svg:rect")
+		.attr("class", "grad")
+		.attr("width", 150)
+		.attr("height", 25)
+		.attr("x", 246)
+		.attr("y", -30)
+		.style("fill", "url(#gradient)")
+		.style("stroke-width", "1px")
+		.style("stroke", "white");
+
+	graph.append("text")
+		.attr("x", 243)
+		.attr("y", -15)
+		.attr("class", "legend")
+		.style("font-size", "14px")
+		.style("text-anchor", "end")
+		.text("100% loss");
+
+	graph.append("text")
+		.attr("class", "legend")
+		.attr("x", 459)
+		.attr("y", -15)
+		.style("font-size", "14px")
+		.style("text-anchor", "end")
+		.text("100% win");
+}
+
+
 //updates the item percent bar chart based on user's data selection
 function update_item_percent(data) {
 
@@ -969,56 +1024,8 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
-		d3.select(".legend text").remove();
-
-		var gradient = item_percent_graph.append("svg:defs")
-			.append("svg:linearGradient")
-			.attr("id", "gradient")
-			.attr("x1", "0%")
-			.attr("x2", "100%")
-			.attr("y1", "0%")
-			.attr("y2", "0%")
-			.attr("spreadMethod", "pad");
-
-		gradient.append("svg:stop")
-			.attr("offset", "0%")
-			.attr("stop-color", "red")
-			.attr("stop-opacity", 1);
-
-		gradient.append("svg:stop")
-			.attr("offset", "50%")
-			.attr("stop-color", "gray")
-			.attr("stop-opacity", 1);
-
-		gradient.append("svg:stop")
-			.attr("offset", "100%")
-			.attr("stop-color", "green")
-			.attr("stop-opacity", 1);
-
-		item_percent_graph.append("svg:rect")
-			.attr("width", 150)
-			.attr("height", 25)
-			.attr("x", 250)
-			.attr("y", -30)
-			.style("fill", "url(#gradient)")
-			.style("stroke-width", "1px")
-			.style("stroke", "white");
-
-		item_percent_graph.append("text")
-			.attr("x", 246)
-			.attr("y", -15)
-			.attr("class", "legend")
-			.style("font-size", "14px")
-			.style("text-anchor", "end")
-			.text("100% loss");
-
-		item_percent_graph.append("text")
-			.attr("class", "legend")
-			.attr("x", 462)
-			.attr("y", -15)
-			.style("font-size", "14px")
-			.style("text-anchor", "end")
-			.text("100% win");
+		draw_legend(item_percent_graph);
+		
 	})
 
 	//sorting by value
@@ -1261,7 +1268,7 @@ var chord_tip = d3.select("#stat_graphs").append("div").attr("class", "chordtip 
 function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	hero_chord_graph.selectAll("text").remove();
-	d3.selectAll(".error_message").remove();
+	hero_chord_graph.selectAll(".error_message").remove();
 
 	if (matrix.length == 0) {
 		hero_chord_graph.append("text")
@@ -1900,8 +1907,6 @@ function xpm_brushend() {
 	});
 
 	function xpm_transition() {
-			console.log("called")
-
 
 		xpm_graph.select(".x.axis")
 			.transition()
@@ -1968,11 +1973,11 @@ function draw_user_interact(){
 		children: []
 	};
 
-	user_interact_graph.selectAll("text").remove();
+	user_interact_graph.selectAll(".error").remove();
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", 0)
+		.attr("y", -55)
 		.attr("x", 180)
 		.text("Users You've Played with more than Once")
 
@@ -1989,32 +1994,26 @@ function draw_user_interact(){
 
 // Returns a flattened hierarchy containing all leaf nodes under the root.
 function classes(root) {
-  var classes = [];
+  	var classes = [];
 
-  function recurse(name, node) {
-    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-    else classes.push({packageName: name, className: node.name, value: node.count});
-  }
+  	function recurse(name, node) {
+    	if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    	else classes.push({packageName: name, className: node.name, value: node.count, wins: node.num_wins});
+  	}
 
-  recurse(null, root);
-  return {children: classes};
+  	recurse(null, root);
+  	return {children: classes};
 }
 
 function update_user_interact(data) {
 
-	user_interact_graph.selectAll("text").remove();
+	user_interact_graph.selectAll(".error").remove();
 
 	user_flare = {
 		name: "user_flare",
 		child_dict: {},
 		children: []
 	};
-
-	user_interact_graph.append("text")
-		.attr("text-anchor", "middle")
-		.attr("y", 0)
-		.attr("x", 180)
-		.text("Users You've Played with more than Once")
 
 	for (var i = 0; i < data.matches.length; i++) {
 		var all_players = data.matches[i].players;
@@ -2072,21 +2071,47 @@ function update_user_interact(data) {
 	d3.selectAll(".node").remove();
 
 	node = user_interact_graph.selectAll(".node")
-		.data(bubble.nodes(classes(user_flare))
+		.data(bubble.nodes(classes(user_flare), function(d) {
+			return d.className;
+		})
 		.filter(function(d) {return !d.children;}))
 
 	node
 		.enter().append("g")
 		.attr("class", "node")
+		.append("a")
+		.attr("xlink:href", function(d) {
+			return d2.getUserInfo(d.className).profileurl
+		})
+		.style("fill", function(d) {
+			if (d3.select("input#winrate").property("checked")) {
+				return user_interact_color_win(d.wins/d.value);
+			}
+			else {
+				return user_interact_color(d.value)
+			}
+		})
+		.attr("xlink:show", "new") //opens link in a new tab
 		.append("circle")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
-			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value);
-			graph_tip.show(d);
+
+			format = d3.format(".2%")
+
+			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value + "<br>Winrate Playing Together : " + format(d.wins/d.value));
+			
+			if (d.className != user_data.id32) {
+				graph_tip.show(d);
+			}
 		})
 		.on("mouseout", function(d) {
+
 			graph_tip.hide(d);
 		})
+
+	user_interact_color_win = d3.scale.linear()
+		.domain([0, .5, 1])
+		.range(["red", "gray", "green"]);
 
 	node
 		.transition()
@@ -2094,18 +2119,41 @@ function update_user_interact(data) {
 		.attr("transform", function(d) {
 			return "translate(" + d.x + "," + d.y + ")";
 		})
-		.style("fill", function(d) {return user_interact_color(d.className)});
+		.style("fill", function(d) {
+			if (d3.select("input#winrate").property("checked")) {
+				return user_interact_color_win(d.wins/d.value);
+			}
+			else {
+				return user_interact_color(d.value)
+			}
+		});
 
 	d3.selectAll(".node").append("text")
       	.attr("dy", ".3em")
       	.style("text-anchor", "middle")
+      	.style("pointer-events", "none")
       	.text(function(d) {
       		var username = d2.getUserName(d.className)
-      		if (username.length < d.r*.4) {
+      		if (username.length < d.r*.3) {
       			return username
       		}
       	})
       	.style("fill", "black")
       	.style("font-size", "12px");
+
+	d3.select("input#rainbow").on("change", function() {
+
+		user_interact_graph.selectAll(".legend").remove();
+		user_interact_graph.selectAll(".grad").remove();
+
+		d3.selectAll(".node circle").transition().duration(1000).style("fill", function(d){ return user_interact_color(d.value) })
+
+	});
+
+	d3.select("input#winrate").on("change", function() {
+		d3.selectAll(".node circle").transition().duration(1000).style("fill", function(d){ return user_interact_color_win(d.wins/d.value) })
+
+		draw_legend(user_interact_graph);
+	});
 
 }
