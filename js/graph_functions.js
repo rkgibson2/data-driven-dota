@@ -237,6 +237,8 @@ function loadData(username) {
         selectedarr = [];
         resetGameMode();
         resetSelectedHeroes();
+
+        update_end_screen(user_data.matches[0])
         
         create_timeline(user_data);
         updateGraphs(user_data)

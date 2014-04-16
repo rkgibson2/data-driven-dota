@@ -1,7 +1,5 @@
 var user_data;
 
-var this_game;
-
 var remaining = 2;
 
 var ability_svg;
@@ -22,21 +20,23 @@ var ability_img_dimension = 50;
 
 var ability_tip = d3.tip().attr('class', 'd3-tip').html("init").offset([-5,0]);
 
+var end_screen_height = d3.select("#end_screen").style("height")
+
 create_end_screen();
 
-d2.loadJson(function() {
-    if (!--remaining) {
-        update_end_screen(user_data.matches[275])
-    }
-})
+// d2.loadJson(function() {
+//     if (!--remaining) {
+//         update_end_screen(user_data.matches[275])
+//     }
+// })
 
-d2.loadUserData("robbie", function(error, data) {
-    user_data = data;
+// d2.loadUserData("robbie", function(error, data) {
+//     user_data = data;
 
-    if (!--remaining) {
-        update_end_screen(user_data.matches[275])
-    }
-})
+//     if (!--remaining) {
+//         update_end_screen(user_data.matches[275])
+//     }
+// })
 
 function create_end_screen() {
     // copy all the player slots
@@ -44,6 +44,7 @@ function create_end_screen() {
         $( "#radiant .slot0" ).clone().removeClass().addClass("slot" + i).appendTo("#radiant tbody")
         $( "#dire .slot0" ).clone().removeClass().addClass("slot" + i).appendTo("#dire tbody")
     }
+
 
     // add hidden div with svg for ability build
     ability_svg = d3.select(".ability_build").append("svg").attr({
@@ -57,8 +58,6 @@ function create_end_screen() {
 }
 
 function update_end_screen(game) {
-    //console.log(game)
-    this_game = game;
 
     // turn 6 item entries into one item array
 
@@ -96,7 +95,7 @@ function update_end_screen(game) {
     // rename this array for convenience
     var players = game.players
 
-    var rows = d3.selectAll("tbody tr").data(players);
+    var rows = d3.selectAll("#players tbody tr").data(players);
 
     // search for our player
     rows.each(function(d) {
@@ -141,7 +140,7 @@ function update_end_screen(game) {
 
     // add item images
     // remove old item images
-    d3.selectAll(".end_screen_item_pic")
+    d3.selectAll(".end_screen_item_pic").remove()
 
     // add new images, one to each at a time for six times
     for (var i = 0; i < 6; i++) {
@@ -154,7 +153,7 @@ function update_end_screen(game) {
             .attr("width", "48px")
     }
 
-    d3.select("#end_screen").style("visibility", null);
+    enter_end_screen();
 }
 
 function update_ability_build(player) {
@@ -204,4 +203,31 @@ function update_ability_build(player) {
 
     d3.select(".ability_build").style("visibility", null)
         .attr("player", player.player_slot)
+}
+
+function enter_end_screen() {
+    if (d3.select("#end_screen").style("display") == "none") {
+        d3.select("#end_screen").style("display", null)
+            .style("height", "0px")
+            .transition().duration(2000)
+            .style("height", end_screen_height)
+
+        d3.selectAll("#end_screen>*").style("opacity", 0)
+            .transition().delay(1500).duration(500)
+            .style("opacity", 1)
+    } 
+}
+
+function exit_end_screen() {
+    if (d3.select("#end_screen").style("display") != "none") {
+        d3.select("#end_screen")
+            .style("height", end_screen_height)
+            .transition().duration(2000)
+            .style("height", "0px")
+            .style("display", null)
+
+        d3.selectAll("#end_screen>*").style("opacity", 1)
+            .transition().duration(500)
+            .style("opacity", 0)
+    }
 }

@@ -1,19 +1,11 @@
-#timeline {
-    margin: 0px 10px 10px 10px;
-    height: 1400px;
-    width: 300px;
-    float: left;
-    background-color: red;
-}
-
 #end_screen {
+    position:relative;
     margin: 0px 10px;
     height: 675px;
     width: 1124px;
-    float: left;
 }
 
-.header {
+#end_screen .header {
     font-size: 12px;
 }
 
@@ -168,12 +160,4 @@
 
 #players img {
     border: 1px solid black;
-}
-
-#stat_graph {
-    margin: 0px 10px;
-    height: 900px;
-    width: 1060px;
-    float: left;
-    background-color: blue;
 }
