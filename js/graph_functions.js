@@ -21,7 +21,7 @@ var width = 1060 - margin.left - margin.right;
 var height = 1500 - margin.bottom - margin.top;
 
 bb_win_loss = {
-    x: 0,
+    x: 23,
     y: 0,
     w: 250,
     h: 30
@@ -310,7 +310,7 @@ function draw_win_loss() {
 
 	win_loss_graph
 			.append("text")
-			.attr("x", 5)
+			.attr("x", -65)
 			.attr("y", 20)
 			.attr("class", "win text")
 			.attr("text-anchor", "start")
@@ -319,7 +319,7 @@ function draw_win_loss() {
 
 	win_loss_graph
 			.append("text")
-			.attr("x", 245)
+			.attr("x", 315)
 			.attr("y", 20)
 			.attr("class", "loss text")
 			.attr("text-anchor", "end")
@@ -967,7 +967,7 @@ function update_item_percent(data) {
 		d3.select(".item_percent")
 			.attr("visibility", null);
 
-		d3.select("text .legend").remove();
+		d3.select(".legend").remove();
 
 		var gradient = item_percent_graph.append("svg:defs")
 			.append("svg:linearGradient")
@@ -2094,7 +2094,7 @@ function update_user_interact(data) {
 		})
 
 	user_interact_color_win = d3.scale.linear()
-		.domain([0,.5,1])
+		.domain([0, .5, 1])
 		.range(["red", "gray", "green"]);
 
 	node
@@ -2107,12 +2107,15 @@ function update_user_interact(data) {
 			return user_interact_color(d.value)
 		});
 
+	d3.selectAll(".bubbletext").remove();
+
 	d3.selectAll(".node").append("text")
       	.attr("dy", ".3em")
       	.style("text-anchor", "middle")
+      	.attr("class", "bubbletext")
       	.text(function(d) {
       		var username = d2.getUserName(d.className)
-      		if (username.length < d.r*.4) {
+      		if (username.length < d.r*.3) {
       			return username
       		}
       	})
