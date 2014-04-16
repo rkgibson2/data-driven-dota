@@ -339,7 +339,7 @@ function create_timeline(userdata)
 	{
 		"transform": "translate(" + bbOverview.x + "," + (bbOverview.y) + ")"
 	}).attr("class", "dotgroup").selectAll(".dot")
-		.data(matches)
+		.data(matches, function(d) { return d.match_id })
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
@@ -476,7 +476,7 @@ function transition_data(matchdata)
 	//console.log(matches.length)
 	// rebind data and transition
 	svgTimeLine.selectAll(".dot")
-		.data(matchdata)
+		.data(matchdata, function(d) { return d.match_id})
 		.transition()
 		.duration(500)
 		.attr("cx", function (d)
@@ -488,7 +488,7 @@ function transition_data(matchdata)
 		});
 		
 var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
-		.data(matchdata)
+		.data(matchdata, function(d) { return d.match_id })
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
@@ -531,7 +531,7 @@ newdots.on("mouseover", function (d)
 	
 	
 	svgTimeLine.selectAll(".dot")
-		.data(matchdata).exit().transition().remove();
+		.data(matchdata, function(d) { return d.match_id }).exit().transition().remove();
 }
 // redraw axis with new scale
 function reset_axis()
