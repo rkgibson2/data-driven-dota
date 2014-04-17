@@ -13,7 +13,9 @@
 }
 
 #stat_graphs svg {
+  z-index:-1;
   position: absolute;
+  left: 0px;
   top: 0px;
   left: 0px;
 }
