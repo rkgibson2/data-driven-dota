@@ -475,11 +475,13 @@ function brushend()
 // transitioning data points
 function transition_data(matchdata)
 {
-	//console.log(matches.length)
+	// console.log(matches.length)
 	// rebind data and transition
-	svgTimeLine.selectAll(".dot")
-		.data(matchdata, function(d) { return d.match_id})
-		.transition()
+	var dots = svgTimeLine.selectAll(".dot")
+		.data(matchdata, function(d) { return d.match_id })
+
+	// transition existing elements
+	dots.transition()
 		.duration(500)
 		.attr("cx", function (d)
 		{
@@ -489,9 +491,8 @@ function transition_data(matchdata)
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
 		});
 		
-	var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
-		.data(matchdata, function(d) { return d.match_id })
-		.enter()
+	// append and transition new elements
+	dots.enter()
 		.append("circle")
 		.attr("class", "dot")
 		.attr("clip-path", "url(#timeline_clip)")
@@ -509,9 +510,8 @@ function transition_data(matchdata)
 		{
 			return d.player_win ? "green" : "red"
 		})
-		.style("stroke", "black");
-		
-	newdots.on("mouseover", function (d)
+		.style("stroke", "black")
+		.on("mouseover", function (d)
 		{
 			var tooltip = true;
 			var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
@@ -531,10 +531,8 @@ function transition_data(matchdata)
 		})
 		.on("click", update_end_screen);	
 	
-	
-	
-	svgTimeLine.selectAll(".dot")
-		.data(matchdata, function(d) { return d.match_id }).exit().transition().remove();
+	// remove dots with no data
+	dots.exit().transition().remove();
 }
 // redraw axis with new scale
 function reset_axis()

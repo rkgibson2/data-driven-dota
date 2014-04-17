@@ -5,6 +5,7 @@
 #stat_graphs svg {
   position: absolute;
   top: 0px;
+  left: 0px;
 }
 
 .win_loss rect{
