@@ -48,23 +48,23 @@
 
   <!-- GAME MODE SELECTOR TABLE -->
   <table border="10" cellspacing="10" cellpadding="10" id ="game_mode_table" >
-      <tr>
-          <td id="AP" onclick="changeColor(this.id);">AP</td>
-          <td id="CM" onclick="changeColor(this.id);">CM</td>
-          <td id="CD" onclick="changeColor(this.id);">CD</td>
-      </tr>
-      
-      <tr>
-          <td id="SD" onclick="changeColor(this.id);">SD</td>
-          <td id="RD" onclick="changeColor(this.id);">RD</td>
-          <td id="AR" onclick="changeColor(this.id);">AR</td>
-      </tr>
-      
-      <tr>
-          <td id="LP" onclick="changeColor(this.id);">LP</td>
-          <td id="LH" onclick="changeColor(this.id);">LH</td>
-          <td id="AD" onclick="changeColor(this.id);">AD</td>
-      </tr>
+    <tr>
+      <td id="AP" onclick="changeColor(this.id);">All Pick</td>
+      <td id="CM" onclick="changeColor(this.id);">Captains Mode</td>
+      <td id="CD" onclick="changeColor(this.id);">Captains Draft</td>
+    </tr>
+
+    <tr>
+      <td id="SD" onclick="changeColor(this.id);">Single Draft</td>
+      <td id="RD" onclick="changeColor(this.id);">Random Draft</td>
+      <td id="AR" onclick="changeColor(this.id);">All Random</td>
+    </tr>
+
+    <tr>
+      <td id="LP" onclick="changeColor(this.id);">Least Played</td>
+      <td id="LH" onclick="changeColor(this.id);">Limited Heroes</td>
+      <td id="AD" onclick="changeColor(this.id);">Ability Draft</td>
+    </tr>
   </table>
 
 <table border="10" cellspacing="10" cellpadding="10" id ="lobby_table" >
@@ -73,6 +73,8 @@
         <td id="practice" onclick="changeLobbyColor(this.id);">Practice</td>
         <td id="tournament" onclick="changeLobbyColor(this.id);">Tournament</td>
         <td id="tutorial" onclick="changeLobbyColor(this.id);">Tutorial</td>
+     </tr>
+      <tr>
         <td id="co_op_bot" onclick="changeLobbyColor(this.id);">Co-op with bots</td>
         <td id="team_match" onclick="changeLobbyColor(this.id);">Team Match</td>
 	<td id="solo_queue" onclick="changeLobbyColor(this.id);">Solo Queue</td>
