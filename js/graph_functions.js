@@ -246,10 +246,8 @@ function loadData(username) {
         // clear the filtered heroes and game modes
         selectedarr = [];
         resetGameMode();
-	resetLobby();
+		resetLobby();
         resetSelectedHeroes();
-
-        update_end_screen(user_data.matches[0])
         
         create_timeline(user_data);
         updateGraphs(user_data)
@@ -1665,6 +1663,7 @@ function update_gpm(data) {
       .on("mouseout", function(d) {
       	graph_tip.hide(d);
       })
+	  .on("click", update_end_screen)
       .attr("clip-path", "url(#gpm_clip)");
 
 	datapoints
@@ -1929,6 +1928,7 @@ function update_xpm(data) {
       .on("mouseout", function(d) {
       	graph_tip.hide(d);
       })
+	  .on("click", update_end_screen)
       .attr("clip-path", "url(#xpm_clip)");
 
 	datapoints
