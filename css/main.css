@@ -247,10 +247,10 @@ text-align: center;
 .hidden { 
     display: none; 
 }
-#game_mode_table td{
+#game_mode_table td, #lobby_table{
 background-color:#E8CE38;
 text-align: center;
 }
-#game_mode_table{
+#game_mode_table, #lobby_table{
 background-color:black;
 }
