@@ -218,7 +218,7 @@ function enter_end_screen() {
             .style("height", end_screen_height)
 
         d3.selectAll("#end_screen>*").style("opacity", 0)
-            .transition().delay(1500).duration(500)
+            .transition().delay(1250).duration(750)
             .style("opacity", 1)
     }
 }
@@ -235,7 +235,7 @@ function exit_end_screen() {
             .style("display", "none")
 
         d3.selectAll("#end_screen>*").style("opacity", 1)
-            .transition().duration(500)
+            .transition().duration(750)
             .style("opacity", 0)
     }
 }

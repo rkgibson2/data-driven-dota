@@ -278,6 +278,9 @@ function updateGraphs (filtered_data) {
 		d3.select("#hero_filter .filterInput").text(this.value);
 		rerender(filtered_data);  
 	});
+
+	// exit the end screen when we change the filter
+	exit_end_screen();
 }
 
 
