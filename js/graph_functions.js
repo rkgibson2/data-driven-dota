@@ -278,9 +278,7 @@ function updateGraphs (filtered_data) {
 		d3.select("#hero_filter .filterInput").text(this.value);
 		rerender(filtered_data);  
 	});
-
 }
-
 
 // jQuery tooltip helper adapted from: http://www.davidjrush.com/blog/2011/12/simple-jquery-tooltip/
 $(document).ready(function ()
@@ -404,6 +402,7 @@ function hero_pie_transition(data){
 		.attr("visibility", "visible")
 	    .on("click", click)
 	    .on("mouseover", function(d) {
+
 	    	var tooltip = true;
 
 	    	var name;
@@ -606,6 +605,7 @@ function hero_pie(flare) {
 	    	graph_tip.html(img_tip + basic_tip);
 
 	    	if (tooltip) {
+	    		graph_tip.direction('e')
 	    		graph_tip.show(d);
 	    	}
 
@@ -614,6 +614,7 @@ function hero_pie(flare) {
 	    })
 	    .on("mouseout", function(d) {
 	    	graph_tip.hide(d);
+	    	graph_tip.direction('n');
 
 	    	d3.select(this)
 	    		.style("fill", function(d) { return hero_pie_color((d.children ? d : d.parent).name); });
@@ -1400,12 +1401,14 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	    	graph_tip.html(img_tip + basic_tip);
 
+	    	graph_tip.direction('e');
 	    	graph_tip.show(d);
 
 	    	fade(.1)(d,i);
 
 	    })
 	    .on("mouseout", function(d,i){
+	    	graph_tip.direction('n');
 	    	graph_tip.hide(d);
 	    	fade(.7)(d,i);
 

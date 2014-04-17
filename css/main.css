@@ -186,6 +186,20 @@ left: 0;
 text-align: center;
 }
 
+/* Eastward tooltips */
+.d3-tip.e:after {
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+  margin: -4px 0 0 -1px;
+  top: 50%;
+  left: 100%;
+}
+
 /* helper tooltip adapted from: http://www.davidjrush.com/blog/2011/12/simple-jquery-tooltip/ */
   span.question {
     cursor: pointer;
