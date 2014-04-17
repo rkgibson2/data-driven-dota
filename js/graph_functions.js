@@ -278,6 +278,7 @@ function updateGraphs (filtered_data) {
 		d3.select("#hero_filter .filterInput").text(this.value);
 		rerender(filtered_data);  
 	});
+
 }
 
 
@@ -1640,8 +1641,6 @@ function update_gpm(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
-      .style("stroke-width", "1px")
-      .style("stroke", "black")
       .style("fill", function(d) { 
       		return gpm_color(d.player_win); 
       })
@@ -1909,8 +1908,6 @@ function update_xpm(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
-      .style("stroke-width", "1px")
-      .style("stroke", "black")
       .style("fill", function(d) { return xpm_color(d.player_win); })
       .on("mouseover", function(d) {
       	//console.log(d.player_info.hero_avg_gpm)
