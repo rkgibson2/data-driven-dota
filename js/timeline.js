@@ -357,7 +357,7 @@ function create_timeline(userdata)
 		.attr("r", 3)
 		.style("fill", function (d)
 		{
-			return d.player_win ? "green" : "red"
+			return d.player_win ? "#1a9641" : "#d7191c"
 		})
 		.style("stroke", "black")
 		.on("click", update_end_screen);
@@ -507,7 +507,7 @@ function transition_data(matchdata)
 		.attr("r", 3)
 		.style("fill", function (d)
 		{
-			return d.player_win ? "green" : "red"
+			return d.player_win ? "#1a9641" : "#d7191c"
 		})
 		.style("stroke", "black");
 		

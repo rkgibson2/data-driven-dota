@@ -822,17 +822,17 @@ function draw_legend(graph) {
 
 	gradient.append("svg:stop")
 		.attr("offset", "0%")
-		.attr("stop-color", "red")
+		.attr("stop-color", "#d7191c")
 		.attr("stop-opacity", 1);
 
 	gradient.append("svg:stop")
 		.attr("offset", "50%")
-		.attr("stop-color", "gray")
+		.attr("stop-color", "#8d8d8d")
 		.attr("stop-opacity", 1);
 
 	gradient.append("svg:stop")
 		.attr("offset", "100%")
-		.attr("stop-color", "green")
+		.attr("stop-color", "#1a9641")
 		.attr("stop-opacity", 1);
 
 	graph.append("svg:rect")
@@ -2199,7 +2199,7 @@ function update_user_interact(data) {
 
 	user_interact_color_win = d3.scale.linear()
 		.domain([0, .5, 1])
-		.range(["red", "gray", "green"]);
+		.range(["#d7191c", "#8d8d8d", "#1a9641"]);
 
 	node
 		.transition()
