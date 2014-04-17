@@ -1,0 +1,47 @@
+{
+    "-1": {
+        "id": -1,
+        "name": "Invalid",
+        "short_name": "invalid"
+    },
+    "0": {
+        "id": 0,
+        "name": "Public matchmaking",
+        "short_name": "public"
+    },
+    "1": {
+        "id": 1,
+        "name": "Practice",
+        "short_name": "practice"
+    },
+    "2": {
+        "id": 2,
+        "name": "Tournament",
+        "short_name": "tournament"
+    },
+    "3": {
+        "id": 3,
+        "name": "Tutorial",
+        "short_name": "tutorial"
+    },
+    "4": {
+        "id": 4,
+        "name": "Co-op with bots",
+        "short_name": "co_op_bot"
+    },
+    "5": {
+        "id": 5,
+        "name": "Team match",
+        "short_name": "team_match"
+    },
+    "6": {
+        "id": 6,
+        "name": "Solo Queue",
+        "short_name": "solo_queue"
+    },
+    "7": {
+        "id": 7,
+        "name": "Ranked",
+        "short_name": "ranked"
+    }
+}

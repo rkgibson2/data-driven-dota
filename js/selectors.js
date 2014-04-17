@@ -85,9 +85,8 @@ function selected()
 {
     // remove timeline clear selection button if filter was done after a brush
     d3.select(".clear-button_timeline").remove();
-	// game_mode.js - calls the updateFilteredSelectionByHero as well
-	// as updateFilteredSelectionByGameMode
-    updateFilteredSelectionByGameMode();
+    // super triple filter by all three types - game mode, lobby type and hero
+    tripleFilterUpdate();
 }
 
 function sorting(a, b)
@@ -114,10 +113,6 @@ var selectedheroes = d3.selectAll(".selected")[0];
 	{
 		selectedarr.push(+d.getAttribute("value"));
 	});
-
-    //console.log(selectedarr);
-
-
 
 	// if filter is empty, use all heroes
 	if (selectedarr.length == 0) {

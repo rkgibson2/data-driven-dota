@@ -7,6 +7,7 @@ var d2 = (function() {
     var itemData = [];
     var abilityData =[];
     var gameModes = [];
+    var lobbyModes = [];
     var userData = [];
 
 
@@ -14,7 +15,7 @@ var d2 = (function() {
         // if no callback was passed, make function that does nothing
         if (callback === undefined)
             callback = function() {}
-        var remaining = 5;
+        var remaining = 6;
 
         d3.json("/data/heroes.json", function (error, data)
         {            // an array of all the hero names indexed appropriately - starting at 1
@@ -41,6 +42,13 @@ var d2 = (function() {
         d3.json("/data/game_modes.json", function (error, data) {
             // array of all the game modes
             gameModes = data;
+
+            if (!--remaining) callback();
+        })
+
+ 	d3.json("/data/lobbies.json", function (error, data) {
+            // array of all the lobby modes
+            lobbyModes = data;
 
             if (!--remaining) callback();
         })
@@ -94,6 +102,14 @@ var d2 = (function() {
         else
             throw new Error ("No game mode with id " + id)
     }
+
+   function idToLobby(id) {
+        if (id in lobbyModes)
+            return lobbyModes[id]
+        else
+            throw new Error ("No game mode with id " + id)
+    }
+
 
     // returns user data for a given id
     function idToUserInfo(id) {
@@ -249,6 +265,8 @@ var d2 = (function() {
         },
 
         getGameModeInfo: idToGameMode,
+
+	getLobbyInfo: idToLobby,
 
         getKeys: getKeys,
 

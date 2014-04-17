@@ -210,6 +210,16 @@ d2.loadJson(function() {
 	loadData(d3.select("#userdropdown").node().value);
 });
 
+function tripleFilterUpdate(){
+// repopulate filtered_data by hero selection
+updateFilteredSelectionByHero();
+// further filter by game mode and lobby type
+    filtered_data.matches = filtered_data.matches.filter(function(d){if((selected_modes.indexOf(d2.getGameModeInfo(d.game_mode).short_name) >= 0)&& (selected_lobby_modes.indexOf(d2.getLobbyInfo(d.lobby_type).short_name) >= 0)) return 1;});
+
+updateGraphs(filtered_data);
+}
+
+
 // reset selected heroes in the filter for user change - all to unselected
 function resetSelectedHeroes(){
 
@@ -236,7 +246,10 @@ function loadData(username) {
         // clear the filtered heroes and game modes
         selectedarr = [];
         resetGameMode();
+	resetLobby();
         resetSelectedHeroes();
+
+        update_end_screen(user_data.matches[0])
         
         create_timeline(user_data);
         updateGraphs(user_data)
