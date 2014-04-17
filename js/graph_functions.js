@@ -1640,8 +1640,9 @@ function update_gpm(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
+      .style("stroke-width", "1px")
+      .style("stroke", "black")
       .style("fill", function(d) { 
-      		//console.log(d.player_win)
       		return gpm_color(d.player_win); 
       })
       .on("mouseover", function(d) {
@@ -1908,6 +1909,8 @@ function update_xpm(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
+      .style("stroke-width", "1px")
+      .style("stroke", "black")
       .style("fill", function(d) { return xpm_color(d.player_win); })
       .on("mouseover", function(d) {
       	//console.log(d.player_info.hero_avg_gpm)
