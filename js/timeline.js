@@ -108,7 +108,7 @@ function create_timeline(userdata)
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
-		
+      	.attr("match_id", function(d) { return d.match_id })
 		.attr("clip-path", "url(#timeline_clip)")
 		// add a circular node at the correct coordinates from our dataSet
 		.attr("cx", function (d)
@@ -131,6 +131,9 @@ function create_timeline(userdata)
 	// mouseover tips
 	svgTimeLine.selectAll(".dot").on("mouseover", function (d)
 	{
+      	// update dota styling
+    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+
 		var tooltip = true;
 		var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
 		var time = String(new Date(d.start_time * 1000));
@@ -145,6 +148,10 @@ function create_timeline(userdata)
 	})
 		.on("mouseout", function (d)
 		{
+	      	// update dot styling
+	      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
+	    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+
 			tiptimeline.hide(d);
 		});
 };
@@ -204,6 +211,14 @@ function brushmove()
 
 function brushend()
 {
+	brush_domain = brush.extent();
+
+	// equal domain ends means click on graph
+	// coerce dates to numbers to check equality
+	if (+brush_domain[1] == +brush_domain[0]) {
+		console.log("SAME");
+		return;
+	}
 	// add a clear brush selection if we have brushed in
 	get_button = d3.select(".clear-button_timeline");
 	if (get_button.empty() === true)
@@ -215,7 +230,7 @@ function brushend()
 			.text("Clear Brush");
 	}
 	// change the xscale domain to the brush selection extent
-	xScaleOverview.domain(brush.extent());
+	xScaleOverview.domain(brush_domain);
 	// transition data points
 	transition_data(matches);
 	// redraw axis with new labels
@@ -239,11 +254,13 @@ function brushend()
 // transitioning data points
 function transition_data(matchdata)
 {
-	//console.log(matches.length)
+	// console.log(matches.length)
 	// rebind data and transition
-	svgTimeLine.selectAll(".dot")
-		.data(matchdata, function(d) { return d.match_id})
-		.transition()
+	var dots = svgTimeLine.selectAll(".dot")
+		.data(matchdata, function(d) { return d.match_id })
+
+	// transition existing elements
+	dots.transition()
 		.duration(500)
 		.attr("cx", function (d)
 		{
@@ -253,11 +270,11 @@ function transition_data(matchdata)
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
 		});
 		
-	var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
-		.data(matchdata, function(d) { return d.match_id })
-		.enter()
+	// append and transition new elements
+	dots.enter()
 		.append("circle")
 		.attr("class", "dot")
+      	.attr("match_id", function(d) { return d.match_id })
 		.attr("clip-path", "url(#timeline_clip)")
 		// add a circular node at the correct coordinates from our dataSet
 		.attr("cx", function (d)
@@ -272,10 +289,12 @@ function transition_data(matchdata)
 		.style("fill", function (d)
 		{
 			return d.player_win ? "#1a9641" : "#d7191c"
-		});
-		
-	newdots.on("mouseover", function (d)
+		})
+		.on("mouseover", function (d)
 		{
+	      	// update dota styling
+	    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+
 			var tooltip = true;
 			var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
 			var time = String(new Date(d.start_time * 1000));
@@ -290,14 +309,16 @@ function transition_data(matchdata)
 		})
 		.on("mouseout", function (d)
 		{
+	      	// update dot styling
+	      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
+	    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+	    	
 			tiptimeline.hide(d);
 		})
 		.on("click", update_end_screen);	
 	
-	
-	
-	svgTimeLine.selectAll(".dot")
-		.data(matchdata, function(d) { return d.match_id }).exit().transition().remove();
+	// remove dots with no data
+	dots.exit().transition().remove();
 }
 // redraw axis with new scale
 function reset_axis()

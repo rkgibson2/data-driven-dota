@@ -60,7 +60,6 @@ function create_end_screen() {
 function update_end_screen(game) {
 
     // turn 6 item entries into one item array
-
     game.players.forEach(function(d) {
         d.items = [];
 
@@ -156,6 +155,15 @@ function update_end_screen(game) {
             .attr("width", "48px")
     }
 
+
+    // update dot color and selection
+    d3.selectAll("#timeline .end_screen_selected").classed("end_screen_selected", false).attr("r", 3)
+    d3.selectAll("#stat_graphs .end_screen_selected").classed("end_screen_selected", false).attr("r", 3.5)
+    d3.selectAll("[match_id='" + game.match_id + "']").classed("end_screen_selected", true).attr("r", 5)
+
+    // give end screen a match_shown attribute, so we can reset the dots on exit
+    d3.select("#end_screen").attr("match_shown", game.match_id)
+
     enter_end_screen();
     
     d3.select("#winner").on("click", exit_end_screen)
@@ -218,11 +226,8 @@ function enter_end_screen() {
             .style("height", end_screen_height)
 
         d3.selectAll("#end_screen>*").style("opacity", 0)
-            .transition().delay(1500).duration(500)
+            .transition().delay(1250).duration(750)
             .style("opacity", 1)
-    } else {
-        d3.select("#end_screen").transition().duration(500)
-                    .style("opacity", 1);
     }
 }
 
@@ -238,7 +243,14 @@ function exit_end_screen() {
             .style("display", "none")
 
         d3.selectAll("#end_screen>*").style("opacity", 1)
-            .transition().duration(500)
+            .transition().duration(750)
             .style("opacity", 0)
+
+        // reset dots to original sizes
+        d3.selectAll("#timeline .end_screen_selected").classed("end_screen_selected", false).attr("r", 3)
+        d3.selectAll("#stat_graphs .end_screen_selected").classed("end_screen_selected", false).attr("r", 3.5)
+
+        // get rid of match_shown attribute
+        d3.select("#end_screen").attr("match_shown", null)
     }
 }
