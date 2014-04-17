@@ -345,11 +345,11 @@ function create_timeline(userdata)
 		.attr("class", "dot")
 		
 		.attr("clip-path", "url(#timeline_clip)")
-	// add a circular node at the correct coordinates from our dataSet
-	.attr("cx", function (d)
-	{
-		return xScaleOverview((new Date(d.start_time * 1000)))
-	})
+		// add a circular node at the correct coordinates from our dataSet
+		.attr("cx", function (d)
+		{
+			return xScaleOverview((new Date(d.start_time * 1000)))
+		})
 		.attr("cy", function (d)
 		{
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
@@ -359,7 +359,8 @@ function create_timeline(userdata)
 		{
 			return d.player_win ? "green" : "red"
 		})
-		.style("stroke", "black");
+		.style("stroke", "black")
+		.on("click", update_end_screen);
 		
 		
 		
@@ -386,6 +387,7 @@ function create_timeline(userdata)
 
 function update_timeline(filtereddata)
 {
+
 	matches = filtereddata.matches;
 	// store domain from matches
 	xdomain = d3.extent(matches,
@@ -487,17 +489,17 @@ function transition_data(matchdata)
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
 		});
 		
-var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
+	var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
 		.data(matchdata, function(d) { return d.match_id })
 		.enter()
 		.append("circle")
 		.attr("class", "dot")
 		.attr("clip-path", "url(#timeline_clip)")
-	// add a circular node at the correct coordinates from our dataSet
-	.attr("cx", function (d)
-	{
-		return xScaleOverview((new Date(d.start_time * 1000)))
-	})
+		// add a circular node at the correct coordinates from our dataSet
+		.attr("cx", function (d)
+		{
+			return xScaleOverview((new Date(d.start_time * 1000)))
+		})
 		.attr("cy", function (d)
 		{
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
@@ -509,24 +511,25 @@ var newdots = svgTimeLine.select(".dotgroup").selectAll(".dot")
 		})
 		.style("stroke", "black");
 		
-newdots.on("mouseover", function (d)
-	{
-		var tooltip = true;
-		var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
-		var time = String(new Date(d.start_time * 1000));
-		var basic_tip = "<div id='tooltip_text'><strong>" + score + "</strong>" + "<br>" + (time) + "</br></div>";
-		var img_tip = "<div id='hero_sunburst_tip'><img src='" + (d2.getHeroInfo(d.player_info.hero_id).img) +
-			"'' width='64px' height='36px'></div>";
-		tiptimeline.html(img_tip + basic_tip);
-		if (tooltip)
+	newdots.on("mouseover", function (d)
 		{
-			tiptimeline.show(d);
-		}
-	})
+			var tooltip = true;
+			var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
+			var time = String(new Date(d.start_time * 1000));
+			var basic_tip = "<div id='tooltip_text'><strong>" + score + "</strong>" + "<br>" + (time) + "</br></div>";
+			var img_tip = "<div id='hero_sunburst_tip'><img src='" + (d2.getHeroInfo(d.player_info.hero_id).img) +
+				"'' width='64px' height='36px'></div>";
+			tiptimeline.html(img_tip + basic_tip);
+			if (tooltip)
+			{
+				tiptimeline.show(d);
+			}
+		})
 		.on("mouseout", function (d)
 		{
 			tiptimeline.hide(d);
-		});	
+		})
+		.on("click", update_end_screen);	
 	
 	
 	

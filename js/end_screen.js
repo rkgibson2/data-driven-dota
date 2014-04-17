@@ -71,7 +71,8 @@ function update_end_screen(game) {
     })
 
     // set winner
-    d3.select("#winner").text(((game.radiant_win) ? "Radiant" : "Dire") + " Victory")
+    d3.select("#winner")
+        .text(((game.radiant_win) ? "Radiant" : "Dire") + " Victory")
         .attr("class", (game.radiant_win) ? "radiant" : "dire")
 
     // set match id text
@@ -101,6 +102,8 @@ function update_end_screen(game) {
     rows.each(function(d) {
         if (d.account_id == user_data.id32) {
             d3.select(this).attr("id", "user")
+        } else {
+            d3.select(this).attr("id", null)
         }
     })
 
@@ -217,7 +220,10 @@ function enter_end_screen() {
         d3.selectAll("#end_screen>*").style("opacity", 0)
             .transition().delay(1500).duration(500)
             .style("opacity", 1)
-    } 
+    } else {
+        d3.select("#end_screen").transition().duration(500)
+                    .style("opacity", 1);
+    }
 }
 
 function exit_end_screen() {
@@ -226,7 +232,10 @@ function exit_end_screen() {
             .style("height", end_screen_height)
             .transition().duration(2000)
             .style("height", "0px")
-            .style("display", null)
+            
+        d3.select("#end_screen")
+            .transition().delay(2000)
+            .style("display", "none")
 
         d3.selectAll("#end_screen>*").style("opacity", 1)
             .transition().duration(500)
