@@ -317,6 +317,7 @@ function update_graphs(){
 	}
 	
 	var extent = xScaleOverview.domain();
+
 	filtered_data.matches = matches.filter(function(d){if ((extent[0] <= (new Date(d.start_time * 1000))) && ((new Date(d.start_time * 1000)) <= extent[1])) return 1});
 
     update_win_loss(filtered_data);
@@ -325,7 +326,12 @@ function update_graphs(){
 
     hero_pie(update_flare(filtered_data));
 
-    rerender(filtered_data);
+    create_matrix(filtered_data);
+
+	d3.select("input[name=hero_filter]").on("change", function() { 
+		d3.select("#hero_filter .filterInput").text(this.value);
+		rerender(filtered_data);  
+	});
 
     update_gpm(filtered_data);
 
