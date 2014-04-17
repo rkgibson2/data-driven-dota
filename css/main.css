@@ -1,3 +1,13 @@
+.end_screen_selected {
+  fill: aquamarine !important;
+}
+
+.match_dot_hover {
+  fill: aquamarine !important;
+  stroke_width: 1px;
+  stroke: black;
+}
+
 #stat_graphs {
   position: relative;
 }
@@ -8,10 +18,11 @@
   left: 0px;
 }
 
-.win_loss rect{
+.win_loss rect {
   stroke: black;
   stroke-width: 2px;
 }
+
 .win {
   fill: #1a9641;
 }

@@ -1642,12 +1642,16 @@ function update_gpm(data) {
     datapoints
     .enter().append("circle")
       .attr("class", "dot")
+      .attr("match_id", function(d) { return d.match_id })
       .attr("r", 3.5)
       .style("fill", function(d) { 
       		//console.log(d.player_win)
       		return gpm_color(d.player_win); 
       })
       .on("mouseover", function(d) {
+      	// update dota styling
+    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+
       	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
 
@@ -1664,6 +1668,10 @@ function update_gpm(data) {
       	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
+      	// update dot styling
+      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
+    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+
       	graph_tip.hide(d);
       })
 	  .on("click", update_end_screen)
@@ -1702,6 +1710,15 @@ function update_gpm(data) {
 var gpm_clear_button;
 
 function gpm_brushend() {
+	var gpm_x_domain = [gpm_brush.extent()[0][0], gpm_brush.extent()[1][0]]
+	var gpm_y_domain = [gpm_brush.extent()[0][1], gpm_brush.extent()[1][1]]
+
+	// equal domain ends means click on graph
+	// coerce dates to numbers to check equality
+	if (+gpm_x_domain[0] == +gpm_x_domain[1] && +gpm_y_domain[0] == +gpm_y_domain[1]) {
+		console.log("SAME")
+		return;
+	}
 
 	get_button = d3.select(".clear-button_gpm");
 	if (get_button.empty() === true)
@@ -1713,8 +1730,8 @@ function gpm_brushend() {
 			.text("Clear Brush");
 	}
 
-	gpm_x.domain([gpm_brush.extent()[0][0], gpm_brush.extent()[1][0]]);
-	gpm_y.domain([gpm_brush.extent()[0][1], gpm_brush.extent()[1][1]]);
+	gpm_x.domain(gpm_x_domain);
+	gpm_y.domain(gpm_y_domain);
 
 	gpm_transition();
 
@@ -1910,9 +1927,13 @@ function update_xpm(data) {
     datapoints
     .enter().append("circle")
       .attr("class", "dot")
+      .attr("match_id", function(d) { return d.match_id })
       .attr("r", 3.5)
       .style("fill", function(d) { return xpm_color(d.player_win); })
       .on("mouseover", function(d) {
+      	// update dota styling
+    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+
       	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
 
@@ -1929,6 +1950,10 @@ function update_xpm(data) {
       	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
+      	// update dot styling
+      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
+    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+    	
       	graph_tip.hide(d);
       })
 	  .on("click", update_end_screen)
@@ -1968,6 +1993,16 @@ var xpm_clear_button;
 
 function xpm_brushend() {
 
+	var xpm_x_domain = [xpm_brush.extent()[0][0], xpm_brush.extent()[1][0]]
+	var xpm_y_domain = [xpm_brush.extent()[0][1], xpm_brush.extent()[1][1]]
+
+	// equal domain ends means click on graph
+	// coerce dates to numbers to check equality
+	if (+xpm_x_domain[0] == +xpm_x_domain[1] && +xpm_y_domain[0] == +xpm_y_domain[1]) {
+		console.log("SAME")
+		return;
+	}
+
 	get_button = d3.select(".clear-button_xpm");
 
 	if (get_button.empty() === true)
@@ -1979,8 +2014,8 @@ function xpm_brushend() {
 			.text("Clear Brush");
 	}
 
-	xpm_x.domain([xpm_brush.extent()[0][0], xpm_brush.extent()[1][0]]);
-	xpm_y.domain([xpm_brush.extent()[0][1], xpm_brush.extent()[1][1]]);
+	xpm_x.domain(xpm_x_domain);
+	xpm_y.domain(xpm_y_domain);
 
 	xpm_transition();
 
