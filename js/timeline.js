@@ -101,9 +101,10 @@ function create_timeline(userdata)
 		.attr("y", 10);
 	// add the nodes to the overview vis
 	dots = svgTimeLine.append("g").attr(
-	{
-		"transform": "translate(" + bbOverview.x + "," + (bbOverview.y) + ")"
-	}).attr("class", "dotgroup").selectAll(".dot")
+		{
+			"transform": "translate(" + bbOverview.x + "," + (bbOverview.y) + ")"
+		})
+		.attr("class", "dotgroup").selectAll(".dot")
 		.data(matches, function(d) { return d.match_id })
 		.enter()
 		.append("circle")
@@ -256,7 +257,7 @@ function transition_data(matchdata)
 {
 	// console.log(matches.length)
 	// rebind data and transition
-	var dots = svgTimeLine.selectAll(".dot")
+	var dots = svgTimeLine.select(".dotgroup").selectAll(".dot")
 		.data(matchdata, function(d) { return d.match_id })
 
 	// transition existing elements
