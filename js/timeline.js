@@ -202,7 +202,7 @@ function update_timeline(filtereddata)
 function brushmove()
 {
 	var extent = brush.extent();
-	dots.classed("selected", function (d)
+	d3.selectAll(".dot").classed("selected", function (d)
 	{
 		// selection
 		is_brushed = extent[0] <= (new Date(d.start_time * 1000)) && (new Date(d.start_time * 1000)) <= extent[1];
@@ -237,7 +237,7 @@ function brushend()
 	// redraw axis with new labels
 	reset_axis();
 	// reclass dots as no longer selected
-	dots.classed("selected", false);
+	d3.selectAll(".dot").classed("selected", false);
 	// clear the brush 
 	d3.select(".timeline_brush").call(brush.clear());
 	// add the on click events for the button
