@@ -108,14 +108,64 @@
   
     <!-- MODAL POPUP RECORDS -->
   <div id = "show_records" class="modal hide fade in" style="display: none; ">
-    <div class="modal-header">  
-      <h3>Select Heroes to Filter</h3>  
+    <div class="modal-header" style = "width:270px">  
+      <h3>Records</h3>  
     </div>  
-    <div class="modal-body">  
-      <table>
-      </table>
+    <div class="modal-body" style = "width:270px;height:630px"> 
+    <div id = record_content> 
+    <table id="record_table" border="10" cellspacing="10" cellpadding="10">
+	    <tr>
+		    <th>Record</th>
+		    <th>Value</th>
+	    </tr>
+	    <tr>
+		    <td>Longest Match</td>
+		    <td id="longest_match"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Kills</td>
+		    <td id="most_kills"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Assists</td>
+		    <td id="most_assists"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Last Hits</td>
+		    <td id="most_last_hits"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Denies</td>
+		    <td id="most_denies"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Gold Per Minute</td>
+		    <td id="most_gold_per_min"></td>
+	    </tr>
+	    <tr>
+		    <td>Most XP Per Minute</td>
+		    <td id="most_xp_per_min"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Hero Damage</td>
+		    <td id="most_hero_damage"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Hero Healing</td>
+		    <td id="most_hero_healing"></td>
+	    </tr>
+	    <tr>
+		    <td>Most Tower Damage</td>
+		    <td id="most_tower_damage"></td>
+	    </tr>
+	    <tr>
+		    <td>Best KDA Ratio</td>
+		    <td id="best_kda_ratio"></td>
+	    </tr>
+    </table>
+    </div>
     </div>    
-    <div class="modal-footer">  
+    <div class="modal-footer" style = "width:270px">  
       <!--a href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</a-->  
       <a href="#" class="btn" data-dismiss="modal">Close</a>  
     </div>  
