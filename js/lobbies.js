@@ -1,18 +1,19 @@
 all_lobby_modes =  ["public","practice","tournament","tutorial","co_op_bot","team_match","solo_queue","ranked"];
 selected_lobby_modes = ["public","practice","tournament","tutorial","co_op_bot","team_match","solo_queue","ranked"];
+update_selected_lobby_modes = ["public","practice","tournament","tutorial","co_op_bot","team_match","solo_queue","ranked"];
 select_lobby_color ="#E8CE38";
 function changeLobbyColor(gamemode){ 
-    if (selected_lobby_modes.indexOf(gamemode)<0)
+    if (update_selected_lobby_modes.indexOf(gamemode)<0)
     {
           document.getElementById(gamemode).style.background = select_lobby_color;
-          selected_lobby_modes.push(gamemode);
+          update_selected_lobby_modes.push(gamemode);
           //tripleFilterUpdate();
 
     }
     else
     {
-        var index = selected_lobby_modes.indexOf(gamemode);
-        selected_lobby_modes.splice(index,1);
+        var index = update_selected_lobby_modes.indexOf(gamemode);
+        update_selected_lobby_modes.splice(index,1);
         document.getElementById(gamemode).style.background = "grey";
         //tripleFilterUpdate();
     }
@@ -28,3 +29,26 @@ if (selected_lobby_modes.indexOf(d)<0)
     }
 });
 }
+
+function filterLobby(){
+    //for game modes
+    selected_modes = update_selected_modes.slice();
+    // for lobby modes
+    selected_lobby_modes = update_selected_lobby_modes.slice();
+    tripleFilterUpdate();
+}
+
+function reselectLobby(){
+    // reselect game mode function first
+    reselectGameMode();
+    update_selected_lobby_modes = selected_lobby_modes.slice();
+    // first reset selection to all unselected
+    all_lobby_modes.forEach(function(d){
+        document.getElementById(d).style.background = "grey";
+        });
+    // then select previous selection
+    selected_lobby_modes.forEach(function(d){
+        document.getElementById(d).style.background = select_lobby_color;
+    });
+};
+

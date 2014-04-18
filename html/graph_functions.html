@@ -17,18 +17,19 @@
 </head>
 <body>
 
+<form>
 <!-- FILTERS -->
 <div id="filters">
 
   <!--USER DROPDOWN -->
-  <div id="selectuser"></div>
+  <div   id="selectuser"></div>
 
   <!--FILTER HERO MODAL BUTTON -->
-  <div id="filterbutton"><p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large" onclick ="reselectHeroes()" >Filter by Heroes</a></p></div>
+  <div style = "float:left" id="filterbutton"><p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large" onclick ="reselectHeroes()" >Filter by Heroes</a></p></div>
 
 
   <!--FILTER GAME MODE MODAL BUTTON -->
-  <div id="filterbutton_game_mode"><p><a data-toggle="modal" href="#select_game_type" class="btn btn-primary btn-large" >Filter by Game Type</a></p></div>
+  <div style = "float:left"  id="filterbutton_game_mode"><p><a data-toggle="modal" href="#select_game_type" class="btn btn-primary btn-large" onclick ="reselectLobby()">Filter by Game Type</a></p></div>
 
 
   <!-- MODAL POPUP DIV HEROES -->
@@ -96,17 +97,21 @@
         </div>
     </div>    
     <div class="modal-footer"  style = "width:600px">  
-      <a href="#" onclick="tripleFilterUpdate()" class="btn btn-success" data-dismiss="modal">Filter</a>  
+      <a href="#" onclick="filterLobby()" class="btn btn-success" data-dismiss="modal">Filter</a>  
       <a href="#" class="btn" data-dismiss="modal">Close</a>  
     </div>  
   </div>
-
+  
   <!-- HELP QUESTION MARK -->
-  <span class="question">?</span>
+  <span  class="question">?</span>
 
-  <!-- TIMELINE OVERVIEW -->
-  <div id ="timeline"></div>
 </div>
+</form>
+<br></br><br></br>
+  <!-- TIMELINE OVERVIEW -->
+  <div style ="align:left" id ="timeline"></div>
+
+
 
 <!-- END SCREEN -->
 <div id="end_screen" style="display:none">
