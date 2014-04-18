@@ -242,6 +242,7 @@ function loadData(username) {
 	d2.loadUserData(username, function(error,data) {
   
         user_data = data;
+        filtered_data = data;
         
         // clear the filtered heroes and game modes
         selectedarr = [];
@@ -249,8 +250,11 @@ function loadData(username) {
 		resetLobby();
         resetSelectedHeroes();
         
+        
         create_timeline(user_data);
-        updateGraphs(user_data)
+        //updateGraphs(user_data)
+        // filter out random modes etc. and updateGraphs
+        tripleFilterUpdate();
 
     })
 }

@@ -31,6 +31,9 @@
   <!--FILTER GAME MODE MODAL BUTTON -->
   <div style = "float:left"  id="filterbutton_game_mode"><p><a data-toggle="modal" href="#select_game_type" class="btn btn-primary btn-large" onclick ="reselectLobby()">Filter by Game Type</a></p></div>
 
+  <!--FILTER GAME MODE MODAL BUTTON -->
+  <div style = "float:left"  id="record_button"><p><a data-toggle="modal" href="#show_records" class="btn btn-primary btn-large" onclick ="updateRecords(filtered_data)">Records</a></p></div>
+
 
   <!-- MODAL POPUP DIV HEROES -->
   <div id = "selector" class="modal hide fade in" style="display: none; ">
@@ -98,6 +101,22 @@
     </div>    
     <div class="modal-footer"  style = "width:600px">  
       <a href="#" onclick="filterLobby()" class="btn btn-success" data-dismiss="modal">Filter</a>  
+      <a href="#" class="btn" data-dismiss="modal">Close</a>  
+    </div>  
+  </div>
+  
+  
+    <!-- MODAL POPUP RECORDS -->
+  <div id = "show_records" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header">  
+      <h3>Select Heroes to Filter</h3>  
+    </div>  
+    <div class="modal-body">  
+      <table>
+      </table>
+    </div>    
+    <div class="modal-footer">  
+      <!--a href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</a-->  
       <a href="#" class="btn" data-dismiss="modal">Close</a>  
     </div>  
   </div>
