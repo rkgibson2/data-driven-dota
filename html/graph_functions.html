@@ -23,10 +23,15 @@
   <!--USER DROPDOWN -->
   <div id="selectuser"></div>
 
-  <!--FILTER MODAL BUTTON -->
-  <div id="filterbutton"><p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large" onclick ="reselectHeroes()" >Filter</a></p></div>
+  <!--FILTER HERO MODAL BUTTON -->
+  <div id="filterbutton"><p><a data-toggle="modal" href="#selector" class="btn btn-primary btn-large" onclick ="reselectHeroes()" >Filter by Heroes</a></p></div>
 
-  <!-- MODAL POPUP DIV -->
+
+  <!--FILTER GAME MODE MODAL BUTTON -->
+  <div id="filterbutton_game_mode"><p><a data-toggle="modal" href="#select_game_type" class="btn btn-primary btn-large" >Filter by Game Type</a></p></div>
+
+
+  <!-- MODAL POPUP DIV HEROES -->
   <div id = "selector" class="modal hide fade in" style="display: none; ">
     <div class="modal-header">  
       <h3>Select Heroes to Filter</h3>  
@@ -46,41 +51,55 @@
     </div>  
   </div>
 
-  <!-- GAME MODE SELECTOR TABLE -->
-  <table border="10" cellspacing="10" cellpadding="10" id ="game_mode_table" >
-    <tr>
-      <td id="AP" onclick="changeColor(this.id);">All Pick</td>
-      <td id="CM" onclick="changeColor(this.id);">Captains Mode</td>
-      <td id="CD" onclick="changeColor(this.id);">Captains Draft</td>
-    </tr>
+<!-- MODAL POPUP DIV GAME TYPE -->
+  <div id = "select_game_type" class="modal hide fade in" style="display: none; ">
+    <div class="modal-header"  style = "width:600px">  
+      <h3>Select Modes to Filter</h3>  
+    </div>  
+    <div class="modal-body" style = "width:600px;height:310px">  
+           <!-- GAME MODE SELECTOR TABLE -->
+        <div id = game_mode_content>
+        <table border="10" cellspacing="10" cellpadding="10" id ="game_mode_table" >
+        <tr>
+          <td id="AP" onclick="changeColor(this.id);">All Pick</td>
+          <td id="CM" onclick="changeColor(this.id);">Captains Mode</td>
+          <td id="CD" onclick="changeColor(this.id);">Captains Draft</td>
+        </tr>
 
-    <tr>
-      <td id="SD" onclick="changeColor(this.id);">Single Draft</td>
-      <td id="RD" onclick="changeColor(this.id);">Random Draft</td>
-      <td id="AR" onclick="changeColor(this.id);">All Random</td>
-    </tr>
+        <tr>
+          <td id="SD" onclick="changeColor(this.id);">Single Draft</td>
+          <td id="RD" onclick="changeColor(this.id);">Random Draft</td>
+          <td id="AR" onclick="changeColor(this.id);">All Random</td>
+        </tr>
 
-    <tr>
-      <td id="LP" onclick="changeColor(this.id);">Least Played</td>
-      <td id="LH" onclick="changeColor(this.id);">Limited Heroes</td>
-      <td id="AD" onclick="changeColor(this.id);">Ability Draft</td>
-    </tr>
-  </table>
+        <tr>
+          <td id="LP" onclick="changeColor(this.id);">Least Played</td>
+          <td id="LH" onclick="changeColor(this.id);">Limited Heroes</td>
+          <td id="AD" onclick="changeColor(this.id);">Ability Draft</td>
+        </tr>
+        </table>
 
-<table border="10" cellspacing="10" cellpadding="10" id ="lobby_table" >
-    <tr>
-        <td id="public" onclick="changeLobbyColor(this.id);">Public Matchmaking</td>
-        <td id="practice" onclick="changeLobbyColor(this.id);">Practice</td>
-        <td id="tournament" onclick="changeLobbyColor(this.id);">Tournament</td>
-        <td id="tutorial" onclick="changeLobbyColor(this.id);">Tutorial</td>
-     </tr>
-      <tr>
-        <td id="co_op_bot" onclick="changeLobbyColor(this.id);">Co-op with bots</td>
-        <td id="team_match" onclick="changeLobbyColor(this.id);">Team Match</td>
-	<td id="solo_queue" onclick="changeLobbyColor(this.id);">Solo Queue</td>
-	<td id="ranked" onclick="changeLobbyColor(this.id);">Ranked</td>
-    </tr>
-</table>
+        <table border="10" cellspacing="10" cellpadding="10" id ="lobby_table" >
+        <tr>
+            <td id="public" onclick="changeLobbyColor(this.id);">Public Matchmaking</td>
+            <td id="practice" onclick="changeLobbyColor(this.id);">Practice</td>
+            <td id="tournament" onclick="changeLobbyColor(this.id);">Tournament</td>
+            <td id="tutorial" onclick="changeLobbyColor(this.id);">Tutorial</td>
+         </tr>
+          <tr>
+            <td id="co_op_bot" onclick="changeLobbyColor(this.id);">Co-op with bots</td>
+            <td id="team_match" onclick="changeLobbyColor(this.id);">Team Match</td>
+        <td id="solo_queue" onclick="changeLobbyColor(this.id);">Solo Queue</td>
+        <td id="ranked" onclick="changeLobbyColor(this.id);">Ranked</td>
+        </tr>
+        </table>
+        </div>
+    </div>    
+    <div class="modal-footer"  style = "width:600px">  
+      <a href="#" onclick="tripleFilterUpdate()" class="btn btn-success" data-dismiss="modal">Filter</a>  
+      <a href="#" class="btn" data-dismiss="modal">Close</a>  
+    </div>  
+  </div>
 
   <!-- HELP QUESTION MARK -->
   <span class="question">?</span>

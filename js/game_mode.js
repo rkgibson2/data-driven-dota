@@ -6,7 +6,7 @@ function changeColor(gamemode){
     {
           document.getElementById(gamemode).style.background = select_color;
           selected_modes.push(gamemode);
-          tripleFilterUpdate();
+          //tripleFilterUpdate();
 
     }
     else
@@ -14,7 +14,7 @@ function changeColor(gamemode){
         var index = selected_modes.indexOf(gamemode);
         selected_modes.splice(index,1);
         document.getElementById(gamemode).style.background = "grey";
-        tripleFilterUpdate();
+        //tripleFilterUpdate();
     }
 }
 

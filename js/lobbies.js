@@ -6,7 +6,7 @@ function changeLobbyColor(gamemode){
     {
           document.getElementById(gamemode).style.background = select_lobby_color;
           selected_lobby_modes.push(gamemode);
-          tripleFilterUpdate();
+          //tripleFilterUpdate();
 
     }
     else
@@ -14,7 +14,7 @@ function changeLobbyColor(gamemode){
         var index = selected_lobby_modes.indexOf(gamemode);
         selected_lobby_modes.splice(index,1);
         document.getElementById(gamemode).style.background = "grey";
-        tripleFilterUpdate();
+        //tripleFilterUpdate();
     }
 }
 
