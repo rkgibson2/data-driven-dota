@@ -100,10 +100,13 @@ records =
 }
 
 });
+
+displayRecords();
 }
 
 function displayRecords(){
+for (key in records){
+    d3.select("#" + key).text(records[key].value).style("text-align","right");
 
-
-
+}
 }
