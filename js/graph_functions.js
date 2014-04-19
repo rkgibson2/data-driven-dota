@@ -7,7 +7,7 @@ var user_data;
 var filtered_data;
 
 //margins and bounding boxes for each graph visualization
-var bb_win_loss, bb_hero_pie, bb_item_percent, bb_hero_chord, bb_gpm, bb_xpm;
+var bb_win_loss, bb_hero_pie, bb_item_percent, bb_hero_chord, bb_gpm, bb_xpm, bb_kda;
 
 var margin = {
     top: 50,
@@ -18,7 +18,7 @@ var margin = {
 
 var width = 1060 - margin.left - margin.right;
 
-var height = 1500 - margin.bottom - margin.top;
+var height = 2000 - margin.bottom - margin.top;
 
 bb_win_loss = {
     x: 23,
@@ -69,6 +69,13 @@ bb_xpm = {
 	w: 400
 }
 
+bb_kda = {
+	x: 0,
+	y: 1500,
+	h: 300,
+	w: 900
+}
+
 
 //set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
@@ -107,6 +114,10 @@ var gpm_graph = svg.append("g")
 var xpm_graph = svg.append("g")
 	.attr("class", "xpm")
 	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
+
+var kda_graph = svg.append("g")
+	.attr("class", "kda")
+	.attr("transform", "translate(" + bb_kda.x + "," + bb_kda.y + ")");
 
 var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_percent_color;
 var hero_pie_radius, hero_pie_color, hero_pie_x, hero_pie_y, partition, hero_pie_arc, hero_pie_path;
@@ -276,6 +287,9 @@ function updateGraphs (filtered_data) {
     update_user_interact(filtered_data);
     
     update_timeline(filtered_data);
+
+    draw_kda(filtered_data);
+
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
@@ -2290,3 +2304,126 @@ function update_user_interact(data) {
 	});
 
 }
+
+function draw_kda(data) {
+
+	var kda_color = d3.scale.ordinal()
+				.domain(["kills", "deaths", "assists"])
+				.range(["red", "green", "black"]);
+
+	var kda_x = d3.time.scale()
+				.range([0, bb_kda.w]);
+
+	var kda_y = d3.scale.linear()
+				.range([bb_kda.h-10, 0]);
+
+	var kda_xAxis = d3.svg.axis()
+				.scale(kda_x)
+				.orient("bottom");
+
+	var kda_yAxis = d3.svg.axis()
+				.scale(kda_y);
+
+	var yAxisr = d3.svg.axis()
+				.scale(kda_y);
+
+	var stack = d3.layout.stack()
+				.offset("silhouette")
+				.values(function(d) {
+					return d.values
+				})
+				.x(function(d) {return d.date;})
+				.y(function(d) {
+					for (var i = 0; i < d.kda.length; i ++) {
+						return d.kda[i].value;
+					}
+				})
+
+	var nest = d3.nest()
+				.key(function(d) {
+					for (var i = 0; i < d.kda.length; i++) {
+						return d.kda[i].key;
+					}
+				})
+
+	var kda_area = d3.svg.area()
+				.interpolate("cardinal")
+				.x(function(d) {return kda_x(d.date);})
+				.y0(function(d) {return kda_y(d.y0)})
+				.y1(function(d) {return kda_y(d.y0 + d.y)});
+
+	data.matches.forEach(function(d) {
+		d.date = d.start_time;
+		d.kda = [{},{},{}];
+	});
+
+	data.matches.forEach(function(d) {
+		for (var i = 0; i < 3; i++) {
+			if (i == 0) {
+				d.kda[0]["key"] = "kills";
+				d.kda[0]["value"] = d.player_info.kills;
+			}
+			if (i == 1) {
+				d.kda[1]["key"] = "deaths";
+				d.kda[1]["value"] = d.player_info.deaths;
+			}
+			if (i == 2) {
+				d.kda[2]["key"] = "assists";
+				d.kda[2]["value"] = d.player_info.assists;
+			}
+		}
+	})
+
+	console.log(nest.entries(data.matches))
+
+	var layers = stack(nest.entries(data.matches));
+
+	kda_x.domain(d3.extent(data.matches, function(d) {return d.start_time}))
+	kda_y.domain([0, d3.max(data.matches, function(d) {
+		for (var i = 0; i < d.kda.length; i++) {
+			return d.kda[i].value;
+		}
+	})])
+
+	console.log(layers)
+
+	kda_graph.selectAll(".layer")
+		.data(layers)
+		.enter().append("path")
+		.attr("class", "layer")
+		.attr("d", function(d) {
+			return kda_area(d.values)
+		})
+		.style("fill", function(d,i) {
+			return kda_color(d.key);
+		})
+
+	kda_graph.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + bb_kda.h + ")")
+		.call(kda_xAxis);
+
+	kda_graph.append("g")
+		.attr("class", "y axis")
+		.attr("transform", "translate(" + 0 + ", 0)")
+		.call(kda_yAxis.orient("left"))
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
