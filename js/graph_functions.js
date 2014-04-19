@@ -2327,31 +2327,6 @@ function draw_kda(data) {
 	var yAxisr = d3.svg.axis()
 				.scale(kda_y);
 
-	var stack = d3.layout.stack()
-				.offset("silhouette")
-				.values(function(d) {
-					return d.values
-				})
-				.x(function(d) {return d.date;})
-				.y(function(d) {
-					for (var i = 0; i < d.kda.length; i ++) {
-						return d.kda[i].value;
-					}
-				})
-
-	var nest = d3.nest()
-				.key(function(d) {
-					for (var i = 0; i < d.kda.length; i++) {
-						return d.kda[i].key;
-					}
-				})
-
-	var kda_area = d3.svg.area()
-				.interpolate("cardinal")
-				.x(function(d) {return kda_x(d.date);})
-				.y0(function(d) {return kda_y(d.y0)})
-				.y1(function(d) {return kda_y(d.y0 + d.y)});
-
 	data.matches.forEach(function(d) {
 		d.date = d.start_time;
 		d.kda = [{},{},{}];
@@ -2374,7 +2349,35 @@ function draw_kda(data) {
 		}
 	})
 
-	console.log(nest.entries(data.matches))
+	var stack = d3.layout.stack()
+				.offset("silhouette")
+				.values(function(d) {
+					return d.values
+				})
+				.x(function(d) {return d.date;})
+				.y(function(d) {
+					return d.value
+				})
+
+	var nest = d3.nest()
+				.key(function(d) {
+					return d.kda[0].key;
+				})
+				.key(function(d) {
+					return d.kda[1].key;
+				})
+				.key(function(d) {
+					return d.kda[2].key;
+				});
+
+	var kda_area = d3.svg.area()
+				.interpolate("cardinal")
+				.x(function(d) {return kda_x(d.date);})
+				.y0(function(d) {return kda_y(d.y0)})
+				.y1(function(d) {return kda_y(d.y0 + d.y)});
+
+	//console.log(data.matches)
+	//console.log(nest.entries(data.matches))
 
 	var layers = stack(nest.entries(data.matches));
 
@@ -2385,14 +2388,21 @@ function draw_kda(data) {
 		}
 	})])
 
-	console.log(layers)
-
 	kda_graph.selectAll(".layer")
 		.data(layers)
 		.enter().append("path")
 		.attr("class", "layer")
 		.attr("d", function(d) {
-			return kda_area(d.values)
+			var here = d.values[0].values[0].values;
+
+			here.forEach(function(e) {
+				if (e.kda[0].key == "kills") {
+					return e.kda[0].value;
+				}
+				if (e.kda[1].key == "")
+			})
+
+			return kda_area(d.values);
 		})
 		.style("fill", function(d,i) {
 			return kda_color(d.key);
