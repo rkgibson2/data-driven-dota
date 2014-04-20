@@ -384,10 +384,18 @@ function update_win_loss(data) {
 		duration = 1000;
 	}
 
-	d3.select(".win")
-		.transition()
-		.duration(duration)
-		.attr("width", (win_count/total_matches)*bb_win_loss.w)
+	if (isNaN((win_count/total_matches)*bb_win_loss.w) == false) {
+		d3.select(".win")
+			.transition()
+			.duration(duration)
+			.attr("width", (win_count/total_matches)*bb_win_loss.w);
+	}
+	else {
+		d3.select(".win")
+			.transition()
+			.duration(duration)
+			.attr("width", 0);
+	}
 		
 	d3.select(".win.text")
 		.text(((win_count/total_matches) * 100).toFixed(1) + "%");
@@ -1600,15 +1608,17 @@ function draw_gpm() {
       .style("text-anchor", "end")
       .text("GPM of hero in game");
 
-   	gpm_graph.append('line')
-   		.attr("class", "forty-five")
-	    .attr('x1', gpm_x(0))
-	    .attr('x2', gpm_x(1))
-	    .attr('y1', gpm_y(0))
-	    .attr('y2', gpm_y(1))
-	    .style("stroke", "black")
-	    .style("stroke-width", "3px")
-	    .attr("clip-path", "url(#gpm_clip)");
+    if (isNaN(gpm_x(1)) == false) {
+		gpm_graph.append('line')
+	   		.attr("class", "forty-five")
+		    .attr('x1', gpm_x(0))
+		    .attr('x2', gpm_x(1))
+		    .attr('y1', gpm_y(0))
+		    .attr('y2', gpm_y(1))
+		    .style("stroke", "black")
+		    .style("stroke-width", "3px")
+		    .attr("clip-path", "url(#gpm_clip)");
+    }
 
 	d3.selectAll(".circle")
 		.attr("clip-path", "url(#gpm_clip)");
@@ -1746,9 +1756,13 @@ function update_gpm(data) {
    		.duration(1000)
    		.call(gpm_yAxis);
 
-   	gpm_graph.select(".forty-five")
-   		.attr("x2", gpm_x(max_value))
-   		.attr("y2", gpm_y(max_value));
+    if (isNaN(gpm_x(max_value)) == false) {
+	   	gpm_graph.select(".forty-five")
+	   		.attr("x2", gpm_x(max_value))
+	   		.attr("y2", gpm_y(max_value));
+    }
+
+
 }
 
 var gpm_clear_button;
@@ -2035,9 +2049,12 @@ function update_xpm(data) {
    		.duration(1000)
    		.call(xpm_yAxis);
 
-   	xpm_graph.select(".forty-five")
-   		.attr("x2", xpm_x(max_value))
-   		.attr("y2", xpm_y(max_value));
+    if (isNaN(xpm_x(max_value)) == false) {
+	   	xpm_graph.select(".forty-five")
+	   		.attr("x2", xpm_x(max_value))
+	   		.attr("y2", xpm_y(max_value));
+    }
+
 }
 
 var xpm_clear_button;
@@ -2243,6 +2260,8 @@ function update_user_interact(data) {
 	}
 
 	if (user_flare.children.length == 0) {
+		user_interact_graph.selectAll(".node").remove();
+
 		user_interact_graph.append("text")
 			.attr("class", "error")
 			.attr("y", 100)
