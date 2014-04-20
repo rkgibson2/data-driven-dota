@@ -8,9 +8,11 @@
   <link rel="stylesheet" type="text/css" href="/css/selectors.css"></link>
   <link rel="stylesheet" type="text/css" href="/css/timeline.css"></link>
   <link rel="stylesheet" type="text/css" href="/css/end_screen.css"></link>
-  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet"></link>
+  <!--<link href="/bootstrap/css/bootstrap.css" rel="stylesheet"></link>-->
+  <link href="/bootstrap2/css/bootstrap.min.css" rel="stylesheet"></link>
   <script src="http://code.jquery.com/jquery.js"></script>
-  <script src="/bootstrap/js/bootstrap.js"></script>
+  <!--<script src="/bootstrap/js/bootstrap.js"></script>-->
+  <script src="/bootstrap2/js/bootstrap.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <script src="/js/d2.js"></script>
@@ -25,7 +27,7 @@
     <span id="selectuser"></span>
 
     <!--FILTER HERO MODAL BUTTON -->
-    <span id="filterbutton"><button type="button" data-toggle="modal" href="#selector" class="btn btn-default" onclick="reselectHeroes()">Filter by Heroes</button></span>
+    <span id="filterbutton"><button class="btn btn-default" data-toggle="modal" data-target="#selector" onclick="reselectHeroes()">Filter by Heroes</button></span>
 
 
     <!--FILTER GAME MODE MODAL BUTTON -->
@@ -46,27 +48,35 @@
 <div id="page-content">
 
   <!-- MODAL POPUP DIV HEROES -->
-  <div id = "selector" class="modal hide fade in" style="display: none; position:fixed;">
-    <div class="modal-header">  
-      <h3>Select Heroes to Filter</h3>  
-    </div>  
-    <div class="modal-body">  
-       <table>
-        <tr>
-          <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text><div id="strimages" class = "container"></div></td>
-          <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text><div id="agiimages" class = "container"></div></td>
-          <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text><div id="intimages" class = "container"></div></td>
-        </tr>
-      </table>
-    </div>    
-    <div class="modal-footer">  
-      <button href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</button>  
-      <button href="#" class="btn" data-dismiss="modal">Close</button>  
-    </div>  
+  <div id="selector" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="hero_filter_label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">  
+          <h4 id="hero_filter_label">Select Heroes to Filter</h4>  
+        </div>  
+        <div class="modal-body">  
+           <table>
+            <tr>
+              <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text></td>
+              <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text></td>
+              <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text></td>
+            </tr>
+            <tr class="images">
+              <td><div id="strimages"></div></td>
+              <td><div id="agiimages"></div></td>
+              <td><div id="intimages"></div></td>
+          </table>
+        </div>    
+        <div class="modal-footer">  
+          <button href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</button>  
+          <button href="#" class="btn" data-dismiss="modal">Close</button>  
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL POPUP DIV GAME TYPE -->
-  <div id = "select_game_type" class="modal hide fade in" style="display: none; position:fixed;">
+  <div id = "select_game_type" class="modal hide fade in" style="display: none;">
     <div class="modal-header"  style = "width:600px">  
       <h3>Select Modes to Filter</h3>  
     </div>  
@@ -116,7 +126,7 @@
   </div>
 
   <!-- MODAL POPUP RECORDS -->
-  <div id = "show_records" class="modal hide fade in" style="display: none; position:fixed;">
+  <div id = "show_records" class="modal hide fade in" style="display: none;">
     <div class="modal-header" style = "width:270px">  
       <h3>Records</h3>  
     </div>  

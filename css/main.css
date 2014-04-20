@@ -1,5 +1,3 @@
-
-
 #page-header {
   position: fixed;
   width: 100%;
@@ -13,6 +11,11 @@
 
 #page-content {
   margin-top: 175px;
+}
+
+#page-content div {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #timeline {
