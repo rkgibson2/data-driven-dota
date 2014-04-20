@@ -18,7 +18,7 @@ var margin = {
 
 var width = 1060 - margin.left - margin.right;
 
-var height = 2000 - margin.bottom - margin.top;
+var height = 1500 - margin.bottom - margin.top;
 
 bb_win_loss = {
     x: 23,
@@ -115,9 +115,9 @@ var xpm_graph = svg.append("g")
 	.attr("class", "xpm")
 	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
 
-var kda_graph = svg.append("g")
-	.attr("class", "kda")
-	.attr("transform", "translate(" + bb_kda.x + "," + bb_kda.y + ")");
+// var kda_graph = svg.append("g")
+// 	.attr("class", "kda")
+// 	.attr("transform", "translate(" + bb_kda.x + "," + bb_kda.y + ")");
 
 var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_percent_color;
 var hero_pie_radius, hero_pie_color, hero_pie_x, hero_pie_y, partition, hero_pie_arc, hero_pie_path;
@@ -313,6 +313,7 @@ $(document).ready(function ()
 			'<p><strong>Items Purchased as Percentage of Games Played:</strong> Percentage of games in which you ended the game with a given item. Bars are colored by win rate with that item- gray if the win rate is around 50%, red if win rate is low, and green if win rate is high. Sorting can be conducted by percentage, alphabetically by item name, and item cost (dropped items, such as Aegis and Cheese, sort as infinite cost). <br></p>' +
 			'<p><strong>GPM Statistics:</strong> Scatterplot of GPM of hero for a given game against average GPM while playing that hero. Games falling above the line indicate that GPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
 			'<p><strong>XPM Statistics:</strong> Scatterplot of XPM of hero for a given game against average XPM while playing that hero. Games falling above the line indicate that XPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
+			"<p><strong>Users You've Played with More than Once:</strong> Bubble graph, where bubbles are sized by number of games played together. Users you've played with only once are not shown. Users can be colored in two ways: by number of games played with you, or by your winrate playing with them. Clicking on the user bubble takes you to their Steam homepage. <br></p>" +		
 			'</div>');
 	}, function ()
 	{
@@ -383,10 +384,18 @@ function update_win_loss(data) {
 		duration = 1000;
 	}
 
-	d3.select(".win")
-		.transition()
-		.duration(duration)
-		.attr("width", (win_count/total_matches)*bb_win_loss.w)
+	if (isNaN((win_count/total_matches)*bb_win_loss.w) == false) {
+		d3.select(".win")
+			.transition()
+			.duration(duration)
+			.attr("width", (win_count/total_matches)*bb_win_loss.w);
+	}
+	else {
+		d3.select(".win")
+			.transition()
+			.duration(duration)
+			.attr("width", 0);
+	}
 		
 	d3.select(".win.text")
 		.text(((win_count/total_matches) * 100).toFixed(1) + "%");
@@ -656,8 +665,14 @@ function hero_pie(flare) {
 
 	hero_pie_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", -bb_hero_pie.h/2 - 10)
+		.attr("y", -bb_hero_pie.h/2 - 30)
 		.text("Heroes Played");	  
+
+	hero_pie_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", -bb_hero_pie.h/2 - 10)
+		.style("font-size", "12px")
+		.text("Click center to zoom out. Click arcs to zoom in.");	  
 
 }
 
@@ -1481,7 +1496,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	hero_chord_graph
 			.append("text")
-			.attr("y", -260)
+			.attr("y", -270)
 			.attr("class", "text")
 			.attr("text-anchor", "middle")
 			.text("Heroes Played Together Most Often");
@@ -1491,9 +1506,18 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 			.attr("y", -245)
 			.attr("class", "text")
 			.attr("text-anchor", "middle")
-			.text("in your dataset")
+			.text("Hover over circle arc to highlight a hero.")
 			.style("fill", "black")
 			.style("font-size", "12px");
+
+	hero_chord_graph
+		.append("text")
+		.attr("y", -230)
+		.attr("class", "text")
+		.attr("text-anchor", "middle")
+		.text("Hover over a chord to see the number of games between two heroes.")
+		.style("fill", "black")
+		.style("font-size", "12px");
 
 	// Returns an event handler for fading a given chord group.
 	function fade(opacity) {
@@ -1584,24 +1608,40 @@ function draw_gpm() {
       .style("text-anchor", "end")
       .text("GPM of hero in game");
 
-   	gpm_graph.append('line')
-   		.attr("class", "forty-five")
-	    .attr('x1', gpm_x(0))
-	    .attr('x2', gpm_x(1))
-	    .attr('y1', gpm_y(0))
-	    .attr('y2', gpm_y(1))
-	    .style("stroke", "black")
-	    .style("stroke-width", "3px")
-	    .attr("clip-path", "url(#gpm_clip)");
+    if (isNaN(gpm_x(1)) == false) {
+		gpm_graph.append('line')
+	   		.attr("class", "forty-five")
+		    .attr('x1', gpm_x(0))
+		    .attr('x2', gpm_x(1))
+		    .attr('y1', gpm_y(0))
+		    .attr('y2', gpm_y(1))
+		    .style("stroke", "black")
+		    .style("stroke-width", "3px")
+		    .attr("clip-path", "url(#gpm_clip)");
+    }
 
 	d3.selectAll(".circle")
 		.attr("clip-path", "url(#gpm_clip)");
 
 	gpm_graph.append("text")
-		.attr("y", -20)
+		.attr("y", -40)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_gpm.w/2)
 		.text("GPM Statistics")
+
+	gpm_graph.append("text")
+		.attr("y", -25)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_gpm.w/2)
+		.style("font-size", "12px")
+		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+
+	gpm_graph.append("text")
+		.attr("y", -10)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_gpm.w/2)
+		.style("font-size", "12px")
+		.text("Click on a game to bring up the corresponding endgame screen.")
 
 }
 
@@ -1723,9 +1763,13 @@ function update_gpm(data) {
    		.duration(1000)
    		.call(gpm_yAxis);
 
-   	gpm_graph.select(".forty-five")
-   		.attr("x2", gpm_x(max_value))
-   		.attr("y2", gpm_y(max_value));
+    if (isNaN(gpm_x(max_value)) == false) {
+	   	gpm_graph.select(".forty-five")
+	   		.attr("x2", gpm_x(max_value))
+	   		.attr("y2", gpm_y(max_value));
+    }
+
+
 }
 
 var gpm_clear_button;
@@ -1881,11 +1925,25 @@ function draw_xpm() {
 	xpm_graph.append("g")
    		.attr("class", "xpm_brush");
 
-    xpm_graph.append("text")
-		.attr("y", -15)
+	xpm_graph.append("text")
+		.attr("y", -40)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_xpm.w/2)
 		.text("XPM Statistics")
+
+	xpm_graph.append("text")
+		.attr("y", -25)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_xpm.w/2)
+		.style("font-size", "12px")
+		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+
+	xpm_graph.append("text")
+		.attr("y", -10)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_xpm.w/2)
+		.style("font-size", "12px")
+		.text("Click on a game to bring up the corresponding endgame screen.")
 
 }
 
@@ -2005,9 +2063,12 @@ function update_xpm(data) {
    		.duration(1000)
    		.call(xpm_yAxis);
 
-   	xpm_graph.select(".forty-five")
-   		.attr("x2", xpm_x(max_value))
-   		.attr("y2", xpm_y(max_value));
+    if (isNaN(xpm_x(max_value)) == false) {
+	   	xpm_graph.select(".forty-five")
+	   		.attr("x2", xpm_x(max_value))
+	   		.attr("y2", xpm_y(max_value));
+    }
+
 }
 
 var xpm_clear_button;
@@ -2124,9 +2185,16 @@ function draw_user_interact(){
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", -55)
+		.attr("y", -75)
 		.attr("x", 180)
 		.text("Users You've Played with more than Once")
+
+	user_interact_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", -60)
+		.attr("x", 180)
+		.style("font-size", "12px")
+		.text("Click a user to see their Steam profile.")
 
 	if (user_flare.children.length == 0) {
 		user_interact_graph.append("text")
@@ -2206,6 +2274,8 @@ function update_user_interact(data) {
 	}
 
 	if (user_flare.children.length == 0) {
+		user_interact_graph.selectAll(".node").remove();
+
 		user_interact_graph.append("text")
 			.attr("class", "error")
 			.attr("y", 100)
@@ -2399,7 +2469,9 @@ function draw_kda(data) {
 				if (e.kda[0].key == "kills") {
 					return e.kda[0].value;
 				}
-				if (e.kda[1].key == "")
+				if (e.kda[1].key == ""){
+					
+				}
 			})
 
 			return kda_area(d.values);
