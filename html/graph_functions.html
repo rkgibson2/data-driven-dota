@@ -47,157 +47,6 @@
 
 <div id="page-content">
 
-  <!-- MODAL POPUP DIV HEROES -->
-  <div id="selector" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="hero_filter_label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">  
-          <h4 id="hero_filter_label">Select Heroes to Filter</h4>  
-        </div>  
-        <div class="modal-body">  
-           <table>
-            <tr>
-              <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text></td>
-              <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text></td>
-              <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text></td>
-            </tr>
-            <tr class="images">
-              <td><div id="strimages"></div></td>
-              <td><div id="agiimages"></div></td>
-              <td><div id="intimages"></div></td>
-          </table>
-        </div>    
-        <div class="modal-footer">  
-          <button href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</button>  
-          <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL POPUP DIV GAME TYPE -->
-  <div id = "select_game_type" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mode_filter_label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">  
-          <h4 id="mode_filter_label">Select Modes to Filter</h4>  
-        </div>  
-        <div class="modal-body">  
-            <!-- GAME MODE SELECTOR TABLE -->
-            <div id ="game_mode_content">
-            <table id ="game_mode_table">
-            <tr>
-              <td id="AP" onclick="changeColor(this.id);">All Pick</td>
-              <td id="CM" onclick="changeColor(this.id);">Captains Mode</td>
-              <td id="CD" onclick="changeColor(this.id);">Captains Draft</td>
-            </tr>
-
-            <tr>
-              <td id="SD" onclick="changeColor(this.id);">Single Draft</td>
-              <td id="RD" onclick="changeColor(this.id);">Random Draft</td>
-              <td id="AR" onclick="changeColor(this.id);">All Random</td>
-            </tr>
-
-            <tr>
-              <td id="LP" onclick="changeColor(this.id);">Least Played</td>
-              <td id="LH" onclick="changeColor(this.id);">Limited Heroes</td>
-              <td id="AD" onclick="changeColor(this.id);">Ability Draft</td>
-            </tr>
-            </table>
-
-            <table id ="lobby_table">
-            <tr>
-                <td id="public" onclick="changeLobbyColor(this.id);">Public Matchmaking</td>
-                <td id="practice" onclick="changeLobbyColor(this.id);">Practice</td>
-                <td id="tournament" onclick="changeLobbyColor(this.id);">Tournament</td>
-                <td id="tutorial" onclick="changeLobbyColor(this.id);">Tutorial</td>
-             </tr>
-              <tr>
-                <td id="co_op_bot" onclick="changeLobbyColor(this.id);">Co-op with bots</td>
-                <td id="team_match" onclick="changeLobbyColor(this.id);">Team Match</td>
-            <td id="solo_queue" onclick="changeLobbyColor(this.id);">Solo Queue</td>
-            <td id="ranked" onclick="changeLobbyColor(this.id);">Ranked</td>
-            </tr>
-            </table>
-            </div>
-        </div>    
-        <div class="modal-footer">  
-          <button href="#" onclick="filterLobby()" class="btn btn-success" data-dismiss="modal">Filter</button>  
-          <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL POPUP RECORDS -->
-  <div id="show_records" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="record_label" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 id="record_label">Records</h4>  
-        </div>  
-        <div class="modal-body"> 
-        <div id="record_content"> 
-        <table id="record_table" border="10" cellspacing="10" cellpadding="10">
-          <tr>
-            <th>Record</th>
-            <th>Value</th>
-          </tr>
-          <tr>
-            <td>Longest Match</td>
-            <td id="longest_match"></td>
-          </tr>
-          <tr>
-            <td>Most Kills</td>
-            <td id="most_kills"></td>
-          </tr>
-          <tr>
-            <td>Most Assists</td>
-            <td id="most_assists"></td>
-          </tr>
-          <tr>
-            <td>Most Last Hits</td>
-            <td id="most_last_hits"></td>
-          </tr>
-          <tr>
-            <td>Most Denies</td>
-            <td id="most_denies"></td>
-          </tr>
-          <tr>
-            <td>Most Gold Per Minute</td>
-            <td id="most_gold_per_min"></td>
-          </tr>
-          <tr>
-            <td>Most XP Per Minute</td>
-            <td id="most_xp_per_min"></td>
-          </tr>
-          <tr>
-            <td>Most Hero Damage</td>
-            <td id="most_hero_damage"></td>
-          </tr>
-          <tr>
-            <td>Most Hero Healing</td>
-            <td id="most_hero_healing"></td>
-          </tr>
-          <tr>
-            <td>Most Tower Damage</td>
-            <td id="most_tower_damage"></td>
-          </tr>
-          <tr>
-            <td>Best KDA Ratio</td>
-            <td id="best_kda_ratio"></td>
-          </tr>
-        </table>
-        </div>
-        </div>    
-        <div class="modal-footer">  
-          <!--a href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</a-->  
-          <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- END SCREEN -->
   <div id="end_screen" style="display:none">
 
@@ -335,6 +184,157 @@
     <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
     <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
     <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
+  </div>
+</div>
+
+<!-- MODAL POPUP DIV HEROES -->
+<div id="selector" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="hero_filter_label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">  
+        <h4 id="hero_filter_label">Select Heroes to Filter</h4>  
+      </div>  
+      <div class="modal-body">  
+         <table>
+          <tr>
+            <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text></td>
+            <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text></td>
+            <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text></td>
+          </tr>
+          <tr class="images">
+            <td><div id="strimages"></div></td>
+            <td><div id="agiimages"></div></td>
+            <td><div id="intimages"></div></td>
+        </table>
+      </div>    
+      <div class="modal-footer">  
+        <button href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</button>  
+        <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL POPUP DIV GAME TYPE -->
+<div id = "select_game_type" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mode_filter_label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">  
+        <h4 id="mode_filter_label">Select Modes to Filter</h4>  
+      </div>  
+      <div class="modal-body">  
+          <!-- GAME MODE SELECTOR TABLE -->
+          <div id ="game_mode_content">
+          <table id ="game_mode_table">
+          <tr>
+            <td id="AP" onclick="changeColor(this.id);">All Pick</td>
+            <td id="CM" onclick="changeColor(this.id);">Captains Mode</td>
+            <td id="CD" onclick="changeColor(this.id);">Captains Draft</td>
+          </tr>
+
+          <tr>
+            <td id="SD" onclick="changeColor(this.id);">Single Draft</td>
+            <td id="RD" onclick="changeColor(this.id);">Random Draft</td>
+            <td id="AR" onclick="changeColor(this.id);">All Random</td>
+          </tr>
+
+          <tr>
+            <td id="LP" onclick="changeColor(this.id);">Least Played</td>
+            <td id="LH" onclick="changeColor(this.id);">Limited Heroes</td>
+            <td id="AD" onclick="changeColor(this.id);">Ability Draft</td>
+          </tr>
+          </table>
+
+          <table id ="lobby_table">
+          <tr>
+              <td id="public" onclick="changeLobbyColor(this.id);">Public Matchmaking</td>
+              <td id="practice" onclick="changeLobbyColor(this.id);">Practice</td>
+              <td id="tournament" onclick="changeLobbyColor(this.id);">Tournament</td>
+              <td id="tutorial" onclick="changeLobbyColor(this.id);">Tutorial</td>
+           </tr>
+            <tr>
+              <td id="co_op_bot" onclick="changeLobbyColor(this.id);">Co-op with bots</td>
+              <td id="team_match" onclick="changeLobbyColor(this.id);">Team Match</td>
+          <td id="solo_queue" onclick="changeLobbyColor(this.id);">Solo Queue</td>
+          <td id="ranked" onclick="changeLobbyColor(this.id);">Ranked</td>
+          </tr>
+          </table>
+          </div>
+      </div>    
+      <div class="modal-footer">  
+        <button href="#" onclick="filterLobby()" class="btn btn-success" data-dismiss="modal">Filter</button>  
+        <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL POPUP RECORDS -->
+<div id="show_records" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="record_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="record_label">Records</h4>  
+      </div>  
+      <div class="modal-body"> 
+      <div id="record_content"> 
+      <table id="record_table" border="10" cellspacing="10" cellpadding="10">
+        <tr>
+          <th>Record</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>Longest Match</td>
+          <td id="longest_match"></td>
+        </tr>
+        <tr>
+          <td>Most Kills</td>
+          <td id="most_kills"></td>
+        </tr>
+        <tr>
+          <td>Most Assists</td>
+          <td id="most_assists"></td>
+        </tr>
+        <tr>
+          <td>Most Last Hits</td>
+          <td id="most_last_hits"></td>
+        </tr>
+        <tr>
+          <td>Most Denies</td>
+          <td id="most_denies"></td>
+        </tr>
+        <tr>
+          <td>Most Gold Per Minute</td>
+          <td id="most_gold_per_min"></td>
+        </tr>
+        <tr>
+          <td>Most XP Per Minute</td>
+          <td id="most_xp_per_min"></td>
+        </tr>
+        <tr>
+          <td>Most Hero Damage</td>
+          <td id="most_hero_damage"></td>
+        </tr>
+        <tr>
+          <td>Most Hero Healing</td>
+          <td id="most_hero_healing"></td>
+        </tr>
+        <tr>
+          <td>Most Tower Damage</td>
+          <td id="most_tower_damage"></td>
+        </tr>
+        <tr>
+          <td>Best KDA Ratio</td>
+          <td id="best_kda_ratio"></td>
+        </tr>
+      </table>
+      </div>
+      </div>    
+      <div class="modal-footer">  
+        <!--a href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</a-->  
+        <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
+      </div>
+    </div>
   </div>
 </div>
 

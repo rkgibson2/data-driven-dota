@@ -18,9 +18,17 @@
   margin-left: auto;
 }
 
+#filters {
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #timeline {
+  margin-right: auto;
+  margin-left: auto;
   height: 120px;
-  width: 1260px;
+  width: 980px;
 }
 
 .end_screen_selected {
@@ -35,6 +43,8 @@
 
 #stat_graphs {
   position: relative;
+  width: 1060px;
+  height: 1500px;
 }
 
 #stat_graphs svg {
