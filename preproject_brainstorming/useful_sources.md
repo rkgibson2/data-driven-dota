@@ -9,6 +9,13 @@ Useful Sources
 1. [ID Data (the data folder)](https://github.com/kronusme/dota2-api)
 1. ["API" for hero, item, ability data](http://wiki.teamfortress.com/wiki/User:RJackson/Dota2API)
 
+Website Sources
+---------------
+
+1. [Guide to using Github Pages and pages generator](http://readwrite.com/2013/11/27/github-pages-explained#awesm=~oBVMTfkA8ZKwxk)
+1. [Guide to getting started with Github Pages and Jekyll](http://24ways.org/2013/get-started-with-github-pages/)
+1. [Guide to using Jekyll, with link to setup repo](http://joshualande.com/jekyll-github-pages-poole/)
+
 API Keys
 --------
 
