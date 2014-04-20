@@ -288,7 +288,7 @@ function updateGraphs (filtered_data) {
     
     update_timeline(filtered_data);
 
-    draw_kda(filtered_data);
+    // draw_kda(filtered_data);
 
 
     //update chord diagram
@@ -2304,7 +2304,7 @@ function update_user_interact(data) {
 	});
 
 }
-
+/*
 function draw_kda(data) {
 
 	var kda_color = d3.scale.ordinal()
@@ -2421,21 +2421,4 @@ function draw_kda(data) {
 		.call(kda_yAxis.orient("left"))
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
