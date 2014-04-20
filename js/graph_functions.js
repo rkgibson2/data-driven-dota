@@ -18,7 +18,7 @@ var margin = {
 
 var width = 1060 - margin.left - margin.right;
 
-var height = 2000 - margin.bottom - margin.top;
+var height = 1500 - margin.bottom - margin.top;
 
 bb_win_loss = {
     x: 23,
@@ -115,9 +115,9 @@ var xpm_graph = svg.append("g")
 	.attr("class", "xpm")
 	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
 
-var kda_graph = svg.append("g")
-	.attr("class", "kda")
-	.attr("transform", "translate(" + bb_kda.x + "," + bb_kda.y + ")");
+// var kda_graph = svg.append("g")
+// 	.attr("class", "kda")
+// 	.attr("transform", "translate(" + bb_kda.x + "," + bb_kda.y + ")");
 
 var item_percent_x, item_percent_y, item_percent_xAxis, item_percent_yAxis, item_percent_color;
 var hero_pie_radius, hero_pie_color, hero_pie_x, hero_pie_y, partition, hero_pie_arc, hero_pie_path;
@@ -313,6 +313,7 @@ $(document).ready(function ()
 			'<p><strong>Items Purchased as Percentage of Games Played:</strong> Percentage of games in which you ended the game with a given item. Bars are colored by win rate with that item- gray if the win rate is around 50%, red if win rate is low, and green if win rate is high. Sorting can be conducted by percentage, alphabetically by item name, and item cost (dropped items, such as Aegis and Cheese, sort as infinite cost). <br></p>' +
 			'<p><strong>GPM Statistics:</strong> Scatterplot of GPM of hero for a given game against average GPM while playing that hero. Games falling above the line indicate that GPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
 			'<p><strong>XPM Statistics:</strong> Scatterplot of XPM of hero for a given game against average XPM while playing that hero. Games falling above the line indicate that XPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
+			"<p><strong>Users You've Played with More than Once:</strong> Bubble graph, where bubbles are sized by number of games played together. Users you've played with only once are not shown. Users can be colored in two ways: by number of games played with you, or by your winrate playing with them. Clicking on the user bubble takes you to their Steam homepage. <br></p>" +		
 			'</div>');
 	}, function ()
 	{

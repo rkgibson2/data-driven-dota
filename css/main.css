@@ -238,10 +238,10 @@ text-align: center;
   span.question {
     cursor: pointer;
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     background-color: #223373;
-    line-height: 16px;
+    line-height: 18px;
     color: White;
     font-size: 13px;
     border-radius: 8px;
@@ -253,13 +253,14 @@ text-align: center;
   }
 
   div.tooltip {
-    background-color: #a6b2e1;
+    background-color: White;
     color: White;
+    border: 2px solid black;
     position: absolute;
     left: 25px;
-    top: -25px;
+    top: 10px;
     z-index: 1000000;
-    width: 800px;
+    width: 600px;
     border-radius: 5px;
     text-align: left;
   }
@@ -284,8 +285,8 @@ text-align: center;
     color: black;
   }
 
-  div.tooltip strong{
-    color: #4662e3;
+  div.tooltip strong {
+    color: black;
   }
 
 .chordtip {
