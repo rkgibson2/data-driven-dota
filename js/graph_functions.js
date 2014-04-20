@@ -2399,7 +2399,9 @@ function draw_kda(data) {
 				if (e.kda[0].key == "kills") {
 					return e.kda[0].value;
 				}
-				if (e.kda[1].key == "")
+				if (e.kda[1].key == ""){
+					
+				}
 			})
 
 			return kda_area(d.values);
