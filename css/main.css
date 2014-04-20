@@ -5,7 +5,7 @@
   left: 0px;
   padding: 5px;
   background-color: #9f9f9f;
-  z-index: 1000;
+  z-index: 100;
   border-bottom: 2px solid black;
 }
 
@@ -48,7 +48,6 @@
 }
 
 #stat_graphs svg {
-  z-index:-1;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -149,6 +148,7 @@ path {
 }
 
 #value_sort_label {
+  z-index: 1;
   position: absolute;
   top: -2px;
   /*right: 651px;*/
@@ -156,6 +156,7 @@ path {
 }
 
 #item_sort_label{
+  z-index: 1;
   position: absolute;
   top: 15px;
   /*right: 687px;*/
@@ -163,6 +164,7 @@ path {
 }
 
 #cost_sort_label{
+  z-index: 1;
   position: absolute;
   top: 32px;
   left: 416px;
@@ -170,6 +172,7 @@ path {
 }
 
 #item_filter{
+  z-index: 1;
   position: absolute;
   top: 25px;
   left: 900px;
@@ -177,6 +180,7 @@ path {
 }
 
 #hero_filter{
+  z-index: 1;
   position:absolute;
   top: 575px;
   left: 170px;
@@ -184,6 +188,7 @@ path {
 }
 
 #toggle_color_pretty{
+  z-index: 1;
   position: absolute;
   top: 1050px;
   left: 73px;
@@ -191,6 +196,7 @@ path {
 }
 
 #toggle_color_ugly{
+  z-index: 1;
   position: absolute;
   top: 1050px;
   left: 252px;
@@ -206,6 +212,7 @@ path {
 
 /*these styles come from: https://github.com/Caged/d3-tip*/
 .d3-tip {
+  z-index: 2;
   line-height: 1;
   padding: 5px;
   background: rgba(0, 0, 0, 0.8);
@@ -248,78 +255,77 @@ text-align: center;
 }
 
 /* helper tooltip adapted from: http://www.davidjrush.com/blog/2011/12/simple-jquery-tooltip/ */
-  span.question {
-    cursor: pointer;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #223373;
-    line-height: 18px;
-    color: White;
-    font-size: 13px;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-  }
-  span.question:hover {
-    background-color: #3D6199;
-  }
+span.question {
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #223373;
+  line-height: 18px;
+  color: White;
+  font-size: 13px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+span.question:hover {
+  background-color: #3D6199;
+}
 
-  div.tooltip {
-    background-color: White;
-    color: White;
-    border: 2px solid black;
-    position: absolute;
-    left: 25px;
-    top: 10px;
-    z-index: 1000000;
-    width: 600px;
-    border-radius: 5px;
-    text-align: left;
-  }
+div.graph_description {
+  background-color: White;
+  color: White;
+  border: 2px solid black;
+  position: absolute;
+  left: 25px;
+  top: 10px;
+  z-index: 1000000;
+  width: 600px;
+  border-radius: 5px;
+  text-align: left;
+}
 
-  div.tooltip:before {
-    border-color: transparent #3D6199 transparent transparent;
-    border-right: 6px solid #3D6199;
-    border-style: solid;
-    border-width: 6px 6px 6px 0px;
-    content: "";
-    display: block;
-    height: 0;
-    width: 0;
-    line-height: 0;
-    position: absolute;
-    top: 40%;
-    left: -6px;
-  }
+div.graph_description:before {
+  border-color: transparent #3D6199 transparent transparent;
+  border-right: 6px solid #3D6199;
+  border-style: solid;
+  border-width: 6px 6px 6px 0px;
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  position: absolute;
+  top: 40%;
+  left: -6px;
+}
 
-  div.tooltip p {
-    margin: 10px;
-    color: black;
-  }
+div.graph_description p {
+  margin: 10px;
+  color: black;
+}
 
-  div.tooltip strong {
-    color: black;
-  }
+div.graph_description strong {
+  color: black;
+}
 
 .chordtip {
-      color: #fff; 
-      background: rgba(0, 0, 0, 0.8);
-      padding: 5px;
-      text-align: center;
-      line-height: 1;
-      position: absolute;
-      pointer-events: none;
-
-  }
+    color: #fff; 
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    text-align: center;
+    line-height: 1;
+    position: absolute;
+    pointer-events: none;
+}
 
 .hidden { 
     display: none; 
 }
 #game_mode_table td, #lobby_table td{
-background-color:#E8CE38;
-text-align: center;
+  background-color:#E8CE38;
+  text-align: center;
 }
 #game_mode_table, #lobby_table{
-background-color:black;
+  background-color:black;
 }

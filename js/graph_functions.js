@@ -306,7 +306,7 @@ $(document).ready(function ()
 {
 	$("span.question").hover(function ()
 	{
-		$(this).append('<div class="tooltip">' +
+		$(this).append('<div class="graph_description">' +
 			'<p><strong>Win-Loss Percentage:</strong> Win-loss percentage for current selected data <br></p>' +
 			'<p><strong>Heroes Played:</strong> Heroes you’ve played grouped by their primary attribute- agility, intelligence, or strength, and ordered by the number of games in which you’ve played them. This graph is colored by primary attribute. <br></p>' +
 			'<p><strong>Heroes Played Together Most Often:</strong> This graph shows which heroes have appeared together on the same team most frequently. Heroes are represented as arcs on the circumference of the circle, colored by primary attribute, and are linked by chords. These chords represent the number of games in which both heroes appeared on the same team. This graph is filterable to set a lower bound on the number of games in which the heroes appeared together, on the same team. <br></p>' +
@@ -317,7 +317,7 @@ $(document).ready(function ()
 			'</div>');
 	}, function ()
 	{
-		$("div.tooltip").remove();
+		$("div.graph_description").remove();
 	});
 });
 
