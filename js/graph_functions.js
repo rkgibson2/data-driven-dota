@@ -657,8 +657,14 @@ function hero_pie(flare) {
 
 	hero_pie_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", -bb_hero_pie.h/2 - 10)
+		.attr("y", -bb_hero_pie.h/2 - 30)
 		.text("Heroes Played");	  
+
+	hero_pie_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", -bb_hero_pie.h/2 - 10)
+		.style("font-size", "12px")
+		.text("Click center to zoom out. Click arcs to zoom in.");	  
 
 }
 
@@ -1482,7 +1488,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
 	hero_chord_graph
 			.append("text")
-			.attr("y", -260)
+			.attr("y", -270)
 			.attr("class", "text")
 			.attr("text-anchor", "middle")
 			.text("Heroes Played Together Most Often");
@@ -1492,9 +1498,18 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 			.attr("y", -245)
 			.attr("class", "text")
 			.attr("text-anchor", "middle")
-			.text("in your dataset")
+			.text("Hover over circle arc to highlight a hero.")
 			.style("fill", "black")
 			.style("font-size", "12px");
+
+	hero_chord_graph
+		.append("text")
+		.attr("y", -230)
+		.attr("class", "text")
+		.attr("text-anchor", "middle")
+		.text("Hover over a chord to see the number of games between two heroes.")
+		.style("fill", "black")
+		.style("font-size", "12px");
 
 	// Returns an event handler for fading a given chord group.
 	function fade(opacity) {
@@ -1599,10 +1614,17 @@ function draw_gpm() {
 		.attr("clip-path", "url(#gpm_clip)");
 
 	gpm_graph.append("text")
-		.attr("y", -20)
+		.attr("y", -30)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_gpm.w/2)
 		.text("GPM Statistics")
+
+	gpm_graph.append("text")
+		.attr("y", -15)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_gpm.w/2)
+		.style("font-size", "12px")
+		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
 
 }
 
@@ -1883,10 +1905,17 @@ function draw_xpm() {
    		.attr("class", "xpm_brush");
 
     xpm_graph.append("text")
-		.attr("y", -15)
+		.attr("y", -35)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_xpm.w/2)
 		.text("XPM Statistics")
+
+	xpm_graph.append("text")
+		.attr("y", -15)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_xpm.w/2)
+		.style("font-size", "12px")
+		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
 
 }
 
@@ -2125,9 +2154,16 @@ function draw_user_interact(){
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
-		.attr("y", -55)
+		.attr("y", -75)
 		.attr("x", 180)
 		.text("Users You've Played with more than Once")
+
+	user_interact_graph.append("text")
+		.attr("text-anchor", "middle")
+		.attr("y", -60)
+		.attr("x", 180)
+		.style("font-size", "12px")
+		.text("Click a user to see their Steam profile.")
 
 	if (user_flare.children.length == 0) {
 		user_interact_graph.append("text")
