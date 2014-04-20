@@ -1624,17 +1624,24 @@ function draw_gpm() {
 		.attr("clip-path", "url(#gpm_clip)");
 
 	gpm_graph.append("text")
-		.attr("y", -30)
+		.attr("y", -40)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_gpm.w/2)
 		.text("GPM Statistics")
 
 	gpm_graph.append("text")
-		.attr("y", -15)
+		.attr("y", -25)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_gpm.w/2)
 		.style("font-size", "12px")
 		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+
+	gpm_graph.append("text")
+		.attr("y", -10)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_gpm.w/2)
+		.style("font-size", "12px")
+		.text("Click on a game to bring up the corresponding endgame screen.")
 
 }
 
@@ -1918,18 +1925,25 @@ function draw_xpm() {
 	xpm_graph.append("g")
    		.attr("class", "xpm_brush");
 
-    xpm_graph.append("text")
-		.attr("y", -35)
+	xpm_graph.append("text")
+		.attr("y", -40)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_xpm.w/2)
 		.text("XPM Statistics")
 
 	xpm_graph.append("text")
-		.attr("y", -15)
+		.attr("y", -25)
 		.attr("text-anchor", "middle")
 		.attr("x", bb_xpm.w/2)
 		.style("font-size", "12px")
 		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+
+	xpm_graph.append("text")
+		.attr("y", -10)
+		.attr("text-anchor", "middle")
+		.attr("x", bb_xpm.w/2)
+		.style("font-size", "12px")
+		.text("Click on a game to bring up the corresponding endgame screen.")
 
 }
 
