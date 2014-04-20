@@ -1,10 +1,32 @@
+
+
+#page-header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  padding: 5px;
+  background-color: #9f9f9f;
+  z-index: 1000;
+  border-bottom: 2px solid black;
+}
+
+#page-content {
+  margin-top: 175px;
+}
+
+#timeline {
+  height: 120px;
+  width: 1260px;
+}
+
 .end_screen_selected {
   fill: aquamarine !important;
 }
 
 .match_dot_hover {
   fill: aquamarine !important;
-  stroke_width: 1px;
+  stroke-width: 1px;
   stroke: black;
 }
 

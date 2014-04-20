@@ -10,10 +10,10 @@ var bbOverview = {
 	h: 50
 };
 var margin = {
-	top: 50,
-	right: 50,
-	bottom: 50,
-	left: 150
+	top: 10,
+	right: 10,
+	bottom: 30,
+	left: 70
 };
 //tool tip setup
 var tiptimeline = d3.tip()
@@ -33,7 +33,7 @@ function create_timeline(userdata)
 	// bbOverview = timeline
 	// add svg
 	var width = 1260 - margin.left - margin.right;
-	var height = 200 - margin.bottom - margin.top;
+	var height = 120 - margin.bottom - margin.top;
 	svgTimeLine = d3.select("#timeline").append("svg").attr(
 	{
 		width: width + margin.left + margin.right,
@@ -80,6 +80,7 @@ function create_timeline(userdata)
 		.attr("y", 0)
 		.attr("width", bbOverview.w)
 		.attr("height", height);
+
 	// translate our vis space 
 	bbOverviewVis.attr(
 	{
