@@ -49,68 +49,61 @@
 }
 
 /* GAME MODE MODAL STYLING */
-#select_game_type div#game_mode_content{
-
-    width:100%;
-    height:100%;
-
+#select_game_type .modal-lg {
+    width: 1050px;
 }
+
+#select_game_type .modal-lg div {
+    background-color: black;
+    margin-top: 0px;
+}
+
+#select_game_type .modal-header {
+    color: white;
+}
+
+#game_mode_content table {
+    border: 10px ridge darkgray;
+}
+
+#game_mode_content td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
 #game_mode_table, #lobby_table {
-    margin: 0 auto 0 auto;
-  }
-  
-  #select_game_type.modal{
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-        
-    width:500px;
-    max-height:500px;
-}
-
-div#select_game_type {
-    margin: 0 0 0 0;
-    max-height:500px;
-    width:500px;
-    /*height: 800px;*/
-    background-color:black;
+    margin: 10px auto;
 }
 
 
 /* GAME RECORD MODAL STYLING */
-#show_records div#record_content{
-
-    width:100%;
-    height:100%;
-
+#show_records .modal-dialog {
+    width: 270px;
 }
+
+#show_records .modal-content {
+    background-color: black;
+    color: white;
+    margin-top: 0px;
+}
+
+#show_records .modal-footer {
+    color: black;
+}
+
+#show_records table {
+    border: 10px ridge darkgray;
+}
+
+#show_records th {
+    text-align: center;
+}
+
+#show_records td {
+    padding: 10px;
+    border: 1px solid white;
+}
+
 #record_table {
-    margin: 0 auto 0 auto;
-  }
-  
-  #show_records.modal{
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-        
-    width:300px;
-    max-height:700px;
-}
-
-div#show_records {
-    margin: 0 0 0 0;
-    max-height:700px;
-    width:300px;
-    /*height: 800px;*/
-    background-color:black;
-}
-#record_table td,#record_table th{
-color:white;
-
+    margin: 0px auto;
 }
