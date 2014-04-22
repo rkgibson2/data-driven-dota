@@ -90,6 +90,9 @@ function update_end_screen(game) {
     var hours = Math.floor(game.duration / 60);
     var seconds = game.duration % 60;
 
+    // if seconds is one digit, pad with 0
+    seconds = (seconds / 10 < 1) ? "0" + seconds : seconds 
+
     d3.select("#duration .text").text(hours + ":" + seconds)
 
     // rename this array for convenience

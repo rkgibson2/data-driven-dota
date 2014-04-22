@@ -1,9 +1,7 @@
 #end_screen {
     position:relative;
-    margin: 0px 10px;
     height: 675px;
     width: 1124px;
-    margin-bottom: 20px;
 }
 
 #end_screen .header {
