@@ -82,8 +82,6 @@ function update_end_screen(game) {
 
     // game.start_time is in seconds since UNIX Epoch, but d3 new Date needs milliseconds   
     var start = new Date(game.start_time * 1000)
-    var date_string_utc = d3.time.format.utc("%a %b %-d, %Y %X")
-    var date_string = d3.time.format("%a %b %-d, %Y %X %Z")
     d3.select("#date .text").text(date_string_utc(start))
 
     // convert duration (in seconds) to hours + seconds

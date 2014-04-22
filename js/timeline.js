@@ -25,6 +25,9 @@ var dots;
 var matches;
 var xdomain;
 
+// used for printing start dates
+var date_string_utc = d3.time.format.utc("%a %b %-d, %Y %X")
+
 function create_timeline(userdata)
 {
     d3.select("#timeline").select("svg").remove();
@@ -138,8 +141,8 @@ function create_timeline(userdata)
 
 		var tooltip = true;
 		var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
-		var time = String(new Date(d.start_time * 1000));
-		var basic_tip = "<div id='tooltip_text'><strong>" + score + "</strong>" + "<br>" + (time) + "</br></div>";
+		var time = new Date(d.start_time * 1000);
+		var basic_tip = "<div id='tooltip_text'><strong>K/D/A: " + score + "</strong>" + "<br>" + date_string_utc(time) + "</br></div>";
 		var img_tip = "<div id='hero_sunburst_tip'><img src='" + (d2.getHeroInfo(d.player_info.hero_id).img) +
 			"'' width='64px' height='36px'></div>";
 		tiptimeline.html(img_tip + basic_tip);
@@ -299,8 +302,8 @@ function transition_data(matchdata)
 
 			var tooltip = true;
 			var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
-			var time = String(new Date(d.start_time * 1000));
-			var basic_tip = "<div id='tooltip_text'><strong>" + score + "</strong>" + "<br>" + (time) + "</br></div>";
+			var time = new Date(d.start_time * 1000);
+			var basic_tip = "<div id='tooltip_text'><strong>K/D/A: " + score + "</strong>" + "<br>" + date_string_utc(time) + "</br></div>";
 			var img_tip = "<div id='hero_sunburst_tip'><img src='" + (d2.getHeroInfo(d.player_info.hero_id).img) +
 				"'' width='64px' height='36px'></div>";
 			tiptimeline.html(img_tip + basic_tip);
