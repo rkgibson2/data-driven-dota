@@ -6,7 +6,7 @@ labels.forEach(function (d) {
         var images = d3.select("#" + d + "images").selectAll("img");
         var numselected = d3.select("#" + d + "images").selectAll(".pic.selected")[0].length;
         if (numselected != images[0].length) {
-            images.attr("class", "pic selected");
+            images.attr("class", "pic selected brightnessfilter");
             images.style("border", "2px solid red");
         } else if (numselected == images[0].length) {
             images.classed("selected", false);
@@ -20,7 +20,7 @@ function highlight()
 {
 	if (!this.classList.contains("selected"))
 	{
-		d3.select(this).attr("class", "pic selected");
+		d3.select(this).attr("class", "pic selected brightnessfilter");
 		d3.select(this).style("border", "2px solid red");
 	}
 	else
