@@ -225,7 +225,7 @@ path {
 
 /*these styles come from: https://github.com/Caged/d3-tip*/
 .d3-tip {
-  z-index: 2;
+  z-index: 101;
   line-height: 1;
   padding: 5px;
   background: rgba(0, 0, 0, 0.8);
