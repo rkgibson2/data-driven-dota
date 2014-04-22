@@ -16,13 +16,15 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <script src="/js/d2.js"></script>
+  
 </head>
 <body>
 
 <div id="page-header">
+
   <!-- FILTERS -->
   <div id="filters">
-
+    
     <!--USER DROPDOWN -->
     <span id="selectuser"></span>
 
@@ -38,7 +40,10 @@
     
     <!-- HELP QUESTION MARK -->
     <span  class="question"><strong>?</strong></span>
-
+   
+    <!-- COLOR BLIND TOGGLE --> 
+    <span id = "colorblind"><label>Color Blind Mode</label><input type="checkbox" id="color-blind" name="color-blind-box" onclick = "changeCSS()" ></input></span>
+    
   </div>
 
   <!-- TIMELINE OVERVIEW -->
@@ -318,4 +323,5 @@
 <script src="/js/game_mode.js"></script>
 <script src="/js/lobbies.js"></script>
 <script src="/js/records.js"></script>
+<script src = "/js/colorblind.js"></script>
 </body>
