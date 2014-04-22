@@ -1166,7 +1166,7 @@ function update_item_percent(data) {
 	d3.select("input#value").on("change", change);
 
 	var sortTimeout = setTimeout(function() {
-	    d3.select("input").property("checked", true).each(change);
+	    d3.select("input#value").property("checked", true).each(change);
 	  }, 2000);
 
 	function change() {
