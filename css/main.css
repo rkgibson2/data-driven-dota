@@ -336,7 +336,7 @@ div.graph_description strong {
     display: none; 
 }
 #game_mode_table td, #lobby_table td{
-  background-color:#E8CE38;
+  background-color:grey;
   text-align: center;
 }
 #game_mode_table, #lobby_table{

@@ -1,11 +1,11 @@
 all_lobby_modes =  ["public","practice","tournament","tutorial","co_op_bot","team_match","solo_queue","ranked"];
 selected_lobby_modes = ["public","practice","tournament","tutorial","co_op_bot","team_match","solo_queue","ranked"];
 update_selected_lobby_modes = ["public","practice","tournament","tutorial","co_op_bot","team_match","solo_queue","ranked"];
-select_lobby_color ="#E8CE38";
+//select_lobby_color ="#E8CE38";
 function changeLobbyColor(gamemode){ 
     if (update_selected_lobby_modes.indexOf(gamemode)<0)
     {
-          document.getElementById(gamemode).style.background = select_lobby_color;
+          document.getElementById(gamemode).style.border =  "2px solid red";
           update_selected_lobby_modes.push(gamemode);
           //tripleFilterUpdate();
 
@@ -14,7 +14,7 @@ function changeLobbyColor(gamemode){
     {
         var index = update_selected_lobby_modes.indexOf(gamemode);
         update_selected_lobby_modes.splice(index,1);
-        document.getElementById(gamemode).style.background = "grey";
+        document.getElementById(gamemode).style.border =  "2px solid black";
         //tripleFilterUpdate();
     }
 }
@@ -24,7 +24,7 @@ function resetLobby()
 all_lobby_modes.forEach(function(d){
 if (selected_lobby_modes.indexOf(d)<0)
     {
-        document.getElementById(d).style.background = select_lobby_color;
+        document.getElementById(d).style.border =  "2px solid red";
         selected_lobby_modes.push(d);
     }
 });
@@ -44,11 +44,11 @@ function reselectLobby(){
     update_selected_lobby_modes = selected_lobby_modes.slice();
     // first reset selection to all unselected
     all_lobby_modes.forEach(function(d){
-        document.getElementById(d).style.background = "grey";
+        document.getElementById(d).style.border =  "2px solid black";
         });
     // then select previous selection
     selected_lobby_modes.forEach(function(d){
-        document.getElementById(d).style.background = select_lobby_color;
+        document.getElementById(d).style.border =  "2px solid red";
     });
 };
 

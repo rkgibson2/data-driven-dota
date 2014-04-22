@@ -58,16 +58,20 @@
 }
 
 #game_mode_content table {
-    border: 10px ridge darkgray;
+    /*border: 10px ridge darkgray;*/
 }
 
 #game_mode_content td {
     padding: 10px;
-    border: 1px solid black;
+    border: 0px solid black;
+    width: 170px;
+    height :50px;
 }
 
 #game_mode_table, #lobby_table {
     margin: 10px auto;
+    border-collapse:separate; 
+    border-spacing:10px;
 }
 
 
