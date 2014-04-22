@@ -338,8 +338,17 @@ div.graph_description strong {
     display: none; 
 }
 #game_mode_table td, #lobby_table td{
-  background-color:grey;
+  background-color: black;
   text-align: center;
+  color :white;
+
+}
+
+#game_mode_table th, #lobby_table th{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
 }
 #game_mode_table, #lobby_table{
   background-color:black;

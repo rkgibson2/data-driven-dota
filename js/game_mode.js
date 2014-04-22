@@ -14,7 +14,7 @@ function changeColor(gamemode){
     {
         var index = update_selected_modes.indexOf(gamemode);
         update_selected_modes.splice(index,1);
-        document.getElementById(gamemode).style.border =  "2px solid black";
+        document.getElementById(gamemode).style.border =  "2px solid white";
         //tripleFilterUpdate();
     }
 }
@@ -34,7 +34,7 @@ function reselectGameMode(){
     update_selected_modes = selected_modes.slice();
     // first reset selection to all unselected
     all_modes.forEach(function(d){
-        document.getElementById(d).style.border =  "2px solid black";
+        document.getElementById(d).style.border =  "2px solid white";
         });
     // then select previous selection
     selected_modes.forEach(function(d){
