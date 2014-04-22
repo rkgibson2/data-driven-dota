@@ -1,5 +1,5 @@
 body {
-  font-family: Georgia;
+  font-family: Trebuchet, sans-serif;
   color: black;
   font-size: 14px;
   font-weight: normal;
@@ -344,46 +344,38 @@ div.graph_description strong {
 }
 
 #splash {
-  margin-top: 15px;
+  /*margin-top: 15px;*/
   margin-left: auto;
   margin-right: auto;
   width: 1060px;
   background-color: #3d3d3d;
-  height: 650px;
-  margin-bottom: 1px;
+  height: 100%;
+  /*margin-bottom: 1px;*/
 }
 
 .splash-text {
+  margin-top: 10px;
   color: white;
   font-size: 14px;
   position: relative;
   text-align: center;
   /*padding: 2px;*/
-  top: 10px;
 }
 
 .splash-title {
   color: white;
   font-size: 32px;
   text-align: center;
+  margin-bottom: 15px;
 }
 
-#move_on_button {
-  position: absolute;
-  left: 1070px;
-  bottom: 1px;
-  top: 625px;
-}
-
-#more_info_button {
-  position: absolute;
-  left: 880px;
-  bottom: 1px;
-  top: 625px;
+#splash-nav {
+  margin: 15px 5px 5px 5px;
+  text-align: right;
 }
 
 #visit_video {
+  margin: 5px;
   position: absolute;
-  top: 25px;
-  left: 1020px;
+  top: 0px;
 }
