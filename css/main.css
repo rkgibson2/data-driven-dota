@@ -10,7 +10,7 @@ label {
 }
 
 #page-header {
-  display: none;
+  /*display: none;*/
   position: fixed;
   width: 100%;
   top: 0px;
@@ -22,11 +22,11 @@ label {
 }
 
 #page-content {
-  display: none;
+  /*display: none;*/
   margin-top: 175px;
 }
 
-#page-content div {
+#page-content>div {
   margin-right: auto;
   margin-left: auto;
 }

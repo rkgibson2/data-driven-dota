@@ -76,6 +76,16 @@ bb_kda = {
 	w: 900
 }
 
+d3.select("#move_on_button")
+	.on("click", function() {
+		console.log("hello")
+		d3.select("#not-splash")
+			.style("display", null)
+		d3.select("#splash")
+			.style("display", "none");
+		//force scroll
+	})
+
 //set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
 	width: width + margin.left + margin.right,
@@ -2373,40 +2383,6 @@ function update_user_interact(data) {
 	});
 
 }
-
-
-// //set up splash page
-// var splash;
-
-// var splash_width = 1000;
-// var splash_height = 800;
-// var splash_margin = {
-// 	left: 50,
-// 	right: 50,
-// 	top: 50,
-// 	bottom: 50
-// }
-
-// splash = d3.select("#splash").append("svg").attr({
-// 	width: splash_width + splash_margin.left + splash_margin.right,
-// 	height: splash_height + splash_margin.bottom + splash_margin.top
-// })
-// 	.append("g")
-// 	.attr("transform", "translate(" + splash_margin.left + "," + splash_margin.top + ")");
-
-// splash.append("rect")
-// 	.attr("x", 0)
-// 	.attr("y", 0)
-// 	.attr("height", splash_height)
-// 	.attr("width", splash_width)
-// 	.style("fill", "black");
-
-// splash.append("svg:image")
-// 	.attr("xlink:href", "../video/img/Logo.jpeg")
-// 	.attr("height", 700)
-// 	.attr("width", 700)
-// 	.attr("x", 150)
-// 	.attr("y", 0);
 
 /*
 function draw_kda(data) {

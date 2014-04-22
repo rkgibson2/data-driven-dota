@@ -3,6 +3,7 @@
     margin: 0px 10px;
     height: 675px;
     width: 1124px;
+    margin-bottom: 20px;
 }
 
 #end_screen .header {
@@ -20,7 +21,7 @@
     width: 300px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
     text-transform: uppercase;
     background: lightgray;

@@ -28,201 +28,203 @@
 <span id="more_info_button"><button class="btn btn-default">Wait, more info, please!</button></span>
 <span id="visit_video"><button class="btn btn-default">View our Video</button></span>
 </div>
-<div id="page-header">
 
-  <!-- FILTERS -->
-  <div id="filters">
-    
-    <!--USER DROPDOWN -->
-    <span id="selectuser"></span>
+<div id="not-splash" style="display:none;">
+  <div id="page-header">
 
-    <!--FILTER HERO MODAL BUTTON -->
-    <span id="filterbutton"><button class="btn btn-default" data-toggle="modal" data-target="#selector" onclick="reselectHeroes()">Filter by Heroes</button></span>
-
-
-    <!--FILTER GAME MODE MODAL BUTTON -->
-    <span id="filterbutton_game_mode"><button class="btn btn-default" data-toggle="modal" data-target="#select_game_type" onclick="reselectLobby()">Filter by Game Type</button></span>
-
-    <!--FILTER GAME MODE MODAL BUTTON -->
-    <span id="record_button"><button class="btn btn-default" data-toggle="modal" data-target="#show_records" onclick="updateRecords(filtered_data)">Records</button></span>
-    
-    <!-- HELP QUESTION MARK -->
-    <span  class="question"><strong>?</strong></span>
-   
-    <!-- COLOR BLIND TOGGLE --> 
-    <span id = "colorblind"><label>Color Blind Mode</label><input type="checkbox" id="color-blind" name="color-blind-box" onclick = "changeCSS()" ></input></span>
-    
-  </div>
-
-  <!-- TIMELINE OVERVIEW -->
-  <div id ="timeline"></div>
-</div>
-
-<div id="page-content">
-
-  <!-- END SCREEN -->
-  <div id="end_screen" style="display:none">
-
-    <div id="match_data">
-      <div id="left_col">
-        <div id="match_id">
-          <div class="header">Match ID</div>
-          <div class="text">8</div>
-        </div>
-
-        <div id="game_mode">
-          <div class="header">Game Mode</div>
-          <div class="text">H Pick</div>
-        </div>
-      </div>
-
-      <div id="right_col">
-        <div id="date">
-          <div class="header">Date</div>
-          <div class="text">0:16:56 Mon Mar 24 2014</div>
-        </div>
-
-        <div id="duration">
-          <div class="header">Duration</div>
-          <div class="text">46:46</div>
-        </div>
-      </div>
-
-      <div id="winner_spacer"></div>
-      <div id="winner">Dire Victory</div>
-
-    </div>
-
-    <div id="players">
-      <table id="radiant">
-        <thead>
-          <tr class="team radiant">
-            <th colspan="17">The Radiant</th>
-          </tr>
-          <tr class="headers">
-            <th class="player_name">Player</th>
-            <th class="level">Level</th>
-            <th class="hero">Hero</th>
-
-            <th class="kills">K</th>
-            <th class="deaths">D</th>
-            <th class="assists">A</th>
-
-            <th class="items">Items</th>
-
-            <th class="gold">Gold</th>
-            <th class="last_hits">Last Hits</th>
-            <th class="denies">Denies</th>
-            <th class="gold_per_min">Gold/Min</th>
-            <th class="xp_per_min">XP/Min</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="slot0">
-            <td class="player_name">MindBlown</td>
-            <td class="level">18</td>
-            <td class="hero">Vengeful Spirit</td>
-
-            <td class="kills">4</td>
-            <td class="deaths">9</td>
-            <td class="assists">10</td>
-
-            <td class="items"></td>
-
-            <td class="gold">528</td>
-            <td class="last_hits">58</td>
-            <td class="denies">14</td>
-            <td class="gold_per_min">258</td>
-            <td class="xp_per_min">394</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table id="dire">
-        <thead>
-          <tr class="team dire">
-            <th colspan="17">The Dire</th>
-          </tr>
-          <tr class="headers">
-            <th class="player_name">Player</th>
-            <th class="level">Level</th>
-            <th class="hero">Hero</th>
-
-            <th class="kills">K</th>
-            <th class="deaths">D</th>
-            <th class="assists">A</th>
-
-            <th class="items">Items</th>
-
-            <th class="gold">Gold</th>
-            <th class="last_hits">Last Hits</th>
-            <th class="denies">Denies</th>
-            <th class="gold_per_min">Gold/Min</th>
-            <th class="xp_per_min">XP/Min</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="slot0">
-            <td class="player_name">MindBlown</td>
-            <td class="level">18</td>
-            <td class="hero">Vengeful Spirit</td>
-
-            <td class="kills">4</td>
-            <td class="deaths">9</td>
-            <td class="assists">10</td>
-
-            <td class="items"></td>
-
-            <td class="gold">528</td>
-            <td class="last_hits">58</td>
-            <td class="denies">14</td>
-            <td class="gold_per_min">258</td>
-            <td class="xp_per_min">394</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- FILTERS -->
+    <div id="filters">
       
-      <div class="ability_build" style="visibility:hidden"></div>
+      <!--USER DROPDOWN -->
+      <span id="selectuser"></span>
+
+      <!--FILTER HERO MODAL BUTTON -->
+      <span id="filterbutton"><button class="btn btn-default" data-toggle="modal" data-target="#selector" onclick="reselectHeroes()">Filter by Heroes</button></span>
+
+      <!--FILTER GAME MODE MODAL BUTTON -->
+      <span id="filterbutton_game_mode"><button class="btn btn-default" data-toggle="modal" data-target="#select_game_type" onclick="reselectLobby()">Filter by Game Type</button></span>
+
+      <!--FILTER GAME MODE MODAL BUTTON -->
+      <span id="record_button"><button class="btn btn-default" data-toggle="modal" data-target="#show_records" onclick="updateRecords(filtered_data)">Records</button></span>
+      
+      <!-- HELP QUESTION MARK -->
+      <span  class="question"><strong>?</strong></span>
+     
+      <!-- COLOR BLIND TOGGLE --> 
+      <span id = "colorblind"><label>Color Blind Mode</label><input type="checkbox" id="color-blind" name="color-blind-box" onclick = "changeCSS()" ></input></span>
+      
+    </div>
+
+    <!-- TIMELINE OVERVIEW -->
+    <div id ="timeline"></div>
+  </div>
+
+  <div id="page-content">
+
+    <!-- END SCREEN -->
+    <div id="end_screen" style="display:none">
+
+      <div id="match_data">
+        <div id="left_col">
+          <div id="match_id">
+            <div class="header">Match ID</div>
+            <div class="text">8</div>
+          </div>
+
+          <div id="game_mode">
+            <div class="header">Game Mode</div>
+            <div class="text">H Pick</div>
+          </div>
+        </div>
+
+        <div id="right_col">
+          <div id="date">
+            <div class="header">Date</div>
+            <div class="text">0:16:56 Mon Mar 24 2014</div>
+          </div>
+
+          <div id="duration">
+            <div class="header">Duration</div>
+            <div class="text">46:46</div>
+          </div>
+        </div>
+
+        <div id="winner_spacer"></div>
+        <div id="winner">Dire Victory</div>
+
+      </div>
+
+      <div id="players">
+        <table id="radiant">
+          <thead>
+            <tr class="team radiant">
+              <th colspan="17">The Radiant</th>
+            </tr>
+            <tr class="headers">
+              <th class="player_name">Player</th>
+              <th class="level">Level</th>
+              <th class="hero">Hero</th>
+
+              <th class="kills">K</th>
+              <th class="deaths">D</th>
+              <th class="assists">A</th>
+
+              <th class="items">Items</th>
+
+              <th class="gold">Gold</th>
+              <th class="last_hits">Last Hits</th>
+              <th class="denies">Denies</th>
+              <th class="gold_per_min">Gold/Min</th>
+              <th class="xp_per_min">XP/Min</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="slot0">
+              <td class="player_name">MindBlown</td>
+              <td class="level">18</td>
+              <td class="hero">Vengeful Spirit</td>
+
+              <td class="kills">4</td>
+              <td class="deaths">9</td>
+              <td class="assists">10</td>
+
+              <td class="items"></td>
+
+              <td class="gold">528</td>
+              <td class="last_hits">58</td>
+              <td class="denies">14</td>
+              <td class="gold_per_min">258</td>
+              <td class="xp_per_min">394</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table id="dire">
+          <thead>
+            <tr class="team dire">
+              <th colspan="17">The Dire</th>
+            </tr>
+            <tr class="headers">
+              <th class="player_name">Player</th>
+              <th class="level">Level</th>
+              <th class="hero">Hero</th>
+
+              <th class="kills">K</th>
+              <th class="deaths">D</th>
+              <th class="assists">A</th>
+
+              <th class="items">Items</th>
+
+              <th class="gold">Gold</th>
+              <th class="last_hits">Last Hits</th>
+              <th class="denies">Denies</th>
+              <th class="gold_per_min">Gold/Min</th>
+              <th class="xp_per_min">XP/Min</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="slot0">
+              <td class="player_name">MindBlown</td>
+              <td class="level">18</td>
+              <td class="hero">Vengeful Spirit</td>
+
+              <td class="kills">4</td>
+              <td class="deaths">9</td>
+              <td class="assists">10</td>
+
+              <td class="items"></td>
+
+              <td class="gold">528</td>
+              <td class="last_hits">58</td>
+              <td class="denies">14</td>
+              <td class="gold_per_min">258</td>
+              <td class="xp_per_min">394</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="ability_build" style="visibility:hidden"></div>
+
+      </div>
 
     </div>
 
+    <!-- STAT GRAPHS -->
+    <div id="stat_graphs">
+      <label id="value_sort_label"><input type="radio" id="value" name="itemgraph"> Sort bars by frequency</label>
+      <label id="item_sort_label"><input type="radio" id="item" name="itemgraph"> Sort bars by item</label>
+      <label id="cost_sort_label"><input type="radio" id="cost" name="itemgraph"> Sort bars by cost</label>
+      <!-- <label id="item_filter"><input class="this1" type="range" name="points" min="0" max="51" step="1" value="50" disabled> <span class="filterInput">51 </span> Items</label> -->
+      <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
+      <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
+      <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
+    </div>
   </div>
 
-  <!-- STAT GRAPHS -->
-  <div id="stat_graphs">
-    <label id="value_sort_label"><input type="radio" id="value" name="itemgraph"> Sort bars by frequency</label>
-    <label id="item_sort_label"><input type="radio" id="item" name="itemgraph"> Sort bars by item</label>
-    <label id="cost_sort_label"><input type="radio" id="cost" name="itemgraph"> Sort bars by cost</label>
-    <!-- <label id="item_filter"><input class="this1" type="range" name="points" min="0" max="51" step="1" value="50" disabled> <span class="filterInput">51 </span> Items</label> -->
-    <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
-    <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
-    <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
-  </div>
-</div>
-
-<!-- MODAL POPUP DIV HEROES -->
-<div id="selector" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="hero_filter_label" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">  
-        <h4 id="hero_filter_label">Select Heroes to Filter</h4>  
-      </div>  
-      <div class="modal-body">  
-         <table>
-          <tr>
-            <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text></td>
-            <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text></td>
-            <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text></td>
-          </tr>
-          <tr class="images">
-            <td><div id="strimages"></div></td>
-            <td><div id="agiimages"></div></td>
-            <td><div id="intimages"></div></td>
-        </table>
-      </div>    
-      <div class="modal-footer">  
-        <button href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</button>  
-        <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
+  <!-- MODAL POPUP DIV HEROES -->
+  <div id="selector" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="hero_filter_label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">  
+          <h4 id="hero_filter_label">Select Heroes to Filter</h4>  
+        </div>  
+        <div class="modal-body">  
+           <table>
+            <tr>
+              <td><text id="strlabel"><img src="/img/icons/overviewicon_str.png" alt="Strength Icon" height="33px" width="33px"> Strength</text></td>
+              <td><text id="agilabel"><img src="/img/icons/overviewicon_agi.png" alt="Ability Icon" height="33px" width="33px"> Agility</text></td>
+              <td><text id="intlabel"><img src="/img/icons/overviewicon_int.png" alt="Intelligence Icon" height="33px" width="33px"> Intelligence</text></td>
+            </tr>
+            <tr class="images">
+              <td><div id="strimages"></div></td>
+              <td><div id="agiimages"></div></td>
+              <td><div id="intimages"></div></td>
+          </table>
+        </div>    
+        <div class="modal-footer">  
+          <button href="#" onclick="selected()" class="btn btn-success" data-dismiss="modal">Filter</button>  
+          <button href="#" class="btn btn-default" data-dismiss="modal">Close</button>  
+        </div>
       </div>
     </div>
   </div>
