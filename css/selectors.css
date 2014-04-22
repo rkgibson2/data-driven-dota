@@ -102,3 +102,27 @@
 #record_table {
     margin: 0px auto;
 }
+#record_content div{
+white-space: pre;
+font-weight:bold;
+font-size: 18px;
+height:80px;
+width: 200px;
+margin: 0px auto;
+text-shadow: black 0.1em 0.1em 0.2em;
+cursor:pointer;
+margin-bottom:5px;
+
+}
+.brightnessfilter:hover {
+     -webkit-filter: brightness(1.2);
+-moz-filter: brightness(1.2);
+-o-filter:  brightness(1.2);
+-ms-filter:  brightness(1.2);
+}
+.dullness{
+     -webkit-filter: brightness(0.8);
+-moz-filter: brightness(0.8);
+-o-filter:  brightness(0.8);
+-ms-filter:  brightness(0.8);
+}

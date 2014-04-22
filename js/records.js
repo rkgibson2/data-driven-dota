@@ -106,7 +106,8 @@ displayRecords();
 
 function displayRecords(){
 for (key in records){
-    d3.select("#" + key).text(records[key].value).style("text-align","right");
-
+    d3.select("#" + key).text($("#" + key).data().value + "\n" +records[key].value).style("text-align","center").classed("dullness",true).classed("brightnessfilter",true)
+    .style("background-image","url("+d2.getHeroInfo(records[key].match.player_info.hero_id).img +")").style("background-size","100% 100%");
+    d3.select("#" +key).on("click",function(){update_end_screen(records[this.id].match); $('#show_records').modal('hide');});
 }
 }
