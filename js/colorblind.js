@@ -6,7 +6,7 @@
         isChecked ? cssFile = "colorblind.css" : cssFile = "main.css";
         
         // this gets the old css link file
-        var oldlink = document.getElementsByTagName("link").item(1);
+        var oldlink = document.getElementsByTagName("link").item(2);
         
         // we dynamically generate a new css link 
         // element with desired name = to desired style sheet

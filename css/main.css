@@ -50,6 +50,12 @@ label {
   margin-left: auto;
 }
 
+#userdropdown {
+  display: inline-block;
+  width: 100px;
+  vertical-align: middle;
+}
+
 #timeline {
   margin-right: auto;
   margin-left: auto;
