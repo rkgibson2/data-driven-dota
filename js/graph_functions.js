@@ -76,15 +76,36 @@ bb_kda = {
 	w: 900
 }
 
+//button handlers for splash page to switch the divs around as desired
+
 d3.select("#move_on_button")
 	.on("click", function() {
-		console.log("hello")
 		d3.select("#not-splash")
 			.style("display", null)
 		d3.select("#splash")
 			.style("display", "none");
 		//force scroll
 	})
+
+d3.select("#more_info_button")
+	.on("click", function() {
+		d3.select("#splash")
+			.style("display", "none")
+		d3.select("#splash_page2")
+			.style("display", null);
+	})
+
+d3.select("#move_on_button2")
+	.on("click", function() {
+		d3.select("#not-splash")
+			.style("display", null)
+		d3.select("#splash")
+			.style("display", "none")
+		d3.select("#splash_page2")
+			.style("display", "none");
+	})
+
+
 
 //set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
@@ -1732,7 +1753,7 @@ function update_gpm(data) {
 
       	var hero_image = hero_data.img;
 
-      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
+      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='71.125px'></div>"
 
       	graph_tip.html(img_tip + text);
       	graph_tip.show(d)
@@ -2032,7 +2053,7 @@ function update_xpm(data) {
 
       	var hero_image = hero_data.img;
 
-      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
+      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='71px'></div>"
 
       	graph_tip.html(img_tip + text);
       	graph_tip.show(d)
