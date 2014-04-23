@@ -18,53 +18,53 @@ var margin = {
 
 var width = 1060 - margin.left - margin.right;
 
-var height = 1500 - margin.bottom - margin.top;
+var height = 1700 - margin.bottom - margin.top;
 
 bb_win_loss = {
-    x: 23,
-    y: 0,
+    x: width/2-125,
+    y: -20,
     w: 250,
     h: 30
 };
 
 bb_hero_pie = {
     x: 0,
-    y: 100,
+    y: 200,
     w: 300,
     h: 300
 };
 
 bb_item_percent = {
     x: 400,
-    y: 5,
+    y: 200,
     w: 600,
     h: 300
 };
 
 bb_hero_chord = {
     x: -50,
-    y: 550,
+    y: 750,
     w: 400,
     h: 400
 };
 
 bb_user_interact = {
 	x: 0,
-	y: 1050,
+	y: 1250,
 	h: 400,
 	w: 400
 }
 
 bb_gpm = {
 	x: 500,
-	y: 450,
+	y: 700,
 	h: 400,
 	w: 400
 }
 
 bb_xpm = {
 	x: 500,
-	y: 950,
+	y: 1200,
 	h: 400,
 	w: 400
 }

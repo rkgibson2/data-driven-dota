@@ -184,7 +184,7 @@ path {
 #value_sort_label {
   z-index: 1;
   position: absolute;
-  top: -2px;
+  top: 180px;
   /*right: 651px;*/
   left: 416px;
 }
@@ -192,7 +192,7 @@ path {
 #item_sort_label{
   z-index: 1;
   position: absolute;
-  top: 15px;
+  top: 197px;
   /*right: 687px;*/
   left: 416px;
 }
@@ -200,7 +200,7 @@ path {
 #cost_sort_label{
   z-index: 1;
   position: absolute;
-  top: 32px;
+  top: 215px;
   left: 416px;
   /*right: 689px;*/
 }
@@ -216,7 +216,7 @@ path {
 #hero_filter{
   z-index: 1;
   position:absolute;
-  top: 575px;
+  top: 775px;
   left: 170px;
   /*right: 150px;*/
 }
@@ -224,7 +224,7 @@ path {
 #toggle_color_pretty{
   z-index: 1;
   position: absolute;
-  top: 1050px;
+  top: 1250px;
   left: 73px;
   /*right: 689px;*/
 }
@@ -232,7 +232,7 @@ path {
 #toggle_color_ugly{
   z-index: 1;
   position: absolute;
-  top: 1050px;
+  top: 1250px;
   left: 252px;
   /*right: 689px;*/
 }
