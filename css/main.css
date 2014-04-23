@@ -447,3 +447,7 @@ div.graph_description strong {
   position: absolute;
   top: 5px;
 }
+
+.spacer {
+  height: 20px;
+}
