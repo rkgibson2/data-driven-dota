@@ -24,20 +24,6 @@ var end_screen_height = d3.select("#end_screen").style("height")
 
 create_end_screen();
 
-// d2.loadJson(function() {
-//     if (!--remaining) {
-//         update_end_screen(user_data.matches[275])
-//     }
-// })
-
-// d2.loadUserData("robbie", function(error, data) {
-//     user_data = data;
-
-//     if (!--remaining) {
-//         update_end_screen(user_data.matches[275])
-//     }
-// })
-
 function create_end_screen() {
     // copy all the player slots
     for (var i = 1; i < 5; i++) {
@@ -117,7 +103,18 @@ function update_end_screen(game) {
     rows.selectAll("td").html(function(d) {
         this_cell = d3.select(this)
         if (this_cell.attr("class") == "player_name") {
-            var name_text = (d.account_id == 4294967295) ? "Private account" : (d.account_id == user_data.id32) ? user_data.user : d.account_id
+            if (d.account_id == 4294967295) {
+                var name_text = "Private account";
+            } else {
+                try {
+                    var name_text = d2.getUserName(d.account_id);
+                } catch (e) {
+                    var name_text = d.account_id;
+                }
+            }
+
+            d3.select(this).attr("title", name_text)
+
             return name_text
         } else if (this_cell.attr("class") == "items") {
             return ""

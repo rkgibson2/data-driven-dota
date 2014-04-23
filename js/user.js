@@ -1,4 +1,10 @@
-users = ["angela","aui_2000","benjy","david","dendi","merlini", "robbie"];
+users = [{username : "anarfish", realname : "angela"},
+         {username : "C9 Aui_2000", realname : "aui_2000"},
+         {username : "Benjy", realname : "benjy"},
+         {username : "King of Sealand", realname : "david"},
+         {username : "Na`Vi.Dendi", realname : "dendi"},
+         {username : "Merlini", realname : "merlini"},
+         {username : "Darth Windu", realname : "robbie"}];
 
 d3.select("#selectuser")
     .append("select")
@@ -10,14 +16,8 @@ d3.select("#selectuser")
     .selectAll("option")
     .data(users)
     .enter().append("option")
-    .attr("value", function(d){ return d })
-    .text(function(d){ return capitalizeFirstLetter(d) });
-
-// from http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascript
-function capitalizeFirstLetter(string)
-{
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+    .attr("value", function(d){ return d.realname })
+    .text(function(d){ return d.username });
 
 // set default value to robbie (ME!!)
 d3.select("[value=robbie]").property("selected", true)

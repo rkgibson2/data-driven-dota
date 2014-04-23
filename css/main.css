@@ -45,14 +45,14 @@ label {
 }
 
 #filters {
-  width: 640px;
+  width: 700px;
   margin-right: auto;
   margin-left: auto;
 }
 
 #userdropdown {
   display: inline-block;
-  width: 100px;
+  width: 150px;
   vertical-align: middle;
 }
 
