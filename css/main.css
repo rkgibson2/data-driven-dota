@@ -311,9 +311,9 @@ div.graph_description {
   color: White;
   border: 2px solid black;
   position: absolute;
-  left: 25px;
+  right: 25px;
   top: 10px;
-  z-index: 1000000;
+  z-index: 10000;
   width: 600px;
   border-radius: 5px;
   text-align: left;
