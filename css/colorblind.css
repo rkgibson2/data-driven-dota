@@ -45,7 +45,7 @@ label {
 }
 
 #filters {
-  width: 640px;
+  width: 700px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -55,6 +55,12 @@ label {
   margin-left: auto;
   height: 120px;
   width: 980px;
+}
+
+#userdropdown {
+  display: inline-block;
+  width: 150px;
+  vertical-align: middle;
 }
 
 .end_screen_selected {
