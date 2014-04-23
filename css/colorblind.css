@@ -88,11 +88,11 @@ label {
 }
 
 .win {
-  fill: #1a9641;
+  fill: #fdae6b;
 }
 
 .loss {
-  fill: #d7191c;
+  fill: #807dba;
 }
 
 .gpm_brush .extent{
