@@ -463,4 +463,7 @@ div.graph_description strong {
   height: 20px;
 }
 
+#colorblind {
+  float: right;
+}
 
