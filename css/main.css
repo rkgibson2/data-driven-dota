@@ -9,6 +9,11 @@ label {
   font-weight: normal;
 }
 
+#radiant-background {
+  height: 418px;
+  width: 509px;
+}
+
 #page-header {
   position: fixed;
   width: 100%;
@@ -30,7 +35,7 @@ label {
   margin-left: auto;
 }
 
-#logo {
+#corner-logo {
   position: absolute;
   margin-top: 32.5px;
   margin-bottom: 32.5px;
@@ -451,3 +456,4 @@ div.graph_description strong {
 .spacer {
   height: 20px;
 }
+
