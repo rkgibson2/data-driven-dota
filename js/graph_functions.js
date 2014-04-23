@@ -93,7 +93,6 @@ d3.select("#more_info_button")
 			.style("display", "none")
 		d3.select("#splash_page2")
 			.style("display", null);
-		//force scroll
 	})
 
 d3.select("#move_on_button2")
