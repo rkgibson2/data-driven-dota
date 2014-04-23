@@ -76,14 +76,7 @@ bb_kda = {
 	w: 900
 }
 
-//colorblind css change
-d3.select("#colorblind")
-	.on("click", function() {
-		item_percent_color.range(["#807dba", "#8d8d8d", "#fdae6b"]);
-		gpm_color.range(["#fdae6b", "#807dba"]);
-		xpm_color.range(["#fdae6b", "#807dba"]);
-		user_interact_color_win.range(["#807dba", "#8d8d8d", "#fdae6b"]);
-	});
+var isChecked = $("#color-blind").is(":checked");
 
 //button handlers for splash page to switch the divs around as desired
 
@@ -259,21 +252,23 @@ d2.loadJson(function() {
 	loadData(d3.select("#userdropdown").node().value);
 });
 
+d3.select("#color-blind")
+	.on("click", function() {
+		tripleFilterUpdate();
+	})
+
 function tripleFilterUpdate(){
-// repopulate filtered_data by hero selection
-updateFilteredSelectionByHero();
-// further filter by game mode and lobby type
-    filtered_data.matches = filtered_data.matches.filter(function(d){if((selected_modes.indexOf(d2.getGameModeInfo(d.game_mode).short_name) >= 0)&& (selected_lobby_modes.indexOf(d2.getLobbyInfo(d.lobby_type).short_name) >= 0)) return 1;});
+	// repopulate filtered_data by hero selection
+	updateFilteredSelectionByHero();
+	// further filter by game mode and lobby type
+	    filtered_data.matches = filtered_data.matches.filter(function(d){if((selected_modes.indexOf(d2.getGameModeInfo(d.game_mode).short_name) >= 0)&& (selected_lobby_modes.indexOf(d2.getLobbyInfo(d.lobby_type).short_name) >= 0)) return 1;});
 
-updateGraphs(filtered_data);
+	updateGraphs(filtered_data);
 }
-
 
 // reset selected heroes in the filter for user change - all to unselected
 function resetSelectedHeroes(){
-
-d3.selectAll(".pic.selected").classed("selected", false).style("border", "2px solid black");
-
+	d3.selectAll(".pic.selected").classed("selected", false).style("border", "2px solid black");
 }
 
 draw_win_loss();
@@ -304,7 +299,6 @@ function loadData(username) {
         //updateGraphs(user_data)
         // filter out random modes etc. and updateGraphs
         tripleFilterUpdate();
-
     })
 }
 
@@ -327,7 +321,6 @@ function updateGraphs (filtered_data) {
     update_timeline(filtered_data);
 
     // draw_kda(filtered_data);
-
 
     //update chord diagram
 	d3.select("input[name=hero_filter]").on("change", function() { 
@@ -882,6 +875,7 @@ function draw_item_percent() {
 
 }
 
+
 function draw_legend(graph) {
 
 	graph.selectAll(".legend").remove();
@@ -896,20 +890,39 @@ function draw_legend(graph) {
 		.attr("y2", "0%")
 		.attr("spreadMethod", "pad");
 
-	gradient.append("svg:stop")
-		.attr("offset", "0%")
-		.attr("stop-color", "#d7191c")
-		.attr("stop-opacity", 1);
+	if ($("#color-blind").is(":checked")) {
+		gradient.append("svg:stop")
+			.attr("offset", "0%")
+			.attr("stop-color", "#ff7f00")
+			.attr("stop-opacity", 1);
 
-	gradient.append("svg:stop")
-		.attr("offset", "50%")
-		.attr("stop-color", "#8d8d8d")
-		.attr("stop-opacity", 1);
+		gradient.append("svg:stop")
+			.attr("offset", "50%")
+			.attr("stop-color", "#8d8d8d")
+			.attr("stop-opacity", 1);
 
-	gradient.append("svg:stop")
-		.attr("offset", "100%")
-		.attr("stop-color", "#1a9641")
-		.attr("stop-opacity", 1);
+		gradient.append("svg:stop")
+			.attr("offset", "100%")
+			.attr("stop-color", "#762a83")
+			.attr("stop-opacity", 1);
+	}
+
+	else {
+		gradient.append("svg:stop")
+			.attr("offset", "0%")
+			.attr("stop-color", "#d7191c")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "50%")
+			.attr("stop-color", "#8d8d8d")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "100%")
+			.attr("stop-color", "#1a9641")
+			.attr("stop-opacity", 1);
+	}
 
 	graph.append("svg:rect")
 		.attr("class", "grad")
@@ -968,7 +981,12 @@ function update_item_percent(data) {
 		// 	extent_array.push(dat[id].cost);
 		// }
 
-		item_percent_color.range(["#d7191c","#1a9641"])
+		if (isChecked) {
+			item_percent_color.range(["#762a83","#ff7f00"])
+		}
+		else {
+			item_percent_color.range(["#d7191c","#1a9641"])
+		}
 
 		for (id in dat) {
 			dat[id].count = 0;
@@ -1084,7 +1102,12 @@ function update_item_percent(data) {
 
 		//item_percent_color.domain(d3.extent(extent_array));
 		item_percent_color.domain([0,.5,1])
-		item_percent_color.range(["#d7191c", "#8d8d8d", "#1a9641"]);
+		if ($("#color-blind").is(":checked")) {
+			item_percent_color.range(["#ff7f00", "#8d8d8d", "#762a83"]);
+		}
+		else {
+			item_percent_color.range(["#d7191c", "#8d8d8d", "#1a9641"]);
+		}
 
 		if (d3.select(".item_percent").attr("visibility") == "hidden") {
 			var duration = 0;
@@ -1601,9 +1624,16 @@ function draw_gpm() {
 	gpm_y = d3.scale.linear()
 	    .range([bb_gpm.h, 0]);
 
-	gpm_color = d3.scale.ordinal()
+	if ($("#color-blind").is(":checked")) {
+		gpm_color = d3.scale.ordinal()
 		.domain([true, false])
-		.range(["#1a9641", "#d7191c"]);
+		.range(["#762a83", "#ff7f00"]);	
+	}
+	else {
+		gpm_color = d3.scale.ordinal()
+		.domain([true, false])
+		.range(["#1a9641", "#d7191c"]);	
+	}
 
 	gpm_xAxis = d3.svg.axis()
 	    .scale(gpm_x)
@@ -1687,6 +1717,17 @@ var gpm_brush;
 
 function update_gpm(data) {
 	//console.log(data);
+
+	if ($("#color-blind").is(":checked")) {
+		gpm_color = d3.scale.ordinal()
+			.domain([true, false])
+			.range(["#762a83", "#ff7f00"]);	
+	}
+	else {
+		gpm_color = d3.scale.ordinal()
+			.domain([true, false])
+			.range(["#1a9641", "#d7191c"]);	
+	}
 
 	gpm_brush = d3.svg.brush()
    		.x(gpm_x)
@@ -1908,9 +1949,16 @@ function draw_xpm() {
 	xpm_y = d3.scale.linear()
 	    .range([bb_xpm.h, 0]);
 
-	xpm_color = d3.scale.ordinal()
-		.domain([true,false])
-		.range(["#1a9641", "#d7191c"]);
+	if ($("#color-blind").is(":checked")) {
+		xpm_color = d3.scale.ordinal()
+		.domain([true, false])
+		.range(["#762a83", "#ff7f00"]);	
+	}
+	else {
+		xpm_color = d3.scale.ordinal()
+		.domain([true, false])
+		.range(["#1a9641", "#d7191c"]);	
+	}
 
 	xpm_xAxis = d3.svg.axis()
 	    .scale(xpm_x)
@@ -1988,6 +2036,17 @@ function draw_xpm() {
 
 function update_xpm(data) {
 	//console.log(data);
+
+	if ($("#color-blind").is(":checked")) {
+		xpm_color = d3.scale.ordinal()
+		.domain([true, false])
+		.range(["#762a83", "#ff7f00"]);	
+	}
+	else {
+		xpm_color = d3.scale.ordinal()
+			.domain([true, false])
+			.range(["#1a9641", "#d7191c"]);	
+	}
 
 	xpm_brush = d3.svg.brush()
    		.x(xpm_x)
@@ -2201,6 +2260,17 @@ var diameter, user_interact_color, bubble, user_flare, node;
 
 function draw_user_interact(){
 
+	if ($("#color-blind").is(":checked")) {
+		user_interact_color_win = d3.scale.linear()
+			.domain([0, .5, 1])
+			.range(["#ff7f00", "#8d8d8d", "#762a83"]);
+	}
+	else {
+		user_interact_color_win = d3.scale.linear()
+			.domain([0, .5, 1])
+			.range(["#d7191c", "#8d8d8d", "#1a9641"]);
+	}
+
 	diameter= bb_user_interact.w;
 	user_interact_color = d3.scale.ordinal()
 		.domain([])
@@ -2364,9 +2434,17 @@ function update_user_interact(data) {
 			graph_tip.hide(d);
 		})
 
-	user_interact_color_win = d3.scale.linear()
-		.domain([0, .5, 1])
-		.range(["#d7191c", "#8d8d8d", "#1a9641"]);
+
+	if ($("#color-blind").is(":checked")) {
+		user_interact_color_win = d3.scale.linear()
+			.domain([0, .5, 1])
+			.range(["#ff7f00", "#8d8d8d", "#762a83"]);
+	}
+	else {
+		user_interact_color_win = d3.scale.linear()
+			.domain([0, .5, 1])
+			.range(["#d7191c", "#8d8d8d", "#1a9641"]);
+	}
 
 	node
 		.transition()
@@ -2374,6 +2452,8 @@ function update_user_interact(data) {
 		.attr("transform", function(d) {
 			return "translate(" + d.x + "," + d.y + ")";
 		})
+		
+	node.selectAll("circle")
 		.style("fill", function(d) {
 			if (d3.select("input#winrate").property("checked")) {
 				return user_interact_color_win(d.wins/d.value);
@@ -2396,6 +2476,11 @@ function update_user_interact(data) {
       	.style("fill", "black")
       	.style("font-size", "12px");
 
+
+	if($("input#winrate").is(":checked")) {
+		draw_legend(user_interact_graph);
+	}
+
 	d3.select("input#rainbow").on("change", function() {
 
 		user_interact_graph.selectAll(".legend").transition().duration(1000).style("opacity", 0).remove();
@@ -2407,7 +2492,6 @@ function update_user_interact(data) {
 
 	d3.select("input#winrate").on("change", function() {
 		d3.selectAll(".node circle").transition().duration(1000).style("fill", function(d){ return user_interact_color_win(d.wins/d.value) })
-
 		draw_legend(user_interact_graph);
 	});
 
