@@ -1753,7 +1753,7 @@ function update_gpm(data) {
 
       	var hero_image = hero_data.img;
 
-      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
+      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='71.125px'></div>"
 
       	graph_tip.html(img_tip + text);
       	graph_tip.show(d)
@@ -2053,7 +2053,7 @@ function update_xpm(data) {
 
       	var hero_image = hero_data.img;
 
-      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='53.125px'></div>"
+      	var img_tip = "<div id='scatter_tooltip_img'><img src='" + hero_image + "' height='40px' width='71px'></div>"
 
       	graph_tip.html(img_tip + text);
       	graph_tip.show(d)
