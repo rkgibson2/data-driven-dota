@@ -76,6 +76,12 @@ bb_kda = {
 	w: 900
 }
 
+//colorblind css change
+d3.select("#colorblind")
+	.on("click", function() {
+		
+	})
+
 //button handlers for splash page to switch the divs around as desired
 
 d3.select("#move_on_button")
