@@ -1716,18 +1716,6 @@ function draw_gpm() {
 var gpm_brush;
 
 function update_gpm(data) {
-	//console.log(data);
-
-	if ($("#color-blind").is(":checked")) {
-		gpm_color = d3.scale.ordinal()
-			.domain([true, false])
-			.range(["#762a83", "#ff7f00"]);	
-	}
-	else {
-		gpm_color = d3.scale.ordinal()
-			.domain([true, false])
-			.range(["#1a9641", "#d7191c"]);	
-	}
 
 	gpm_brush = d3.svg.brush()
    		.x(gpm_x)
@@ -1782,12 +1770,11 @@ function update_gpm(data) {
 
     datapoints
     .enter().append("circle")
-      .attr("class", "dot")
+      .attr("class", function(d) {
+			return (d.player_win) ? "dot win" : "dot loss"
+		})
       .attr("match_id", function(d) { return d.match_id })
       .attr("r", 3.5)
-      .style("fill", function(d) { 
-      		return gpm_color(d.player_win); 
-      })
       .on("mouseover", function(d) {
       	// update dota styling
     	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
@@ -1818,9 +1805,6 @@ function update_gpm(data) {
       .attr("clip-path", "url(#gpm_clip)");
 
 	datapoints
-		.style("fill", function(d) {
-			return gpm_color(d.player_win)
-		})
 		.attr("cx", gpm_x(0))
 		.attr("cy", gpm_y(0))
 		.transition()
@@ -2035,18 +2019,6 @@ function draw_xpm() {
 
 
 function update_xpm(data) {
-	//console.log(data);
-
-	if ($("#color-blind").is(":checked")) {
-		xpm_color = d3.scale.ordinal()
-		.domain([true, false])
-		.range(["#762a83", "#ff7f00"]);	
-	}
-	else {
-		xpm_color = d3.scale.ordinal()
-			.domain([true, false])
-			.range(["#1a9641", "#d7191c"]);	
-	}
 
 	xpm_brush = d3.svg.brush()
    		.x(xpm_x)
@@ -2102,10 +2074,11 @@ function update_xpm(data) {
 
     datapoints
     .enter().append("circle")
-      .attr("class", "dot")
+      .attr("class", function(d) {
+			return (d.player_win) ? "dot win" : "dot loss"
+		})
       .attr("match_id", function(d) { return d.match_id })
       .attr("r", 3.5)
-      .style("fill", function(d) { return xpm_color(d.player_win); })
       .on("mouseover", function(d) {
       	// update dota styling
     	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
@@ -2136,9 +2109,6 @@ function update_xpm(data) {
       .attr("clip-path", "url(#xpm_clip)");
 
 	datapoints
-		.style("fill", function(d) {
-			return xpm_color(d.player_win)
-		})
 		.attr("cx", xpm_x(0))
 		.attr("cy", xpm_y(0))
 		.transition()

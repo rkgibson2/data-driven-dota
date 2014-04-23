@@ -112,7 +112,9 @@ function create_timeline(userdata)
 		.data(matches, function(d) { return d.match_id })
 		.enter()
 		.append("circle")
-		.attr("class", "dot")
+		.attr("class", function(d) {
+			return (d.player_win) ? "dot win" : "dot loss"
+		})
       	.attr("match_id", function(d) { return d.match_id })
 		.attr("clip-path", "url(#timeline_clip)")
 		// add a circular node at the correct coordinates from our dataSet
@@ -125,10 +127,6 @@ function create_timeline(userdata)
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
 		})
 		.attr("r", 3)
-		.style("fill", function (d)
-		{
-			return d.player_win ? "#1a9641" : "#d7191c"
-		})
 		.on("click", update_end_screen);
 		
 		
@@ -278,7 +276,9 @@ function transition_data(matchdata)
 	// append and transition new elements
 	dots.enter()
 		.append("circle")
-		.attr("class", "dot")
+		.attr("class", function(d) {
+			return (d.player_win) ? "dot win" : "dot loss"
+		})
       	.attr("match_id", function(d) { return d.match_id })
 		.attr("clip-path", "url(#timeline_clip)")
 		// add a circular node at the correct coordinates from our dataSet
@@ -291,10 +291,6 @@ function transition_data(matchdata)
 			return yScaleOverview(d2.getHeroInfo(d.player_info.hero_id).stat)
 		})
 		.attr("r", 3)
-		.style("fill", function (d)
-		{
-			return d.player_win ? "#1a9641" : "#d7191c"
-		})
 		.on("mouseover", function (d)
 		{
 	      	// update dota styling
