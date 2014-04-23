@@ -20,20 +20,24 @@
 <body>
 
 <div id="splash">
-  <div id="visit_video"><a class="btn btn-default" href="https://www.youtube.com/channel/UCrdUDsPT3hxO4qoX4uLgOSA" target="_blank">View our Video</a></div>
   <center><img src="/img/possible.png" width="700px" height="560px" align="middle"></center>
   <div id="splash-nav">
-    <span id="more_info_button"><button class="btn btn-default">More Information</button></span>
-    <span id="move_on_button"><button class="btn btn-default">Gotcha!</button></span>
+    <span id="visit_video"><a class="btn btn-link" href="https://www.youtube.com/channel/UCrdUDsPT3hxO4qoX4uLgOSA" target="_blank">View our Video</a></span>
+    <span id="to_github"><a class="btn btn-link" href="https://github.com/rkgibson2/Dota-2-visualizations" target="_blank">View Project on Github</a></span>
+    <span id="more_info_button"><button class="btn btn-info">More Information</button></span>
+    <span id="move_on_button"><button class="btn btn-success">Gotcha!</button></span>
   </div>
 </div>
 <div id="splash_page2" style="display:none;">
   <center><img src="../img/header.png" width="712px" height="326" align="middle"></center>
   <div class="spacer"></div>
   <center><img src="../img/body.png" width="495px" height="444px" align="middle"></center>
-  <span id="move_on_button2"><button class="btn btn-default">Gotcha!</button></span>
-  <span id="detailed_explanation"><button class="btn btn-default">Detailed Explanation</button></span>
-  <span id="to_github"><a class="btn btn-default" href="https://github.com/rkgibson2/Dota-2-visualizations" target="_blank">View Project on Github</a></span>
+  <div id="splash-nav">
+    <span id="visit_video"><a class="btn btn-info" href="https://www.youtube.com/channel/UCrdUDsPT3hxO4qoX4uLgOSA" target="_blank">View our Video</a></span>
+    <span id="to_github"><a class="btn btn-info" href="https://github.com/rkgibson2/Dota-2-visualizations" target="_blank">View Project on Github</a></span>
+    <span id="detailed_explanation"><button class="btn btn-info">Detailed Explanation</button></span>
+    <span id="move_on_button2"><button class="btn btn-success">Gotcha!</button></span>
+  </div>
 </div>
 
 <div id="not-splash" style="display:none;">
@@ -52,14 +56,14 @@
       <!--FILTER GAME MODE MODAL BUTTON -->
       <span id="filterbutton_game_mode"><button class="btn btn-default" data-toggle="modal" data-target="#select_game_type" onclick="reselectLobby()">Filter by Game Type</button></span>
 
-      <!--FILTER GAME MODE MODAL BUTTON -->
+      <!--FILTER RECORD MODAL BUTTON -->
  <!--      <span id="record_button"><button class="btn btn-default" data-toggle="modal" data-target="#show_records" onclick="updateRecords(filtered_data)">Records</button></span> -->
       
       <!-- HELP QUESTION MARK -->
       <span  class="question"><strong>?</strong></span>
      
       <!-- COLOR BLIND TOGGLE --> 
-      <span id="colorblind"><label>Color Blind Mode</label><input type="checkbox" id="color-blind" name="color-blind-box" onclick = "changeCSS()" ></input></span>
+      <span id="colorblind" class="checkbox"><label>Color Blind Mode<input type="checkbox" id="color-blind" name="color-blind-box" onclick="changeCSS()" ></input></label></span>
       
     </div>
 
