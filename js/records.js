@@ -106,8 +106,16 @@ displayRecords();
 
 function displayRecords(){
 for (key in records){
-    d3.select("#" + key).text($("#" + key).data().value + "\n" +records[key].value).style("text-align","center").classed("dullness",true).classed("brightnessfilter",true)
-    .style("background-image","url("+d2.getHeroInfo(records[key].match.player_info.hero_id).img +")").style("background-size","100% 100%");
-    d3.select("#" +key).on("click",function(){update_end_screen(records[this.id].match); $('#show_records').modal('hide');});
+    d3.select("#" + key)
+        .text($("#" + key).data().value + "\n" +records[key].value)
+        .style("text-align","center").classed("dullness",true)
+        .classed("brightnessfilter",true)
+        //.html("<div id='scatter_tooltip_img'><img src='" + d2.getHeroInfo(records[key].match.player_info.hero_id).img + "' height='40px' width='71.125px'></div>");
+        .style("background-image","url("+d2.getHeroInfo(records[key].match.player_info.hero_id).img +")")
+        .style("background-size", "200px 112.5px")
+        //.style("background-size","100% 100%");
+    d3.select("#" +key)
+        .on("click",function(){update_end_screen(records[this.id].match); 
+    $('#show_records').modal('hide');});
 }
 }
