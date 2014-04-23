@@ -79,8 +79,11 @@ bb_kda = {
 //colorblind css change
 d3.select("#colorblind")
 	.on("click", function() {
-		
-	})
+		item_percent_color.range(["#807dba", "#8d8d8d", "#fdae6b"]);
+		gpm_color.range(["#fdae6b", "#807dba"]);
+		xpm_color.range(["#fdae6b", "#807dba"]);
+		user_interact_color_win.range(["#807dba", "#8d8d8d", "#fdae6b"]);
+	});
 
 //button handlers for splash page to switch the divs around as desired
 
@@ -90,7 +93,6 @@ d3.select("#move_on_button")
 			.style("display", null)
 		d3.select("#splash")
 			.style("display", "none");
-		//force scroll
 	})
 
 d3.select("#more_info_button")
