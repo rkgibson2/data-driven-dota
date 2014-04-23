@@ -76,15 +76,37 @@ bb_kda = {
 	w: 900
 }
 
+//button handlers for splash page to switch the divs around as desired
+
 d3.select("#move_on_button")
 	.on("click", function() {
-		console.log("hello")
 		d3.select("#not-splash")
 			.style("display", null)
 		d3.select("#splash")
 			.style("display", "none");
 		//force scroll
 	})
+
+d3.select("#more_info_button")
+	.on("click", function() {
+		d3.select("#splash")
+			.style("display", "none")
+		d3.select("#splash_page2")
+			.style("display", null);
+		//force scroll
+	})
+
+d3.select("#move_on_button2")
+	.on("click", function() {
+		d3.select("#not-splash")
+			.style("display", null)
+		d3.select("#splash")
+			.style("display", "none")
+		d3.select("#splash_page2")
+			.style("display", "none");
+	})
+
+
 
 //set up those boxes
 svg = d3.select("#stat_graphs").append("svg").attr({
