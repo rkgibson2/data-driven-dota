@@ -1844,7 +1844,6 @@ function gpm_brushend() {
 	// equal domain ends means click on graph
 	// coerce dates to numbers to check equality
 	if (+gpm_x_domain[0] == +gpm_x_domain[1] && +gpm_y_domain[0] == +gpm_y_domain[1]) {
-		console.log("SAME")
 		return;
 	}
 
@@ -1852,7 +1851,7 @@ function gpm_brushend() {
 	if (get_button.empty() === true)
 	{
 		gpm_clear_button = gpm_graph.append('text')
-			.attr("y", bb_gpm.h - 430)
+			.attr("y", bb_gpm.h - 440)
 			.attr("x", bb_gpm.w - 100)
 			.attr("class", "clear-button_gpm")
 			.text("Clear Brush");
@@ -2148,7 +2147,6 @@ function xpm_brushend() {
 	// equal domain ends means click on graph
 	// coerce dates to numbers to check equality
 	if (+xpm_x_domain[0] == +xpm_x_domain[1] && +xpm_y_domain[0] == +xpm_y_domain[1]) {
-		console.log("SAME")
 		return;
 	}
 
@@ -2157,7 +2155,7 @@ function xpm_brushend() {
 	if (get_button.empty() === true)
 	{
 		xpm_clear_button = xpm_graph.append('text')
-			.attr("y", bb_xpm.h - 430)
+			.attr("y", bb_xpm.h - 440)
 			.attr("x", bb_xpm.w - 100)
 			.attr("class", "clear-button_xpm")
 			.text("Clear Brush");
