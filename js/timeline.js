@@ -103,6 +103,16 @@ function create_timeline(userdata)
 		.selectAll('rect')
 		.attr('height', 50)
 		.attr("y", 10);
+
+	// add description text
+	svgTimeLine.append("text")
+		.attr("class", "text")
+		.attr("text-anchor", "middle")
+		.attr("y", height + 15)
+		.attr("x", width / 2)
+		.text("Select a region on the timeline to filter your games. Click a dot to see the end-game screen for that game.")
+		.style("font-size", "12px");
+
 	// add the nodes to the overview vis
 	dots = svgTimeLine.append("g").attr(
 		{
