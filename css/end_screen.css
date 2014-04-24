@@ -37,7 +37,7 @@
 }
 
 #match_data {
-    height: 70px;
+    height: 90px;
 }
 
 #left_col {
@@ -49,15 +49,32 @@
     text-align: right;
 }
 
+#closebutton {
+    width: 55px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.buttonholder {
+    text-align: center;
+}
+
 #players {
     position: relative;
-    margin: 10px 0px;
+    margin: 0px;
+    margin-bottom: 10px;
 }
 
 #players table {
     table-layout: fixed;
     border-collapse: collapse;
-    margin: 5px 0px;
+    margin: 0px;
+}
+
+#players table#dire {
+    margin-top: 5px;
 }
 
 #players tbody tr:nth-child(odd) {
@@ -155,7 +172,7 @@
 .ability_build {
     position: absolute;
     width: 700px;
-    height: 260px;
+    height: 240px;
     left: 390px;
     top: 38px;
     background-color: white;
