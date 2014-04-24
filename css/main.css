@@ -448,3 +448,10 @@ div.graph_description strong {
 #colorblind {
   float: right;
 }
+
+.logoimage {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 700px;
+}
