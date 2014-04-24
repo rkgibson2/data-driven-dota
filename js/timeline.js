@@ -331,7 +331,7 @@ function reset_axis()
 
 function update_graphs(){
 
-		filtered_data = {
+	filtered_data = {
 		id32: user_data.id32,
 		id64: user_data.id64,
 		matches: [],
@@ -341,6 +341,7 @@ function update_graphs(){
 	var extent = xScaleOverview.domain();
 
 	filtered_data.matches = matches.filter(function(d){if ((extent[0] <= (new Date(d.start_time * 1000))) && ((new Date(d.start_time * 1000)) <= extent[1])) return 1});
+
 
     update_win_loss(filtered_data);
 
@@ -361,4 +362,5 @@ function update_graphs(){
 
     update_user_interact(filtered_data);
 
+	updateRecords(filtered_data);
 };
