@@ -87,7 +87,7 @@ var isChecked = $("#color-blind").is(":checked");
 
 //button handlers for splash page to switch the divs around as desired
 
-d3.select("#move_on_button")
+d3.select(".move_on_button")
 	.on("click", function() {
 		d3.select("#not-splash")
 			.style("display", null)
@@ -95,7 +95,7 @@ d3.select("#move_on_button")
 			.style("display", "none");
 	})
 
-d3.select("#more_info_button")
+d3.select(".more_info_button")
 	.on("click", function() {
 		d3.select("#splash")
 			.style("display", "none")
@@ -103,7 +103,7 @@ d3.select("#more_info_button")
 			.style("display", null);
 	})
 
-d3.select("#move_on_button2")
+d3.select(".move_on_button2")
 	.on("click", function() {
 		d3.select("#not-splash")
 			.style("display", null)
@@ -307,7 +307,7 @@ function loadData(username) {
         
         
         create_timeline(user_data);
-        //updateGraphs(user_data)
+        // updateGraphs(user_data)
         // filter out random modes etc. and updateGraphs
         tripleFilterUpdate();
     })
