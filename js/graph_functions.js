@@ -85,17 +85,20 @@ bb_kda = {
 
 var isChecked = $("#color-blind").is(":checked");
 
-//button handlers for splash page to switch the divs around as desired
+// button handlers for splash page to switch the divs around as desired
 
-d3.select(".move_on_button")
-	.on("click", function() {
-		d3.select("#not-splash")
-			.style("display", null)
-		d3.select("#splash")
-			.style("display", "none");
-	})
+d3.selectAll(".move_on_button button")
+		.on("click", function() {
+			d3.select("#not-splash")
+				.style("display", null)
+			d3.select("#splash")
+				.style("display", "none");
+			d3.select("#splash_page2")
+				.style("display", "none");
+		})
 
-d3.select(".more_info_button")
+
+d3.select(".more_info_button button")
 	.on("click", function() {
 		d3.select("#splash")
 			.style("display", "none")
@@ -103,16 +106,15 @@ d3.select(".more_info_button")
 			.style("display", null);
 	})
 
-d3.select(".move_on_button2")
-	.on("click", function() {
-		d3.select("#not-splash")
-			.style("display", null)
-		d3.select("#splash")
-			.style("display", "none")
-		d3.select("#splash_page2")
-			.style("display", "none");
-	})
 
+// start with move on button in "loading" state (Twitter Bootstrap)
+$( ".move_on_button button" ).button("loading")
+
+// When DOM is ready, enable button
+$(window).load(function() {
+	
+	$( ".move_on_button button" ).button("reset")
+})
 
 
 //set up those boxes
