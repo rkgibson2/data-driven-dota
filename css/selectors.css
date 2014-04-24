@@ -103,21 +103,23 @@
     border: 1px solid white;
 }
 
-#record_table {
-    margin: 0px auto;
-}
 #record_content div{
-white-space: pre;
-font-weight:bold;
-font-size: 18px;
-height:80px;
-width: 200px;
-margin: 0px auto;
-text-shadow: black 0.1em 0.1em 0.2em;
-cursor:pointer;
-margin-bottom:5px;
-
+    display: inline-block;
+    font-weight:bold;
+    font-size: 16px;
+    height: 80px;
+    width: 160px;
+    margin: 0px auto;
+    text-shadow: black 0.2em 0.2em 0.3em;
+    cursor:pointer;
+    margin-bottom:5px;
+    text-align: center;
+    color: white;
+    background-size: 200px 112.5px;
+    background-position: -20px -10px;
+    border: 1px solid black;
 }
+
 .brightnessfilter:hover {
      -webkit-filter: brightness(1.2);
 -moz-filter: brightness(1.2);
