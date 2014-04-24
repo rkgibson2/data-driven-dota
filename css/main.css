@@ -44,10 +44,20 @@ label {
   height: 100px;
 }
 
-#filters {
-  width: 700px;
+#questionmark {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+}
+
+#nav {
+  width: 950px;
   margin-right: auto;
   margin-left: auto;
+}
+
+#filters {
+  float: left;
 }
 
 #userdropdown {
@@ -90,7 +100,7 @@ label {
 
 #record_content {
   position: absolute;
-  top: 80px;
+  top: 100px;
   width: 1060px;
   height: 85px;
   z-index: 2;

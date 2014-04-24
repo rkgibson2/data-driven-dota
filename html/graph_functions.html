@@ -44,29 +44,34 @@
 <div id="not-splash" style="display:none;">
   <div id="page-header">
     <img id="corner-logo" src="/img/LogoSmall.png" alt="Data Driven Dota Logo" title="Data Driven Dota">
-
+    <div id="nav">
     <!-- FILTERS -->
-    <div id="filters">
-      
-      <!--USER DROPDOWN -->
-      <span id="selectuser"></span>
+      <div id="filters">
+        
+        <!--USER DROPDOWN -->
+        <span id="selectuser"></span>
 
-      <!--FILTER HERO MODAL BUTTON -->
-      <span id="filterbutton"><button class="btn btn-default" data-toggle="modal" data-target="#selector" onclick="reselectHeroes()">Filter by Heroes</button></span>
+        <!--FILTER HERO MODAL BUTTON -->
+        <span id="filterbutton"><button class="btn btn-default" data-toggle="modal" data-target="#selector" onclick="reselectHeroes()">Filter by Heroes</button></span>
 
-      <!--FILTER GAME MODE MODAL BUTTON -->
-      <span id="filterbutton_game_mode"><button class="btn btn-default" data-toggle="modal" data-target="#select_game_type" onclick="reselectLobby()">Filter by Game Type</button></span>
+        <!--FILTER GAME MODE MODAL BUTTON -->
+        <span id="filterbutton_game_mode"><button class="btn btn-default" data-toggle="modal" data-target="#select_game_type" onclick="reselectLobby()">Filter by Game Type</button></span>
 
-      <!--FILTER RECORD MODAL BUTTON -->
- <!--      <span id="record_button"><button class="btn btn-default" data-toggle="modal" data-target="#show_records" onclick="updateRecords(filtered_data)">Records</button></span> -->
-      
+        <!--FILTER RECORD MODAL BUTTON -->
+   <!--      <span id="record_button"><button class="btn btn-default" data-toggle="modal" data-target="#show_records" onclick="updateRecords(filtered_data)">Records</button></span> -->
+      </div>
+
+      <div id="colorblindtoggle">
+        <!-- COLOR BLIND TOGGLE --> 
+        <span id="colorblind" class="checkbox"><label>Color Blind Mode<input type="checkbox" id="color-blind" name="color-blind-box" onclick="changeCSS()" ></input></label></span>
+      </div>
+    </div>
+
+    <div id="questionmark">
       <!-- HELP QUESTION MARK -->
       <span  class="question"><strong>?</strong></span>
-     
-      <!-- COLOR BLIND TOGGLE --> 
-      <span id="colorblind" class="checkbox"><label>Color Blind Mode<input type="checkbox" id="color-blind" name="color-blind-box" onclick="changeCSS()" ></input></label></span>
-      
     </div>
+      
 
     <!-- TIMELINE OVERVIEW -->
     <div id ="timeline"></div>
