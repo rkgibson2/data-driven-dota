@@ -302,7 +302,9 @@ function loadData(username) {
         // clear the filtered heroes and game modes
         selectedarr = [];
         resetGameMode();
+        initGameMode();
 		resetLobby();
+		initLobby();
         resetSelectedHeroes();
         
         

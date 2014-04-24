@@ -1,4 +1,5 @@
 all_modes =  ["AD", "AR", "CD", "CM", "RD", "LH", "LP", "SD", "AP"];
+init_modes = ["AR", "CD", "CM", "RD", "SD", "AP"];
 selected_modes = ["AD", "AR", "CD", "CM", "RD", "LH", "LP", "SD", "AP"];
 update_selected_modes = ["AD", "AR", "CD", "CM", "RD", "LH", "LP", "SD", "AP"];
 //select_color ="#E8CE38";
@@ -41,3 +42,9 @@ function reselectGameMode(){
         document.getElementById(d).style.border =  "2px solid red";
     });
 };
+
+function initGameMode(){
+selected_modes = init_modes.slice();
+
+
+}
