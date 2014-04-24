@@ -227,6 +227,10 @@ function enter_end_screen() {
             .transition().delay(1250).duration(750)
             .style("opacity", 1)
     }
+
+    // scroll to end screen
+    // with help from http://stackoverflow.com/questions/3432656/scroll-to-a-div-using-jquery
+    $("html, body").animate({scrollTop: $(end_screen).offset().top - 180}, 2000)
 }
 
 function exit_end_screen() {
