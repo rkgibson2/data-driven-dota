@@ -184,7 +184,7 @@ path {
 #value_sort_label {
   z-index: 1;
   position: absolute;
-  top: 180px;
+  top: 230px;
   /*right: 651px;*/
   left: 416px;
 }
@@ -192,7 +192,7 @@ path {
 #item_sort_label{
   z-index: 1;
   position: absolute;
-  top: 197px;
+  top: 245px;
   /*right: 687px;*/
   left: 416px;
 }
@@ -200,7 +200,7 @@ path {
 #cost_sort_label{
   z-index: 1;
   position: absolute;
-  top: 215px;
+  top: 260px;
   left: 416px;
   /*right: 689px;*/
 }
@@ -216,7 +216,7 @@ path {
 #hero_filter{
   z-index: 1;
   position:absolute;
-  top: 775px;
+  top: 750px;
   left: 170px;
   /*right: 150px;*/
 }

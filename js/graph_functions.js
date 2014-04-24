@@ -20,6 +20,13 @@ var width = 1060 - margin.left - margin.right;
 
 var height = 1700 - margin.bottom - margin.top;
 
+bb_records = {
+	x: 0,
+	y: 250,
+	h: 200,
+	w: width
+}
+
 bb_win_loss = {
     x: width/2-125,
     y: -20,
@@ -29,21 +36,21 @@ bb_win_loss = {
 
 bb_hero_pie = {
     x: 0,
-    y: 200,
+    y: 250,
     w: 300,
     h: 300
 };
 
 bb_item_percent = {
     x: 400,
-    y: 200,
+    y: 250,
     w: 600,
     h: 300
 };
 
 bb_hero_chord = {
     x: -50,
-    y: 750,
+    y: 720,
     w: 400,
     h: 400
 };
@@ -57,7 +64,7 @@ bb_user_interact = {
 
 bb_gpm = {
 	x: 500,
-	y: 700,
+	y: 670,
 	h: 400,
 	w: 400
 }
@@ -145,6 +152,10 @@ var gpm_graph = svg.append("g")
 var xpm_graph = svg.append("g")
 	.attr("class", "xpm")
 	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
+
+var records_graph = svg.append("g")
+	.attr("class", "records_graph")
+	.attr("transform", "translate(" + bb_records.x + "," + bb_records.y + ")");
 
 // var kda_graph = svg.append("g")
 // 	.attr("class", "kda")
@@ -303,6 +314,118 @@ function loadData(username) {
 }
 
 function updateGraphs (filtered_data) {
+
+	//FOR VIDEO. DO NOT DELETE.
+	// var angela_video_data = filtered_data;
+
+	// var angela_matches = angela_video_data.matches;
+
+	// for (var i = 0; i < angela_matches.length; i++) {
+	// 	if (i%2 == 0) {
+	// 		angela_matches[i].player_win = true;
+	// 	}
+	// 	if (i%5 == 0) {
+	// 		angela_matches[i].player_win = true;
+	// 	}
+
+	// 	var all_players = angela_matches[i].players;
+
+	// 	if (all_players.length == 10) {
+	// 		for (var j = 0; j < 10; j++) {
+	// 			var account_id_num = all_players[j].account_id;
+	// 			if (account_id_num == 112495792) {
+	// 				if (j%5 != 0) {
+	// 					angela_matches[i].player_win = false;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+
+	
+	//FOR VIDEO. DO NOT DELETE.
+	// var robbie_video_data = filtered_data;
+
+	// var robbie_matches = robbie_video_data.matches;
+
+	// for (var i = 0; i < robbie_matches.length; i++) {
+	// 	if (robbie_matches[i].player_win == true) {
+	// 		if (i%3 == 0) {
+	// 			robbie_matches[i].player_win = false;
+	// 		}
+	// 		if (robbie_matches[i].player_info.hero_id != 21) {
+	// 			if (i%5 == 0) {
+	// 				robbie_matches[i].player_info.hero_id = 22
+	// 			}
+	// 			robbie_matches[i].player_win == false;
+	// 		}
+	// 		if (robbie_matches[i].player_info.hero_id == 32) {
+	// 			robbie_matches[i].player_info.hero_id = 21
+	// 			robbie_matches[i].player_win == false;
+	// 		}
+	// 		if (robbie_matches[i].player_info.hero_id == 88) {
+	// 			robbie_matches[i].player_info.hero_id = 21
+	// 			robbie_matches[i].player_win == false;
+	// 		}
+	// 		if (robbie_matches[i].player_info.hero_id == 29) {
+	// 			robbie_matches[i].player_info.hero_id = 21
+	// 			robbie_matches[i].player_win == false;
+	// 		}
+	// 		if (robbie_matches[i].player_info.hero_id == 62) {
+	// 			robbie_matches[i].player_info.hero_id = 21
+	// 			robbie_matches[i].player_win == false;
+	// 		}
+	// 		if (robbie_matches[i].player_info.hero_id == 39) {
+	// 			robbie_matches[i].player_info.hero_id = 21
+	// 			robbie_matches[i].player_win == false;
+	// 		}
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_0 == 102) {
+	// 		if (i != 0 && robbie_matches[i].player_info.hero_id == 21) {
+	// 			robbie_matches[i].player_win = true
+	// 		}
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_1 == 102) {
+	// 		if (i != 0 && robbie_matches[i].player_info.hero_id == 21) {
+	// 			robbie_matches[i].player_win = true;
+	// 		}
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_2 == 102) {
+	// 		if (i != 0 && robbie_matches[i].player_info.hero_id == 21) {
+	// 			robbie_matches[i].player_win = true
+	// 		}
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_3 == 102) {
+	// 		if (i != 0 && robbie_matches[i].player_info.hero_id == 21) {
+	// 			robbie_matches[i].player_win = false;
+	// 		}
+	// 	}
+
+	// 	if (robbie_matches[i].player_info.item_0 == 180) {
+	// 		robbie_matches[i].player_info.item_0 = 151
+	// 		robbie_matches[i].player_win = false;
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_1 == 180) {
+	// 		robbie_matches[i].player_info.item_1 = 151
+	// 		robbie_matches[i].player_win = false;
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_2 == 180) {
+	// 		robbie_matches[i].player_info.item_2 = 151
+	// 		robbie_matches[i].player_win = false;
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_3 == 180) {
+	// 		robbie_matches[i].player_info.item_3 = 151
+	// 		robbie_matches[i].player_win = false;
+	// 	}
+	// 	if (robbie_matches[i].player_info.item_4 == 180) {
+	// 		robbie_matches[i].player_info.item_4 = 151
+	// 		robbie_matches[i].player_win = false;
+	// 	}
+	// }
+
+
+
 	//update function calls
     update_win_loss(filtered_data);
 
@@ -332,6 +455,7 @@ function updateGraphs (filtered_data) {
 	exit_end_screen();
 }
 
+
 // jQuery tooltip helper adapted from: http://www.davidjrush.com/blog/2011/12/simple-jquery-tooltip/
 $(document).ready(function ()
 {
@@ -351,7 +475,6 @@ $(document).ready(function ()
 		$("div.graph_description").remove();
 	});
 });
-
 
 //win loss rect graph
 //transition working
