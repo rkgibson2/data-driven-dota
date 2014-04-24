@@ -328,6 +328,8 @@ function updateGraphs (filtered_data) {
 		rerender(filtered_data);  
 	});
 
+	updateRecords(filtered_data);
+
 	// exit the end screen when we change the filter
 	exit_end_screen();
 }

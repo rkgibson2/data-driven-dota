@@ -88,6 +88,16 @@ label {
   left: 0px;
 }
 
+#record_content {
+  position: absolute;
+  top: 80px;
+  width: 1060px;
+  height: 85px;
+  z-index: 2;
+  overflow: auto;
+  white-space: nowrap;
+}
+
 .win_loss rect {
   stroke: black;
   stroke-width: 2px;
@@ -129,11 +139,6 @@ path {
 
 .bar:hover{
   fill: aquamarine;
-}
-
-.bar {
-  /*stroke-width: 1px;*/
-  /*stroke: black;*/
 }
 
 #item_percent_tooltip_img {

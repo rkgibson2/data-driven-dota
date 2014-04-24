@@ -1,7 +1,7 @@
 #end_screen {
     position:relative;
     height: 675px;
-    width: 1124px;
+    width: 1060px;
 }
 
 #end_screen .header {
@@ -66,6 +66,7 @@
 
 #players td, #players th {
     padding: 3px;
+    white-space: nowrap;
 }
 
 #players .headers {
@@ -76,6 +77,10 @@
     text-align:left;
     border: none;
     font-size: 22px;
+}
+
+#players tr.headers {
+    height: 26px;
 }
 
 #players td {
@@ -150,8 +155,8 @@
 .ability_build {
     position: absolute;
     width: 700px;
-    height: 230px;
-    left: 415px;
+    height: 260px;
+    left: 390px;
     top: 38px;
     background-color: white;
     border: 2px solid black;
