@@ -20,4 +20,4 @@ d3.select("#selectuser")
     .text(function(d){ return d.username });
 
 // set default value to robbie (ME!!)
-d3.select("[value=benjy]").property("selected", true)
+d3.select("[value=robbie]").property("selected", true)
