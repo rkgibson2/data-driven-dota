@@ -70,6 +70,12 @@ function updateRecords(data){
 
     records["longest_match"]["value"] = hours + ":" + seconds
 
+    // change hero and tower damage numbers to include thousands separator
+    var thousands = d3.format(",d")
+
+    records["most_hero_damage"]["value"] = thousands(records["most_hero_damage"]["value"])
+    records["most_tower_damage"]["value"] = thousands(records["most_tower_damage"]["value"])
+
     displayRecords();
     }
 

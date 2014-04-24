@@ -418,13 +418,13 @@ function update_win_loss(data) {
 	}
 
 	if (isNaN((win_count/total_matches)*bb_win_loss.w) == false) {
-		d3.select(".win")
+		d3.select("rect.win")
 			.transition()
 			.duration(duration)
 			.attr("width", (win_count/total_matches)*bb_win_loss.w);
 	}
 	else {
-		d3.select(".win")
+		d3.select("rect.win")
 			.transition()
 			.duration(duration)
 			.attr("width", 0);
