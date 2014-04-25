@@ -1903,6 +1903,8 @@ function update_gpm(data) {
 			return (d.player_win) ? "dot win" : "dot loss"
 		})
       .attr("match_id", function(d) { return d.match_id })
+	  .attr("cx", gpm_x(0))
+	  .attr("cy", gpm_y(0))
       .attr("r", 3.5)
       .on("mouseover", function(d) {
       	// update dota styling
@@ -1934,8 +1936,6 @@ function update_gpm(data) {
       .attr("clip-path", "url(#gpm_clip)");
 
 	datapoints
-		.attr("cx", gpm_x(0))
-		.attr("cy", gpm_y(0))
 		.transition()
 		.duration(1000)
 		.attr("cx", function(d) {
