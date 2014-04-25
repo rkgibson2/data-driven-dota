@@ -121,14 +121,14 @@
 }
 
 .brightnessfilter:hover {
-     -webkit-filter: brightness(1.2);
--moz-filter: brightness(1.2);
--o-filter:  brightness(1.2);
--ms-filter:  brightness(1.2);
+    -webkit-filter: brightness(1.2);
+    -moz-filter: brightness(1.2);
+    -o-filter:  brightness(1.2);
+    -ms-filter:  brightness(1.2);
 }
 .dullness{
-     -webkit-filter: brightness(0.8);
--moz-filter: brightness(0.8);
--o-filter:  brightness(0.8);
--ms-filter:  brightness(0.8);
+    -webkit-filter: brightness(0.8);
+    -moz-filter: brightness(0.8);
+    -o-filter:  brightness(0.8);
+    -ms-filter:  brightness(0.8);
 }
