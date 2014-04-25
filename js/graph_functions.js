@@ -63,7 +63,7 @@ bb_user_interact = {
 }
 
 bb_gpm = {
-	x: -50,
+	x: 0,
 	y: 670,
 	h: 400,
 	w: 400
