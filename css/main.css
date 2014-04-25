@@ -231,8 +231,8 @@ path {
 #hero_filter{
   z-index: 1;
   position:absolute;
-  top: 750px;
-  left: 170px;
+  top: 1280px;
+  left: 800px;
   /*right: 150px;*/
 }
 

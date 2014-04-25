@@ -49,8 +49,8 @@ bb_item_percent = {
 };
 
 bb_hero_chord = {
-    x: -50,
-    y: 720,
+    x: 500,
+    y: 1250,
     w: 400,
     h: 400
 };
@@ -63,7 +63,7 @@ bb_user_interact = {
 }
 
 bb_gpm = {
-	x: 500,
+	x: -50,
 	y: 670,
 	h: 400,
 	w: 400
@@ -71,7 +71,7 @@ bb_gpm = {
 
 bb_xpm = {
 	x: 500,
-	y: 1200,
+	y: 670,
 	h: 400,
 	w: 400
 }
