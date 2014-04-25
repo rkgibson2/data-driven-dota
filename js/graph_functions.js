@@ -89,6 +89,8 @@ var isChecked = $("#color-blind").is(":checked");
 
 d3.selectAll(".move_on_button button")
 		.on("click", function() {
+			//force scroll to top if you're on the second page of the splash screen
+			$(window).scrollTop("0px")
 			d3.select("#not-splash")
 				.style("display", null)
 			d3.select("#splash")
@@ -101,7 +103,7 @@ d3.selectAll(".move_on_button button")
 d3.select(".more_info_button button")
 	.on("click", function() {
 		d3.select("#splash")
-			.style("display", "none")
+			.style("display", "none");
 		d3.select("#splash_page2")
 			.style("display", null);
 	})
