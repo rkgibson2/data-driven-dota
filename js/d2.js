@@ -199,7 +199,7 @@ var d2 = (function() {
         d3.select("body").selectAll(".heropicture").data([heroname.toLowerCase().replace(/ /g,"_")])
         .enter().append('img')
         .attr('class', 'heropicture')
-        .attr('src', function(d) { return "../img/heroes/" +d+".jpg"; });
+        .attr('src', function(d) { return "img/heroes/" +d+".jpg"; });
     };
 
 
@@ -209,7 +209,7 @@ var d2 = (function() {
         d3.select("body").selectAll(".itempicture").data([itemname])
         .enter().append('img')
         .attr('class', 'itempicture')
-        .attr('src', function(d) { return "../img/items/" +d+".jpg"; });
+        .attr('src', function(d) { return "img/items/" +d+".jpg"; });
     };
 
     var pubFunctionList = "getHeroName(id): returns hero name from ID\n"
