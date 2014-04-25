@@ -1260,7 +1260,7 @@ function update_item_percent(data) {
 
 		bars.exit()
 			.transition()
-			.duration(duration)
+			.duration(500)
 			.attr("width", 0)
 			.remove();
 
