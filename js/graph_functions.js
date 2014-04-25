@@ -49,8 +49,8 @@ bb_item_percent = {
 };
 
 bb_hero_chord = {
-    x: -50,
-    y: 720,
+    x: 500,
+    y: 1250,
     w: 400,
     h: 400
 };
@@ -63,7 +63,7 @@ bb_user_interact = {
 }
 
 bb_gpm = {
-	x: 500,
+	x: -50,
 	y: 670,
 	h: 400,
 	w: 400
@@ -71,7 +71,7 @@ bb_gpm = {
 
 bb_xpm = {
 	x: 500,
-	y: 1200,
+	y: 670,
 	h: 400,
 	w: 400
 }
@@ -89,6 +89,8 @@ var isChecked = $("#color-blind").is(":checked");
 
 d3.selectAll(".move_on_button button")
 		.on("click", function() {
+			//force scroll to top if you're on the second page of the splash screen
+			$(window).scrollTop("0px")
 			d3.select("#not-splash")
 				.style("display", null)
 			d3.select("#splash")
@@ -101,7 +103,7 @@ d3.selectAll(".move_on_button button")
 d3.select(".more_info_button button")
 	.on("click", function() {
 		d3.select("#splash")
-			.style("display", "none")
+			.style("display", "none");
 		d3.select("#splash_page2")
 			.style("display", null);
 	})
@@ -1260,7 +1262,7 @@ function update_item_percent(data) {
 
 		bars.exit()
 			.transition()
-			.duration(duration)
+			.duration(500)
 			.attr("width", 0)
 			.remove();
 
