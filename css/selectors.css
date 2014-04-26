@@ -108,7 +108,7 @@
     font-weight:bold;
     font-size: 16px;
     height: 80px;
-    width: 160px;
+    width: 170px;
     margin: 0px auto;
     text-shadow: black 0.2em 0.2em 0.3em;
     cursor:pointer;
@@ -118,17 +118,18 @@
     background-size: 200px 112.5px;
     background-position: -20px -10px;
     border: 1px solid black;
+    
 }
 
 .brightnessfilter:hover {
-     -webkit-filter: brightness(1.2);
--moz-filter: brightness(1.2);
--o-filter:  brightness(1.2);
--ms-filter:  brightness(1.2);
+    -webkit-filter: brightness(1.2);
+    -moz-filter: brightness(1.2);
+    -o-filter:  brightness(1.2);
+    -ms-filter:  brightness(1.2);
 }
 .dullness{
-     -webkit-filter: brightness(0.8);
--moz-filter: brightness(0.8);
--o-filter:  brightness(0.8);
--ms-filter:  brightness(0.8);
+    -webkit-filter: brightness(0.8);
+    -moz-filter: brightness(0.8);
+    -o-filter:  brightness(0.8);
+    -ms-filter:  brightness(0.8);
 }
