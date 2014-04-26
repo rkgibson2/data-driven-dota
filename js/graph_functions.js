@@ -1103,7 +1103,7 @@ function update_item_percent(data) {
 	var items = []
 
 	//initialize all items with a count of 0
-	d3.json("../data/items.json", function(error,dat) {
+	d3.json("data/items.json", function(error,dat) {
 
 		//for coloring by cost
 		// var extent_array = [];
