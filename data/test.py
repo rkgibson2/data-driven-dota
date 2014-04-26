@@ -2,13 +2,13 @@ import json
 import requests
 
 
-with open('items.json', 'r') as item_file:
-    data = json.load(item_file)
+with open('abilities.json', 'r') as ability_file:
+    data = json.load(ability_file)
 
-new_data = {}
+for _, ability in data.items():
+    if 'img' in ability:
+        ability['img'] = ability['img'][1:]
+        print ability['img']
 
-for item in data:
-    new_data[item['id']] = item
-
-with open('items.json', 'w') as outfile:
-     json.dump(new_data, outfile, sort_keys=True, indent=4)
+with open('abilities.json', 'w') as outfile:
+     json.dump(data, outfile, sort_keys=True, indent=4)
