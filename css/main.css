@@ -9,46 +9,49 @@ label {
   font-weight: normal;
 }
 
-.hero_pie_svg {
-  position: absolute;
-  top: 220px;
-  left: 0px;
+#stat_graphs div {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.win_loss_svg {
-  position: absolute;
-  left: 300px;
-  top: 0px;
+#hero_pie_container {
+  height: 370px;
+  width: 390px;
 }
 
-.item_percent_svg {
-  position: absolute;
-  left: 420px;
-  top: 200px;
+#win_loss_container {
+  width: 410px;
+  height: 90px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero_chord_svg {
-  position: absolute;
-  left: 600px;
-  top: 1200px;
+#item_percent_container {
+  position: relative;
+  height: 400px;
+  width: 700px;
 }
 
-.user_interact_svg {
-  position: absolute;
-  left: 0px;
-  top: 1200px;
+#hero_chord_container {
+  position: relative;
+  height: 520px;
+  width: 440px;
 }
 
-.xpm_svg {
-  position: absolute;
-  left: 500px;
-  top: 800px;
+#user_interact_container {
+  position: relative;
+  height: 530px;
+  width: 440px;
 }
 
-.gpm_svg {
-  position: absolute;
-  left: 0px;
-  top: 800px;
+#xpm_container {
+  height: 530px;
+  width: 500px;
+}
+
+#gpm_container {
+  height: 530px;
+  width: 500px;
 }
 
 #radiant-background {
@@ -133,19 +136,8 @@ label {
   padding-top: 20px;
 }
 
-/*#stat_graphs svg {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  left: 0px;
-}
-*/
 #record_content {
-  left: 10px;
-  position: absolute;
-  top: 100px;
   width: 1040px;
-  left: 10px;
   height: 85px;
   z-index: 2;
   white-space: nowrap;
@@ -239,61 +231,45 @@ path {
     shape-rendering: crispEdges;
 }
 
-#value_sort_label {
-  z-index: 1;
+#item_percent_filters {
   position: absolute;
-  top: 230px;
-  /*right: 651px;*/
-  left: 416px;
+  width: 170px;
+  top: 10px;
+  left: 50px;
+  z-index: 1;
 }
 
-#item_sort_label{
-  z-index: 1;
-  position: absolute;
-  top: 245px;
-  /*right: 687px;*/
-  left: 416px;
+#item_percent_filters label {
+  margin-bottom: -10px;
 }
 
-#cost_sort_label{
-  z-index: 1;
-  position: absolute;
-  top: 260px;
-  left: 416px;
-  /*right: 689px;*/
-}
-
-#item_filter{
+#item_filter {
   z-index: 1;
   position: absolute;
   top: 25px;
   left: 900px;
-  /*right: 180px;*/
 }
 
-#hero_filter{
+#hero_filter {
   z-index: 1;
   position:absolute;
-  top: 1280px;
-  left: 800px;
-  /*right: 150px;*/
+  top: 90px;
+  left: 250px;
 }
 
 #toggle_color_pretty{
   z-index: 1;
   position: absolute;
-  top: 1250px;
+  top: 55px;
   left: 73px;
-  /*right: 689px;*/
 }
 
 #toggle_color_ugly{
   z-index: 1;
   position: absolute;
-  top: 1250px;
+  top: 55px;
   left: 252px;
-  /*right: 689px;*/
-}1060px
+}
 
 .bubble a:visited {
   color:gray;
