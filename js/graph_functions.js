@@ -28,7 +28,7 @@ bb_records = {
 }
 
 bb_win_loss = {
-    x: width/2-125,
+    x: 0,
     y: -20,
     w: 250,
     h: 30
@@ -120,44 +120,86 @@ $(window).load(function() {
 
 
 //set up those boxes
-svg = d3.select("#stat_graphs").append("svg").attr({
+svg_win_loss = d3.select("#stat_graphs").append("svg").attr({
+	width: bb_win_loss.w + (margin.left + 20) + (margin.right + 20),
+	height: bb_win_loss.h + margin.bottom + margin.top
+})
+	.attr("class", "win_loss_svg");
+
+svg_hero_pie = d3.select("#stat_graphs").append("svg").attr({
+	width: bb_hero_pie.w + margin.left + margin.right,
+	height: bb_hero_pie.h + margin.bottom + margin.top 
+})
+	.attr("class", "hero_pie_svg");
+
+svg_hero_chord = d3.select("#stat_graphs").append("svg").attr({
+	width: bb_hero_chord.w + margin.left + margin.right,
+	height: bb_hero_chord.h + margin.bottom + margin.top
+})
+	.attr("class", "hero_chord_svg");
+
+svg_user_interact = d3.select("#stat_graphs").append("svg").attr({
+	width: bb_user_interact.w + margin.left + margin.right,
+	height: bb_user_interact.h + margin.bottom + margin.top
+})
+	.attr("class", "user_interact_svg");
+
+svg_gpm = d3.select("#stat_graphs").append("svg").attr({
+	width: bb_gpm.w + margin.left + margin.right,
+	height: bb_gpm.h + margin.bottom + margin.top
+})
+	.attr("class", "gpm_svg");
+
+svg_xpm = d3.select("#stat_graphs").append("svg").attr({
+	width: bb_xpm.w + margin.left + margin.right,
+	height: bb_xpm.h + margin.bottom + margin.top
+})
+	.attr("class", "xpm_svg");
+	
+svg_item_percent= d3.select("#stat_graphs").append("svg").attr({
+	width: bb_item_percent.w + margin.left + margin.right,
+	height: bb_item_percent.h + margin.bottom + margin.top
+})
+	.attr("class", "item_percent_svg");
+	
+svg_records= d3.select("#stat_graphs").append("svg").attr({
 	width: width + margin.left + margin.right,
 	height: height + margin.bottom + margin.top
 })
 	.append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var win_loss_graph = svg.append("g")
+var win_loss_graph = svg_win_loss.append("g")
 	.attr("class", "win_loss")
 	.attr("visibility", "hidden")
-	.attr("transform", "translate(" + bb_win_loss.x + "," + bb_win_loss.y + ")");
+	.attr("transform", "translate(" + (margin.left + 20) + "," + 40 + ")");
 
-var hero_pie_graph = svg.append("g")
+var hero_pie_graph = svg_hero_pie.append("g")
 	.attr("class", "hero_pie")
-	.attr("transform", "translate(" + (bb_hero_pie.x + (bb_hero_pie.w / 2)) + "," + (bb_hero_pie.y+(bb_hero_pie.h / 2 + 10)) + ")");
+	.attr("transform", "translate(" + bb_hero_pie.w/2 + "," + (bb_hero_pie.h / 2 + 50) + ")");
 
-var item_percent_graph = svg.append("g")
+var item_percent_graph = svg_item_percent.append("g")
 	.attr("class", "item_percent")
 	.attr("visibility", "hidden")
-	.attr("transform", "translate(" + bb_item_percent.x + "," + bb_item_percent.y + ")");
+	.attr("transform", "translate(" + 0 + "," + 80 + ")");
 
-var hero_chord_graph = svg.append("g")
+var hero_chord_graph = svg_hero_chord.append("g")
 	.attr("class", "hero_chord")
-	.attr("transform", "translate(" + (bb_hero_chord.x+(bb_hero_chord.w/2)) + "," + (bb_hero_chord.y +(bb_hero_chord.h / 2)) + ")");
+	.attr("transform", "translate(" + (bb_hero_chord.w/2) + "," + (bb_hero_chord.h / 2 + 90) + ")");
 
-var user_interact_graph = svg.append("g")
+var user_interact_graph = svg_user_interact.append("g")
 	.attr("class", "user_interact")
-	.attr("transform", "translate(" + bb_user_interact.x + "," + bb_user_interact.y + ")");
+	.attr("transform", "translate(" + 0 + "," + 100 + ")");
 
-var gpm_graph = svg.append("g")
+var gpm_graph = svg_gpm.append("g")
 	.attr("class", "gpm")
-	.attr("transform", "translate(" + bb_gpm.x + "," + bb_gpm.y + ")");
+	.attr("transform", "translate(" + 0 + "," + 100 + ")");
 
-var xpm_graph = svg.append("g")
+var xpm_graph = svg_xpm.append("g")
 	.attr("class", "xpm")
-	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
+	.attr("transform", "translate(" + 0 + "," + 100 + ")");
 
-var records_graph = svg.append("g")
+var records_graph = svg_records.append("g")
 	.attr("class", "records_graph")
 	.attr("transform", "translate(" + bb_records.x + "," + bb_records.y + ")");
 
@@ -173,7 +215,9 @@ var graph_tip = d3.tip()
         .attr("class", "d3-tip")
         .offset([0,0]);
 
-svg.call(graph_tip);
+svg_hero_chord.call(graph_tip);
+//svg_xpm.call(graph_tip);
+//svg_gpm.call(graph_tip);
 
 //function calls
 d2.loadJson(function() {
@@ -1362,7 +1406,7 @@ function update_item_percent(data) {
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
-	    var transition = svg.transition().duration(750),
+	    var transition = svg_item_percent.transition().duration(750),
 	        delay = function(d, i) { return i * 10; };
 
 	    transition.selectAll(".bar")
@@ -1388,7 +1432,7 @@ function update_item_percent(data) {
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
-	    var transition = svg.transition().duration(750),
+	    var transition = svg_item_percent.transition().duration(750),
 	        delay = function(d, i) { return i * 10; };
 
 	    transition.selectAll(".bar")
@@ -1422,7 +1466,7 @@ function update_item_percent(data) {
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
-	    var transition = svg.transition().duration(750),
+	    var transition = svg_item_percent.transition().duration(750),
 	        delay = function(d, i) { return i * 10; };
 
 	    transition.selectAll(".bar")
