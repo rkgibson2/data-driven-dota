@@ -32,10 +32,10 @@ bb_hero_pie = {
     w: 300,
     h: 300,
     margin: {
-	    top: 50,
-	    right: 30,
+	    top: 60,
+	    right: 20,
 	    bottom: 20,
-	    left: 40
+	    left: 20
 	} 
 };
 
@@ -43,8 +43,8 @@ bb_item_percent = {
     w: 600,
     h: 300,
     margin: {
-	    top: 80,
-	    right: 50,
+	    top: 90,
+	    right: 20,
 	    bottom: 20,
 	    left: 50
 	}

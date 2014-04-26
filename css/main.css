@@ -9,14 +9,14 @@ label {
   font-weight: normal;
 }
 
-#stat_graphs div {
-  margin-left: auto;
-  margin-right: auto;
+.graphs_row div {
+  display: inline-block;
+  vertical-align: top;
 }
 
 #hero_pie_container {
-  height: 370px;
-  width: 390px;
+  height: 360px;
+  width: 380px;
 }
 
 #win_loss_container {
@@ -28,8 +28,8 @@ label {
 
 #item_percent_container {
   position: relative;
-  height: 400px;
-  width: 700px;
+  height: 410px;
+  width: 670px;
 }
 
 #hero_chord_container {
@@ -141,6 +141,7 @@ label {
   height: 85px;
   z-index: 2;
   white-space: nowrap;
+  margin-bottom: 10px;
 }
 
 .win_loss rect {
@@ -483,32 +484,9 @@ div.graph_description strong {
   float: right;
 }
 
-hr.hr-div-record{
-width: 100%;
-top: 180px;
-position: absolute;
-border-top:1px solid #D2D2D2;
+hr {
+  width: 100%;
+  border-top:1px solid #D2D2D2;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-hr.hr-hero-info{
-width: 100%;
-top: 620px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-
-}
-hr.hr-gpm-xpm{
-width: 100%;
-top: 1160px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-
-}
-
-hr.hr-end{
-width: 100%;
-top: 1700px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-
-}
-

@@ -226,35 +226,42 @@
     <div id="stat_graphs">
       <div id="win_loss_container"></div>
       <div id="record_content"> 
-          <div id="longest_match" data-value="Longest Match"></div>
-          <div id="most_kills" data-value="Most Kills"></div>
-          <div id="most_deaths" data-value = "Most Deaths"></div>
-          <div id="most_last_hits" data-value ="Most Last Hits"></div>
-          <div id="most_hero_damage" data-value = "Most Hero Damage" ></div>
-          <div id="most_tower_damage" data-value = "Most Tower Damage"></div>
+        <div id="longest_match" data-value="Longest Match"></div>
+        <div id="most_kills" data-value="Most Kills"></div>
+        <div id="most_deaths" data-value = "Most Deaths"></div>
+        <div id="most_last_hits" data-value ="Most Last Hits"></div>
+        <div id="most_hero_damage" data-value = "Most Hero Damage" ></div>
+        <div id="most_tower_damage" data-value = "Most Tower Damage"></div>
+      </div>
+      <hr>
+      <div class="graphs_row">
+        <div id="hero_pie_container"></div>
+        <div id="item_percent_container">
+          <div id="item_percent_filters">
+            <label id="value_sort_label"><input type="radio" id="value" name="itemgraph"> Sort bars by frequency</label>
+            <label id="item_sort_label"><input type="radio" id="item" name="itemgraph"> Sort bars by item</label>
+            <label id="cost_sort_label"><input type="radio" id="cost" name="itemgraph"> Sort bars by cost</label>
+          </div>
         </div>
-      <div id="hero_pie_container"></div>
-      <div id="item_percent_container">
-        <div id="item_percent_filters">
-          <label id="value_sort_label"><input type="radio" id="value" name="itemgraph"> Sort bars by frequency</label>
-          <label id="item_sort_label"><input type="radio" id="item" name="itemgraph"> Sort bars by item</label>
-          <label id="cost_sort_label"><input type="radio" id="cost" name="itemgraph"> Sort bars by cost</label>
+      </div>
+      <hr>
+      <div class="graphs_row">
+        <div id="gpm_container"></div>
+        <div id="xpm_container"></div>
+      </div>
+      <hr>
+      <div class="graphs_row">
+        <div id="hero_chord_container">
+          <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
+        </div>
+        <div id="user_interact_container">
+          <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
+          <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
         </div>
       </div>
-      <div id="gpm_container"></div>
-      <div id="xpm_container"></div>
-      <div id="hero_chord_container">
-        <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
-      </div>
-      <div id="user_interact_container">
-        <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
-        <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
-      </div>
-      <!-- <label id="item_filter"><input class="this1" type="range" name="points" min="0" max="51" step="1" value="50" disabled> <span class="filterInput">51 </span> Items</label> -->
-      <hr class = "hr-div-record" style="visibility:hidden;">
-      <hr class = "hr-hero-info" style="visibility:hidden;">
-      <hr class = "hr-gpm-xpm" style="visibility:hidden;">
       <hr class = "hr-end" style="visibility:hidden;">
+      <!-- <label id="item_filter"><input class="this1" type="range" name="points" min="0" max="51" step="1" value="50" disabled> <span class="filterInput">51 </span> Items</label> -->
+      
     </div>
   </div>
   
