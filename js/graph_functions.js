@@ -1592,7 +1592,7 @@ function create_matrix (data) {
 }
 
 
-var chord_tip = d3.select("#stat_graphs").append("div").attr("class", "chordtip hidden")
+var chord_tip = d3.select("#hero_chord_container").append("div").attr("class", "chordtip hidden")
 
 
 function draw_hero_chord_graph(matrix, lookup_dict) {
@@ -1677,7 +1677,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    })
 	    .style("opacity", 0)
 	    .on("mouseover", function(d) {
-	    	var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+	    	var mouse = d3.mouse(svg_hero_chord.node()).map( function(d) { return parseInt(d); } );
 
                 //toggle the hide on the tooltip
                 chord_tip.classed("hidden", false)
