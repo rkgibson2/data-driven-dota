@@ -115,6 +115,7 @@ d3.selectAll(".move_on_button button")
 				.style("display", "none");
 			d3.select("#splash_page2")
 				.style("display", "none");
+			introguide.start();   
 		})
 
 
