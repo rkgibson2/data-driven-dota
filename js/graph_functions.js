@@ -1302,6 +1302,14 @@ function update_item_percent(data) {
 
 				//console.log(d)
 
+				//for video
+				// if (d.dname == "Force Staff") {
+				// 	d.winrate = .96;
+				// }
+				// if (d.dname == "Armlet of Mordiggian") {
+				// 	d.winrate = .037
+				// }
+
 				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + 
 					"</span></strong>" + "<br> Number of Games: " + d.count + 
 					"<br> Cost: " + cost + "<br> Winrate: " + (100*d.winrate).toFixed(1) + 
@@ -2537,7 +2545,13 @@ function update_user_interact(data) {
 			format = d3.format(".2%")
 
 			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value + "<br>Winrate Playing Together : " + format(d.wins/d.value));
-			
+	
+			//from Video		
+			// if (d2.getUserName(d.className) == "Nukeydog") {
+			// 	graph_tip.html("User: " + "Robbie" + "<br>Number of games: " + d.value + "<br>Winrate Playing Together : " + "11.0%");
+			// 	d.wins = 0;
+			// }
+
 			if (d.className != user_data.id32) {
 				graph_tip.show(d);
 			}
@@ -2582,6 +2596,10 @@ function update_user_interact(data) {
       	.style("pointer-events", "none")
       	.text(function(d) {
       		var username = d2.getUserName(d.className)
+      		//from Video
+      		// if (username == "Nukeydog") {
+      		// 	username = "Robbie"
+      		// }
       		if (username.length < d.r*.3) {
       			return username
       		}
