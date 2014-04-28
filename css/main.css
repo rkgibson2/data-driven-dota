@@ -337,7 +337,8 @@ span.question {
   text-align: center;
   position: relative;
 }
-span.question:hover {
+
+span.question-selected {
   background-color: #3D6199;
 }
 
