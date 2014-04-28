@@ -167,7 +167,7 @@ function update_end_screen(game) {
     d3.select("#winner").on("click", exit_end_screen)
 }
 
-function update_ability_build(player) {
+function update_ability_build (player) {
     ability_svg.selectAll(".level").remove()
 
     // position div over whichever team the player is on
