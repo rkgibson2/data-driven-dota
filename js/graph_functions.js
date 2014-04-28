@@ -1014,31 +1014,6 @@ function draw_item_percent() {
 
 	item_percent_graph.append("g")
 				.attr("class", "bars")
-				.selectAll(".bar")
-				.data([{"name": "item1", "percent": .5}], function(d) {
-					return d.name;
-				})
-			  .enter().append("rect")
-			  	.attr("class", "bar")
-			  	.attr("x", function(d) {
-			  		return item_percent_x(d.name);
-			  	})
-			  	.attr("y", function(d) {
-			  		return item_percent_y(d.percent);
-			  	})
-			  	.attr("height", function(d) {
-			  		return bb_item_percent.h - item_percent_y(d.percent);
-			  	})
-			  	.attr("width", function() {
-			  		return item_percent_x.rangeBand();
-			  	})
-			  	.on("mouseover", function(d) {
-			  		graph_tip.html(d.dname);
-			  		graph_tip.show(d);
-			  	})
-			  	.on("mouseout", function(d) {
-			  		graph_tip.hide(d);
-			  	});
 
 	item_percent_graph.append("text")
 		.attr("text-anchor", "middle")
