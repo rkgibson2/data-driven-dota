@@ -80,14 +80,18 @@ function updateRecords(data){
     }
 
 function displayRecords(){
-for (key in records){
-    d3.select("#" + key)
-        .html($("#" + key).data().value + "<br>" +records[key].value)
-        .classed("dullness",true)
-        .classed("brightnessfilter",true)
-        .style("background-image","url("+d2.getHeroInfo(records[key].match.player_info.hero_id).img +")")
-    d3.select("#" +key)
-        .on("click",function(){update_end_screen(records[this.id].match); 
-    $('#show_records').modal('hide');});
-}
+    for (key in records) {
+        d3.select("#" + key)
+            .html($("#" + key).data().value + "<br>" +records[key].value)
+            .classed("dullness",true)
+            .classed("brightnessfilter",true)
+            .style("background-image", "url(" + d2.getHeroInfo(records[key].match.player_info.hero_id).img + ")")
+        d3.select("#" +key)
+            .on("click",function() {
+                update_end_screen(records[this.id].match);
+            });
+
+    }
+
+    $('#show_records').modal('hide');
 }

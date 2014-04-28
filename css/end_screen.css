@@ -172,9 +172,8 @@
 .ability_build {
     position: absolute;
     width: 700px;
-    height: 240px;
+    height: 236px;
     left: 390px;
-    top: 38px;
     background-color: white;
     border: 2px solid black;
 }

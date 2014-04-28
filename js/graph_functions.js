@@ -1950,10 +1950,16 @@ function update_gpm(data) {
       	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
-      	// update dot styling
-      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
-    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+      	// update dot styling, but only if not selected
+      	if (d3.select(this).classed("end_screen_selected") == false) {
+      		d3.selectAll("#timeline .match_dot_hover").attr("r", 3)
+    		d3.selectAll("#stat_graphs .match_dot_hover").attr("r", 3.5)
+    	}
 
+    	// but we always want to remove the match_dot_hover class
+    	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false)
+    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false)
+    	
       	graph_tip.hide(d);
       })
 	  .on("click", update_end_screen)
@@ -2251,9 +2257,15 @@ function update_xpm(data) {
       	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
-      	// update dot styling
-      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
-    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+      	// update dot styling, but only if not selected
+      	if (d3.select(this).classed("end_screen_selected") == false) {
+      		d3.selectAll("#timeline .match_dot_hover").attr("r", 3)
+    		d3.selectAll("#stat_graphs .match_dot_hover").attr("r", 3.5)
+    	}
+
+    	// but we always want to remove the match_dot_hover class
+    	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false)
+    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false)
     	
       	graph_tip.hide(d);
       })
