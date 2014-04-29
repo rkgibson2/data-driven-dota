@@ -3,6 +3,7 @@ var introguide = introJs();
 
 introguide.setOptions({ 
 scrollToElement: true, 
+showStepNumbers: false,
     steps: [  
         {  
           element: '#corner-logo',  
