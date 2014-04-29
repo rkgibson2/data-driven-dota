@@ -990,7 +990,7 @@ function draw_item_percent() {
 	item_percent_color = d3.scale.linear();
 
 	item_percent_x = d3.scale.ordinal()
-			.rangeRoundBands([0, bb_item_percent.w], .3 ,.5)
+			.rangeBands([0, bb_item_percent.w], .3 , .5)
 			.domain(["item1"]);
 
 	item_percent_y = d3.scale.linear()
@@ -1294,6 +1294,9 @@ function update_item_percent(data) {
 				//console.log(d.winrate)
 				return item_percent_color(d.winrate);
 			})
+			.attr("x", 0)
+			.attr("y", bb_item_percent.h)
+			.attr("height", 0)
 			.on("mouseover", function(d) {
 
 				if (d.dname == "Aegis of the Immortal" || d.dname == "Cheese") {
