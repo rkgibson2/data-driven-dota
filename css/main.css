@@ -15,8 +15,9 @@ label {
 }
 
 #hero_pie_container {
-  height: 360px;
-  width: 380px;
+  height: 380px;
+  width: 340px;
+  margin-left: 20px;
 }
 
 #win_loss_container {
@@ -41,7 +42,7 @@ label {
 #user_interact_container {
   position: relative;
   height: 530px;
-  width: 440px;
+  width: 500px;
 }
 
 #xpm_container {
