@@ -522,7 +522,7 @@ $(document).ready(function ()
 				'<p><strong>Items Purchased as Percentage of Games Played:</strong> Percentage of games in which you ended the game with a given item. Bars are colored by win rate with that item- gray if the win rate is around 50%, red if win rate is low, and green if win rate is high. Sorting can be conducted by percentage, alphabetically by item name, and item cost (dropped items, such as Aegis and Cheese, sort as infinite cost). <br></p>' +
 				'<p><strong>GPM Statistics:</strong> Scatterplot of GPM of hero for a given game against average GPM while playing that hero. Games falling above the line indicate that GPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
 				'<p><strong>XPM Statistics:</strong> Scatterplot of XPM of hero for a given game against average XPM while playing that hero. Games falling above the line indicate that XPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
-				"<p><strong>Users You've Played with More than Once:</strong> Bubble graph, where bubbles are sized by number of games played together. Users you've played with only once are not shown. Users can be colored in two ways: by number of games played with you, or by your winrate playing with them. Clicking on the user bubble takes you to their Steam homepage. <br></p>" +		
+				"<p><strong>Users Played with More than Once:</strong> Bubble graph, where bubbles are sized by number of games played together. Users played with only once are not shown. Users can be colored in two ways: by number of games played with you, or by your winrate playing with them. Clicking on the user bubble takes you to their Steam homepage. <br></p>" +		
 				'</div>');
 			$(this).addClass( "question-selected" )
 		} else {
@@ -2431,7 +2431,7 @@ function draw_user_interact(){
 		.attr("text-anchor", "middle")
 		.attr("y", -75)
 		.attr("x", 180)
-		.text("Users You've Played with more than Once")
+		.text("Users Played with More than Once")
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
