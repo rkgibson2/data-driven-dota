@@ -6,7 +6,7 @@ scrollToElement: true,
     steps: [  
         {  
           element: '#corner-logo',  
-          intro: 'Welcome to Data Driven Dota!<br><br>Use the right arrow key for navigation or hit ESC to exit the tour immediately.',  
+          intro: 'Welcome to Data Driven Dota!<br><br>Use the arrow keys for navigation or hit ESC to exit the tour immediately.',  
           position: 'bottom'  
         },
         {  
