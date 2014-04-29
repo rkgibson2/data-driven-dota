@@ -65,7 +65,7 @@ scrollToElement: true,
  
 introguide.oncomplete(function()  
  {
-    d3.select("#page-header").style("position","fixed").style("z-index",999999);
+    d3.select("#page-header").style("position","fixed");
   }
 
 
@@ -73,7 +73,7 @@ introguide.oncomplete(function()
 
 introguide.onexit(function() 
   {
-    d3.select("#page-header").style("position","fixed").style("z-index",999999);
+    d3.select("#page-header").style("position","fixed");
   }
 
 );
@@ -81,7 +81,7 @@ introguide.onexit(function()
 introguide.onafterchange(function(targetElement) {  
   if (targetElement.id == "color-blind")
   {
-    d3.select("#page-header").style("position","fixed").style("z-index",999999);
+    d3.select("#page-header").style("position","fixed");
   }
 });
 
