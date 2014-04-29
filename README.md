@@ -10,7 +10,7 @@ We also wrote our own d2 "library" which contained many functions that we wrote 
 
 All the permissions for the images we used are found in the img/permssions folder.
 
-Overview of the files:
+#### Overview of the files:
 
 * `graph_functions.html`:
 This file contains the base html for our page.
@@ -57,7 +57,7 @@ This is the script for the intro.js introductory text.
 The css files are all similarly named.
 `main.css` contains most of the css, with the other files containing whatever they say.
 
-Graphs:
+#### Graphs:
 
 * **Win-Loss Percentage**:
 Win-loss percentage for current selected data 
@@ -91,7 +91,7 @@ Users played with only once are not shown.
 Users can be colored in two ways: by number of games played with you, or by your winrate playing with them.
 Clicking on the user bubble takes you to their Steam homepage. 
 
-Useful Links: 
+#### Useful Links: 
 
 * Our website can be found here: [http://tinyurl.com/datadrivendota](http://tinyurl.com/datadrivendota)
 
