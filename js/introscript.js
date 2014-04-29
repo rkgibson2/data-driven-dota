@@ -37,12 +37,12 @@ scrollToElement: true,
         {  
           element: '#item_percent_container',  
           intro: "This is your item bar graph. Use it to view your successful item purchases for the filtered data selection.",  
-          position: 'bottom'  
+          position: 'left'  
         },
         {  
           element: '#xpmgpm_container',  
           intro: "Woah! XPM and GPM graphs! Use them to find out how your performance varies for each hero. Click on any dota to bring up more info about that game. They are also brushable!",  
-          position: 'bottom'  
+          position: 'top'  
         },
         {  
           element: '#hero_chord_container',  
