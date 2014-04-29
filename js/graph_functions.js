@@ -1044,7 +1044,7 @@ function draw_legend(graph) {
 	if ($("#color-blind").is(":checked")) {
 		gradient.append("svg:stop")
 			.attr("offset", "0%")
-			.attr("stop-color", "#ff7f00")
+			.attr("stop-color", "#762a83")
 			.attr("stop-opacity", 1);
 
 		gradient.append("svg:stop")
@@ -1054,14 +1054,14 @@ function draw_legend(graph) {
 
 		gradient.append("svg:stop")
 			.attr("offset", "100%")
-			.attr("stop-color", "#762a83")
+			.attr("stop-color", "#ff7f00")
 			.attr("stop-opacity", 1);
 	}
 
 	else {
 		gradient.append("svg:stop")
 			.attr("offset", "0%")
-			.attr("stop-color", "#d7191c")
+			.attr("stop-color", "#1a9641")
 			.attr("stop-opacity", 1);
 
 		gradient.append("svg:stop")
@@ -1071,7 +1071,7 @@ function draw_legend(graph) {
 
 		gradient.append("svg:stop")
 			.attr("offset", "100%")
-			.attr("stop-color", "#1a9641")
+			.attr("stop-color", "#d7191c")
 			.attr("stop-opacity", 1);
 	}
 
@@ -1095,7 +1095,7 @@ function draw_legend(graph) {
 		.attr("class", "legend")
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
-		.text("100% loss")
+		.text("100% win")
 		.style("opacity", 0)
 		.transition()
 		.duration(1000)
@@ -1107,7 +1107,7 @@ function draw_legend(graph) {
 		.attr("y", -15)
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
-		.text("100% win")
+		.text("100% loss")
 		.style("opacity", 0)
 		.transition()
 		.duration(1000)
