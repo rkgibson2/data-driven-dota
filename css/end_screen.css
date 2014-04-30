@@ -178,6 +178,11 @@
     border: 2px solid black;
 }
 
+.ability_build_img {
+    height: 50px;
+    width: 50px;
+}
+
 #players img {
     border: 1px solid black;
 }

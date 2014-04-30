@@ -79,10 +79,15 @@ function update_end_screen(game) {
 
     d3.select("#duration .text").text(hours + ":" + seconds)
 
-    // rename this array for convenience
-    var players = game.players
+    // filter dire and radiant players for data binding
 
-    var rows = d3.selectAll("#players tbody tr").data(players);
+    var radiant_players = game.players.filter( function(d) { return (d.player_slot & 0x80) == 0})
+    var dire_players = game.players.filter( function(d) { return d.player_slot & 0x80 })
+
+    d3.selectAll("#radiant tbody tr").data(radiant_players);
+    d3.selectAll("#dire tbody tr").data(dire_players)
+
+    var rows = d3.selectAll("#players tbody tr");
 
     // search for our player
     rows.each(function(d) {
@@ -169,6 +174,7 @@ function update_end_screen(game) {
 
 function update_ability_build (player) {
     ability_svg.selectAll(".level").remove()
+    ability_svg.selectAll(".no_abilities_error").remove()
 
     // position div over whichever team the player is on
     // if radiant
@@ -178,45 +184,61 @@ function update_ability_build (player) {
         $(".ability_build").css("top", $("#radiant .headers").position().top)
     }
 
-    var levels = ability_svg.selectAll(".level")
-        .data(player.ability_upgrades)
-        .enter().append("g")
-        .attr("class", "level")
-        .attr("transform", function(d, i) {
-            var x_pos = (ability_g_dimension + 5) * (i % 9)
-            var y_pos = (ability_g_dimension + 5) * Math.floor(i / 9)
-            return "translate(" + x_pos + "," + y_pos + ")"
-        })
+    // if no ability data available (usually because match is old)
+    if (!("ability_upgrades" in player)) {
+        ability_svg.append("text")
+            .attr("class", "no_abilities_error")
+            .text("Sorry, no ability data available for this player")
+            .attr("text-anchor", "middle")
+            .attr("x", width / 2)
+            .attr("y", height / 2 + 10)
+    } else {
+        var levels = ability_svg.selectAll(".level")
+            .data(player.ability_upgrades)
+            .enter().append("g")
+            .attr("class", "level")
+            .attr("transform", function(d, i) {
+                var x_pos = (ability_g_dimension + 5) * (i % 9)
+                var y_pos = (ability_g_dimension + 5) * Math.floor(i / 9)
+                return "translate(" + x_pos + "," + y_pos + ")"
+            })
 
-    levels.append("text")
-        .text(function(d) { return d.level })
-        .attr("text-anchor", "middle")
-        .attr("x", ability_img_dimension / 2)
-        .attr("y", 10)
+        levels.append("text")
+            .text(function(d) { return d.level })
+            .attr("text-anchor", "middle")
+            .attr("x", ability_img_dimension / 2)
+            .attr("y", 10)
 
-    levels.append("image")
-        .attr("xlink:href", function(d) { return d2.getAbilityInfo(d.ability).img })
-        .attr("height", ability_img_dimension)
-        .attr("width", ability_img_dimension)
-        .attr("y", "15px")
-        .on("mouseover", function(d) {
-            // if the ability is stats
-            if (d.ability == 5002) {
-                ability_tip.html("Attribute Upgrade")
-            } else {
-                ability_tip.html(d2.getAbilityInfo(d.ability).dname)
-            }
+        // ability 5522 is the teleport version of Chen's Test of Faith, and the API returns that if Chen leveled it up by leveling up that version
+        // 5329 is the damage version, which we use in both places
+        levels.append("image")
+            .attr("xlink:href", function(d) { return (d.ability == 5522) ? d2.getAbilityInfo(5329).img : d2.getAbilityInfo(d.ability).img })
+            .attr("class", "ability_build_img")
+            .attr("height", ability_img_dimension)
+            .attr("width", ability_img_dimension)
+            .attr("y", "15px")
+            .on("mouseover", function(d) {
+                // if the ability is stats
+                if (d.ability == 5002) {
+                    ability_tip.html("Attribute Upgrade")
+                } else {
+                    ability_tip.html((d.ability == 5522) ? d2.getAbilityInfo(5329).dname : d2.getAbilityInfo(d.ability).dname)
+                }
 
-            ability_tip.show(d)
-            
-        })
-        .on("mouseout", ability_tip.hide)
+                ability_tip.show(d)
+                
+            })
+            .on("mouseout", ability_tip.hide)
+    }
 
     d3.select(".ability_build").style("visibility", null)
         .attr("player", player.player_slot)
 }
 
 function enter_end_screen() {
+    // remove ability build when we switch end screen
+    d3.select(".ability_build").style("visibility", "hidden")
+
     if (d3.select("#end_screen").style("display") == "none") {
         d3.select("#end_screen").style("display", null)
             .style("height", "0px")
