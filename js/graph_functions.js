@@ -113,11 +113,6 @@ d3.selectAll(".move_on_button button")
 				.style("display", null)
 			d3.select("#splash")
 				.style("display", "none");
-			d3.select("#splash_page2")
-				.style("display", "none");
-			d3.select("#page-header").style("position","absolute");
-			introguide.start();  
-
 		})
 
 
@@ -125,8 +120,13 @@ d3.select(".more_info_button button")
 	.on("click", function() {
 		d3.select("#splash")
 			.style("display", "none");
-		d3.select("#splash_page2")
+		d3.select("#not-splash")
 			.style("display", null);
+
+		//hack around fix positioning
+		d3.select("#page-header").style("position","absolute");
+		//start the intro js
+		introguide.start();  
 	})
 
 
