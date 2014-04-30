@@ -246,7 +246,7 @@ function brushend()
 			.attr("y", bbOverview.h + 50)
 			.attr("x", bbOverview.w - 100)
 			.attr("class", "clear-button_timeline")
-			.text("Clear Brush");
+			.text("Clear Zoom");
 	}
 	// change the xscale domain to the brush selection extent
 	xScaleOverview.domain(brush_domain);

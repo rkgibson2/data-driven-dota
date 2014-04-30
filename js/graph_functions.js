@@ -541,14 +541,16 @@ function draw_win_loss() {
 			.attr("height", bb_win_loss.h)
 			.attr("x", 0)
 			.attr("y", 0)
-			.attr("class", "loss")
+			.attr("id", "loss_rect")
+			.attr("class", "loss");
 
 	win_loss_graph.append("rect")
 			.attr("width", bb_win_loss.w/2)
 			.attr("height", bb_win_loss.h)
 			.attr("x", 0)
+			.attr("id", "win_rect")
 			.attr("y", 0)
-			.attr("class", "win")
+			.attr("class", "win");
 
 	win_loss_graph
 			.append("text")
@@ -607,11 +609,19 @@ function update_win_loss(data) {
 			.attr("width", 0);
 	}
 		
-	d3.select(".win.text")
-		.text(((win_count/total_matches) * 100).toFixed(1) + "%");
+	if (win_count != 0) {
+		d3.select(".win.text")
+			.text(((win_count/total_matches) * 100).toFixed(1) + "%");
 
-	d3.select(".loss.text")
+		d3.select(".loss.text")
 		.text(((total_matches - win_count)/total_matches * 100).toFixed(1) + "%");
+	}
+	else {
+		d3.select(".win.text")
+			.text("No data");
+		d3.select(".loss.text")
+			.text("No data");
+	}
 
 }
 
@@ -1861,7 +1871,7 @@ function draw_gpm() {
 		.attr("text-anchor", "middle")
 		.attr("x", bb_gpm.w/2)
 		.style("font-size", "12px")
-		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+		.text("Select a region to zoom in. Click 'Clear Zoom' to zoom out.")
 
 	gpm_graph.append("text")
 		.attr("y", -10)
@@ -1875,11 +1885,6 @@ function draw_gpm() {
 var gpm_brush;
 
 function update_gpm(data) {
-
-	gpm_brush = d3.svg.brush()
-   		.x(gpm_x)
-   		.y(gpm_y)
-   		.on("brushend", gpm_brushend);
 
 	var gpm_dict = {};
 
@@ -1912,6 +1917,11 @@ function update_gpm(data) {
 		d3.max(gpm_array, function(d) {
 			return d.player_info.gold_per_min;
 	}));
+
+    gpm_brush = d3.svg.brush()
+   		.x(gpm_x)
+   		.y(gpm_y)
+   		.on("brushend", gpm_brushend);
 
 	gpm_xdomain = [0, max_value];
 	gpm_ydomain = [0, max_value];
@@ -1991,18 +2001,18 @@ function update_gpm(data) {
    		.duration(1000)
    		.call(gpm_yAxis);
 
-    if (isNaN(gpm_x(max_value)) == false) {
+   	if (isNaN(gpm_x(max_value)) == false) {
 	   	gpm_graph.select(".forty-five")
 	   		.attr("x2", gpm_x(max_value))
 	   		.attr("y2", gpm_y(max_value));
-    }
-
+	}
 
 }
 
 var gpm_clear_button;
 
 function gpm_brushend() {
+
 	var gpm_x_domain = [gpm_brush.extent()[0][0], gpm_brush.extent()[1][0]]
 	var gpm_y_domain = [gpm_brush.extent()[0][1], gpm_brush.extent()[1][1]]
 
@@ -2019,7 +2029,7 @@ function gpm_brushend() {
 			.attr("y", bb_gpm.h - 440)
 			.attr("x", bb_gpm.w - 100)
 			.attr("class", "clear-button_gpm")
-			.text("Clear Brush");
+			.text("Clear Zoom");
 	}
 
 	gpm_x.domain(gpm_x_domain);
@@ -2076,13 +2086,15 @@ function gpm_brushend() {
 				return d;
 		}));
 
-		gpm_graph.selectAll(".forty-five")
-			.transition()
-			.duration(1000)
-			.attr("x1", gpm_x(0))
-			.attr("y1", gpm_y(0))
-			.attr("x2", gpm_x(max_arr))
-			.attr("y2", gpm_y(max_arr));
+		if (isNaN(gpm_x.domain()[1] == false)) {
+			gpm_graph.selectAll(".forty-five")
+				.transition()
+				.duration(1000)
+				.attr("x1", gpm_x(0))
+				.attr("y1", gpm_y(0))
+				.attr("x2", gpm_x(max_arr))
+				.attr("y2", gpm_y(max_arr));
+		}
 	}
 }
 
@@ -2170,7 +2182,7 @@ function draw_xpm() {
 		.attr("text-anchor", "middle")
 		.attr("x", bb_xpm.w/2)
 		.style("font-size", "12px")
-		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+		.text("Select a region to zoom in. Click 'Clear Zoom' to zoom out.")
 
 	xpm_graph.append("text")
 		.attr("y", -10)
@@ -2329,7 +2341,7 @@ function xpm_brushend() {
 			.attr("y", bb_xpm.h - 440)
 			.attr("x", bb_xpm.w - 100)
 			.attr("class", "clear-button_xpm")
-			.text("Clear Brush");
+			.text("Clear Zoom");
 	}
 
 	xpm_x.domain(xpm_x_domain);
@@ -2385,13 +2397,15 @@ function xpm_brushend() {
 				return d;
 		}));
 
-		xpm_graph.selectAll(".forty-five")
-			.transition()
-			.duration(1000)
-			.attr("x1", xpm_x(0))
-			.attr("y1", xpm_y(0))
-			.attr("x2", xpm_x(max_arr))
-			.attr("y2", xpm_y(max_arr));
+		if (isNaN(gpm_x.domain()[1] == false)) {
+			xpm_graph.selectAll(".forty-five")
+				.transition()
+				.duration(1000)
+				.attr("x1", xpm_x(0))
+				.attr("y1", xpm_y(0))
+				.attr("x2", xpm_x(max_arr))
+				.attr("y2", xpm_y(max_arr));
+		}
 	}
 }
 
