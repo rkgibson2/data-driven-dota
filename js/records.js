@@ -1,6 +1,7 @@
 var records;
 
 function updateRecords(data){
+
     records = 
     {
         "longest_match":
@@ -29,6 +30,8 @@ function updateRecords(data){
             "match":0
         }
     }
+    if (data.matches.length)
+    {
     data.matches.forEach(function(d){
         records = 
         {
@@ -78,6 +81,20 @@ function updateRecords(data){
 
     displayRecords();
     }
+    else 
+    {
+        for (key in records) 
+        {
+            d3.select("#" + key)
+                .html("No record available")
+                .classed("dullness",false)
+                .classed("brightnessfilter",false)
+                .style("background-image", "none")
+                .on("click",function(){});
+        }
+    
+    }
+ };
 
 function displayRecords(){
     for (key in records) {
