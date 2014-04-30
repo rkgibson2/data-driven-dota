@@ -93,6 +93,6 @@ Clicking on the user bubble takes you to their Steam homepage.
 
 #### Useful Links: 
 
-* Our website can be found here: [http://tinyurl.com/datadrivendota](http://tinyurl.com/datadrivendota)
+* Our website can be found here: [http://d2dota.com/](http://d2dota.com/)
 
-* Our video is hosted on YouTube: [http://youtu.be/vxrCCEbFouc](http://youtu.be/vxrCCEbFouc)
+* Our video is hosted on YouTube: [https://www.youtube.com/watch?v=dqEPDAj5nlc](https://www.youtube.com/watch?v=dqEPDAj5nlc)
