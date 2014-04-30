@@ -156,11 +156,6 @@ svg_item_percent= d3.select("#item_percent_container").append("svg").attr({
 	height: bb_item_percent.h + bb_item_percent.margin.bottom + bb_item_percent.margin.top
 })
 
-svg_hero_chord = d3.select("#hero_chord_container").append("svg").attr({
-	width: bb_hero_chord.w + bb_hero_chord.margin.left + bb_hero_chord.margin.right,
-	height: bb_hero_chord.h + bb_hero_chord.margin.bottom + bb_hero_chord.margin.top
-})
-
 svg_user_interact = d3.select("#user_interact_container").append("svg").attr({
 	width: bb_user_interact.w + bb_user_interact.margin.left + bb_user_interact.margin.right,
 	height: bb_user_interact.h + bb_user_interact.margin.bottom + bb_user_interact.margin.top
@@ -176,6 +171,11 @@ svg_xpm = d3.select("#xpm_container").append("svg").attr({
 	height: bb_xpm.h + bb_xpm.margin.bottom + bb_xpm.margin.top
 })
 
+svg_hero_chord = d3.select("#hero_chord_container").append("svg").attr({
+	width: bb_hero_chord.w + bb_hero_chord.margin.left + bb_hero_chord.margin.right,
+	height: bb_hero_chord.h + bb_hero_chord.margin.bottom + bb_hero_chord.margin.top
+})
+
 var win_loss_graph = svg_win_loss.append("g")
 	.attr("class", "win_loss")
 	.attr("transform", "translate(" + bb_win_loss.margin.left + "," + bb_win_loss.margin.top + ")");
@@ -188,10 +188,6 @@ var item_percent_graph = svg_item_percent.append("g")
 	.attr("class", "item_percent")
 	.attr("transform", "translate(" + bb_item_percent.margin.left + "," + bb_item_percent.margin.top + ")");
 
-var hero_chord_graph = svg_hero_chord.append("g")
-	.attr("class", "hero_chord")
-	.attr("transform", "translate(" + (bb_hero_chord.w/2 + bb_hero_chord.margin.left) + "," + (bb_hero_chord.h / 2 + bb_hero_chord.margin.top) + ")");
-
 var user_interact_graph = svg_user_interact.append("g")
 	.attr("class", "user_interact")
 	.attr("transform", "translate(" + bb_user_interact.margin.left + "," + bb_user_interact.margin.top + ")");
@@ -203,6 +199,10 @@ var gpm_graph = svg_gpm.append("g")
 var xpm_graph = svg_xpm.append("g")
 	.attr("class", "xpm")
 	.attr("transform", "translate(" + bb_gpm.margin.left + "," + bb_gpm.margin.top + ")");
+
+var hero_chord_graph = svg_hero_chord.append("g")
+	.attr("class", "hero_chord")
+	.attr("transform", "translate(" + (bb_hero_chord.w/2 + bb_hero_chord.margin.left) + "," + (bb_hero_chord.h / 2 + bb_hero_chord.margin.top) + ")");
 
 // var kda_graph = svg.append("g")
 // 	.attr("class", "kda")
@@ -1715,7 +1715,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
                     	var name2 = d2.getHeroName(chord.groups()[target].hero_id);
 
                     	return name1 + " - " + name2 + "<br>Number of Games: " + d.source.value
-                    })
+                    });
 	    })
 	    .on("mouseout", function(d){
 	    	chord_tip.classed("hidden", true);
@@ -2571,6 +2571,7 @@ function update_user_interact(data) {
 		})
 		.attr("xlink:show", "new") //opens link in a new tab
 		.append("circle")
+		.attr("z-index", "1")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
 

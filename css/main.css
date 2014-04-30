@@ -393,6 +393,7 @@ div.graph_description strong {
 .hidden { 
     display: none; 
 }
+
 #game_mode_table td, #lobby_table td{
   background-color: black;
   text-align: center;
