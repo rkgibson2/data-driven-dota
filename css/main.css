@@ -138,7 +138,7 @@ label {
 #stat_graphs {
   position: relative;
   width: 1060px;
-  height: 1500px;
+  height: 1705px;
   margin: 0px 0px 10px 0px;
   padding-top: 20px;
 }
@@ -516,4 +516,12 @@ hr {
 
 .clear-button_xpm {
   cursor: pointer;
+}
+
+.footer {
+  width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 12px
 }
