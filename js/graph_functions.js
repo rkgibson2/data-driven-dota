@@ -1948,8 +1948,12 @@ function update_gpm(data) {
 	  .attr("cy", gpm_y(0))
       .attr("r", 3.5)
       .on("mouseover", function(d) {
-      	// update dota styling
-    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+      	// update dot styling
+    	var sel = d3.selectAll("[match_id='" + d.match_id + "']")
+    		.classed("match_dot_hover", true)
+    		.attr("r", 5);
+
+    	sel.moveToFront();
 
       	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
@@ -2195,6 +2199,12 @@ function draw_xpm() {
 }
 
 
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
+
 function update_xpm(data) {
 
 	xpm_brush = d3.svg.brush()
@@ -2256,11 +2266,15 @@ function update_xpm(data) {
 		})
       .attr("match_id", function(d) { return d.match_id })
       .attr("r", 3.5)
+      .attr("opacity", ".98")
       .on("mouseover", function(d) {
       	// update dota styling
-    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+    	var sel = d3.selectAll("[match_id='" + d.match_id + "']")
+    		.classed("match_dot_hover", true)
+    		.attr("r", 5)
 
-      	//console.log(d.player_info.hero_avg_gpm)
+    	sel.moveToFront();
+
       	var format = d3.format(".2f");
 
       	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_gpm); 

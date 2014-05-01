@@ -139,13 +139,21 @@ function create_timeline(userdata)
 		.attr("r", 3)
 		.on("click", update_end_screen);
 		
-		
+	d3.selection.prototype.moveToFront = function() {
+		return this.each(function(){
+		this.parentNode.appendChild(this);
+		});
+	};
 		
 	// mouseover tips
 	svgTimeLine.selectAll(".dot").on("mouseover", function (d)
 	{
       	// update dota styling
-    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+    	sel = d3.selectAll("[match_id='" + d.match_id + "']")
+    		.classed("match_dot_hover", true)
+    		.attr("r", 5);
+
+    	sel.moveToFront();
 
 		var tooltip = true;
 		var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
