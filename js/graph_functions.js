@@ -2030,11 +2030,25 @@ function gpm_brushend() {
 	get_button = d3.select(".clear-button_gpm");
 	if (get_button.empty() === true)
 	{
-		gpm_clear_button = gpm_graph.append('text')
-			.attr("y", bb_gpm.h - 440)
-			.attr("x", bb_gpm.w - 100)
+		gpm_clear_button = gpm_graph.append("g")
+			.attr("transform", "translate(" + (bb_gpm.w - 100) + "," + (bb_gpm.h - 440) + ")");
+
+		gpm_clear_button.append("rect")
+			.attr("width", 102)
+			.attr("height", 20)
+			.attr("y", -17)
+			.attr("x", -4)
+			.attr("rx", "10px")
+			.attr("ry", "10px")
+			.style("fill", "#9f9f9f");
+
+		gpm_clear_button
+			.append('text')
+			.attr("y", 0)
+			.attr("x", 0)
 			.attr("class", "clear-button_gpm")
-			.text("Clear Zoom");
+			.text("Clear Zoom")
+			.style("fill", "black");
 	}
 
 	gpm_x.domain(gpm_x_domain);
@@ -2351,12 +2365,26 @@ function xpm_brushend() {
 	get_button = d3.select(".clear-button_xpm");
 
 	if (get_button.empty() === true)
-	{
-		xpm_clear_button = xpm_graph.append('text')
-			.attr("y", bb_xpm.h - 440)
-			.attr("x", bb_xpm.w - 100)
+	{	
+		xpm_clear_button = xpm_graph.append("g")
+			.attr("transform", "translate(" + (bb_xpm.w - 100) + "," + (bb_xpm.h - 440) + ")");
+
+		xpm_clear_button.append("rect")
+			.attr("width", 102)
+			.attr("height", 20)
+			.attr("y", -17)
+			.attr("x", -4)
+			.attr("rx", "10px")
+			.attr("ry", "10px")
+			.style("fill", "#9f9f9f");
+
+		xpm_clear_button
+			.append('text')
+			.attr("y", 0)
+			.attr("x", 0)
 			.attr("class", "clear-button_xpm")
-			.text("Clear Zoom");
+			.text("Clear Zoom")
+			.style("fill", "black");
 	}
 
 	xpm_x.domain(xpm_x_domain);

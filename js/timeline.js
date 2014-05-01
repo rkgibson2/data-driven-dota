@@ -248,13 +248,29 @@ function brushend()
 	}
 	// add a clear brush selection if we have brushed in
 	get_button = d3.select(".clear-button_timeline");
+
 	if (get_button.empty() === true)
 	{
-		clear_button = svgTimeLine.append('text')
-			.attr("y", bbOverview.h + 50)
-			.attr("x", bbOverview.w - 100)
+		clear_button = svgTimeLine.append("g")
+			.attr("transform", "translate(" + (bbOverview.w - 100) + "," + (bbOverview.h + 50) + ")");
+
+		clear_button.append("rect")
+			.attr("width", 102)
+			.attr("height", 20)
+			.attr("y", -17)
+			.attr("x", -4)
+			.attr("rx", "10px")
+			.attr("ry", "10px")
+			.style("fill", "white");
+
+		clear_button
+			.append('text')
+			.attr("y", 0)
+			.attr("x", 0)
 			.attr("class", "clear-button_timeline")
-			.text("Clear Zoom");
+			.text("Clear Zoom")
+			.style("fill", "black");
+
 	}
 	// change the xscale domain to the brush selection extent
 	xScaleOverview.domain(brush_domain);
