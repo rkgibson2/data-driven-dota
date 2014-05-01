@@ -47,12 +47,12 @@ showStepNumbers: false,
         },
         {  
           element: '#hero_chord_container',  
-          intro: "This hero chord diagram tells you about which heroes are played together most frequently on your team in your dataset. Mouseover any path for further details!",  
+          intro: "This hero chord diagram tells you about which heroes are played together most frequently in the user dataset. Mouse-ing over a circle arc brings up the hero name. Mouse-ing over each chord brings up the two heroes and the number of games they have played together.",  
           position: 'right'  
         },
         {  
           element: '#user_interact_container',  
-          intro: "Finally, this is your user bubble graph. It should help you decide which users you have the most success with, and who you should avoid playing with!",  
+          intro: "This graph plots each other user the selected user has played with more than once. Circles are sized and colored by number of games played together. Click to toggle by winrate, which changes the colors to color the circles by winrate.",  
           position: 'left'  
         },
         {  
