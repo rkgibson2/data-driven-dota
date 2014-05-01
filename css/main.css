@@ -388,6 +388,7 @@ div.graph_description strong {
     line-height: 1;
     position: absolute;
     pointer-events: none;
+    z-index: 10000;
 }
 
 .hidden { 

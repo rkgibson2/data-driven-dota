@@ -1705,6 +1705,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 
                 //toggle the hide on the tooltip
                 chord_tip.classed("hidden", false)
+                	.attr("z-index", "10000")
                     .attr("style", "left:"+(mouse[0]+50)+"px;top:"+(mouse[1]+50)+"px")
                     .html(function(e){
 
