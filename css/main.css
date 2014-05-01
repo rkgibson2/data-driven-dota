@@ -503,3 +503,15 @@ hr {
 .introjs-helperLayer * {
   box-sizing: content-box;
 }
+
+.clear-button_timeline {
+  cursor: pointer;
+}
+
+.clear-button_gpm {
+  cursor: pointer;
+}
+
+.clear-button_xpm {
+  cursor: pointer;
+}
