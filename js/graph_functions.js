@@ -1887,6 +1887,8 @@ var gpm_brush;
 
 function update_gpm(data) {
 
+	d3.select(".clear-button_gpm").remove();
+
 	var gpm_dict = {};
 
 	data.matches.map(function(d) {
@@ -2031,7 +2033,8 @@ function gpm_brushend() {
 	if (get_button.empty() === true)
 	{
 		gpm_clear_button = gpm_graph.append("g")
-			.attr("transform", "translate(" + (bb_gpm.w - 100) + "," + (bb_gpm.h - 440) + ")");
+			.attr("transform", "translate(" + (bb_gpm.w - 100) + "," + (bb_gpm.h - 440) + ")")
+			.attr("class", "clear-button_gpm");
 
 		gpm_clear_button.append("rect")
 			.attr("width", 102)
@@ -2046,7 +2049,6 @@ function gpm_brushend() {
 			.append('text')
 			.attr("y", 0)
 			.attr("x", 0)
-			.attr("class", "clear-button_gpm")
 			.text("Clear Zoom")
 			.style("fill", "black");
 	}
@@ -2221,6 +2223,8 @@ d3.selection.prototype.moveToFront = function() {
 
 function update_xpm(data) {
 
+	d3.select(".clear-button_xpm").remove();
+
 	xpm_brush = d3.svg.brush()
    		.x(xpm_x)
    		.y(xpm_y)
@@ -2367,7 +2371,8 @@ function xpm_brushend() {
 	if (get_button.empty() === true)
 	{	
 		xpm_clear_button = xpm_graph.append("g")
-			.attr("transform", "translate(" + (bb_xpm.w - 100) + "," + (bb_xpm.h - 440) + ")");
+			.attr("transform", "translate(" + (bb_xpm.w - 100) + "," + (bb_xpm.h - 440) + ")")
+			.attr("class", "clear-button_xpm");
 
 		xpm_clear_button.append("rect")
 			.attr("width", 102)
@@ -2382,7 +2387,6 @@ function xpm_brushend() {
 			.append('text')
 			.attr("y", 0)
 			.attr("x", 0)
-			.attr("class", "clear-button_xpm")
 			.text("Clear Zoom")
 			.style("fill", "black");
 	}
