@@ -14,6 +14,11 @@ label {
   vertical-align: top;
 }
 
+.moveleft_introjs {
+  position: absolute;
+  left: 50px;
+}
+
 #hero_pie_container {
   height: 380px;
   width: 340px;

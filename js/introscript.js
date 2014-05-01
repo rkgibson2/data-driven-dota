@@ -23,7 +23,8 @@ showStepNumbers: false,
         {  
           element: '#page-header',  
           intro: "This timeline plots user games over time, split by hero primary attribute. Select a region on the timeline with your mouse to filter the data. Click on a game to bring up the endgame screen.",  
-          position: 'bottom'  
+          position: 'bottom',
+          tooltipClass: "moveleft_introjs"
         },  
         {  
           element: '#record_content',  
@@ -43,7 +44,7 @@ showStepNumbers: false,
         {  
           element: '#xpmgpm_container',  
           intro: "These graphs plot user's average performance on a hero (x-axis) against user's performance that game (y-axis). The 45-degree line represents average performance. Selecting a region with the mouse zooms the graph in. Clicking on a dot brings up the associated endgame screen. Mouse-ing over a dot highlights the accompanying dot on both graphs, as well as the game on the timeline filter.",  
-          position: 'top'  
+          position: 'bottom',  
         },
         {  
           element: '#hero_chord_container',  
