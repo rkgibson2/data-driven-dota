@@ -7,42 +7,42 @@ showStepNumbers: false,
     steps: [  
         {  
           element: '#corner-logo',  
-          intro: 'Welcome to Data Driven Dota!<br><br>Use the arrow keys for navigation or hit ESC to exit the tour immediately.',  
+          intro: 'Welcome to Data Driven Dota!<br><br>Use the arrow keys for navigation or hit ESC to exit the walkthrough immediately.',  
           position: 'bottom'  
         },
         {  
           element: '#filters',  
-          intro: "Filtering options. Here you can select who's games you would like to view, filter by heroes or even by game type. Just click on the buttons for more options.",  
+          intro: "Filtering options- select which user's games you would like to view, filter by heroes and game type.",  
           position: 'bottom'  
         },
         {  
           element: '#color-blind',  
-          intro: "Color-blind? No problem! Click here to toggle on color-blind friendly colors!",  
+          intro: "Click to toggle for a more colorblind-friendly palette.",  
           position: 'left'  
         },
         {  
           element: '#page-header',  
-          intro: "This filtering bar also contains a brushable timeline to select a range of games by date. You can also click on any dot to show more info about that game!",  
+          intro: "This timeline plots user games over time, split by hero primary attribute. Select a region on the timeline with your mouse to filter the data. Click on a game to bring up the endgame screen.",  
           position: 'bottom'  
         },  
         {  
           element: '#record_content',  
-          intro: "These are your records for the current filtered and brushed selection. Cool hey!?<br>Clicking on any will bring up more details about that game.",  
+          intro: "These display user records, which change based on the filtered data. Clicking on a record will bring up the endgame screen for that game.",  
           position: 'top'  
         },
         {  
           element: '#hero_pie_container',  
-          intro: "This is your hero sunburst diagram. Use it to view heroes by primary attribute. You can click the center to go back a level!",  
+          intro: "This digram splits heroes by primary attribute and sorts them by number of games played. Clicking on an arc will zoom in a level, and clicking the center will zoom out",
           position: 'right'  
         },
         {  
           element: '#item_percent_container',  
-          intro: "This is your item bar graph. Use it to view your successful item purchases for the filtered data selection.",  
+          intro: "This graph plots items, coloring each item by winrate. Click to sort either by number of times purchased, alphabetically, or by item cost.",  
           position: 'left'  
         },
         {  
           element: '#xpmgpm_container',  
-          intro: "Woah! XPM and GPM graphs! Use them to find out how your performance varies for each hero. Click on any dota to bring up more info about that game. They are also brushable!",  
+          intro: "These graphs plot user's average performance on a hero (x-axis) against user's performance that game (y-axis). The 45-degree line represents average performance. Selecting a region with the mouse zooms the graph in. Clicking on a dot brings up the associated endgame screen. Mouse-ing over a dot highlights the accompanying dot on both graphs, as well as the game on the timeline filter.",  
           position: 'top'  
         },
         {  
