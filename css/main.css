@@ -86,13 +86,18 @@ label {
   margin-left: auto;
 }
 
-#corner-logo {
+#corner {
   position: absolute;
-  margin-top: 32.5px;
-  margin-bottom: 32.5px;
   margin-left: 10px;
+  margin-top: 5px;
+  width: 100px;
+  text-align: center;
+}
+#corner-logo {
   width: 100px;
   height: 100px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 #questionmark {
