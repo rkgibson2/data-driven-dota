@@ -132,11 +132,14 @@ d3.select(".more_info_button button")
 
 // start with move on button in "loading" state (Twitter Bootstrap)
 $( ".move_on_button button" ).button("loading")
+$( ".more_info_button button" ).button("loading")
+
 
 // When DOM is ready, enable button
 $(window).load(function() {
 	
 	$( ".move_on_button button" ).button("reset")
+	$(".more_info_button button").button("reset")
 })
 
 
