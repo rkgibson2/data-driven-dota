@@ -53,7 +53,7 @@ var d2 = (function() {
             if (!--remaining) callback();
         })
 
-        d3.json("/data/username_data/angela_usernames.json", function(error, data) {
+        d3.json("/data/mini_usernames.json", function(error, data) {
             // array of all usernames we've pulled
             userData = data;
 
