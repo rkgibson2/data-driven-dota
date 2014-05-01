@@ -1127,7 +1127,7 @@ function draw_legend(graph) {
 
 	graph.append("text")
 		.attr("class", "legend")
-		.attr("x", 459)
+		.attr("x", 460)
 		.attr("y", -15)
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
