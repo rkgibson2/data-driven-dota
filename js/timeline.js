@@ -252,7 +252,8 @@ function brushend()
 	if (get_button.empty() === true)
 	{
 		clear_button = svgTimeLine.append("g")
-			.attr("transform", "translate(" + (bbOverview.w - 100) + "," + (bbOverview.h + 50) + ")");
+			.attr("transform", "translate(" + (bbOverview.w - 100) + "," + (bbOverview.h + 50) + ")")
+			.attr("class", "clear-button_timeline");
 
 		clear_button.append("rect")
 			.attr("width", 102)
@@ -267,7 +268,6 @@ function brushend()
 			.append('text')
 			.attr("y", 0)
 			.attr("x", 0)
-			.attr("class", "clear-button_timeline")
 			.text("Clear Zoom")
 			.style("fill", "black");
 
