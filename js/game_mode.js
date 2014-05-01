@@ -2,8 +2,8 @@ all_modes =  ["AD", "AR", "CD", "CM", "RD", "LH", "LP", "SD", "AP"];
 init_modes = ["AR", "CD", "CM", "RD", "SD", "AP"];
 selected_modes = ["AD", "AR", "CD", "CM", "RD", "LH", "LP", "SD", "AP"];
 update_selected_modes = ["AD", "AR", "CD", "CM", "RD", "LH", "LP", "SD", "AP"];
-//select_color ="#E8CE38";
-function changeColor(gamemode){ 
+
+function changeColor(gamemode) { 
     if (update_selected_modes.indexOf(gamemode)<0)
     {
           document.getElementById(gamemode).style.border =  "2px solid red";
@@ -22,29 +22,27 @@ function changeColor(gamemode){
 
 function resetGameMode()
 {
-all_modes.forEach(function(d){
-if (selected_modes.indexOf(d)<0)
-    {
-        document.getElementById(d).style.border =  "2px solid red";
-        selected_modes.push(d);
-    }
-});
+    all_modes.forEach(function (d) {
+        if (selected_modes.indexOf(d) < 0)
+        {
+            document.getElementById(d).style.border =  "2px solid red";
+            selected_modes.push(d);
+        }
+    });
 }
 
 function reselectGameMode(){
     update_selected_modes = selected_modes.slice();
     // first reset selection to all unselected
-    all_modes.forEach(function(d){
+    all_modes.forEach(function (d) {
         document.getElementById(d).style.border =  "2px solid white";
         });
     // then select previous selection
-    selected_modes.forEach(function(d){
+    selected_modes.forEach(function (d) {
         document.getElementById(d).style.border =  "2px solid red";
     });
 };
 
 function initGameMode(){
-selected_modes = init_modes.slice();
-
-
+    selected_modes = init_modes.slice();
 }

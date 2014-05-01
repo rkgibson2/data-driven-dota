@@ -139,13 +139,21 @@ function create_timeline(userdata)
 		.attr("r", 3)
 		.on("click", update_end_screen);
 		
-		
+	d3.selection.prototype.moveToFront = function() {
+		return this.each(function(){
+		this.parentNode.appendChild(this);
+		});
+	};
 		
 	// mouseover tips
 	svgTimeLine.selectAll(".dot").on("mouseover", function (d)
 	{
       	// update dota styling
-    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+    	sel = d3.selectAll("[match_id='" + d.match_id + "']")
+    		.classed("match_dot_hover", true)
+    		.attr("r", 5);
+
+    	sel.moveToFront();
 
 		var tooltip = true;
 		var score = d.player_info.kills + "/" + d.player_info.deaths + "/" + d.player_info.assists;
@@ -161,9 +169,15 @@ function create_timeline(userdata)
 	})
 		.on("mouseout", function (d)
 		{
-	      	// update dot styling
-	      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
-	    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+	      	// update dot styling, but only if not selected
+	      	if (d3.select(this).classed("end_screen_selected") == false) {
+	      		d3.selectAll("#timeline .match_dot_hover").attr("r", 3)
+	    		d3.selectAll("#stat_graphs .match_dot_hover").attr("r", 3.5)
+	    	}
+
+	    	// but we always want to remove the match_dot_hover class
+	    	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false)
+	    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false)
 
 			tiptimeline.hide(d);
 		});
@@ -234,13 +248,29 @@ function brushend()
 	}
 	// add a clear brush selection if we have brushed in
 	get_button = d3.select(".clear-button_timeline");
+
 	if (get_button.empty() === true)
 	{
-		clear_button = svgTimeLine.append('text')
-			.attr("y", bbOverview.h + 50)
-			.attr("x", bbOverview.w - 100)
-			.attr("class", "clear-button_timeline")
-			.text("Clear Brush");
+		clear_button = svgTimeLine.append("g")
+			.attr("transform", "translate(" + (bbOverview.w - 100) + "," + (bbOverview.h + 50) + ")")
+			.attr("class", "clear-button_timeline");
+
+		clear_button.append("rect")
+			.attr("width", 102)
+			.attr("height", 20)
+			.attr("y", -17)
+			.attr("x", -4)
+			.attr("rx", "10px")
+			.attr("ry", "10px")
+			.style("fill", "white");
+
+		clear_button
+			.append('text')
+			.attr("y", 0)
+			.attr("x", 0)
+			.text("Clear Zoom")
+			.style("fill", "black");
+
 	}
 	// change the xscale domain to the brush selection extent
 	xScaleOverview.domain(brush_domain);
@@ -320,9 +350,15 @@ function transition_data(matchdata)
 		})
 		.on("mouseout", function (d)
 		{
-	      	// update dot styling
-	      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
-	    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+	      	// update dot styling, but only if not selected
+	      	if (d3.select(this).classed("end_screen_selected") == false) {
+	      		d3.selectAll("#timeline .match_dot_hover").attr("r", 3)
+	    		d3.selectAll("#stat_graphs .match_dot_hover").attr("r", 3.5)
+	    	}
+
+	    	// but we always want to remove the match_dot_hover class
+	    	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false)
+	    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false)
 	    	
 			tiptimeline.hide(d);
 		})

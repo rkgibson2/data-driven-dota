@@ -9,6 +9,57 @@ label {
   font-weight: normal;
 }
 
+.graphs_row div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.moveleft_introjs {
+  position: absolute;
+  left: 50px;
+}
+
+#hero_pie_container {
+  height: 380px;
+  width: 340px;
+  margin-left: 20px;
+}
+
+#win_loss_container {
+  width: 410px;
+  height: 90px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#item_percent_container {
+  position: relative;
+  height: 410px;
+  width: 670px;
+}
+
+#hero_chord_container {
+  position: relative;
+  height: 520px;
+  width: 440px;
+}
+
+#user_interact_container {
+  position: relative;
+  height: 530px;
+  width: 500px;
+}
+
+#xpm_container {
+  height: 530px;
+  width: 500px;
+}
+
+#gpm_container {
+  height: 530px;
+  width: 500px;
+}
+
 #radiant-background {
   height: 418px;
   width: 509px;
@@ -91,21 +142,12 @@ label {
   padding-top: 20px;
 }
 
-#stat_graphs svg {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  left: 0px;
-}
-
 #record_content {
-  left: 10px;
-  position: absolute;
-  top: 100px;
   width: 1040px;
-  height: 85px;
+  height: 80px;
   z-index: 2;
   white-space: nowrap;
+  margin-bottom: 10px;
 }
 
 .win_loss rect {
@@ -196,61 +238,45 @@ path {
     shape-rendering: crispEdges;
 }
 
-#value_sort_label {
-  z-index: 1;
+#item_percent_filters {
   position: absolute;
-  top: 230px;
-  /*right: 651px;*/
-  left: 416px;
+  width: 170px;
+  top: 10px;
+  left: 50px;
+  z-index: 1;
 }
 
-#item_sort_label{
-  z-index: 1;
-  position: absolute;
-  top: 245px;
-  /*right: 687px;*/
-  left: 416px;
+#item_percent_filters label {
+  margin-bottom: -10px;
 }
 
-#cost_sort_label{
-  z-index: 1;
-  position: absolute;
-  top: 260px;
-  left: 416px;
-  /*right: 689px;*/
-}
-
-#item_filter{
+#item_filter {
   z-index: 1;
   position: absolute;
   top: 25px;
   left: 900px;
-  /*right: 180px;*/
 }
 
-#hero_filter{
+#hero_filter {
   z-index: 1;
   position:absolute;
-  top: 1280px;
-  left: 800px;
-  /*right: 150px;*/
+  top: 90px;
+  left: 250px;
 }
 
 #toggle_color_pretty{
   z-index: 1;
   position: absolute;
-  top: 1250px;
+  top: 55px;
   left: 73px;
-  /*right: 689px;*/
 }
 
 #toggle_color_ugly{
   z-index: 1;
   position: absolute;
-  top: 1250px;
+  top: 55px;
   left: 252px;
-  /*right: 689px;*/
-}1060px
+}
 
 .bubble a:visited {
   color:gray;
@@ -317,7 +343,8 @@ span.question {
   text-align: center;
   position: relative;
 }
-span.question:hover {
+
+span.question-selected {
   background-color: #3D6199;
 }
 
@@ -366,11 +393,13 @@ div.graph_description strong {
     line-height: 1;
     position: absolute;
     pointer-events: none;
+    z-index: 10000;
 }
 
 .hidden { 
     display: none; 
 }
+
 #game_mode_table td, #lobby_table td{
   background-color: black;
   text-align: center;
@@ -464,32 +493,25 @@ div.graph_description strong {
   float: right;
 }
 
-hr.hr-div-record{
-width: 100%;
-top: 180px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-}
-hr.hr-hero-info{
-width: 100%;
-top: 620px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-
-}
-hr.hr-gpm-xpm{
-width: 100%;
-top: 1160px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-
+hr {
+  width: 100%;
+  border-top:1px solid #D2D2D2;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-hr.hr-end{
-width: 100%;
-top: 1700px;
-position: absolute;
-border-top:1px solid #D2D2D2;
-
+.introjs-helperLayer * {
+  box-sizing: content-box;
 }
 
+.clear-button_timeline {
+  cursor: pointer;
+}
+
+.clear-button_gpm {
+  cursor: pointer;
+}
+
+.clear-button_xpm {
+  cursor: pointer;
+}

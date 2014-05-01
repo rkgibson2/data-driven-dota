@@ -9,71 +9,89 @@ var filtered_data;
 //margins and bounding boxes for each graph visualization
 var bb_win_loss, bb_hero_pie, bb_item_percent, bb_hero_chord, bb_gpm, bb_xpm, bb_kda;
 
-var margin = {
-    top: 50,
-    right: 50,
-    bottom: 50,
-    left: 50
-};
-
-var width = 1060 - margin.left - margin.right;
-
-var height = 1700 - margin.bottom - margin.top;
 
 bb_records = {
 	x: 0,
 	y: 250,
 	h: 200,
-	w: width
+	w: 1060
 }
 
 bb_win_loss = {
-    x: width/2-125,
-    y: -20,
     w: 250,
-    h: 30
+    h: 30,
+    margin: {
+    	top: 40,
+    	right: 70,
+    	bottom: 20,
+    	left: 70
+    }
 };
 
 bb_hero_pie = {
-    x: 0,
-    y: 250,
     w: 300,
-    h: 300
+    h: 300,
+    margin: {
+	    top: 60,
+	    right: 20,
+	    bottom: 20,
+	    left: 20
+	} 
 };
 
 bb_item_percent = {
-    x: 400,
-    y: 250,
     w: 600,
-    h: 300
+    h: 300,
+    margin: {
+	    top: 90,
+	    right: 20,
+	    bottom: 20,
+	    left: 50
+	}
 };
 
 bb_hero_chord = {
-    x: 500,
-    y: 1250,
     w: 400,
-    h: 400
+    h: 400,
+    margin: {
+	    top: 110,
+	    right: 20,
+	    bottom: 20,
+	    left: 20
+	}
 };
 
 bb_user_interact = {
-	x: 0,
-	y: 1250,
 	h: 400,
-	w: 400
+	w: 400,
+	margin: {
+	    top: 110,
+	    right: 80,
+	    bottom: 20,
+	    left: 20
+	} 
 }
 
 bb_gpm = {
-	x: 0,
-	y: 670,
 	h: 400,
-	w: 400
+	w: 400,
+	margin: {
+	    top: 80,
+	    right: 50,
+	    bottom: 50,
+	    left: 50
+	}
 }
 
 bb_xpm = {
-	x: 500,
-	y: 670,
 	h: 400,
-	w: 400
+	w: 400,
+	margin: {
+	    top: 80,
+	    right: 50,
+	    bottom: 50,
+	    left: 50
+	}
 }
 
 bb_kda = {
@@ -95,8 +113,6 @@ d3.selectAll(".move_on_button button")
 				.style("display", null)
 			d3.select("#splash")
 				.style("display", "none");
-			d3.select("#splash_page2")
-				.style("display", "none");
 		})
 
 
@@ -104,62 +120,92 @@ d3.select(".more_info_button button")
 	.on("click", function() {
 		d3.select("#splash")
 			.style("display", "none");
-		d3.select("#splash_page2")
+		d3.select("#not-splash")
 			.style("display", null);
+
+		//hack around fix positioning
+		d3.select("#page-header").style("position","absolute");
+		//start the intro js
+		introguide.start();  
 	})
 
 
 // start with move on button in "loading" state (Twitter Bootstrap)
 $( ".move_on_button button" ).button("loading")
+$( ".more_info_button button" ).button("loading")
+
 
 // When DOM is ready, enable button
 $(window).load(function() {
 	
 	$( ".move_on_button button" ).button("reset")
+	$(".more_info_button button").button("reset")
 })
 
 
 //set up those boxes
-svg = d3.select("#stat_graphs").append("svg").attr({
-	width: width + margin.left + margin.right,
-	height: height + margin.bottom + margin.top
+svg_win_loss = d3.select("#win_loss_container").append("svg").attr({
+	width: bb_win_loss.w + bb_win_loss.margin.left + bb_win_loss.margin.right + 20,
+	height: bb_win_loss.h + bb_win_loss.margin.bottom + bb_win_loss.margin.top
 })
-	.append("g")
-	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var win_loss_graph = svg.append("g")
+svg_hero_pie = d3.select("#hero_pie_container").append("svg").attr({
+	width: bb_hero_pie.w + bb_hero_pie.margin.left + bb_hero_pie.margin.right,
+	height: bb_hero_pie.h + bb_hero_pie.margin.bottom + bb_hero_pie.margin.top 
+})
+
+svg_item_percent= d3.select("#item_percent_container").append("svg").attr({
+	width: bb_item_percent.w + bb_item_percent.margin.left + bb_item_percent.margin.right,
+	height: bb_item_percent.h + bb_item_percent.margin.bottom + bb_item_percent.margin.top
+})
+
+svg_user_interact = d3.select("#user_interact_container").append("svg").attr({
+	width: bb_user_interact.w + bb_user_interact.margin.left + bb_user_interact.margin.right,
+	height: bb_user_interact.h + bb_user_interact.margin.bottom + bb_user_interact.margin.top
+})
+
+svg_gpm = d3.select("#gpm_container").append("svg").attr({
+	width: bb_gpm.w + bb_gpm.margin.left + bb_gpm.margin.right,
+	height: bb_gpm.h + bb_gpm.margin.bottom + bb_gpm.margin.top
+})
+
+svg_xpm = d3.select("#xpm_container").append("svg").attr({
+	width: bb_xpm.w + bb_xpm.margin.left + bb_xpm.margin.right,
+	height: bb_xpm.h + bb_xpm.margin.bottom + bb_xpm.margin.top
+})
+
+svg_hero_chord = d3.select("#hero_chord_container").append("svg").attr({
+	width: bb_hero_chord.w + bb_hero_chord.margin.left + bb_hero_chord.margin.right,
+	height: bb_hero_chord.h + bb_hero_chord.margin.bottom + bb_hero_chord.margin.top
+})
+
+var win_loss_graph = svg_win_loss.append("g")
 	.attr("class", "win_loss")
-	.attr("visibility", "hidden")
-	.attr("transform", "translate(" + bb_win_loss.x + "," + bb_win_loss.y + ")");
+	.attr("transform", "translate(" + bb_win_loss.margin.left + "," + bb_win_loss.margin.top + ")");
 
-var hero_pie_graph = svg.append("g")
+var hero_pie_graph = svg_hero_pie.append("g")
 	.attr("class", "hero_pie")
-	.attr("transform", "translate(" + (bb_hero_pie.x + (bb_hero_pie.w / 2)) + "," + (bb_hero_pie.y+(bb_hero_pie.h / 2 + 10)) + ")");
+	.attr("transform", "translate(" + (bb_hero_pie.w/2 + bb_hero_pie.margin.left) + "," + (bb_hero_pie.h / 2 + bb_hero_pie.margin.top) + ")");
 
-var item_percent_graph = svg.append("g")
+var item_percent_graph = svg_item_percent.append("g")
 	.attr("class", "item_percent")
-	.attr("visibility", "hidden")
-	.attr("transform", "translate(" + bb_item_percent.x + "," + bb_item_percent.y + ")");
+	.attr("transform", "translate(" + bb_item_percent.margin.left + "," + bb_item_percent.margin.top + ")");
 
-var hero_chord_graph = svg.append("g")
-	.attr("class", "hero_chord")
-	.attr("transform", "translate(" + (bb_hero_chord.x+(bb_hero_chord.w/2)) + "," + (bb_hero_chord.y +(bb_hero_chord.h / 2)) + ")");
-
-var user_interact_graph = svg.append("g")
+var user_interact_graph = svg_user_interact.append("g")
 	.attr("class", "user_interact")
-	.attr("transform", "translate(" + bb_user_interact.x + "," + bb_user_interact.y + ")");
+	.attr("transform", "translate(" + bb_user_interact.margin.left + "," + bb_user_interact.margin.top + ")");
 
-var gpm_graph = svg.append("g")
+var gpm_graph = svg_gpm.append("g")
 	.attr("class", "gpm")
-	.attr("transform", "translate(" + bb_gpm.x + "," + bb_gpm.y + ")");
+	.attr("transform", "translate(" + bb_gpm.margin.left + "," + bb_gpm.margin.top + ")");
 
-var xpm_graph = svg.append("g")
+var xpm_graph = svg_xpm.append("g")
 	.attr("class", "xpm")
-	.attr("transform", "translate(" + bb_xpm.x + "," + bb_xpm.y + ")");
+	.attr("transform", "translate(" + bb_gpm.margin.left + "," + bb_gpm.margin.top + ")");
 
-var records_graph = svg.append("g")
-	.attr("class", "records_graph")
-	.attr("transform", "translate(" + bb_records.x + "," + bb_records.y + ")");
+var hero_chord_graph = svg_hero_chord.append("g")
+	.attr("class", "hero_chord")
+	.attr("transform", "translate(" + (bb_hero_chord.w/2 + bb_hero_chord.margin.left) + "," + (bb_hero_chord.h / 2 + bb_hero_chord.margin.top) + ")");
 
 // var kda_graph = svg.append("g")
 // 	.attr("class", "kda")
@@ -173,7 +219,9 @@ var graph_tip = d3.tip()
         .attr("class", "d3-tip")
         .offset([0,0]);
 
-svg.call(graph_tip);
+svg_hero_chord.call(graph_tip);
+//svg_xpm.call(graph_tip);
+//svg_gpm.call(graph_tip);
 
 //function calls
 d2.loadJson(function() {
@@ -467,21 +515,24 @@ function updateGraphs (filtered_data) {
 // jQuery tooltip helper adapted from: http://www.davidjrush.com/blog/2011/12/simple-jquery-tooltip/
 $(document).ready(function ()
 {
-	$("span.question").hover(function ()
+	$("span.question").click(function ()
 	{
-		$(this).append('<div class="graph_description">' +
-			'<p><strong>Win-Loss Percentage:</strong> Win-loss percentage for current selected data <br></p>' +
-			'<p><strong>Heroes Played:</strong> Heroes you’ve played grouped by their primary attribute- agility, intelligence, or strength, and ordered by the number of games in which you’ve played them. This graph is colored by primary attribute. <br></p>' +
-			'<p><strong>Heroes Played Together Most Often:</strong> This graph shows which heroes have appeared together on the same team most frequently. Heroes are represented as arcs on the circumference of the circle, colored by primary attribute, and are linked by chords. These chords represent the number of games in which both heroes appeared on the same team. This graph is filterable to set a lower bound on the number of games in which the heroes appeared together, on the same team. <br></p>' +
-			'<p><strong>Items Purchased as Percentage of Games Played:</strong> Percentage of games in which you ended the game with a given item. Bars are colored by win rate with that item- gray if the win rate is around 50%, red if win rate is low, and green if win rate is high. Sorting can be conducted by percentage, alphabetically by item name, and item cost (dropped items, such as Aegis and Cheese, sort as infinite cost). <br></p>' +
-			'<p><strong>GPM Statistics:</strong> Scatterplot of GPM of hero for a given game against average GPM while playing that hero. Games falling above the line indicate that GPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
-			'<p><strong>XPM Statistics:</strong> Scatterplot of XPM of hero for a given game against average XPM while playing that hero. Games falling above the line indicate that XPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
-			"<p><strong>Users You've Played with More than Once:</strong> Bubble graph, where bubbles are sized by number of games played together. Users you've played with only once are not shown. Users can be colored in two ways: by number of games played with you, or by your winrate playing with them. Clicking on the user bubble takes you to their Steam homepage. <br></p>" +		
-			'</div>');
-	}, function ()
-	{
-		$("div.graph_description").remove();
-	});
+		if ($( ".graph_description" ).length == 0) {
+			$(this).append('<div class="graph_description">' +
+				'<p><strong>Win-Loss Percentage:</strong> Win-loss percentage for current selected data <br></p>' +
+				'<p><strong>Heroes Played:</strong> Heroes played grouped by their primary attribute- agility, intelligence, or strength, and ordered by the number of games in which you’ve played them. This graph is colored by primary attribute. <br></p>' +
+				'<p><strong>Heroes Played Together Most Often:</strong> This graph shows which heroes have appeared together on the same team most frequently. Heroes are represented as arcs on the circumference of the circle, colored by primary attribute, and are linked by chords. These chords represent the number of games in which both heroes appeared on the same team. This graph is filterable to set a lower bound on the number of games in which the heroes appeared together, on the same team. <br></p>' +
+				'<p><strong>Items Purchased as Percentage of Games Played:</strong> Percentage of games in which you ended the game with a given item. Bars are colored by win rate with that item- gray if the win rate is around 50%, red if win rate is low, and green if win rate is high. Sorting can be conducted by percentage, alphabetically by item name, and item cost (dropped items, such as Aegis and Cheese, sort as infinite cost). <br></p>' +
+				'<p><strong>GPM Statistics:</strong> Scatterplot of GPM of hero for a given game against average GPM while playing that hero. Games falling above the line indicate that GPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
+				'<p><strong>XPM Statistics:</strong> Scatterplot of XPM of hero for a given game against average XPM while playing that hero. Games falling above the line indicate that XPM this game was higher than average, while games falling below the line indicate that GPM this game was lower than average. Games are colored by win/loss. <br></p>' +
+				"<p><strong>Users Played with More than Once:</strong> Bubble graph, where bubbles are sized by number of games played together. Users played with only once are not shown. Users can be colored in two ways: by number of games played with you, or by your winrate playing with them. Clicking on the user bubble takes you to their Steam homepage. <br></p>" +		
+				'</div>');
+			$(this).addClass( "question-selected" )
+		} else {
+			$( ".graph_description" ).remove()
+			$(this).removeClass( "question-selected" )
+		}
+	})
 });
 
 //win loss rect graph
@@ -493,14 +544,16 @@ function draw_win_loss() {
 			.attr("height", bb_win_loss.h)
 			.attr("x", 0)
 			.attr("y", 0)
-			.attr("class", "loss")
+			.attr("id", "loss_rect")
+			.attr("class", "loss");
 
 	win_loss_graph.append("rect")
 			.attr("width", bb_win_loss.w/2)
 			.attr("height", bb_win_loss.h)
 			.attr("x", 0)
+			.attr("id", "win_rect")
 			.attr("y", 0)
-			.attr("class", "win")
+			.attr("class", "win");
 
 	win_loss_graph
 			.append("text")
@@ -559,14 +612,19 @@ function update_win_loss(data) {
 			.attr("width", 0);
 	}
 		
-	d3.select(".win.text")
-		.text(((win_count/total_matches) * 100).toFixed(1) + "%");
+	if (win_count != 0) {
+		d3.select(".win.text")
+			.text(((win_count/total_matches) * 100).toFixed(1) + "%");
 
-	d3.select(".loss.text")
+		d3.select(".loss.text")
 		.text(((total_matches - win_count)/total_matches * 100).toFixed(1) + "%");
-
-	d3.select(".win_loss")
-		.attr("visibility", null);
+	}
+	else {
+		d3.select(".win.text")
+			.text("No data");
+		d3.select(".loss.text")
+			.text("No data");
+	}
 
 }
 
@@ -945,7 +1003,7 @@ function draw_item_percent() {
 	item_percent_color = d3.scale.linear();
 
 	item_percent_x = d3.scale.ordinal()
-			.rangeRoundBands([0, bb_item_percent.w], .3 ,.5)
+			.rangeBands([0, bb_item_percent.w], .3 , .5)
 			.domain(["item1"]);
 
 	item_percent_y = d3.scale.linear()
@@ -972,31 +1030,6 @@ function draw_item_percent() {
 
 	item_percent_graph.append("g")
 				.attr("class", "bars")
-				.selectAll(".bar")
-				.data([{"name": "item1", "percent": .5}], function(d) {
-					return d.name;
-				})
-			  .enter().append("rect")
-			  	.attr("class", "bar")
-			  	.attr("x", function(d) {
-			  		return item_percent_x(d.name);
-			  	})
-			  	.attr("y", function(d) {
-			  		return item_percent_y(d.percent);
-			  	})
-			  	.attr("height", function(d) {
-			  		return bb_item_percent.h - item_percent_y(d.percent);
-			  	})
-			  	.attr("width", function() {
-			  		return item_percent_x.rangeBand();
-			  	})
-			  	.on("mouseover", function(d) {
-			  		graph_tip.html(d.dname);
-			  		graph_tip.show(d);
-			  	})
-			  	.on("mouseout", function(d) {
-			  		graph_tip.hide(d);
-			  	});
 
 	item_percent_graph.append("text")
 		.attr("text-anchor", "middle")
@@ -1024,7 +1057,7 @@ function draw_legend(graph) {
 	if ($("#color-blind").is(":checked")) {
 		gradient.append("svg:stop")
 			.attr("offset", "0%")
-			.attr("stop-color", "#ff7f00")
+			.attr("stop-color", "#762a83")
 			.attr("stop-opacity", 1);
 
 		gradient.append("svg:stop")
@@ -1034,14 +1067,14 @@ function draw_legend(graph) {
 
 		gradient.append("svg:stop")
 			.attr("offset", "100%")
-			.attr("stop-color", "#762a83")
+			.attr("stop-color", "#ff7f00")
 			.attr("stop-opacity", 1);
 	}
 
 	else {
 		gradient.append("svg:stop")
 			.attr("offset", "0%")
-			.attr("stop-color", "#d7191c")
+			.attr("stop-color", "#1a9641")
 			.attr("stop-opacity", 1);
 
 		gradient.append("svg:stop")
@@ -1051,7 +1084,7 @@ function draw_legend(graph) {
 
 		gradient.append("svg:stop")
 			.attr("offset", "100%")
-			.attr("stop-color", "#1a9641")
+			.attr("stop-color", "#d7191c")
 			.attr("stop-opacity", 1);
 	}
 
@@ -1075,7 +1108,7 @@ function draw_legend(graph) {
 		.attr("class", "legend")
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
-		.text("100% loss")
+		.text("100% win")
 		.style("opacity", 0)
 		.transition()
 		.duration(1000)
@@ -1087,7 +1120,7 @@ function draw_legend(graph) {
 		.attr("y", -15)
 		.style("font-size", "14px")
 		.style("text-anchor", "end")
-		.text("100% win")
+		.text("100% loss")
 		.style("opacity", 0)
 		.transition()
 		.duration(1000)
@@ -1274,6 +1307,9 @@ function update_item_percent(data) {
 				//console.log(d.winrate)
 				return item_percent_color(d.winrate);
 			})
+			.attr("x", 0)
+			.attr("y", bb_item_percent.h)
+			.attr("height", 0)
 			.on("mouseover", function(d) {
 
 				if (d.dname == "Aegis of the Immortal" || d.dname == "Cheese") {
@@ -1284,6 +1320,14 @@ function update_item_percent(data) {
 				}
 
 				//console.log(d)
+
+				//for video
+				// if (d.dname == "Force Staff") {
+				// 	d.winrate = .96;
+				// }
+				// if (d.dname == "Armlet of Mordiggian") {
+				// 	d.winrate = .037
+				// }
 
 				var basic_tip = "<div id='tooltip_text'><strong><span style='color:red';>" + d.dname + 
 					"</span></strong>" + "<br> Number of Games: " + d.count + 
@@ -1337,9 +1381,6 @@ function update_item_percent(data) {
 			.duration(duration)
 			.call(item_percent_xAxis);
 
-		d3.select(".item_percent")
-			.attr("visibility", null);
-
 		draw_legend(item_percent_graph);
 		
 	})
@@ -1362,7 +1403,7 @@ function update_item_percent(data) {
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
-	    var transition = svg.transition().duration(750),
+	    var transition = svg_item_percent.transition().duration(750),
 	        delay = function(d, i) { return i * 10; };
 
 	    transition.selectAll(".bar")
@@ -1388,7 +1429,7 @@ function update_item_percent(data) {
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
-	    var transition = svg.transition().duration(750),
+	    var transition = svg_item_percent.transition().duration(750),
 	        delay = function(d, i) { return i * 10; };
 
 	    transition.selectAll(".bar")
@@ -1422,7 +1463,7 @@ function update_item_percent(data) {
 	        .map(function(d) { return d.name; }))
 	        .copy();
 
-	    var transition = svg.transition().duration(750),
+	    var transition = svg_item_percent.transition().duration(750),
 	        delay = function(d, i) { return i * 10; };
 
 	    transition.selectAll(".bar")
@@ -1578,7 +1619,7 @@ function create_matrix (data) {
 }
 
 
-var chord_tip = d3.select("#stat_graphs").append("div").attr("class", "chordtip hidden")
+var chord_tip = d3.select("#hero_chord_container").append("div").attr("class", "chordtip hidden")
 
 
 function draw_hero_chord_graph(matrix, lookup_dict) {
@@ -1663,10 +1704,11 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
 	    })
 	    .style("opacity", 0)
 	    .on("mouseover", function(d) {
-	    	var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+	    	var mouse = d3.mouse(svg_hero_chord.node()).map( function(d) { return parseInt(d); } );
 
                 //toggle the hide on the tooltip
                 chord_tip.classed("hidden", false)
+                	.attr("z-index", "10000")
                     .attr("style", "left:"+(mouse[0]+50)+"px;top:"+(mouse[1]+50)+"px")
                     .html(function(e){
 
@@ -1677,7 +1719,7 @@ function draw_hero_chord_graph(matrix, lookup_dict) {
                     	var name2 = d2.getHeroName(chord.groups()[target].hero_id);
 
                     	return name1 + " - " + name2 + "<br>Number of Games: " + d.source.value
-                    })
+                    });
 	    })
 	    .on("mouseout", function(d){
 	    	chord_tip.classed("hidden", true);
@@ -1833,7 +1875,7 @@ function draw_gpm() {
 		.attr("text-anchor", "middle")
 		.attr("x", bb_gpm.w/2)
 		.style("font-size", "12px")
-		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+		.text("Select a region to zoom in. Click 'Clear Zoom' to zoom out.")
 
 	gpm_graph.append("text")
 		.attr("y", -10)
@@ -1848,10 +1890,7 @@ var gpm_brush;
 
 function update_gpm(data) {
 
-	gpm_brush = d3.svg.brush()
-   		.x(gpm_x)
-   		.y(gpm_y)
-   		.on("brushend", gpm_brushend);
+	d3.select(".clear-button_gpm").remove();
 
 	var gpm_dict = {};
 
@@ -1885,6 +1924,11 @@ function update_gpm(data) {
 			return d.player_info.gold_per_min;
 	}));
 
+    gpm_brush = d3.svg.brush()
+   		.x(gpm_x)
+   		.y(gpm_y)
+   		.on("brushend", gpm_brushend);
+
 	gpm_xdomain = [0, max_value];
 	gpm_ydomain = [0, max_value];
 
@@ -1909,8 +1953,12 @@ function update_gpm(data) {
 	  .attr("cy", gpm_y(0))
       .attr("r", 3.5)
       .on("mouseover", function(d) {
-      	// update dota styling
-    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+      	// update dot styling
+    	var sel = d3.selectAll("[match_id='" + d.match_id + "']")
+    		.classed("match_dot_hover", true)
+    		.attr("r", 5);
+
+    	sel.moveToFront();
 
       	//console.log(d.player_info.hero_avg_gpm)
       	var format = d3.format(".2f");
@@ -1928,10 +1976,16 @@ function update_gpm(data) {
       	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
-      	// update dot styling
-      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
-    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+      	// update dot styling, but only if not selected
+      	if (d3.select(this).classed("end_screen_selected") == false) {
+      		d3.selectAll("#timeline .match_dot_hover").attr("r", 3)
+    		d3.selectAll("#stat_graphs .match_dot_hover").attr("r", 3.5)
+    	}
 
+    	// but we always want to remove the match_dot_hover class
+    	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false)
+    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false)
+    	
       	graph_tip.hide(d);
       })
 	  .on("click", update_end_screen)
@@ -1957,18 +2011,18 @@ function update_gpm(data) {
    		.duration(1000)
    		.call(gpm_yAxis);
 
-    if (isNaN(gpm_x(max_value)) == false) {
+   	if (isNaN(gpm_x(max_value)) == false) {
 	   	gpm_graph.select(".forty-five")
 	   		.attr("x2", gpm_x(max_value))
 	   		.attr("y2", gpm_y(max_value));
-    }
-
+	}
 
 }
 
 var gpm_clear_button;
 
 function gpm_brushend() {
+
 	var gpm_x_domain = [gpm_brush.extent()[0][0], gpm_brush.extent()[1][0]]
 	var gpm_y_domain = [gpm_brush.extent()[0][1], gpm_brush.extent()[1][1]]
 
@@ -1981,11 +2035,25 @@ function gpm_brushend() {
 	get_button = d3.select(".clear-button_gpm");
 	if (get_button.empty() === true)
 	{
-		gpm_clear_button = gpm_graph.append('text')
-			.attr("y", bb_gpm.h - 440)
-			.attr("x", bb_gpm.w - 100)
-			.attr("class", "clear-button_gpm")
-			.text("Clear Brush");
+		gpm_clear_button = gpm_graph.append("g")
+			.attr("transform", "translate(" + (bb_gpm.w - 100) + "," + (bb_gpm.h - 440) + ")")
+			.attr("class", "clear-button_gpm");
+
+		gpm_clear_button.append("rect")
+			.attr("width", 102)
+			.attr("height", 20)
+			.attr("y", -17)
+			.attr("x", -4)
+			.attr("rx", "10px")
+			.attr("ry", "10px")
+			.style("fill", "#9f9f9f");
+
+		gpm_clear_button
+			.append('text')
+			.attr("y", 0)
+			.attr("x", 0)
+			.text("Clear Zoom")
+			.style("fill", "black");
 	}
 
 	gpm_x.domain(gpm_x_domain);
@@ -2042,13 +2110,15 @@ function gpm_brushend() {
 				return d;
 		}));
 
-		gpm_graph.selectAll(".forty-five")
-			.transition()
-			.duration(1000)
-			.attr("x1", gpm_x(0))
-			.attr("y1", gpm_y(0))
-			.attr("x2", gpm_x(max_arr))
-			.attr("y2", gpm_y(max_arr));
+		if (isNaN(gpm_x.domain()[1] == false)) {
+			gpm_graph.selectAll(".forty-five")
+				.transition()
+				.duration(1000)
+				.attr("x1", gpm_x(0))
+				.attr("y1", gpm_y(0))
+				.attr("x2", gpm_x(max_arr))
+				.attr("y2", gpm_y(max_arr));
+		}
 	}
 }
 
@@ -2136,7 +2206,7 @@ function draw_xpm() {
 		.attr("text-anchor", "middle")
 		.attr("x", bb_xpm.w/2)
 		.style("font-size", "12px")
-		.text("Select a region to zoom in. Click 'Clear Brush' to zoom out.")
+		.text("Select a region to zoom in. Click 'Clear Zoom' to zoom out.")
 
 	xpm_graph.append("text")
 		.attr("y", -10)
@@ -2148,7 +2218,15 @@ function draw_xpm() {
 }
 
 
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
+
 function update_xpm(data) {
+
+	d3.select(".clear-button_xpm").remove();
 
 	xpm_brush = d3.svg.brush()
    		.x(xpm_x)
@@ -2209,11 +2287,15 @@ function update_xpm(data) {
 		})
       .attr("match_id", function(d) { return d.match_id })
       .attr("r", 3.5)
+      .attr("opacity", ".98")
       .on("mouseover", function(d) {
       	// update dota styling
-    	d3.selectAll("[match_id='" + d.match_id + "']").classed("match_dot_hover", true).attr("r", 5)
+    	var sel = d3.selectAll("[match_id='" + d.match_id + "']")
+    		.classed("match_dot_hover", true)
+    		.attr("r", 5)
 
-      	//console.log(d.player_info.hero_avg_gpm)
+    	sel.moveToFront();
+
       	var format = d3.format(".2f");
 
       	var text = "<strong>" + d2.getHeroName(d.player_info.hero_id) + "</strong>" + "<br>XPM this Game: " + d.player_info.xp_per_min + "<br>Average XPM on this hero: " + format(d.player_info.hero_avg_gpm); 
@@ -2229,9 +2311,15 @@ function update_xpm(data) {
       	graph_tip.show(d)
       })
       .on("mouseout", function(d) {
-      	// update dot styling
-      	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false).attr("r", 3)
-    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false).attr("r", 3.5)
+      	// update dot styling, but only if not selected
+      	if (d3.select(this).classed("end_screen_selected") == false) {
+      		d3.selectAll("#timeline .match_dot_hover").attr("r", 3)
+    		d3.selectAll("#stat_graphs .match_dot_hover").attr("r", 3.5)
+    	}
+
+    	// but we always want to remove the match_dot_hover class
+    	d3.selectAll("#timeline .match_dot_hover").classed("match_dot_hover", false)
+    	d3.selectAll("#stat_graphs .match_dot_hover").classed("match_dot_hover", false)
     	
       	graph_tip.hide(d);
       })
@@ -2284,12 +2372,26 @@ function xpm_brushend() {
 	get_button = d3.select(".clear-button_xpm");
 
 	if (get_button.empty() === true)
-	{
-		xpm_clear_button = xpm_graph.append('text')
-			.attr("y", bb_xpm.h - 440)
-			.attr("x", bb_xpm.w - 100)
-			.attr("class", "clear-button_xpm")
-			.text("Clear Brush");
+	{	
+		xpm_clear_button = xpm_graph.append("g")
+			.attr("transform", "translate(" + (bb_xpm.w - 100) + "," + (bb_xpm.h - 440) + ")")
+			.attr("class", "clear-button_xpm");
+
+		xpm_clear_button.append("rect")
+			.attr("width", 102)
+			.attr("height", 20)
+			.attr("y", -17)
+			.attr("x", -4)
+			.attr("rx", "10px")
+			.attr("ry", "10px")
+			.style("fill", "#9f9f9f");
+
+		xpm_clear_button
+			.append('text')
+			.attr("y", 0)
+			.attr("x", 0)
+			.text("Clear Zoom")
+			.style("fill", "black");
 	}
 
 	xpm_x.domain(xpm_x_domain);
@@ -2345,13 +2447,15 @@ function xpm_brushend() {
 				return d;
 		}));
 
-		xpm_graph.selectAll(".forty-five")
-			.transition()
-			.duration(1000)
-			.attr("x1", xpm_x(0))
-			.attr("y1", xpm_y(0))
-			.attr("x2", xpm_x(max_arr))
-			.attr("y2", xpm_y(max_arr));
+		if (isNaN(gpm_x.domain()[1] == false)) {
+			xpm_graph.selectAll(".forty-five")
+				.transition()
+				.duration(1000)
+				.attr("x1", xpm_x(0))
+				.attr("y1", xpm_y(0))
+				.attr("x2", xpm_x(max_arr))
+				.attr("y2", xpm_y(max_arr));
+		}
 	}
 }
 
@@ -2394,7 +2498,7 @@ function draw_user_interact(){
 		.attr("text-anchor", "middle")
 		.attr("y", -75)
 		.attr("x", 180)
-		.text("Users You've Played with more than Once")
+		.text("Users Played with More than Once")
 
 	user_interact_graph.append("text")
 		.attr("text-anchor", "middle")
@@ -2517,13 +2621,20 @@ function update_user_interact(data) {
 		})
 		.attr("xlink:show", "new") //opens link in a new tab
 		.append("circle")
+		.attr("z-index", "1")
 		.attr("r", function(d) {return d.r})
 		.on("mouseover", function(d) {
 
 			format = d3.format(".2%")
 
 			graph_tip.html("User: " + d2.getUserName(d.className) + "<br>Number of games: " + d.value + "<br>Winrate Playing Together : " + format(d.wins/d.value));
-			
+	
+			//from Video		
+			// if (d2.getUserName(d.className) == "Nukeydog") {
+			// 	graph_tip.html("User: " + "Robbie" + "<br>Number of games: " + d.value + "<br>Winrate Playing Together : " + "11.0%");
+			// 	d.wins = 0;
+			// }
+
 			if (d.className != user_data.id32) {
 				graph_tip.show(d);
 			}
@@ -2568,6 +2679,10 @@ function update_user_interact(data) {
       	.style("pointer-events", "none")
       	.text(function(d) {
       		var username = d2.getUserName(d.className)
+      		//from Video
+      		// if (username == "Nukeydog") {
+      		// 	username = "Robbie"
+      		// }
       		if (username.length < d.r*.3) {
       			return username
       		}

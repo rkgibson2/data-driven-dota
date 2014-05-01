@@ -2,20 +2,20 @@
 <head>
   <meta charset="utf-8">
   <title>Graphs Start</title>
-  <link href="/bootstrap2/css/bootstrap.min.css" rel="stylesheet"></link>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!--<link href="/bootstrap2/css/bootstrap.min.css" rel="stylesheet"></link>-->
   <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/intro.js/0.6.0/introjs.min.css"></link>
+  <link rel="stylesheet" type="text/css" href="/css/introjs.css"></link>
   <link rel="stylesheet" type="text/css" href="/css/main.css"></link>
   <link rel="stylesheet" type="text/css" href="/css/selectors.css"></link>
   <link rel="stylesheet" type="text/css" href="/css/timeline.css"></link>
   <link rel="stylesheet" type="text/css" href="/css/end_screen.css"></link>
-  <!--<link href="/bootstrap/css/bootstrap.css" rel="stylesheet"></link>-->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <!--<script src="/bootstrap/js/bootstrap.js"></script>-->
-  <script src="/bootstrap2/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="/libs/FileSaver.js"></script>
   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <script src="/js/d2.js"></script>
+  <script src="/js/intro.js"></script>
   
 </head>
 <body>
@@ -25,12 +25,13 @@
   <div class="splash-nav">
     
     <div class="left-nav">
-      <span class="visit_video"><a class="btn btn-link" href="https://www.youtube.com/channel/UCrdUDsPT3hxO4qoX4uLgOSA" target="_blank">View our Video</a></span>
+      <span class="visit_video"><a class="btn btn-link" href="https://www.youtube.com/watch?v=dqEPDAj5nlc" target="_blank">View our Video</a></span>
       <span class="to_github"><a class="btn btn-link" href="https://github.com/rkgibson2/Dota-2-visualizations" target="_blank">View Project on Github</a></span>
+      <span class="process_book"><button class="btn btn-link" href="#" onclick="window.open('../process_book/Process_Book_Draft.pdf', '_blank', 'fullscreen=yes'); return false;">View Process Book</button></span>
     </div>
 
     <div class="right-nav">
-      <span class="more_info_button"><button class="btn btn-info">More Information</button></span>
+      <span class="more_info_button"><button class="btn btn-info" data-loading-text="Loading...">Walkthrough</button></span>
       <span class="move_on_button"><button class="btn btn-success" data-loading-text="Loading...">To Visualization</button></span>
     </div>
 
@@ -224,25 +225,44 @@
 
     <!-- STAT GRAPHS -->
     <div id="stat_graphs">
+      <div id="win_loss_container"></div>
       <div id="record_content"> 
-          <div id="longest_match" data-value="Longest Match"></div>
-          <div id="most_kills" data-value="Most Kills"></div>
-          <div id="most_deaths" data-value = "Most Deaths"></div>
-          <div id="most_last_hits" data-value ="Most Last Hits"></div>
-          <div id="most_hero_damage" data-value = "Most Hero Damage" ></div>
-          <div id="most_tower_damage" data-value = "Most Tower Damage"></div>
+        <div id="longest_match" data-value="Longest Match"></div>
+        <div id="most_kills" data-value="Most Kills"></div>
+        <div id="most_deaths" data-value = "Most Deaths"></div>
+        <div id="most_last_hits" data-value ="Most Last Hits"></div>
+        <div id="most_hero_damage" data-value = "Most Hero Damage" ></div>
+        <div id="most_tower_damage" data-value = "Most Tower Damage"></div>
+      </div>
+      <hr>
+      <div class="graphs_row">
+        <div id="hero_pie_container"></div>
+        <div id="item_percent_container">
+          <div id="item_percent_filters">
+            <label id="value_sort_label"><input type="radio" id="value" name="itemgraph"> Sort bars by frequency</label>
+            <label id="item_sort_label"><input type="radio" id="item" name="itemgraph"> Sort bars by item</label>
+            <label id="cost_sort_label"><input type="radio" id="cost" name="itemgraph"> Sort bars by cost</label>
+          </div>
         </div>
-      <label id="value_sort_label"><input type="radio" id="value" name="itemgraph"> Sort bars by frequency</label>
-      <label id="item_sort_label"><input type="radio" id="item" name="itemgraph"> Sort bars by item</label>
-      <label id="cost_sort_label"><input type="radio" id="cost" name="itemgraph"> Sort bars by cost</label>
+      </div>
+      <hr>
+      <div class="graphs_row" id = "xpmgpm_container">
+        <div id="gpm_container"></div>
+        <div id="xpm_container"></div>
+      </div>
+      <hr>
+      <div class="graphs_row">
+        <div id="hero_chord_container">
+          <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
+        </div>
+        <div id="user_interact_container">
+          <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
+          <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
+        </div>
+      </div>
+      <hr class = "hr-end" style="visibility:hidden;">
       <!-- <label id="item_filter"><input class="this1" type="range" name="points" min="0" max="51" step="1" value="50" disabled> <span class="filterInput">51 </span> Items</label> -->
-      <label id="hero_filter"><input class="this1" type="range" name="hero_filter" min="5" max="11" step="1" value="8"> <span class="filterInput">8 </span> Games Played Together</label>
-      <label id="toggle_color_pretty"><input type="radio" id="rainbow" name="bubblegraph" checked>Color by Games Played</label>
-      <label id="toggle_color_ugly"><input type="radio" id="winrate" name="bubblegraph">Color by Winrate</label>
-      <hr class = "hr-div-record">
-      <hr class = "hr-hero-info">
-      <hr class = "hr-gpm-xpm">
-      <hr class = "hr-end">
+      
     </div>
   </div>
   
@@ -383,4 +403,6 @@
 <script src="/js/lobbies.js"></script>
 <script src="/js/records.js"></script>
 <script src="/js/colorblind.js"></script>
+<script src="/js/introscript.js"></script>
+
 </body>

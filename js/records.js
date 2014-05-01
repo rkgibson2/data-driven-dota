@@ -1,6 +1,7 @@
 var records;
 
 function updateRecords(data){
+
     records = 
     {
         "longest_match":
@@ -29,6 +30,8 @@ function updateRecords(data){
             "match":0
         }
     }
+    if (data.matches.length)
+    {
     data.matches.forEach(function(d){
         records = 
         {
@@ -78,16 +81,33 @@ function updateRecords(data){
 
     displayRecords();
     }
+    else 
+    {
+        for (key in records) 
+        {
+            d3.select("#" + key)
+                .html("No record available")
+                .classed("dullness",false)
+                .classed("brightnessfilter",false)
+                .style("background-image", "none")
+                .on("click",function(){});
+        }
+    
+    }
+ };
 
 function displayRecords(){
-for (key in records){
-    d3.select("#" + key)
-        .html($("#" + key).data().value + "<br>" +records[key].value)
-        .classed("dullness",true)
-        .classed("brightnessfilter",true)
-        .style("background-image","url("+d2.getHeroInfo(records[key].match.player_info.hero_id).img +")")
-    d3.select("#" +key)
-        .on("click",function(){update_end_screen(records[this.id].match); 
-    $('#show_records').modal('hide');});
-}
+    for (key in records) {
+        d3.select("#" + key)
+            .html($("#" + key).data().value + "<br>" +records[key].value)
+            .classed("dullness",true)
+            .classed("brightnessfilter",true)
+            .style("background-image", "url(" + d2.getHeroInfo(records[key].match.player_info.hero_id).img + ")")
+            .on("click",function() {
+                update_end_screen(records[this.id].match);
+            });
+
+    }
+
+    $('#show_records').modal('hide');
 }

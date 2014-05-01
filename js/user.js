@@ -6,6 +6,10 @@ users = [{username : "anarfish", realname : "angela"},
          {username : "Merlini", realname : "merlini"},
          {username : "Darth Windu", realname : "robbie"}];
 
+users.sort(function(a, b) {
+    return d3.ascending(a.username.toLowerCase(), b.username.toLowerCase())
+})
+
 d3.select("#selectuser")
     .append("select")
     .attr("id","userdropdown")

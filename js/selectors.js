@@ -6,11 +6,11 @@ labels.forEach(function (d) {
         var images = d3.select("#" + d + "images").selectAll("img");
         var numselected = d3.select("#" + d + "images").selectAll(".pic.selected")[0].length;
         if (numselected != images[0].length) {
-            images.attr("class", "pic selected brightnessfilter");
-            images.style("border", "2px solid red");
+            images.attr("class", "pic selected brightnessfilter")
+                .style("border", "2px solid red");
         } else if (numselected == images[0].length) {
-            images.classed("selected", false);
-            images.style("border", "2px solid black");
+            images.classed("selected", false)
+                .style("border", "2px solid black");
         }
     });
 });
@@ -20,8 +20,8 @@ function highlight()
 {
 	if (!this.classList.contains("selected"))
 	{
-		d3.select(this).attr("class", "pic selected brightnessfilter");
-		d3.select(this).style("border", "2px solid red");
+		d3.select(this).attr("class", "pic selected brightnessfilter")
+            .style("border", "2px solid red");
 	}
 	else
 	{
@@ -44,7 +44,7 @@ function sorting(a, b)
 };
 
 
-function updateFilteredSelectionByHero(){
+function updateFilteredSelectionByHero() {
 
    filtered_data = {
 		    id32: user_data.id32,
@@ -77,11 +77,13 @@ var selectedheroes = d3.selectAll(".selected")[0];
 	}
 }
 
-function reselectHeroes(){
+function reselectHeroes() {
     // first reset selection to blank
     resetSelectedHeroes();
     // then select previous selection
-    selectedarr.forEach(function(d,i){d3.select("#" + d2.getHeroInfo(d).name)
-        .classed("selected",true).style("border", "2px solid red");
-});
+    selectedarr.forEach( function (d,i) {
+        d3.select("#" + d2.getHeroInfo(d).name)
+            .classed("selected",true)
+            .style("border", "2px solid red");
+    });
 }
