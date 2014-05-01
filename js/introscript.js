@@ -21,7 +21,7 @@ showStepNumbers: false,
           position: 'left'  
         },
         {  
-          element: '#page-header',  
+          element: '#timeline',  
           intro: "This timeline plots user games over time, split by hero primary attribute. Select a region on the timeline with your mouse to filter the data. Click on a game to bring up the endgame screen.",  
           position: 'bottom',
           tooltipClass: "moveleft_introjs"
