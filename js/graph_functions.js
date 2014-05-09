@@ -2121,7 +2121,7 @@ function gpm_brushend() {
 				return d;
 		}));
 
-		if (isNaN(gpm_x.domain()[1] == false)) {
+		if (isNaN(gpm_x.domain()[1]) == false) {
 			gpm_graph.selectAll(".forty-five")
 				.transition()
 				.duration(1000)
@@ -2458,7 +2458,7 @@ function xpm_brushend() {
 				return d;
 		}));
 
-		if (isNaN(gpm_x.domain()[1] == false)) {
+		if (isNaN(gpm_x.domain()[1]) == false) {
 			xpm_graph.selectAll(".forty-five")
 				.transition()
 				.duration(1000)
