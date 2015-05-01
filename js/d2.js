@@ -17,7 +17,7 @@ var d2 = (function() {
             callback = function() {}
         var remaining = 6;
 
-        d3.json("/data/heroes.json", function (error, data)
+        d3.json("data/heroes.json", function (error, data)
         {            // an array of all the hero names indexed appropriately - starting at 1
             heroData = data;
 
@@ -25,13 +25,13 @@ var d2 = (function() {
 
         });
 
-        d3.json("/data/abilities.json", function (error, data) {
+        d3.json("data/abilities.json", function (error, data) {
             abilityData = data;
 
             if (!--remaining) callback();
         });
 
-        d3.json("/data/items.json", function (error, data)
+        d3.json("data/items.json", function (error, data)
         {
            // an array of all the hero names indexed appropriately - starting at 1
            itemData = data;
@@ -39,21 +39,21 @@ var d2 = (function() {
            if (!--remaining) callback();
         });
 
-        d3.json("/data/game_modes.json", function (error, data) {
+        d3.json("data/game_modes.json", function (error, data) {
             // array of all the game modes
             gameModes = data;
 
             if (!--remaining) callback();
         })
 
- 	d3.json("/data/lobbies.json", function (error, data) {
+ 	    d3.json("data/lobbies.json", function (error, data) {
             // array of all the lobby modes
             lobbyModes = data;
 
             if (!--remaining) callback();
         })
 
-        d3.json("/data/mini_usernames.json", function(error, data) {
+        d3.json("data/mini_usernames.json", function(error, data) {
             // array of all usernames we've pulled
             userData = data;
 
@@ -155,7 +155,7 @@ var d2 = (function() {
             throw new Error ("No data currently for user " + username)
         }
 
-        d3.json("/data/" + username_lower + "_match_details.json", function(error, data) {
+        d3.json("data/" + username_lower + "_match_details.json", function(error, data) {
             // find the player data for our given player and pull it to the top level
             data.matches.forEach(function(d,i) {
                 our_player = d.players.filter(function(e) {
@@ -199,7 +199,7 @@ var d2 = (function() {
         d3.select("body").selectAll(".heropicture").data([heroname.toLowerCase().replace(/ /g,"_")])
         .enter().append('img')
         .attr('class', 'heropicture')
-        .attr('src', function(d) { return "../img/heroes/" +d+".jpg"; });
+        .attr('src', function(d) { return "img/heroes/" +d+".jpg"; });
     };
 
 
@@ -209,7 +209,7 @@ var d2 = (function() {
         d3.select("body").selectAll(".itempicture").data([itemname])
         .enter().append('img')
         .attr('class', 'itempicture')
-        .attr('src', function(d) { return "../img/items/" +d+".jpg"; });
+        .attr('src', function(d) { return "img/items/" +d+".jpg"; });
     };
 
     var pubFunctionList = "getHeroName(id): returns hero name from ID\n"
