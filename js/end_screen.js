@@ -261,10 +261,10 @@ function exit_end_screen() {
             .style("height", end_screen_height)
             .transition().duration(2000)
             .style("height", "0px")
-            
-        d3.select("#end_screen")
-            .transition().delay(2000)
-            .style("display", "none")
+            // set div display to none at end to remove margin space
+            .each("end", function() {
+                d3.select(this).style("display", "none")
+            })
 
         d3.selectAll("#end_screen>*").style("opacity", 1)
             .transition().duration(750)
